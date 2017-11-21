@@ -140,13 +140,13 @@ $ rm -r src/stylus
 
 ### Media Query
 By default, the theme contains three media queries:
-1. all
-2. "(min-width:720px)" for tablet or higher (tablet)
-3. "(min-width:1024px)" for PC or higher
+1. **all** for all medias
+2. **"(min-width:720px)"** for tablet or higher (tablet)
+3. **"(min-width:1024px)"** for PC or higher
 
 These media queries are defined in `functions/other.php`.
 
-> **This themes avoid using inline media query**. You can, however, easily write [Bootstrap-based media queries](https://getbootstrap.com/docs/4.0/layout/overview/) as follows.
+**This theme avoids using inline media query**. You can, however, easily write [Bootstrap-based media queries](https://getbootstrap.com/docs/4.0/layout/overview/) as follows.
 
 ```stylus
 @media $xs
@@ -158,7 +158,7 @@ or
 @media $lg
 or
 @media $xl
-	// your style here
+  // your style here
 ```
 
 The variables of media queries are defined in `src/stylus/config/variable.styl`.
@@ -166,13 +166,13 @@ The variables of media queries are defined in `src/stylus/config/variable.styl`.
 ### Grid
 The grid of this themes is mostly based on [Bootstrap](https://getbootstrap.com/docs/4.0/layout/grid/).
 
-- 32px Gutter<br>
+- **32px Gutter**<br>
 The biggest difference is gutter width: 32px not 30px, giving 16px padding to each side of column.
 
-- Wider Padding on Container<br>
+- **Wider Padding on Container**<br>
 The developer want the outer margin to be wider than the gutter. Hence, `padding: 0 40px` is set on `.container`, retaining the 1120px of content area at max. (In other words, the max width of `.container` is 1200px.)
 
-- Flexbox Over Float<br>
+- **Flexbox Over Float**<br>
 It seems to me that creating layout with float is no longer valid—although there might be plenty of poeple who still use old Internet Explorer. Since Bootstrap 4 has fully adapted to flexbox, this is not difference anymore.
 
 ## Expected Updates in Future
@@ -200,7 +200,7 @@ Assuming that some of *Pages* will be written in HTML format, this themes design
 For now there is no way to switch the feature, except that you modify the code in `parts/page.php`.
 
 ## Issues
-### Freeze During HMR
+### Freeze during HMR
 I beleive the having multiple entries makes compiling heavier. And when the first time the developer was building theme with the beta version of this theme, the browser freezed sometimes.
 
 ### Wordpress Version
@@ -215,7 +215,7 @@ Although there is `yarn test` script register, there is no JS file for tesing. T
 ## Plugins Frequently Used
 *coming soon*
 
-## Wordpress Offical Document
+## Wordpress Official Documentation
 The following links are a list of links to Wordpress Official Documentation. No more searching. Just directly open the link.
 
 *coming soon*
