@@ -1,8 +1,8 @@
-# **Minamoto** – Worpdress Starter Theme
+# **Minamoto** – Worpdress Starter Theme with Webpack
 
 **Last Update: November 21, 2017**
 
-A new Wordpress starter theme inspired by [Create React App](https://github.com/facebookincubator/create-react-app), namely, taking the advantage of the [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/)(HMR).
+A new Wordpress starter theme inspired by [Create React App](https://github.com/facebookincubator/create-react-app), namely taking the advantage of [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/)(HMR).
 
 Good option to develop Wordpress theme rapidly on a local computer, with the support of [MAMP](https://www.mamp.info/en/) or [Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV).
 
@@ -104,10 +104,10 @@ Webpack scripts of this theme is mostly based on Create React App. The developer
 Since we want to run wordpress website, not JS application, the Webpack Dev Server will proxy all traffic to the host your Wordpress is running.
 
 ### Stylus
-The developer of this starter theme prefers [Stylus](http://stylus-lang.com/) for a CSS preprocessor. It is compatible with Sass or Less, but you have to replace the loader to the one you prefer.
+The developer of this starter theme prefers [Stylus](http://stylus-lang.com/) for a CSS preprocessor. The Webpack setting of this theme is compatible with Sass or Less, but you have to replace the loader with the one you prefer.
 
 ### Multiple Entries
-Since this project is for Wordpress, JS and CSS are completely separeted into different entries. Plus, the CSS files are separeted acconding to their target media.
+Since this project is for Wordpress, JS and CSS are completely separeted into different entries. Plus, the CSS files are separeted acconding to their target medias.
 
 ### No `public` Folder
 We don’t need a public folder that servers static files because all traffic will be proxied. For this reason, neither it requires **InterpolateHtmlPlugin**.
