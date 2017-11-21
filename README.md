@@ -78,23 +78,23 @@ The PHP code responsible for displaying hashed assets is currently written in `f
 └── txt
 ```
 
-- build<br>
+- **build**<br>
    Stores assets output from Webpack.
-- config<br>
+- **config**<br>
    Stores config files for Webpack.
-- functions<br>
+- **functions**<br>
    Stores PHP function files loaded to `functions.php`.
-- html<br>
+- **html**<br>
    Stores HTML files to develop the Wordpress Page. This is experimental. `parts/page.php` read the content of HTML file that matches the current page slug. The purpose of this experiment is to eradicate the copy&paste task every time you modify HTML content of page.
-- js<br>
+- **js**<br>
    Stores JS files that are not compiled from Webpack. Now there are jQuery, jQuery migrate, and Modernizr.
-- parts<br>
+- **parts**<br>
    The template PHP files that will be loaded to main theme file. This corresponds to `template-parts` in Wordpress’ default theme.
-- scripts<br>
+- **scripts**<br>
    Stores NPM script files for Webpack.
-- src<br>
+- **src**<br>
    Stores source files that will be compiled by Webpack.
-- txt<br>
+- **txt**<br>
    Stores `.txt` files that might help your web development. Now there are `htaccess.txt`, copied from HTML 5 Boilerplate, and `robots.txt`.
 
 ## What’s Different from Create React App.
@@ -146,7 +146,7 @@ By default, the theme contains three media queries:
 
 These media queries are defined in `functions/other.php`.
 
-> This themes avoid using inline media query. You can, however, easily write [Bootstrap-based media queries](https://getbootstrap.com/docs/4.0/layout/overview/) as follows.
+> **This themes avoid using inline media query**. You can, however, easily write [Bootstrap-based media queries](https://getbootstrap.com/docs/4.0/layout/overview/) as follows.
 
 ```stylus
 @media $xs
@@ -166,13 +166,13 @@ The variables of media queries are defined in `src/stylus/config/variable.styl`.
 ### Grid
 The grid of this themes is mostly based on [Bootstrap](https://getbootstrap.com/docs/4.0/layout/grid/).
 
-#### 32px Gutter
+- 32px Gutter<br>
 The biggest difference is gutter width: 32px not 30px, giving 16px padding to each side of column.
 
-#### Wider Padding on Container
+- Wider Padding on Container<br>
 The developer want the outer margin to be wider than the gutter. Hence, `padding: 0 40px` is set on `.container`, retaining the 1120px of content area at max. (In other words, the max width of `.container` is 1200px.)
 
-#### Flexbox Over Float
+- Flexbox Over Float<br>
 It seems to me that creating layout with float is no longer valid—although there might be plenty of poeple who still use old Internet Explorer. Since Bootstrap 4 has fully adapted to flexbox, this is not difference anymore.
 
 ## Expected Updates in Future
