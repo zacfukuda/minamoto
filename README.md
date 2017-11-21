@@ -119,12 +119,12 @@ The `yarn start` empties all files inside `build` folder before comiling source 
 
 The application automatically assumes that it’s in production mode after you run `yarn build` and generate `asset-manifest.json`.
 
-### Output to `build` even in dev mode.
+### Output to `build` even in Dev Mode.
 By default in Create React App, Webpack outputs all assets to `static/~`. But this is unnecessary when working with Wordpress. So the developer decided to output assets always to `build` folder, eliminating `static` folder level because all output files will be `static` asset in this case.
 
 In development mode, i.e. when using `yarn start`, you must configure output path properly so that your theme path and Webpack output path match. This configuration can be done in `config/webpack.config.dev.js`.
 
-### jQuery as an external module
+### jQuery as an External Module
 Most of Worpdress websites rely on jQuery for DOM manipulation or such. So the theme load jQuery as an external module.
 
 For the usage of external modules, check out [Webpack Externals Documentation](https://webpack.js.org/configuration/externals/).
