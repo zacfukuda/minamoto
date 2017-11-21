@@ -1,0 +1,191 @@
+/**
+ * typography/index
+ */
+
+// Basic
+html, body
+	color $black
+	font-family $gothic
+	font-size $p
+	line-height $p-lh
+
+body
+	-webkit-font-smoothing antialiased
+	font-smoothing antialiased
+	text-rendering optimizeLegibility
+
+h1, h2, h3, h4, h5, h6, p, li, th, td, dt, dd, a, em, i, small, mark, span, address, figcaption
+	-webkit-font-smoothing antialiased
+	font-smoothing antialiased
+	text-rendering optimizeLegibility
+
+// Font Size & Line Height
+h1, .h1
+	font-size $h1
+	line-height $h1-lh
+h2, .h2
+	font-size $h2
+	line-height $h2-lh
+h3, .h3
+	font-size $h3
+	line-height $h3-lh
+h4, .h4
+	font-size $h4
+	line-height $h4-lh
+h5, .h5
+	font-size $h5
+	line-height $h5-lh
+h6, .h6
+	font-size $h6
+	line-height $h6-lh
+p, .p
+	font-size $p
+	line-height $p-lh
+small, .small
+	font-size $smaller
+	line-height $small-lh
+.smaller
+	font-size $smaller
+	line-height $small-lh
+
+// Color
+.black
+	color $black
+.gray
+	color $gray
+.red
+	color $red
+.blue
+	color $green
+.blue
+	color $blue
+.white
+	color #fff
+
+// Weight
+.ultrathin
+	font-weight 100
+.thin
+	font-weight 200
+.light
+	font-weight 300
+.regular
+	font-weight 400
+.medium
+	font-weight 500
+.demi
+	font-weight 600
+b, strong, .bold
+	font-weight 700
+.extrabold
+	font-weight 800
+.heavy
+	font-weight 900
+
+// Style
+em, .em
+	font-style italic
+
+// Anchor Link
+a
+	color $blue
+	text-decoration none
+	&:hover
+		text-decoration none
+	&.underline
+		text-decoration underline
+		&:hover
+			text-decoration none
+	&.hover-underline:hover
+		text-decoration underline
+
+// Text Alignment
+.left
+	text-align left
+.center
+	text-align center
+.right
+	text-align right
+.justify
+	text-align justify
+.justify-last-line
+	-moz-text-align-last justify
+	text-align-last justify
+
+// Font Family
+// English
+.sans-serif
+	font-family $sans-serif
+.serif
+	font-family $serif
+.opensans
+	font-family $opensans
+.monospace
+	font-family $monospace
+// Japanese
+.gothic
+	font-family $gothic
+.mincho
+	font-family $mincho
+.maru-gothic
+	font-family $maru-gothic
+
+// Line Height
+._1em
+	line-height 1em
+._125em
+	line-height 1.25em
+._15em
+	line-height 1.5em
+._175em
+	line-height 1.75em
+._2em
+	line-height 2em
+._25em
+	line-height 2.5em
+._3em
+	line-height 3em
+
+// Case
+.uppercase
+	text-transform uppercase
+.lowercase
+	text-transform lowercase
+.small-caps
+	font-variant-caps small-caps
+.all-small-caps
+	font-variant-caps all-small-caps
+.titling-caps
+	font-variant-caps titling-caps
+
+// Numeric Style
+.ordinal-nums
+	font-variant-numeric ordinal
+.lining-nums
+	font-variant-numeric lining-nums
+.oldstyle-nums
+	font-variant-numeric oldstyle-nums
+.proportional-nums
+	font-variant-numeric proportional-nums
+
+/*------------------------*\
+  Other
+\*------------------------*/
+// white-space
+.white-space-nowrap
+	white-space nowrap
+
+// word-break
+.break-all
+	word-break break-all
+.keep-all
+	word-break keep-all
+
+// word-wrap
+.break-word
+	word-wrap break-word
+
+// Hyphenation
+.hyphenate
+	@extend .break-all
+	hyphens auto

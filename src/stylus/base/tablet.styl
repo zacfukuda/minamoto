@@ -1,0 +1,51 @@
+/**
+ * base/tablet
+ */
+
+$sect-space = 80px
+section
+	&.withPadding
+		padding $sect-space 0
+	&.withPadding-top
+		padding $sect-space 0 0
+	&.withPadding-bottom
+		padding 0 0 $sect-space
+	&.withMargin
+		margin $sect-space 0
+	&.withMargin-top
+		margin $sect-space 0 0
+	&.withMargin-bottom
+		margin 0 0 $sect-space
+	&.hasRow
+		&.withPadding
+			padding ($sect-space - $gutter) 0 $sect-space
+		&.withPadding-top
+			padding ($sect-space - $gutter) 0 0
+		&.withMargin
+			margin ($sect-space - $gutter) 0 $sect-space
+		&.withMargin-top
+			margin ($sect-space - $gutter) 0 0
+
+a.anchor
+	top -($header-height-t+16px)
+
+// Block Alighment
+.alignleft
+	float left
+.alignright
+	float right
+
+// Display
+.mobile
+	display none
+	
+.tablet
+	display block
+	&.ib
+		display inline-block
+	&.inline
+		display inline
+	&.table
+		display table
+	&.table-cell
+		display table-cell

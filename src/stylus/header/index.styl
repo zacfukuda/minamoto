@@ -1,0 +1,96 @@
+/**
+ * header/index
+ */
+
+// <header>
+header.header
+	position fixed
+	left 0
+	top 0
+	width 100%
+	background #fff
+	z-index 1000
+	&.shadow
+		box-shadow 0 0 6px rgba(0,0,0,.15)
+
+// Logo
+h1.logo
+	margin 0 auto
+	width 160px
+
+a.logo
+	display block
+	transition all .3s
+	&:hover
+		opacity .63
+
+img.logo
+	display block
+	width 100%
+
+// Global Navigation
+nav.global
+
+ul.global
+	li.menu-item
+		font-size 16px
+		line-height 20px
+		position relative
+	a
+		color #fff
+	> li.menu-item
+		border-top 1px solid $main-color
+	ul.sub-menu
+		padding 0 0 0 1em
+
+// Toggle Button
+#navToggleBtn
+	cursor pointer
+	position absolute
+	left 16px
+	top 7px
+	width 20px
+	-webkit-tap-highlight-color transparent
+	> span
+		background-color $blue
+		display block
+		height 1px
+		margin 5px 0
+		position relative
+
+// Spacer
+.header-spacer
+	height 56px
+
+// Toggle
+.root,
+header.header,
+nav.global-navigation
+	transition left .5s
+
+.root
+	position relative
+	left 0
+
+.root.toRight
+	left 256px
+	z-index 100
+	
+	// Header
+	header.header
+		left 256px
+	
+	// Button
+	#navToggleBtn span
+		&:first-child
+			top 5px
+			transform rotate(45deg)
+		&:last-child
+			top -1px
+			transform rotate(-45deg)
+		&:nth-child(2)
+			display none
+	
+	// Navigation
+	nav.global-navigation
+		left 0

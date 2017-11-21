@@ -1,0 +1,136 @@
+/**
+ * base/index
+ */
+
+/*------------------------*\
+  Basic
+\*------------------------*/
+html, body
+	width 100%
+	position relative
+	
+html
+	background-color #f0f0f0 
+	overflow-x hidden
+
+body
+	overflow hidden
+
+$sect-space = 48px
+section
+	&.withPadding
+		padding $sect-space 0
+	&.withPadding-top
+		padding $sect-space 0 0
+	&.withPadding-bottom
+		padding 0 0 $sect-space
+	&.withMargin
+		margin $sect-space 0
+	&.withMargin-top
+		margin $sect-space 0 0
+	&.withMargin-bottom
+		margin 0 0 $sect-space
+	&.hasRow
+		&.withPadding
+			padding ($sect-space - $gutter) 0 $sect-space
+		&.withPadding-top
+			padding ($sect-space - $gutter) 0 0
+		&.withMargin
+			margin ($sect-space - $gutter) 0 $sect-space
+		&.withMargin-top
+			margin ($sect-space - $gutter) 0 0
+
+figure, picture, video
+	display block
+
+img
+	width auto
+	height auto
+	max-width 100%
+	vertical-align bottom
+	&.w100
+		width 100%
+		
+a.anchor
+	display block
+	position relative
+	top -($header-height+16px)
+	visibility hidden
+	
+::-moz-selection
+	background rgba($main-color, .3)
+	color #fff
+
+::selection
+	background rgba($main-color, .3)
+	color #fff
+
+/*------------------------*\
+  Clearfix
+\*------------------------*/
+.clearfix
+	clearfix()
+.clearboth
+	clear both
+
+/*------------------------*\
+  Block Alighment
+\*------------------------*/
+.aligncenter
+	margin-left auto
+	margin-right auto
+
+/*------------------------*\
+  Display
+\*------------------------*/
+.block
+	display block
+.ib
+	display inline-block
+.inline
+	display inline
+.table
+	display table
+.table-cell
+	display table-cell
+.tablet,
+.desktop
+	display none
+
+/*------------------------*\
+  Position
+\*------------------------*/
+.relative
+	position relative
+.absolute
+	position absolute
+.fixed
+	position fixed
+
+/*------------------------*\
+  Before & After
+\*------------------------*/
+.hasBefore,
+.hasAfter,
+.hasBeforeAfter
+	position relative
+
+.hasBefore:before,
+.hasAfter:after,
+.hasBeforeAfter:before,
+.hasBeforeAfter:after
+	content ""
+	display block
+	position absolute
+
+/*------------------------*\
+  Transition
+\*------------------------*/
+.transition-linear
+	transition-timing-function linear
+.transition-ease-in
+	transition-timing-function ease-in
+.transition-ease-out
+	transition-timing-function ease-out
+.transition-ease-in-out
+	transition-timing-function ease-in-out

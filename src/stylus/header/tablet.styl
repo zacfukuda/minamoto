@@ -1,0 +1,47 @@
+/**
+ * header/tablet
+ */
+
+// Header
+header.header
+	// Reset style
+	position static
+	top initial
+	left initial
+	max-height initial
+	z-index 0
+	
+// Logo
+h1.logo
+	margin 0
+	width 320px
+
+// Global Navigation
+
+
+// Toggle Button
+#navToggleBtn
+	display none
+
+// Spacer
+.header-spacer
+	display none
+
+// Toggle
+.root.toRight
+	left 0
+	header.header
+		left initial
+	nav.global-navigation
+		left 0
+
+// Sticky
+header.header.sticky
+	position fixed
+	left 0
+	top 0
+	z-index 1000
+	box-shadow  0 0 8px rgba(0,0,0,.2)
+
+header.header.sticky + .header-spacer
+	display block

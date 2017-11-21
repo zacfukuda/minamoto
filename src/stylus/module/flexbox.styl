@@ -1,0 +1,48 @@
+/**
+ * module/flexbox
+ * https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+ */
+.flex
+	display flex
+	
+	// Direction
+	&.direction-row
+		flex-direction row
+	&.direction-row-reverse
+		flex-direction row-reverse
+	&.direction-column
+		flex-direction column
+	&.direction-column-reverse
+		flex-direction column-reverse
+	
+	// Wrap
+	&.wrap
+		flex-wrap wrap
+	&.nowrap
+		flex-wrap nowrap
+	
+	// Horizontal Alignment
+	&.justify-start
+		justify-content flex-start
+	&.justify-end
+		justify-content flex-end
+	&.justify-center
+		justify-content center
+	&.justify-between
+		justify-content space-between
+	&.justify-around
+		justify-content space-around
+	&.justify-evenly
+		justify-content space-evenly
+	
+	// Vertical Alignment
+	&.align-start
+		align-items flex-start
+	&.align-end
+		align-items flex-end
+	&.align-center
+		align-items center
+	&.align-stretch
+		align-items stretch
+	&.align-baseline
+		align-items baseline

@@ -1,0 +1,40 @@
+/**
+ * module/list
+ */
+
+ul
+	&.disc, &.circle, &.square
+		padding 0 0 0 1.5em
+	&.disc
+		list-style disc
+	&.circle
+		list-style circle
+	&.square
+		list-style square
+
+ol
+	list-style decimal
+	padding 0 0 0 1.5em
+	&.lower-roman
+		list-style lower-roman
+	&.upper-roman
+		list-style upper-roman
+	&.lower-alpha
+		list-style lower-alpha
+	&.upper-alpha
+		list-style upper-alpha
+
+dt
+	font-wieght bold
+
+dl.horizontal
+	dt
+		float left
+		width 160px
+		overflow hidden
+		clear left
+		text-align right
+		text-overflow ellipsis
+		white-space nowrap
+	dd
+		margin 0 0 0 180px
