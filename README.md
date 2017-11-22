@@ -212,8 +212,61 @@ If you want to know other development environment, please check out [Tested Envi
 ### Javascript Testing
 Although there is `yarn test` script register, there is no JS file for tesing. The developer is not a huge fan of JS testing, and has no attempt to write testing code any time soon.
 
-## Plugins Frequently Used
-*coming soon*
+### Not for Child Theme
+The developer has intention only to use the theme as a parent theme. It might work as a child theme, this is not tested.
+
+## Popular Plugins
+
+### General
+- [Akismet Anti-Spam](https://wordpress.org/plugins/akismet/)
+- [Jetpack by WordPress.com](https://wordpress.org/plugins/jetpack/)
+- [WP Multibyte Patch](https://wordpress.org/plugins/wp-multibyte-patch/)
+
+### SEO
+- [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) ([Official](https://yoast.com/))
+- [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/)
+
+### Performance
+- [WP Super Cache](https://wordpress.org/plugins/wp-super-cache/)
+- [Autoptimize](https://wordpress.org/plugins/autoptimize/)
+- [WP-Optimize](https://wordpress.org/plugins/wp-optimize/)
+
+### Security
+- [Wordfence Security](https://wordpress.org/plugins/wordfence/)
+- [All In One WP Security & Firewall](https://wordpress.org/plugins/all-in-one-wp-security-and-firewall/)
+- [Shield Security](https://wordpress.org/plugins/wp-simple-firewall/)
+
+### Editor
+- [TinyMCE Advanced](https://wordpress.org/plugins/tinymce-advanced/)
+- [Beaver Builder](https://wordpress.org/plugins/beaver-builder-lite-version/) ([Official](https://www.wpbeaverbuilder.com/))
+- [Elementor](https://wordpress.org/plugins/elementor/) ([Official](https://elementor.com/))
+
+### Custom Fields
+- [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) ([Official](https://www.advancedcustomfields.com/
+))
+
+### Custom Post Type UI
+- [Custom Post Type UI](https://wordpress.org/plugins/custom-post-type-ui/)
+
+### EC
+- [WooCommerce](https://wordpress.org/plugins/woocommerce/) ([Official](https://woocommerce.com/))
+
+### Event
+- [The Events Calendar](https://wordpress.org/plugins/the-events-calendar/)
+
+### Form
+- [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) ([Official](https://contactform7.com/))
+- [Contact Form 7 add confirm](https://wordpress.org/plugins/contact-form-7-add-confirm/)
+- [MailChimp for WordPress](https://wordpress.org/plugins/mailchimp-for-wp/)
+
+### Multi-Language
+- WPML ([Official](https://wpml.org/))
+
+### Migration
+- [WordPress Importer](https://wordpress.org/plugins/wordpress-importer/)
+- [Regenerate Thumbnails](https://wordpress.org/plugins/regenerate-thumbnails/)
+- [UpdraftPlus](https://wordpress.org/plugins/updraftplus/)
+- [Velvet Blues Update URLs](https://wordpress.org/plugins/velvet-blues-update-urls/)
 
 ## Wordpress Official Documentation
 The following links are a list of links to Wordpress Official Documentation. No more searching. Just directly open the link.
