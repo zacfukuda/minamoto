@@ -166,7 +166,7 @@ or
 The variables of media queries are defined in `src/stylus/config/variable.styl`.
 
 ### Grid
-The grid of this themes is mostly based on [Bootstrap](https://getbootstrap.com/docs/4.0/layout/grid/).
+The grid of this theme is mostly based on [Bootstrap](https://getbootstrap.com/docs/4.0/layout/grid/).
 
 - **32px Gutter**<br>
 The biggest difference is gutter width: 32px not 30px, giving 16px padding to each side of column.
@@ -247,7 +247,7 @@ The developer has intention only to use the theme as a parent theme. It might wo
 - [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) ([Official](https://www.advancedcustomfields.com/
 ))
 
-### Custom Post Type UI
+### Custom Post Type
 - [Custom Post Type UI](https://wordpress.org/plugins/custom-post-type-ui/)
 
 ### E-Commerce
