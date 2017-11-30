@@ -1,5 +1,7 @@
 # **Minamoto** – Worpdress Starter Theme with Webpack
 
+![alt Minamoto Logo](./img/common/logo.svg)
+
 **Last Update: November 21, 2017**
 
 A new Wordpress starter theme inspired by [Create React App](https://github.com/facebookincubator/create-react-app), namely taking the advantage of [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/)(HMR).
@@ -173,7 +175,7 @@ The biggest difference is gutter width: 32px not 30px, giving 16px padding to ea
 The developer want the outer margin to be wider than the gutter. Hence, `padding: 0 40px` is set on `.container`, retaining the 1120px of content area at max. (In other words, the max width of `.container` is 1200px.)
 
 - **Flexbox Over Float**<br>
-It seems to me that creating layout with float is no longer valid—although there might be plenty of poeple who still use old Internet Explorer. Since Bootstrap 4 has fully adapted to flexbox, this is not difference anymore.
+It seems to me that creating layout with float is no longer valid—although there might be plenty of poeple who still use old Internet Explorer. Since Bootstrap 4 has fully adapted to flexbox, this is not a difference anymore.
 
 ## Expected Updates in Future
 ### Centralized Config File for Webpack
@@ -248,7 +250,7 @@ The developer has intention only to use the theme as a parent theme. It might wo
 ### Custom Post Type UI
 - [Custom Post Type UI](https://wordpress.org/plugins/custom-post-type-ui/)
 
-### EC
+### E-Commerce
 - [WooCommerce](https://wordpress.org/plugins/woocommerce/) ([Official](https://woocommerce.com/))
 
 ### Event
@@ -281,3 +283,6 @@ The following links are a list of links to Wordpress Official Documentation. No 
 - Web Server: Apache 2.2.31
 
 > As of November 20, the latest LTS Node version is 8.9.1. You cand download it from [here](https://nodejs.org/en/).
+
+## Feedback
+If you have any request or find a bug, please bring it up to [Issues](https://github.com/zacfukuda/minamoto/issues) of this repository.
