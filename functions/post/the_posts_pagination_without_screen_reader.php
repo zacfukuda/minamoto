@@ -1,16 +1,5 @@
 <?php
 /**
- * Remove wpautop on Pages.
- */
-function remove_pages_autop() {
-	if ( is_page() ) {
-		remove_filter( 'the_content', 'wpautop' );
-		remove_filter( 'the_excerpt', 'wpautop' );
-	}
-}
-add_action( 'wp_head', 'remove_pages_autop' );
-
-/**
  * Custom Pagination function removing the screen reader.
  * @link https://developer.wordpress.org/reference/functions/get_the_posts_pagination/
  */
@@ -42,26 +31,4 @@ function the_posts_pagination_without_screen_reader( $args = array() ) {
 			printf($template, 'pagination', $links);
 		}
 	}
-}
-
-/**
- * Filter the excerpt "read more" string.
- * @param string $more "Read more" excerpt string.
- * @return string (Maybe) modified "read more" excerpt string.
- */
-/* function wpdocs_excerpt_more( $more ) {
-	return '…';
-}
-add_filter( 'excerpt_more', 'wpdocs_excerpt_more' ); */
-
-/**
- * Check if on the first page of archives. If not paged, set it 1.
- * Recommended to use only in post-indexing templates.
- * @return boolean
- */
-function is_first_page() {
-	$var = is_page() ? 'page' : 'paged';
-	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-	if(1 == $paged) return true;
-	else return false;
 }

@@ -1,5 +1,7 @@
 <?php
-function minamoto_setup() {
+function theme_init_setup() {
+
+	global $theme_textdomain;
 
 	// Make theme available for translation.
 	load_theme_textdomain( $theme_textdomain );
@@ -46,4 +48,4 @@ function minamoto_setup() {
 	// add_editor_style('css/editor-style.css');
 
 }
-add_action( 'after_setup_theme', 'minamoto_setup' );
+add_action( 'after_setup_theme', 'theme_init_setup' );

@@ -10,8 +10,9 @@ html, body
 	position relative
 	
 html
-	background-color #f0f0f0 
 	overflow-x hidden
+	&.overflow-hidden
+		overflow hidden
 
 body
 	overflow hidden
@@ -43,20 +44,21 @@ section
 figure, picture, video
 	display block
 
-img
-	width auto
+img, svg
+	// width auto
 	height auto
 	max-width 100%
 	vertical-align bottom
 	&.w100
 		width 100%
-		
+
 a.anchor
 	display block
 	position relative
 	top -($header-height+16px)
 	visibility hidden
-	
+
+// Slection
 ::-moz-selection
 	background rgba($main-color, .3)
 	color #fff
@@ -65,24 +67,18 @@ a.anchor
 	background rgba($main-color, .3)
 	color #fff
 
-/*------------------------*\
-  Clearfix
-\*------------------------*/
+// Clearfix
 .clearfix
 	clearfix()
 .clearboth
 	clear both
 
-/*------------------------*\
-  Block Alighment
-\*------------------------*/
+// Block Alighment
 .aligncenter
 	margin-left auto
 	margin-right auto
 
-/*------------------------*\
-  Display
-\*------------------------*/
+// Display
 .block
 	display block
 .ib
@@ -97,9 +93,7 @@ a.anchor
 .desktop
 	display none
 
-/*------------------------*\
-  Position
-\*------------------------*/
+// Position
 .relative
 	position relative
 .absolute
@@ -107,9 +101,7 @@ a.anchor
 .fixed
 	position fixed
 
-/*------------------------*\
-  Before & After
-\*------------------------*/
+// Before & After
 .hasBefore,
 .hasAfter,
 .hasBeforeAfter
@@ -123,14 +115,14 @@ a.anchor
 	display block
 	position absolute
 
-/*------------------------*\
-  Transition
-\*------------------------*/
+// Transition
+.transition
+	transiton all .3s ease-in-out
 .transition-linear
-	transition-timing-function linear
+	transiton all .3s linear
 .transition-ease-in
-	transition-timing-function ease-in
+	ttransiton all .3s ease-in
 .transition-ease-out
-	transition-timing-function ease-out
+	ttransiton all .3s ease-out
 .transition-ease-in-out
-	transition-timing-function ease-in-out
+	ttransiton all .3s ease-in-out

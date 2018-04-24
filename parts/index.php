@@ -38,5 +38,5 @@ $category_url = esc_url( get_term_link($category) );
 <?php
 // Limit number of letters to display in Japanese
 // echo mb_strimwidth(get_the_title(), 0, 64, "…", "UTF-8");
-// echo mb_strimwidth(get_the_title(), 0, 64, "…", "UTF-8");
+// echo mb_strimwidth(get_the_excerpt(), 0, 64, "…", "UTF-8");
 ?>

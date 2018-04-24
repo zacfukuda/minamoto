@@ -1,22 +1,13 @@
-<?php
-/**
- * header.php
- */
-
-// Since Wordpress can only generate the host URL stored
-// in the database, using Wordpress function can cause problem
-// when used with Webpack Dev Server.
-$theme_dir = '/wp-content/themes/minamoto';
-?>
+<?php global $relative_template_directory; ?>
 <!doctype html>
 <!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8"><![endif]-->
 <!--[if (IE 8)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!--> <html <?php language_attributes(); ?> class="no-js no-svg" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"><!--<![endif]-->
+<!--[if gt IE 8]><!--> <html <?php language_attributes(); ?> class="no-js no-svg overflow-hidden" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<!-- Mobile -->
+<!-- Responsive -->
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,14 +15,14 @@ $theme_dir = '/wp-content/themes/minamoto';
 	Favicons
 	http://realfavicongenerator.net/
 -->
-<link rel="shortcut icon" href="<?php echo $theme_dir; ?>/img/favicon/favicon.ico">
-<link rel="apple-touch-icon" sizes="180x180" href="<?php echo $theme_dir ?>/img/favicons/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="<?php echo $theme_dir ?>/img/favicons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="<?php echo $theme_dir ?>/img/favicons/favicon-16x16.png">
-<link rel="manifest" href="<?php echo $theme_dir ?>/img/favicons/manifest.json">
-<link rel="mask-icon" href="<?php echo $theme_dir ?>/img/favicons/safari-pinned-tab.svg" color="#000">
+<link rel="shortcut icon" href="<?php echo $relative_template_directory; ?>/img/favicon/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="<?php echo $relative_template_directory ?>/img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="<?php echo $relative_template_directory ?>/img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="<?php echo $relative_template_directory ?>/img/favicon/favicon-16x16.png">
+<link rel="manifest" href="<?php echo $relative_template_directory ?>/img/favicon/manifest.json">
+<link rel="mask-icon" href="<?php echo $relative_template_directory ?>/img/favicon/safari-pinned-tab.svg" color="#000">
 <meta name="msapplication-TileColor" content="#000">
-<meta name="msapplication-TileImage" content="<?php echo $theme_dir; ?>/img/favicons/mstile-150x150.png">
+<meta name="msapplication-TileImage" content="<?php echo $relative_template_directory; ?>/img/favicon/mstile-150x150.png">
 <meta name="theme-color" content="#000">
 <!--
 	Font Family
@@ -39,13 +30,12 @@ $theme_dir = '/wp-content/themes/minamoto';
 -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
-<!--
-	Stylesheet
-	functions/other.php
--->
-<?php head_assets(); ?>
+<!-- Stylesheet -->
+<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/css/style.min.css" media="all">
+<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/css/tablet.min.css" media="screen and (min-width: 768px)">
+<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/css/desktop.min.css" media="screen and (min-width: 1024px)">
 <!-- Language -->
-<link rel="alternate" href="https://www.example.com/ja" hreflang="ja-jp" />
+<link rel="alternate" href="https://www.example.com/ja/" hreflang="ja-jp" />
 <link rel="alternate" href="https://www.example.com" hreflang="en" />
 <!-- Other -->
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
@@ -56,19 +46,36 @@ $theme_dir = '/wp-content/themes/minamoto';
 	CDN: https://code.jquery.com/
 	All versions: https://code.jquery.com/jquery/
 -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
-<script>window.jQuery || document.write('<script src="<?php echo $theme_dir; ?>/js/jquery.js"><\/script>')</script>
-<script> if (typeof jQuery.migrateWarnings == 'undefined') document.write('<script src="/vendor/js/jquery-migrate.js"><\/script>')</script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-migrate-3.0.1.min.js"
+  integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4="
+  crossorigin="anonymous"></script>
+ <!-- jQuery CDN Fallback -->
+<script>window.jQuery || document.write('<script src="<?php echo $relative_template_directory; ?>/js/jquery.min.js"><\/script>')</script>
+<script> if (typeof jQuery.migrateWarnings == 'undefined') document.write('<script src="<?php echo $relative_template_directory; ?>/js/jquery-migrate.min.js"><\/script>')</script>
+<!-- Multi jQuery version handling -->
+<script>var jQuery3 = jQuery.noConflict(true);</script>
 <!-- Modernizr -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
-<script>window.Modernizr || document.write('<script src="<?php echo $theme_dir; ?>/js/modernizr.js"><\/script>')</script>
+<script>window.Modernizr || document.write('<script src="<?php echo $relative_template_directory; ?>/js/modernizr.min.js"><\/script>')</script>
 <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">	
+<body id="body" <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
 <!--[if lt IE 8]>
 	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
+
+<!--
+	Progress Bar (Pace)
+	URL: http://github.hubspot.com/pace/docs/welcome/
+-->
+<div id="progressUI" class="progressUI flex justify-center align-center">
+	<!-- Put some html here -->
+</div><!-- .progressUI -->
 
 <!-- Root -->
 <div id="root" class="root">

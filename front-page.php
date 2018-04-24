@@ -31,7 +31,6 @@ remove_filter( 'the_content', 'wpautop' );
 						get_template_part( 'parts/index');
 					}
 					wp_reset_postdata();
-					wp_reset_query();
 				} // END if 
 			?>
 		</div><!-- .row -->

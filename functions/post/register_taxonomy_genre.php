@@ -1,11 +1,13 @@
 <?php
 /**
- * @link https://codex.wordpress.org/Function_Reference/register_taxonomy
+ * Register "genre" custom taxonomy for "book".
+ * @link https://developer.wordpress.org/reference/functions/register_taxonomy/
  */
 
-function create_custom_taxonomy() {
+function register_taxonomy_genre() {
 
-	// Custom Taxnomy for "book"
+	global $theme_textdomain;
+
 	register_taxonomy( 'genre', 'book',
 		array(
 			'labels' => array(
@@ -21,4 +23,4 @@ function create_custom_taxonomy() {
 		)
 	);
 }
-add_action( 'init', 'create_custom_taxonomy');
+add_action( 'init', 'register_taxonomy_genre');

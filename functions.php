@@ -5,64 +5,83 @@
 // Text Domain
 $theme_textdomain = 'minamoto';
 
-// Returns such as "/home/user/public_html/wp-content/themes/my_theme".
+/**
+ * Global variables regarding theme path
+ * @link https://developer.wordpress.org/reference/functions/get_theme_root/ 
+ * @link https://developer.wordpress.org/reference/functions/get_template_directory/
+ * @link https://developer.wordpress.org/reference/functions/get_stylesheet_directory_uri/
+ * @link https://developer.wordpress.org/reference/functions/get_template_directory_uri/
+ *@link https://developer.wordpress.org/reference/functions/wp_make_link_relative/
+ *
+ * NOTE: "$theme_root" and "$stylesheet_directory_uri" return the path to the child theme when it is used.
+ */
+
+// Absolute Path (Server)
+$theme_root = get_theme_root();
 $template_directory = get_template_directory();
 
-// Returns such as "http://example.com/wp-content/themes/my_theme"
-$theme_uri = get_stylesheet_directory_uri();
+// Theme URI
+$stylesheet_directory_uri = get_stylesheet_directory_uri();
+$template_directory_uri = get_template_directory_uri();
 
-// Returns such as "/wp-content/themes/my_theme"
-$theme_relative_path_from_webroot = wp_make_link_relative($theme_uri);
+// Relative path from webroot
+$relative_stylesheet_directory = wp_make_link_relative($stylesheet_directory_uri);
+$relative_template_directory = wp_make_link_relative($template_directory_uri);
+
+// Path to "functions" directory
+$functions_directory = $template_directory . '/functions';
 
 /* ----------------------------------------
  * Sets up theme defaults and registers
  * support for various WordPress features.
  * -------------------------------------- */
-require $template_directory.'/functions/setup.php';
+require_once $functions_directory.'/setup.php';
 
 /* ----------------------------------------
- * Regarding "post" & "page" post types,
- * category and ta also come in here.
+ * Post & Page,
+ * Taxonomies also come in here.
  * -------------------------------------- */
-require $template_directory.'/functions/post-page.php';
+require_once $functions_directory.'/post/is_first_page.php';
+require_once $functions_directory.'/post/remove_pages_autop.php';
+require_once $functions_directory.'/post/the_posts_pagination_without_screen_reader.php';
+require_once $functions_directory.'/post/wpdocs_excerpt_more.php';
+
+// Custom Post & Taxnomy
+require_once $functions_directory.'/post/register_post_type_book.php';
+require_once $functions_directory.'/post/register_taxonomy_genre.php';
 
 /* ----------------------------------------
- * Regarding "images."
+ * Media
  * -------------------------------------- */
-require $template_directory.'/functions/image.php';
+require_once $functions_directory.'/media/filter_medium_large.php';
+require_once $functions_directory.'/media/half_image_resize.php';
+require_once $functions_directory.'/media/the_alternative_thumbnail.php';
 
 /* ----------------------------------------
  * Navigation Menu
  * -------------------------------------- */
-require $template_directory.'/functions/nav_menu.php';
+require_once $functions_directory.'/nav_menu/Custom_Walker_Nav_Menu.php';
+require_once $functions_directory.'/nav_menu/register_nav_menu_locations.php';
+require_once $functions_directory.'/nav_menu/the_global_navigation.php';
+require_once $functions_directory.'/nav_menu/the_footer_navigation.php';
 
 /* ----------------------------------------
- * Register widgets.
+ * Widget
  * -------------------------------------- */
-require $template_directory.'/functions/widget.php';
+require_once $functions_directory.'/widget/widgets_init.php';
+require_once $functions_directory.'/widget/Hello_World_Widget.php';
 
 /* ----------------------------------------
  * Options & Setting API
  * -------------------------------------- */
-require $template_directory.'/functions/options.php';
+require_once $functions_directory.'/option/posts_on_front.php';
 
 /* ----------------------------------------
- * Custom Post Types
+ * Cron
  * -------------------------------------- */
-require $template_directory.'/functions/custom-post.php';
-
-/* ----------------------------------------
- * Custom Taxnomy
- * -------------------------------------- */
-require $template_directory.'/functions/custom-taxonomy.php';
-
-/* ----------------------------------------
- * Cron Event
- * -------------------------------------- */
-require $template_directory.'/functions/cron.php';
+require_once $functions_directory.'/cron/add_custom_schedules.php';
 
 /* ----------------------------------------
  * Other
- * Put any functions into this file.
  * -------------------------------------- */
-require $template_directory.'/functions/other.php';
+require_once $functions_directory.'/other/cf7_email_validation_filter.php';

@@ -1,6 +1,12 @@
 <?php
-
+/**
+ * Register Widget Areas
+ * @link https://developer.wordpress.org/reference/functions/register_sidebar/
+ */
 function minamoto_widgets_init() {
+
+	global $theme_textdomain;
+	
 	register_sidebar( array(
 		'name' => __( 'Sidebar', $theme_textdomain ),
 		'id' => 'sidebar',
