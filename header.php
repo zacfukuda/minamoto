@@ -1,4 +1,7 @@
-<?php global $relative_template_directory; ?>
+<?php
+	global $theme_version;
+	global $relative_template_directory;
+?>
 <!doctype html>
 <!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8"><![endif]-->
@@ -31,9 +34,9 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 <!-- Stylesheet -->
-<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/css/style.min.css" media="all">
-<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/css/tablet.min.css" media="screen and (min-width: 768px)">
-<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/css/desktop.min.css" media="screen and (min-width: 1024px)">
+<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/css/style.min.css?v=<?php echo $theme_version; ?>" media="all">
+<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/css/medium.min.css?v=<?php echo $theme_version; ?>" media="(min-width: 768px)">
+<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/css/large.min.css?v=<?php echo $theme_version; ?>" media="(min-width: 1024px)">
 <!-- Language -->
 <link rel="alternate" href="https://www.example.com/ja/" hreflang="ja-jp" />
 <link rel="alternate" href="https://www.example.com" hreflang="en" />

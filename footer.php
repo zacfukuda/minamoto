@@ -1,4 +1,7 @@
-<?php global $relative_template_directory; ?>
+<?php
+	global $theme_version;
+	global $relative_template_directory;
+?>
 
 	</main>
 	<!-- Footer -->
@@ -16,7 +19,7 @@
 <div><!-- root -->
 
 <?php wp_footer(); ?>
-<script src="<?php echo $relative_template_directory; ?>/js/app.min.js"></script>
+<script src="<?php echo $relative_template_directory; ?>/js/app.min.js?v=<?php echo $theme_version; ?>"></script>
 <!-- Pace -->
 <script>
 	var paceOptions = {

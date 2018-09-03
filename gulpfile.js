@@ -4,11 +4,14 @@
  * @link https://browsersync.io/docs/gulp
  */
 
-const browserSync = require('browser-sync').create();
+// Load package.json
+const packageJSON = require('./package.json')
+
+const browserSync = require('browser-sync').create()
 const gulp = require('gulp')
 const	autoprefixer = require('gulp-autoprefixer')
 // const concat = require('gulp-concat')
-// const gcmq = require('gulp-group-css-media-queries')
+const gcmq = require('gulp-group-css-media-queries')
 const gulpif = require('gulp-if')
 const	plumber = require('gulp-plumber')
 const rename = require('gulp-rename')
@@ -24,32 +27,43 @@ const isBrowsersyncOn = (process.argv[2] === 'server') ? true : false
 
 // Broswersync
 const reload = browserSync.reload
-const proxyTarget = 'http://wordpress.localhost'
 
 // Browser support for autoprefixer
 const browsers = ['last 2 version', 'safari 5', 'ie 6', 'ie 7', 'ie 8', 'ie 9', 'ie 10', 'ie 11', 'opera 12.1', 'ios 6']
 
-// Srouce files
+// Source files
 const src = {
 	stylus: './src/stylus/',
 	js: './src/js/'
 }
-// Destination
+// Destination of output files
 const dist = {
-	css: './dist/css/',
-	js: './dist/js/'
+	css: './css/',
+	js: './js/'
+}
+
+// Compile files
+const compileFiles = {
+	stylus: [
+		src.stylus+'*.styl',
+		'!'+src.stylus+'_*.styl'
+	],
+	js: src.js+'*.js'
+}
+
+// Watch files
+const watchFiles = {
+	stylus: src.stylus + '**\/*.styl',
+	js: src.js + '**\/*.js'
 }
 
 // Stylus
 gulp.task('stylus', () => {
-	return gulp.src([
-			src.stylus+'*.styl',
-			'!'+src.stylus+'_*.styl'
-		])
+	return gulp.src(compileFiles.stylus)
 		.pipe(plumber())
 		.pipe(gulpif(isProduction, sourcemaps.init()))
-		.pipe(stylus({compress: true}))
-		// .pipe(gcmq())
+		.pipe(stylus({compress: isProduction}))
+		.pipe(gulpif(isProduction, gcmq()))
 		.pipe(autoprefixer({browsers: browsers}))
 		.pipe(rename({suffix: '.min'}))
 		.pipe(gulpif(isProduction, sourcemaps.write('.')))
@@ -57,9 +71,9 @@ gulp.task('stylus', () => {
 		.pipe(gulpif(isBrowsersyncOn, browserSync.stream()))
 })
 
-// JS
+// Javascript
 gulp.task('js', () => {
-	return gulp.src(src.js+'*.js')
+	return gulp.src(compileFiles.js)
 		.pipe(plumber())
 		.pipe(gulpif(isProduction, sourcemaps.init()))
 		// .pipe(concat('bundle.js'))
@@ -76,8 +90,8 @@ gulp.task('js-sync', ['js'], (done) => {
 
 // Watch
 gulp.task('watch', () => {
-	gulp.watch(src.stylus + '**\/*.styl', ['stylus'])
-	gulp.watch(src.js + '**\/*.js', ['js'])
+	gulp.watch(watchFiles.stylus, ['stylus'])
+	gulp.watch(watchFiles.js, ['js'])
 })
 
 // Browsersync Server
@@ -86,14 +100,12 @@ gulp.task('server', () => {
 	// Init Browsersync
 	browserSync.init({
 		open: false,
-		proxy: {
-			target: proxyTarget
-		}
+		proxy: packageJSON.proxy
 	})
 
 	// Watch files
-	gulp.watch(src.stylus + '**\/*.styl', ['stylus'])
-	gulp.watch(src.js + '**\/*.js', ['js-sync'])
+	gulp.watch(watchFiles.stylus, ['stylus'])
+	gulp.watch(watchFiles.js, ['js-sync'])
 
 	// Ultimately, you can watch all PHP file
 	// gulp.watch('**\/*.php').on('change', reload)
@@ -103,17 +115,14 @@ gulp.task('server', () => {
 gulp.task('build', ['stylus', 'js'], () => {
 
 	// Output unminified version
-	gulp.src([
-			src.stylus+'*.styl',
-			'!'+src.stylus+'_*.styl'
-		])
+	gulp.src(compileFiles.stylus)
 		.pipe(sourcemaps.init())
 		.pipe(stylus())
 		.pipe(autoprefixer({browsers: browsers}))
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest( dist.css))
+		.pipe(gulp.dest(dist.css))
 
-	gulp.src(src.js+'*.js')
+	gulp.src(compileFiles.js)
 		.pipe(sourcemaps.init())
 		// .pipe(concat('bundle.js'))
 		.pipe(sourcemaps.write('.'))

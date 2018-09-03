@@ -13,15 +13,16 @@ Good option to develop Wordpress theme rapidly on a local computer, with the sup
 ## Configuration
 In order to make this theme work, you must configure following files.
 
+### `package.json`
+- `version`: this value will be appended after assets files like CSS and Javacript used in `header.php` or `footer.php`. This value is used to enable cache busting. 
+- `proxy`: this value will be passed to `gulpfile.js` and used as one of Browsersync options. The default value is `http://wordpress.localhost`. 
+
 ### `functions.php`
 Change the value of `$theme_textdomain` to the name of your theme.
 And remove (or comment out) the function files that you do not need.
 
 ### `style.css`
 You need to edit the information at the top of the file so that the proper information will show up in admin themes page. This file exists just for being recognized as a theme by Wordpress core. There is no styling code in here. All style will be compiled from `src/stylus/*` by gulp task.
-
-### `gulpfile.js`
-At the line 27, update the value of `proxyTarget` to the host you want to proxy to. By default, this is `http://wordpress.localhost`.
 
 ## Scripts
 > The themes is developed with `yarn` over `npm`. The `npm` might do the job, but I have not yet tested.
@@ -33,7 +34,7 @@ Do not forget to install dependencies before you run scripts.
 Runs Broswersync server.<br>
 By default, the gulp will not open the browser window. So please navigate yourself to [http://localhost:3000/](http://localhost:3000/).
 
-The Broswersync server proxies all traffic to the host you register in `gulpfile.js`.
+The Broswersync server proxies all traffic to the host you register in `package.json`.
 
 The page will also be automatically updated if you make changes to the files under 'src' directory.
 
@@ -42,16 +43,12 @@ Keep watching file changes.<br>
 Contrast to `yarn start`, thie command do not run Browsersync server. It just keeps watching file changes and outputs new files. This command is very useful when you finalize your project.
 
 ### `yarn build`
-Build unminified files in addition to those minified, which have `.min` suffix.
-
-> All comiled files will be output to `dist` directory.
+Build unminified files in addition to minified ones that have `.min` suffix. It is recommeded to run this command before you upload files to production server.
 
 ## Folder Structure
 ```
 .
-├── dist
-│   ├── css
-│   └── js
+├── css
 ├── functions
 │   ├── cron
 │   ├── media
@@ -70,14 +67,14 @@ Build unminified files in addition to those minified, which have `.min` suffix.
 └── txt
 ```
 
-- **dist**<br>
-   Stores assets build by Gulp.
+- **css**<br>
+   Stores CSS files built by Gulp.
 - **functions**<br>
    Stores PHP function files loaded to `functions.php`.
 - **html**<br>
    Stores HTML files to develop the Wordpress Page. This is experimental. `parts/page.php` read the content of HTML file that matches the current page slug. The purpose of this experiment is to eradicate the task of copy, paste, and save every time you modify the HTML content.
 - **js**<br>
-   Stores JS files that are not compiled from `src`. Now This folder contains jQuery, jQuery migrate, Modernizr, and Pace.js.
+   Stores JS files built by Gulp and jQuery, jQuery migrate, Modernizr, and Pace.js.
 - **parts**<br>
    The template PHP files that will be loaded to main theme file. This corresponds to `template-parts` in Wordpress’ default theme.
 - **src**<br>
@@ -95,10 +92,8 @@ The developer of this theme prefers [Stylus](http://stylus-lang.com/) for CSS pr
 ### Media Query
 By default, the theme contains three media queries:
 1. **all** for all medias
-2. **"(min-width:720px)"** for tablet or higher (tablet)
+2. **"(min-width:768px)"** for tablet or higher
 3. **"(min-width:1024px)"** for PC or higher
-
-These media queries are defined in `functions/other.php`.
 
 **This theme avoids using inline media query**. You can, however, easily write [Bootstrap-based media queries](https://getbootstrap.com/docs/4.0/layout/overview/) as follows.
 

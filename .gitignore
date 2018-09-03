@@ -22,3 +22,13 @@ yarn-error.log*
 
 # built files
 /dist
+/css/style.css
+/css/style.min.css
+/css/medium.css
+/css/medium.min.css
+/css/large.css
+/css/large.min.css
+/css/*.map
+/js/app.js
+/js/app.min.js
+/js/*.map

@@ -13,10 +13,13 @@ html
 	overflow-x hidden
 	&.overflow-hidden
 		overflow hidden
+	&.overflow-y-hidden
+		overflow-y hidden
 
 body
 	overflow hidden
 
+// Section
 $sect-space = 48px
 section
 	&.withPadding
@@ -41,6 +44,14 @@ section
 		&.withMargin-top
 			margin ($sect-space - $gutter) 0 0
 
+// Container
+.container
+	width 100%
+	max-width $container-width
+	margin 0 auto
+	padding 0 16px
+
+// Media
 figure, picture, video
 	display block
 
@@ -52,6 +63,7 @@ img, svg
 	&.w100
 		width 100%
 
+// Anchor
 a.anchor
 	display block
 	position relative

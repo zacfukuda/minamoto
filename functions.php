@@ -2,6 +2,12 @@
 /**
  * functions.php
  */
+
+// Theme version
+$package_json = file_get_contents(get_theme_root() . '/package.json');
+$package_json = json_decode($package_json);
+$theme_version = $package_json->version;
+
 // Text Domain
 $theme_textdomain = 'minamoto';
 
@@ -11,7 +17,7 @@ $theme_textdomain = 'minamoto';
  * @link https://developer.wordpress.org/reference/functions/get_template_directory/
  * @link https://developer.wordpress.org/reference/functions/get_stylesheet_directory_uri/
  * @link https://developer.wordpress.org/reference/functions/get_template_directory_uri/
- *@link https://developer.wordpress.org/reference/functions/wp_make_link_relative/
+ * @link https://developer.wordpress.org/reference/functions/wp_make_link_relative/
  *
  * NOTE: "$theme_root" and "$stylesheet_directory_uri" return the path to the child theme when it is used.
  */
@@ -75,6 +81,11 @@ require_once $functions_directory.'/widget/Hello_World_Widget.php';
  * Options & Setting API
  * -------------------------------------- */
 require_once $functions_directory.'/option/posts_on_front.php';
+
+/* ----------------------------------------
+ * Shortcode
+ * -------------------------------------- */
+require_once $functions_directory.'/shortcode/shortcode_hello.php';
 
 /* ----------------------------------------
  * Cron

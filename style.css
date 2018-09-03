@@ -10,5 +10,5 @@ License: MIT License
 License URI: http://opensource.org/licenses/MIT
 
 This "style.css" is made just to be recognized as a theme by Wordpress.
-The real CSS files will be compiled to "build/css" from "src/stylus" by webpack.
+The real CSS files will be compiled to "build/css" from "src/stylus" by Gulp.
 */
