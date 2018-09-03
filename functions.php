@@ -49,6 +49,7 @@ require_once $functions_directory.'/setup.php';
  * -------------------------------------- */
 require_once $functions_directory.'/post/is_first_page.php';
 require_once $functions_directory.'/post/remove_pages_autop.php';
+require_once $functions_directory.'/post/the_html_content.php';
 require_once $functions_directory.'/post/the_posts_pagination_without_screen_reader.php';
 require_once $functions_directory.'/post/wpdocs_excerpt_more.php';
 
