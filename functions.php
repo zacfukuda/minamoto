@@ -3,13 +3,13 @@
  * functions.php
  */
 
-// Theme version
-$package_json = file_get_contents(get_theme_root() . '/package.json');
-$package_json = json_decode($package_json);
-$theme_version = $package_json->version;
-
 // Text Domain
 $theme_textdomain = 'minamoto';
+
+// Theme version
+$package_json = file_get_contents(get_theme_root() . '/' . $theme_textdomain . '/package.json');
+$package_json = json_decode($package_json);
+$theme_version = $package_json->version;
 
 /**
  * Global variables regarding theme path

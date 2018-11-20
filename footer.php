@@ -13,7 +13,7 @@
 			</nav>
 
 			<!-- Copyright -->
-			<p class="copright">© 2017 Company, Inc. All rights reserved.</p>
+			<p class="copright">© <?php echo date('Y'); ?> Company, Inc. All rights reserved.</p>
 		</div>
 	</footer>
 <div><!-- root -->
