@@ -1,7 +1,8 @@
-<?php
-	global $theme_version;
-	global $relative_template_directory;
-?>
+<?php // header
+
+global $theme_version;
+global $relative_template_directory; ?>
+
 <!doctype html>
 <!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8"><![endif]-->
@@ -43,10 +44,9 @@
 <!-- Other -->
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 <!--
-	jQuery
-	Get the latest version at…
-	File: https://jquery.com/download/
+	jQuery - Get the latest version at…
 	CDN: https://code.jquery.com/
+	File: https://jquery.com/download/
 	All versions: https://code.jquery.com/jquery/
 -->
 <script

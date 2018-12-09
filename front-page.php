@@ -1,11 +1,7 @@
-<?php
- /**
-  * front-page.php
-  */
+<?php // front-page
 
 get_header();
-remove_filter( 'the_content', 'wpautop' );
-?>
+remove_filter( 'the_content', 'wpautop' ); ?>
 
 <?php
 	while ( have_post() ) {

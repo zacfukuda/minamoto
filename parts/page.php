@@ -1,8 +1,4 @@
-<?php
-/**
- * parts/page.php
- */
-?>
+<?php // parts/page ?>
 
 <article id="page-<?php the_ID(); ?>" <?php post_class(); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<header>

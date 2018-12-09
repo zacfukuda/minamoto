@@ -1,7 +1,4 @@
-<?php
-/**
- * page.php
- */
+<?php // page
 
 get_header();
 
@@ -12,4 +9,3 @@ while( have_posts() ) {
 
 // get_sidebar();
 get_footer();
-?>

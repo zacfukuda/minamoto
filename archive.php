@@ -1,10 +1,6 @@
-<?php
-/**
- * archive.php
- */
+<?php //archive
 
-get_header();
-?>
+get_header(); ?>
 
 <section>
 	<div class="container">

@@ -1,41 +1,40 @@
-<?php
-/**
- * functions.php
- */
-
-// Text Domain
-$theme_textdomain = 'minamoto';
-
-// Theme version
-$package_json = file_get_contents(get_theme_root() . '/' . $theme_textdomain . '/package.json');
-$package_json = json_decode($package_json);
-$theme_version = $package_json->version;
+<?php // functions
 
 /**
  * Global variables regarding theme path
  * @link https://developer.wordpress.org/reference/functions/get_theme_root/ 
  * @link https://developer.wordpress.org/reference/functions/get_template_directory/
- * @link https://developer.wordpress.org/reference/functions/get_stylesheet_directory_uri/
+ * @link https://developer.wordpress.org/reference/functions/get_stylesheet_directory/
  * @link https://developer.wordpress.org/reference/functions/get_template_directory_uri/
+ * @link https://developer.wordpress.org/reference/functions/get_stylesheet_directory_uri/
  * @link https://developer.wordpress.org/reference/functions/wp_make_link_relative/
  *
- * NOTE: "$theme_root" and "$stylesheet_directory_uri" return the path to the child theme when it is used.
  */
 
-// Absolute Path (Server)
+// Absolute Path (on server only)
 $theme_root = get_theme_root();
-$template_directory = get_template_directory();
+$template_directory = get_template_directory(); // Returns path to parent theme.
+$stylesheet_directory = get_stylesheet_directory(); // Returns path to child theme.
 
-// Theme URI
-$stylesheet_directory_uri = get_stylesheet_directory_uri();
+// URI
 $template_directory_uri = get_template_directory_uri();
+$stylesheet_directory_uri = get_stylesheet_directory_uri();
 
-// Relative path from webroot
+// Relative paths from web root
 $relative_stylesheet_directory = wp_make_link_relative($stylesheet_directory_uri);
 $relative_template_directory = wp_make_link_relative($template_directory_uri);
 
 // Path to "functions" directory
-$functions_directory = $template_directory . '/functions';
+$functions_directory = $template_directory.'/functions';
+
+/**
+ * Load theme configuration from package.json
+ */
+$package_json = file_get_contents($template_directory.'/package.json');
+$package_json = json_decode($package_json);
+
+$theme_textdomain = $package_json->name; // Text domain
+$theme_version = $package_json->version; // Theme version
 
 /* ----------------------------------------
  * Sets up theme defaults and registers

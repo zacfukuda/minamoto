@@ -1,8 +1,5 @@
-<?php
-/**
- * parts/header.php
- */
-?>
+<?php // parts/header ?>
+
 <!-- Header -->
 <header id="header" class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 	<div class="container">

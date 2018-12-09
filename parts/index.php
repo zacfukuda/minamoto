@@ -1,12 +1,8 @@
-<?php
-/**
- * parts/index.php
- */
+<?php // parts/index
 
 $categories = get_the_category();
 $category = $categories[0];
-$category_url = esc_url( get_term_link($category) );
-?>
+$category_url = esc_url( get_term_link($category) ); ?>
 
 <article id="post-<?php the_ID(); ?>" class="" role="article">
 	<!-- Thumbnail -->

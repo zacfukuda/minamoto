@@ -1,10 +1,6 @@
-<?php
-/**
- * search.php
- */
+<?php // search
 
-get_header();
-?>
+get_header(); ?>
 
 <section>
 	<div class="container">

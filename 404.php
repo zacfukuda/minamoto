@@ -1,10 +1,6 @@
-<?php
-/**
- * 404.php
- */
+<?php // 404
 
-get_header();
-?>
+get_header(); ?>
 
 <section>
 	<div class="container">

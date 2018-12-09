@@ -1,7 +1,4 @@
-<?php
-/**
- * parts/pagination.php
- */
+<?php // parts/pagination
 
 // Pagination
 $pagination_args = array(
