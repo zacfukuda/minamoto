@@ -1,7 +1,7 @@
-<?php
-	global $theme_version;
-	global $relative_template_directory;
-?>
+<?php // footer
+
+global $theme_version;
+global $relative_template_directory; ?>
 
 	</main>
 	<!-- Footer -->

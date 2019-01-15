@@ -1,8 +1,8 @@
-# **Minamoto** – Worpdress Starter Theme with Gulp + Stylus + Browsersync
+# **Minamoto** – Wordpress Starter Theme with Gulp + Stylus + Browsersync
 
 ![alt Minamoto Logo](./img/common/logo.svg)
 
-**Last Update: April 24, 2018**
+**Last Update: December 9, 2018.**
 
 A new Wordpress starter theme with [Gulp](https://github.com/gulpjs/gulp) + [Stylus](http://stylus-lang.com/) + [Browsersync](https://browsersync.io/docs/gulp).
 
@@ -13,16 +13,15 @@ Good option to develop Wordpress theme rapidly on a local computer, with the sup
 ## Configuration
 In order to make this theme work, you must configure following files.
 
-### `package.json`
-- `version`: this value will be appended after assets files like CSS and Javacript used in `header.php` or `footer.php`. This value is used to enable cache busting. 
-- `proxy`: this value will be passed to `gulpfile.js` and used as one of Browsersync options. The default value is `http://wordpress.localhost`. 
-
-### `functions.php`
-Change the value of `$theme_textdomain` to the name of your theme.
-And remove (or comment out) the function files that you do not need.
-
 ### `style.css`
-You need to edit the information at the top of the file so that the proper information will show up in admin themes page. This file exists just for being recognized as a theme by Wordpress core. There is no styling code in here. All style will be compiled from `src/stylus/*` by gulp task.
+Edit the information so that the proper information will be shown in the admin page. 
+
+> `style.css` exists only for being recognized as a theme by Wordpress. All styles are written in `src/stylus/*`, and will be compiled to `./css`.
+
+### `package.json`
+- `name`: Must match with the text domain defined in `./style.css`.
+- `version`: Will be appended after assets files like CSS and Javacript for cache busting purpose. 
+- `proxy`: Will be passed to `gulpfile.js` and be passed to Browsersync as options. The default target is set to `http://wordpress.localhost`. 
 
 ## Scripts
 > The themes is developed with `yarn` over `npm`. The `npm` might do the job, but I have not yet tested.
@@ -34,16 +33,14 @@ Do not forget to install dependencies before you run scripts.
 Runs Broswersync server.<br>
 By default, the gulp will not open the browser window. So please navigate yourself to [http://localhost:3000/](http://localhost:3000/).
 
-The Broswersync server proxies all traffic to the host you register in `package.json`.
-
-The page will also be automatically updated if you make changes to the files under 'src' directory.
+> The Broswersync proxies to `proxy.target` defined in `package.json`.
 
 ### `yarn watch`
 Keep watching file changes.<br>
-Contrast to `yarn start`, thie command do not run Browsersync server. It just keeps watching file changes and outputs new files. This command is very useful when you finalize your project.
+Contrary to `yarn start`, this command do not run Browsersync server, instead keeps watching file changes and outputs new files.
 
 ### `yarn build`
-Build unminified files in addition to minified ones that have `.min` suffix. It is recommeded to run this command before you upload files to production server.
+Build unminified files along with the minified versions. It‘s recommeded to run this command before you put the theme to production.
 
 ## Folder Structure
 ```
@@ -120,9 +117,6 @@ The biggest difference is gutter width: 32px not 30px, giving 16px padding to ea
 
 - **Wider Padding on Container**<br>
 The developer want the outer margin to be wider than the gutter. Hence, `padding: 0 40px` is set on `.container`, retaining the 1120px of content area at max. (In other words, the max width of `.container` is 1200px.)
-
-- **Flexbox Over Float**<br>
-It seems to me that creating layout with float is no longer valid—although there might be plenty of poeple who still use old Internet Explorer. Since Bootstrap 4 has fully adapted to flexbox, this is not a difference anymore.
 
 ### Prewritten CSS
 The developer has written CSS that is commonly used in Wordpress wordpress such as `.menu-list` or `.pagination`, and broadly used in any website such as `.clearfix` or `.flex`.

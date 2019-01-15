@@ -10,8 +10,8 @@
 
 .wpcf7-not-valid-tip
 	color $red !important
-	font-size $small !important
-	display inline !important
+	font-size 12px !important
+	display inline-block !important
 
 .wpcf7c-conf
 	background-color #e0e0e0 !important
@@ -22,13 +22,15 @@
 		&:hover, &:focus
 			-webkit-box-shadow 0 0 0px 1000px #e0e0e0 inset
 
+.wpcf7-response-output
+	padding .75em 1em !important
+	border-style solid !important
+	border-width 1px !important
+	border-radius 4px !important
+
 .wpcf7-mail-sent-ok
 	background-color #fafffa !important
-	border 1px solid $green !important
-	border-radius 3px !important
+	border-color $green !important
 
 .wpcf7-validation-errors
-	border 2px solid $red !important
-
-.wpcf7-response-output
-	padding 1em !important
+	border-color $red !important

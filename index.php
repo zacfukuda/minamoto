@@ -1,10 +1,6 @@
-<?php 
-	/**
-	 * index.php
-	 */
+<?php // index.php
 
-get_header();
-?>
+get_header(); ?>
 
 <section class="">
 	<div class="container">

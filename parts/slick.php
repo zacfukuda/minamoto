@@ -1,6 +1,6 @@
-<?php
+<?php // parts/slick
 /**
- * parts/slick.php
+ * Template to display Slick
  * @link https://github.com/kenwheeler/slick
  * @link http://kenwheeler.github.io/slick/
  */
@@ -20,7 +20,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
 <script>
 	(function ($) {
-		$slick = $('#front-slick');
+		$slick = $('#slick');
 
 		$slick.slick({
 			autoplay: true,

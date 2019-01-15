@@ -1,8 +1,4 @@
-<?php
-/**
- * parts/none.php
- */
-?>
+<?php // parts/none ?>
 
 <div class="col-12">
 	<h1><?php _e( 'Nothing Found', 'minamoto' ); ?></h1>

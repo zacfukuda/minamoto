@@ -1,8 +1,4 @@
-<?php
-
-/**
- * single.php
- */
+<?php // single
 
 get_header();
 
@@ -27,4 +23,3 @@ while ( have_posts() ) {
 
 // get_sidebar();
 get_footer();
-?>
