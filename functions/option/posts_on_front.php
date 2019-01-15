@@ -10,10 +10,10 @@ function posts_on_front() {
 
 	// Add setting section
 	add_settings_section(
-		'custom_setting_section',
-		'Custome Setting Section',
-		'custom_setting_section_callback',
-		'reading'
+		'custom_setting_section', // $id
+		'Custome Setting Section', // $title
+		'custom_setting_section_callback', // $callback
+		'reading' // $page
 	);
 
 	// Add setting field

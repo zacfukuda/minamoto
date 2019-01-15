@@ -10,7 +10,7 @@
 	</header>
 	<?php
 		// Production
-		the_content();
+		// the_content();
 		// Development
 		the_html_content();
 	?>
