@@ -18,6 +18,7 @@ const rename = require('gulp-rename')
 const sourcemaps = require('gulp-sourcemaps')
 const	stylus = require('gulp-stylus')
 const uglify = require('gulp-uglify')
+const webpack = require('webpack-stream')
 
 // Argument
 const argv = require('minimist')(process.argv.slice(3))
@@ -68,14 +69,23 @@ const stylusTask = () => {
 
 // Javascript
 const jsTask = () => {
-	return src(compileFiles.js)
+	return src(paths.src.js + 'index.js')
 		.pipe(plumber())
-		.pipe(gulpif(isProduction, sourcemaps.init()))
-		.pipe(uglify())
-		.pipe(rename({suffix: '.min'}))
-		.pipe(gulpif(isProduction, sourcemaps.write('.')))
+		// .pipe(gulpif(isProduction, sourcemaps.init()))
+		// .pipe(uglify())
+		// .pipe(rename({suffix: '.min'}))
+		// .pipe(gulpif(isProduction, sourcemaps.write('.')))
+		.pipe(webpack({
+			mode: isProduction ? 'production' : 'development',
+			output: {
+				filename: 'app.min.js'
+			},
+			devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map'
+		}))
 		.pipe(dest(paths.dist.js))
 }
+
+exports.js = jsTask
 
 const jsSync = (cb) => {
 	browserSync.reload()
@@ -86,6 +96,7 @@ const jsSync = (cb) => {
 const buildUnminify = (cb) => {
 	// CSS
 	src(compileFiles.stylus)
+		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(stylus())
 		.pipe(autoprefixer())
@@ -93,9 +104,11 @@ const buildUnminify = (cb) => {
 		.pipe(dest(paths.dist.css))
 
 	// JS
-	src(compileFiles.js)
-		.pipe(sourcemaps.init())
-		.pipe(sourcemaps.write('.'))
+	src(paths.src.js + 'index.js')
+		.pipe(plumber())
+		// .pipe(sourcemaps.init())
+		// .pipe(sourcemaps.write('.'))
+		.pipe(webpack())
 		.pipe(dest(paths.dist.js))
 
 	cb()
