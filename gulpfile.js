@@ -29,9 +29,6 @@ const isBrowsersyncOn = (process.argv[2] === 'server') ? true : false
 // Broswersync
 const reload = browserSync.reload
 
-// Browser support for autoprefixer
-const browsers = ['last 2 version', 'safari 5', 'ie 6', 'ie 7', 'ie 8', 'ie 9', 'ie 10', 'ie 11', 'opera 12.1', 'ios 6']
-
 // Source files
 const src = {
 	stylus: './src/stylus/',
