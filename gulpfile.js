@@ -10,7 +10,6 @@ const packageJSON = require('./package.json')
 // Import modules
 const browserSync = require('browser-sync').create()
 const { src, dest, watch, parallel, series } = require('gulp');
-// const gulp = require('gulp')
 const	autoprefixer = require('gulp-autoprefixer')
 const gcmq = require('gulp-group-css-media-queries')
 const gulpif = require('gulp-if')
@@ -72,7 +71,6 @@ const jsTask = () => {
 	return src(compileFiles.js)
 		.pipe(plumber())
 		.pipe(gulpif(isProduction, sourcemaps.init()))
-		// .pipe(concat('bundle.js'))
 		.pipe(uglify())
 		.pipe(rename({suffix: '.min'}))
 		.pipe(gulpif(isProduction, sourcemaps.write('.')))
