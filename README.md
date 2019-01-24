@@ -9,7 +9,7 @@ A new Wordpress starter theme with [Gulp](https://github.com/gulpjs/gulp) + [Sty
 Good option to develop Wordpress theme rapidly on a local computer, with the support of [MAMP](https://www.mamp.info/en/) or [Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV).
 
 > To use this theme requires advanced knowledge in developing Wordpress theme. If you are new to theme development, you may want to check out [Getting Started guide](https://developer.wordpress.org/themes/getting-started/) from Wordpess.org.
-
+ 
 ## Configuration
 In order to make this theme work, you must configure following files.
 
