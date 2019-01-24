@@ -19,8 +19,13 @@ global $relative_template_directory; ?>
 <div><!-- root -->
 
 <?php wp_footer(); ?>
-<script src="<?php echo $relative_template_directory; ?>/js/app.min.js?v=<?php echo $theme_version; ?>"></script>
-<!-- Pace -->
+<script src="<?php echo $relative_template_directory; ?>/dist/js/app.min.js?v=<?php echo $theme_version; ?>"></script>
+<?php
+/**
+ * Pace - Progress Bar
+ * @link http://github.hubspot.com/pace/docs/welcome/
+ */
+?>
 <script>
 	var paceOptions = {
 		ajax: false,
@@ -28,7 +33,7 @@ global $relative_template_directory; ?>
 		eventLag: false,
 	}
 </script>
-<script src="<?php echo $relative_template_directory ?>/js/pace.min.js"></script>
+<script src="<?php echo $relative_template_directory ?>/assets/pace/pace.min.js"></script>
 <script>
 	// Event when the loading done.
 	function doneLoading ($) {

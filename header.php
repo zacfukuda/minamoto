@@ -7,7 +7,7 @@ global $relative_template_directory; ?>
 <!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8"><![endif]-->
 <!--[if (IE 8)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!--> <html <?php language_attributes(); ?> class="no-js no-svg overflow-hidden" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"><!--<![endif]-->
+<!--[if gt IE 8]><!--><html <?php language_attributes(); ?> class="no-js no-svg overflow-hidden" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -29,9 +29,9 @@ global $relative_template_directory; ?>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 <?php /* Stylesheet */ ?>
-<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/css/style.min.css?v=<?php echo $theme_version; ?>" media="all">
-<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/css/medium.min.css?v=<?php echo $theme_version; ?>" media="(min-width: 768px)">
-<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/css/large.min.css?v=<?php echo $theme_version; ?>" media="(min-width: 1024px)">
+<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/dist/css/style.min.css?v=<?php echo $theme_version; ?>" media="all">
+<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/dist/css/medium.min.css?v=<?php echo $theme_version; ?>" media="(min-width: 768px)">
+<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/dist/css/large.min.css?v=<?php echo $theme_version; ?>" media="(min-width: 1024px)">
 <?php /* Language */ ?>
 <link rel="alternate" href="https://www.example.com/ja/" hreflang="ja-jp" />
 <link rel="alternate" href="https://www.example.com" hreflang="en" />
@@ -54,28 +54,22 @@ global $relative_template_directory; ?>
   integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4="
   crossorigin="anonymous"></script>
 <?php /* jQuery CDN Fallback */ ?>
-<script>window.jQuery || document.write('<script src="<?php echo $relative_template_directory; ?>/js/jquery.min.js"><\/script>')</script>
-<script> if (typeof jQuery.migrateWarnings == 'undefined') document.write('<script src="<?php echo $relative_template_directory; ?>/js/jquery-migrate.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="<?php echo $relative_template_directory; ?>/assets/jquery/jquery.min.js"><\/script>')</script>
+<script> if (typeof jQuery.migrateWarnings == 'undefined') document.write('<script src="<?php echo $relative_template_directory; ?>/assets/jquery/jquery-migrate.min.js"><\/script>')</script>
 <?php /* Multi jQuery version handling  */ ?>
 <script>var jQuery3 = jQuery.noConflict(true);</script>
 <?php /* Modernizr */ ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
-<script>window.Modernizr || document.write('<script src="<?php echo $relative_template_directory; ?>/js/modernizr.min.js"><\/script>')</script>
+<script>window.Modernizr || document.write('<script src="<?php echo $relative_template_directory; ?>/assets/modernizr/modernizr.min.js"><\/script>')</script>
 <?php wp_head(); ?>
 </head>
 <body id="body" <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
 <!--[if lt IE 8]>
 	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-<?php
-/**
- * Progress Bar (Pace)
- * @link http://github.hubspot.com/pace/docs/welcome/
- */
-?>
 <div id="progressUI" class="progressUI flex justify-center align-center">
 	<!-- Put some html here -->
-</div><!-- .progressUI -->
+</div><!-- #progressUI.progressUI -->
 
 <!-- Root -->
 <div id="root" class="root">

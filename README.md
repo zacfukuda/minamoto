@@ -1,14 +1,14 @@
-# **Minamoto** – Wordpress Starter Theme with Gulp + Stylus + Browsersync
+# **Minamoto** – Wordpress Starter Theme with Gulp + Stylus + Webpack(babel) + Browsersync
 
 ![alt Minamoto Logo](./img/common/logo.svg)
 
-**Last Update: December 9, 2018.**
+**Last Update: January 24, 2019.**
 
-A new Wordpress starter theme with [Gulp](https://github.com/gulpjs/gulp) + [Stylus](http://stylus-lang.com/) + [Browsersync](https://browsersync.io/docs/gulp).
+Wordpress starter theme with [Gulp](https://github.com/gulpjs/gulp) + [Stylus](http://stylus-lang.com/) + [Webpack](https://webpack.js.org/) + [Browsersync](https://browsersync.io/docs/gulp).
 
 Good option to develop Wordpress theme rapidly on a local computer, with the support of [MAMP](https://www.mamp.info/en/) or [Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV).
 
-> To use this theme requires advanced knowledge in developing Wordpress theme. If you are new to theme development, you may want to check out [Getting Started guide](https://developer.wordpress.org/themes/getting-started/) from Wordpess.org.
+> To use this theme requires advanced knowledge in Wordpress theme development. If you are new to theme development, you might want to check out [Getting Started guide](https://developer.wordpress.org/themes/getting-started/) from Wordpess.org.
  
 ## Configuration
 In order to make this theme work, you must configure following files.
@@ -16,15 +16,15 @@ In order to make this theme work, you must configure following files.
 ### `style.css`
 Edit the information so that the proper information will be shown in the admin page. 
 
-> `style.css` exists only for being recognized as a theme by Wordpress. All styles are written in `src/stylus/*`, and will be compiled to `./css`.
+> `style.css` exists only to be recognized as a theme by Wordpress system. All styles are written in `src/stylus/*`, and will be compiled to `./dist/css`.
 
 ### `package.json`
-- `name`: Must match with the text domain defined in `./style.css`.
-- `version`: Will be appended after assets files like CSS and Javacript for cache busting purpose. 
-- `proxy`: Will be passed to `gulpfile.js` and be passed to Browsersync as options. The default target is set to `http://wordpress.localhost`. 
+- `name`: Recommended to match with the text domain defined in `./style.css`.
+- `version`: Will be appended after the assets files—CSS and Javacript—for cache busting purpose. 
+- `proxy`: Will be used as Browsersync option inside `gulpfile.js`. The default target is set to `http://wordpress.localhost`. 
 
 ## Scripts
-> The themes is developed with `yarn` over `npm`. The `npm` might do the job, but I have not yet tested.
+> This theme is developed using `yarn` over `npm` or `npx`. The `npm` or `npx `might do the job, however, the developer of this theme has no plant to make the theme compatible with `npm` or `npx`.
 
 ### `yarn`
 Do not forget to install dependencies before you run scripts.
@@ -45,7 +45,8 @@ Build unminified files along with the minified versions. It‘s recommeded to ru
 ## Folder Structure
 ```
 .
-├── css
+├── assets
+├── config
 ├── functions
 │   ├── cron
 │   ├── media
@@ -55,9 +56,8 @@ Build unminified files along with the minified versions. It‘s recommeded to ru
 │   ├── post
 │   └── widget
 ├── html
-├── js
+├── img
 ├── parts
-├── scripts
 ├── src
 │   ├── js
 │   └── stylus
@@ -132,9 +132,6 @@ $ rm -r src/stylus
 ### Timber Ready
 [Timber](https://github.com/timber/timber) is a Wordpress plugin to write theme template with Twig Template Engine, and the developer is planning to adapt this plugin for the development of theme template.
 
-### ES6 Syntax Ready
-With Babel, the developer is planning to adapt a better way to organize Javascript files and its modules.
-
 ### Custom Field to *Page*
 Assuming that some of *Pages* will be written in HTML format, this themes designed to load a content of HTML file from `html` folder that matches the slug of the current page. The code responsible for functionality is written in `parts/page.php`, and the developer is planning to add a custom field to *page* admin page to turn on/off this feature for per page.
 
@@ -149,7 +146,7 @@ There is no guarantee that the theme works with non-latest versions.
 If you want to know other development environment, please check out [Tested Environment](#test-environment)
 
 ### Javascript Testing
-For now there is no tes for JS file. The developer is not a huge fan of JS testing, and has no attempt to write testing code any time soon.
+For now there is no test for JS file. The developer is not a fan of JS testing, and has no attempt to write testing code any time soon.
 
 ### Not for Child Theme
 The developer has an only intention to use the theme as a parent theme. It might work as a child theme, but this is no guarantee.
@@ -214,12 +211,17 @@ The developer has an only intention to use the theme as a parent theme. It might
 - [Velvet Blues Update URLs](https://wordpress.org/plugins/velvet-blues-update-urls/)
 
 ## Test Environment
-- Node & NPM: 8.11.1 & 5.6.0
-- Yarn: 1.6.0
-- Wordpress: 4.9
+- Node & NPM: 10.15.0 & 6.4.1
+- Yarn: 1.13.0
+- Wordpress: 5.0.3
 - PHP: 7.1.1
 - MySQL: 5.6.35
 - Web Server: Apache 2.2.31
+
+## Other Wordpress Starter Themes
+- Sage
+- Bone
+- Underscore
 
 ## Feedback
 If you have any request or find a bug, please bring it up to [Issues](https://github.com/zacfukuda/minamoto/issues) of this repository.
