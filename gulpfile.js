@@ -2,10 +2,14 @@
  * Gulp Configuration
  * @link https://github.com/gulpjs/gulp
  * @link https://browsersync.io/docs/gulp
+ * @link https://webpack.js.org/guides/integrations/#gulp
  */
 
 // Load package.json
 const packageJSON = require('./package.json')
+
+// Paths
+const paths = require('./config/paths')
 
 // Import modules
 const browserSync = require('browser-sync').create()
@@ -20,14 +24,13 @@ const	stylus = require('gulp-stylus')
 const uglify = require('gulp-uglify')
 const webpack = require('webpack-stream')
 
-// Argument
+// Argument passed to the NPM command
 const argv = require('minimist')(process.argv.slice(3))
-const isDevelopment = (argv.dev === true) ? true:false
-const isProduction = (argv.pro === true) ? true:false
+
+// Set true onlu if the current gulp task is 'server'
 const isBrowsersyncOn = (process.argv[2] === 'server') ? true : false
 
-// Paths
-const paths = {
+/*const paths = {
 	src: {
 		stylus: './src/stylus/',
 		js: './src/js/'
@@ -36,55 +39,45 @@ const paths = {
 		css: './css/',
 		js: './js/'
 	}
-}
+} */
 
 // Compile files
-const compileFiles = {
+/*const compileFiles = {
 	stylus: [
 		paths.src.stylus+'*.styl',
 		'!'+paths.src.stylus+'_*.styl'
 	],
 	js: paths.src.js+'*.js'
-}
+}*/
 
 // Watch files
-const watchFiles = {
+/*const watchFiles = {
 	stylus: paths.src.stylus + '**\/*.styl',
 	js: paths.src.js + '**\/*.js'
-}
+}*/
 
 // Stylus
 const stylusTask = () => {
-	return src(compileFiles.stylus)
+	return src(paths.compile.stylus)
 		.pipe(plumber())
-		.pipe(gulpif(isProduction, sourcemaps.init()))
-		.pipe(stylus({compress: isProduction}))
-		.pipe(gulpif(isProduction, gcmq()))
+		.pipe(gulpif(argv.pro, sourcemaps.init()))
+		.pipe(stylus({compress: argv.pro}))
+		.pipe(gulpif(argv.pro, gcmq()))
 		.pipe(autoprefixer())
 		.pipe(rename({suffix: '.min'}))
-		.pipe(gulpif(isProduction, sourcemaps.write('.')))
+		.pipe(gulpif(argv.pro, sourcemaps.write('.')))
 		.pipe(dest(paths.dist.css))
 		.pipe(gulpif(isBrowsersyncOn, browserSync.stream()))
 }
+exports.stylus = stylusTask
 
 // Javascript
 const jsTask = () => {
-	return src(paths.src.js + 'index.js')
+	return src(paths.compile.js)
 		.pipe(plumber())
-		// .pipe(gulpif(isProduction, sourcemaps.init()))
-		// .pipe(uglify())
-		// .pipe(rename({suffix: '.min'}))
-		// .pipe(gulpif(isProduction, sourcemaps.write('.')))
-		.pipe(webpack({
-			mode: isProduction ? 'production' : 'development',
-			output: {
-				filename: 'app.min.js'
-			},
-			devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map'
-		}))
+		.pipe(webpack( require('./config/webpack.config.default') ))
 		.pipe(dest(paths.dist.js))
 }
-
 exports.js = jsTask
 
 const jsSync = (cb) => {
@@ -95,7 +88,7 @@ const jsSync = (cb) => {
 // Build unminified version of CSS & JS
 const buildUnminify = (cb) => {
 	// CSS
-	src(compileFiles.stylus)
+	src(paths.compile.stylus)
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(stylus())
@@ -104,11 +97,9 @@ const buildUnminify = (cb) => {
 		.pipe(dest(paths.dist.css))
 
 	// JS
-	src(paths.src.js + 'index.js')
+	src(paths.compile.js)
 		.pipe(plumber())
-		// .pipe(sourcemaps.init())
-		// .pipe(sourcemaps.write('.'))
-		.pipe(webpack())
+		.pipe(webpack( require('./config/webpack.config.extra') ))
 		.pipe(dest(paths.dist.js))
 
 	cb()
@@ -116,8 +107,8 @@ const buildUnminify = (cb) => {
 
 // Watch
 exports.watch = () => {
-	watch(watchFiles.stylus, stylusTask)
-	watch(watchFiles.js, jsTask)
+	watch(paths.watch.stylus, stylusTask)
+	watch(paths.watch.js, jsTask)
 }
 
 exports.server = () => {
@@ -126,8 +117,8 @@ exports.server = () => {
 		proxy: packageJSON.proxy
 	})
 
-	watch(watchFiles.stylus, stylusTask)
-	watch(watchFiles.js, series(jsTask, jsSync))
+	watch(paths.watch.stylus, stylusTask)
+	watch(paths.watch.js, series(jsTask, jsSync))
 
 	// Ultimately, you can watch all PHP file,
 	// and reload browser if any change happens.
