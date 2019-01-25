@@ -24,12 +24,12 @@ After dowloading the theme, install NPM modules:
 $ yarn
 ```
 
-| File | Configuration | \- |
+| File | Property | Configuration |
 | --- | --- | --- |
 | `style.css` | | Edit the information so that the proper information will appear in the admin page. |
 | `package.json` | name | Recommended to match to the text domain defined in `style.css`. |
-| … | version | Will be appended after the assets files like CSS and Javacript for cache busting purpose. |
-| … | proxy | Will be used as Browsersync option inside `gulpfile.js`. The default target is set to `http://wordpress.localhost`. |
+| | version | Will be appended after the assets files like CSS and Javacript for cache busting purpose. |
+| | proxy | Will be used as Browsersync option inside `gulpfile.js`. The default target is set to `http://wordpress.localhost`. |
 
 > `style.css` exists only to be recognized as a theme by Wordpress system. All styles are written in `src/stylus/*`, and will be compiled to `./dist/css`.
 
