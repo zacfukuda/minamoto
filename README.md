@@ -47,6 +47,8 @@ Build unminified files along with the minified versions. It‘s recommeded to ru
 .
 ├── assets
 ├── config
+├── (dist)
+├── doc
 ├── functions
 │   ├── cron
 │   ├── media
@@ -54,14 +56,15 @@ Build unminified files along with the minified versions. It‘s recommeded to ru
 │   ├── option
 │   ├── other
 │   ├── post
+│   ├── shortcode
 │   └── widget
 ├── html
 ├── img
+├── (node_modules)
 ├── parts
-├── src
-│   ├── js
-│   └── stylus
-└── txt
+└── src
+    ├── js
+    └── stylus
 ```
 
 - **css**<br>
@@ -148,16 +151,16 @@ If you want to know other development environment, please check out [Tested Envi
 ### Javascript Testing
 For now there is no test for JS file. The developer is not a fan of JS testing, and has no attempt to write testing code any time soon.
 
-### Not for Child Theme
+### Not for Child Theme or Parent theme
 The developer has an only intention to use the theme as a parent theme. It might work as a child theme, but this is no guarantee.
 
 ## Test Environment
 - Node & NPM: 10.15.0 & 6.4.1
 - Yarn: 1.13.0
 - Wordpress: 5.0.3
-- PHP: 7.1.1
-- MySQL: 5.6.35
-- Web Server: Apache 2.2.31
+- PHP: 7.2.10
+- MySQL: 5.7.23
+- Web Server: Apache 2.2.34
 
 ## Other Wordpress Starter Themes
 - Sage
