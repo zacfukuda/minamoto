@@ -1,12 +1,10 @@
-# **Minamoto** – Wordpress Starter Theme with Gulp + Stylus + Webpack(Babel) + Browsersync
+# **Minamoto** – Wordpress Starter Theme
 
 ![alt Minamoto Logo](./img/logo/normal.svg)
 
-Wordpress starter theme with [Gulp](https://github.com/gulpjs/gulp) + [Stylus](http://stylus-lang.com/) + [Webpack](https://webpack.js.org/) + [Browsersync](https://browsersync.io/docs/gulp).
+Minamoto is a Wordpress starter theme with [Gulp](https://github.com/gulpjs/gulp) + [Stylus](http://stylus-lang.com/) + [Webpack](https://webpack.js.org/) + [Browsersync](https://browsersync.io/docs/gulp).
 
-Good option to develop Wordpress theme rapidly on a local computer, with the support of [MAMP](https://www.mamp.info/en/) or [Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV).
-
-> To use this theme requires advanced knowledge in Wordpress theme development. If you are new to theme development, you might want to check out [Getting Started guide](https://developer.wordpress.org/themes/getting-started/) from Wordpess.org.
+> Theme development of with this starter theme requires advanced knowledge in Wordpress theme development and modern JavaScript like CommonJS and ES6. If you are new to theme development, you might want to check out [Getting Started guide](https://developer.wordpress.org/themes/getting-started/) from Wordpess.org.
  
 ## Installation & Configuration
 
@@ -35,16 +33,19 @@ Edit the files shown below:
 
 > `style.css` exists only to be recognized as a theme by Wordpress system. All styles are written in `src/stylus/*`, and will be compiled to `./dist/css`.
 
-In addition to the file above, you can configure files under `config` so that the source files will be compile as you want it to.
+In addition to the files above, you can configure files under `config` so that the source files will be compiled as you want it to.
 
-## Scripts
-> This theme is developed using `yarn` over `npm` or `npx`. The `npm` or `npx `might do the intended tasks. however, the developer of this theme, has no plan to make the theme compatible with `npm` or `npx`.
+## Gulp tasks
+
+There are mainly three tasks that you use based on the progress of your development.
 
 | Command | Task | Comment |
 | ------------ | --- | --- |
-| `yarn start` | Runs Broswersync server. | By default, the server will run at [http://localhost:3000/](http://localhost:3000/), and not open the browser. |
-| `yarn watch` | Keep watching file changes. | This doesn’t run Browsersync. |
-| `yarn build` | Build optimized assets. | Also build unminified version. Run this before putting into production. |
+| `yarn start` | Runs Broswersync server. | By default, the server will run at [http://localhost:3000/](http://localhost:3000/), <br>and not open the browser. |
+| `yarn watch` | Keep watching file changes. | Not run Browsersync. |
+| `yarn build` | Build optimized assets. | Also build unminified version. <br>Run this before putting into production. |
+
+> This theme is developed using `yarn` over `npm` or `npx`. The `npm` or `npx `might do the intended tasks. however, the developer of this theme, has no plan to make the theme compatible with `npm` or `npx`.
 
 > The Broswersync proxies requests to `proxy.target` defined in `package.json`. Also, if you want to run the dev server other than `port:3000`, please edit `gulpfile.js`.
 
@@ -70,7 +71,7 @@ In addition to the file above, you can configure files under `config` so that th
 ├── img/              # Images that are part of you theme
 ├── (node_modules)    # NPM modules
 ├── parts/            # Wordpresss template parts
-├── src               # Source files
+├── src/              # Source files
 │   ├── js/
 │   └── stylus/
 └── vendor/
@@ -92,15 +93,13 @@ For now there is no way to switch the feature, except that you modify the code i
 
 The theme is tested only with the latest version of Wordpress. There is no guarantee that the theme works with non-latest version of Wordpress. For the test environment, please refer to [Test Environment](#test-environment) section.
 
-### No Liting & JS Testing
+### No Linting & JS Testing
 
-For now there is linting for CSS & JS and no test program for JS files. At the time of this writting, the developer has no intention to implement these feature any time soon.
+Now there is no linting for CSS & JS and no test program for JS files, and the developer has no intention to implement these features any time soon.
 
 ### Not for Child Theme or Parent theme
 
-The theme is being developed to be used as your sole custom theme. Therefore, the theme might not work properly if you use it as the parent theme of child or child theme itself.
-
-It is possible to customize the theme in accordance with your preference for those purpose, however, it requires much work.
+The theme is developed to be your sole custom theme. Therefore, the theme might not work properly if you use it as the parent theme of child or child theme itself. It is possible to customize the theme in accordance with your preference for parent/child theme purpose, however, doing so requires a lot of work.
 
 ## Test Environment
 - Node & NPM: 10.15.0 & 6.4.1
@@ -115,4 +114,4 @@ It is possible to customize the theme in accordance with your preference for tho
 - [Underscores a.k.a. \_s](https://underscores.me/) ([Github](https://github.com/automattic/_s))
 
 ## Feedback
-If you have any request or find bugs, please bring it up to [Issues](https://github.com/zacfukuda/minamoto/issues) of this repository.
+If you have any request or find bugs, please bring it up to [Issues](https://github.com/zacfukuda/minamoto/issues).
