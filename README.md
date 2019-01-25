@@ -22,6 +22,8 @@ After dowloading the theme, install NPM modules:
 $ yarn
 ```
 
+> This theme is developed using `yarn` over `npm` or `npx`. The `npm` or `npx `might do the intended tasks. however, the developer of this theme, has no plan to make the theme compatible with `npm` or `npx`.
+
 Edit the files shown below:
 
 | File | Property | Configuration |
@@ -42,10 +44,8 @@ There are mainly three tasks that you use based on the progress of your developm
 | Command | Task | Comment |
 | ------------ | --- | --- |
 | `yarn start` | Runs Broswersync server. | By default, the server will run at [http://localhost:3000/](http://localhost:3000/), <br>and not open the browser. |
-| `yarn watch` | Keep watching file changes. | Not run Browsersync. |
-| `yarn build` | Build optimized assets. | Also build unminified version. <br>Run this before putting into production. |
-
-> This theme is developed using `yarn` over `npm` or `npx`. The `npm` or `npx `might do the intended tasks. however, the developer of this theme, has no plan to make the theme compatible with `npm` or `npx`.
+| `yarn watch` | Keeps watching file changes. | Not run Browsersync. |
+| `yarn build` | Builds optimized assets. | Also build unminified version. <br>Run this before putting into production. |
 
 > The Broswersync proxies requests to `proxy.target` defined in `package.json`. Also, if you want to run the dev server other than `port:3000`, please edit `gulpfile.js`.
 
@@ -79,7 +79,7 @@ There are mainly three tasks that you use based on the progress of your developm
 
 ## Expected Updates in Future
 
-### Timber Ready
+### Timber Implementation
 [Timber](https://github.com/timber/timber) is a Wordpress plugin to write theme template with Twig Template Engine, and the developer is planning to adapt this plugin for the development of theme template.
 
 ### Custom Field to *Page*
