@@ -93,7 +93,7 @@ exports.server = () => {
 	watch(paths.watch.stylus, stylusTask)
 	watch(paths.watch.js, series(jsTask, jsSync))
 
-	// Ultimately, you can watch all PHP file,
+	// Ultimately, you can watch all PHP files,
 	// and reload browser if any change happens.
 	// The author has not tested the program below,
 	// but thinks it would work.

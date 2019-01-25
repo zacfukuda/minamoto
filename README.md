@@ -1,8 +1,6 @@
-# **Minamoto** – Wordpress Starter Theme with Gulp + Stylus + Webpack(babel) + Browsersync
+# **Minamoto** – Wordpress Starter Theme with Gulp + Stylus + Webpack(Babel) + Browsersync
 
 ![alt Minamoto Logo](./img/logo/normal.svg)
-
-**Last Update: January 24, 2019.**
 
 Wordpress starter theme with [Gulp](https://github.com/gulpjs/gulp) + [Stylus](http://stylus-lang.com/) + [Webpack](https://webpack.js.org/) + [Browsersync](https://browsersync.io/docs/gulp).
 
@@ -10,124 +8,70 @@ Good option to develop Wordpress theme rapidly on a local computer, with the sup
 
 > To use this theme requires advanced knowledge in Wordpress theme development. If you are new to theme development, you might want to check out [Getting Started guide](https://developer.wordpress.org/themes/getting-started/) from Wordpess.org.
  
-## Configuration
-In order to make this theme work, you must configure following files.
+## Installation & Configuration
 
-### `style.css`
-Edit the information so that the proper information will be shown in the admin page. 
+Download the theme from Github:
+
+```bash
+$ cd path/to/your/wp-content/themes
+$ git clone https://github.com/zacfukuda/minamoto.git your-theme
+$ cd your-theme
+```
+
+After dowloading the theme, install NPM modules:
+
+```bash
+$ yarn
+```
+
+File | Configuration
+--- | --- | ---
+`style.css` | Edit the information so that the proper information will appear in the admin page.
+`package.json` | name | Recommended to match to the text domain defined in `style.css`.
+ | version | Will be appended after the assets files like CSS and Javacript for cache busting purpose.
+ | proxy | Will be used as Browsersync option inside `gulpfile.js`. The default target is set to `http://wordpress.localhost`.
 
 > `style.css` exists only to be recognized as a theme by Wordpress system. All styles are written in `src/stylus/*`, and will be compiled to `./dist/css`.
 
-### `package.json`
-- `name`: Recommended to match with the text domain defined in `./style.css`.
-- `version`: Will be appended after the assets files—CSS and Javacript—for cache busting purpose. 
-- `proxy`: Will be used as Browsersync option inside `gulpfile.js`. The default target is set to `http://wordpress.localhost`. 
+In addition to the file above, you can configure files under `config` so that the source files will be built as you want it to.
 
 ## Scripts
-> This theme is developed using `yarn` over `npm` or `npx`. The `npm` or `npx `might do the job, however, the developer of this theme has no plant to make the theme compatible with `npm` or `npx`.
+> This theme is developed using `yarn` over `npm` or `npx`. The `npm` or `npx `might do the intended tasks. however, the developer of this theme, has no plan to make the theme compatible with `npm` or `npx`.
 
-### `yarn`
-Do not forget to install dependencies before you run scripts.
+Command | Task
+-- | ---
+`yarn start` | Runs Broswersync server.<br>By default, the gulp will not open the browser window. So please navigate yourself to [http://localhost:3000/](http://localhost:3000/).
+`yarn watch` | Keep watching file changes.<br>Contrary to `yarn start`, this command do not run Browsersync server, instead keeps watching file changes and outputs new files.
+`yarn build` | Build optimized asset files along with unminified version. Run this command before you put the site into production.
 
-### `yarn start`
-Runs Broswersync server.<br>
-By default, the gulp will not open the browser window. So please navigate yourself to [http://localhost:3000/](http://localhost:3000/).
+> The Broswersync proxies to `proxy.target` defined in `package.json`. Also, if you want to run the dev server other than `port:3000`, please edit `gulpfile.js`.
 
-> The Broswersync proxies to `proxy.target` defined in `package.json`.
-
-### `yarn watch`
-Keep watching file changes.<br>
-Contrary to `yarn start`, this command do not run Browsersync server, instead keeps watching file changes and outputs new files.
-
-### `yarn build`
-Build unminified files along with the minified versions. It‘s recommeded to run this command before you put the theme to production.
-
-## Folder Structure
+## File Structure
 ```
 .
-├── assets
-├── config
-├── (dist)
-├── doc
-├── functions
-│   ├── cron
-│   ├── media
-│   ├── nav_menu
-│   ├── option
-│   ├── other
-│   ├── post
-│   ├── shortcode
-│   └── widget
-├── html
-├── img
-├── (node_modules)
-├── parts
-└── src
-    ├── js
-    └── stylus
-```
-
-- **css**<br>
-   Stores CSS files built by Gulp.
-- **functions**<br>
-   Stores PHP function files loaded to `functions.php`.
-- **html**<br>
-   Stores HTML files to develop the Wordpress Page. This is experimental. `parts/page.php` read the content of HTML file that matches the current page slug. The purpose of this experiment is to eradicate the task of copy, paste, and save every time you modify the HTML content.
-- **js**<br>
-   Stores JS files built by Gulp and jQuery, jQuery migrate, Modernizr, and Pace.js.
-- **parts**<br>
-   The template PHP files that will be loaded to main theme file. This corresponds to `template-parts` in Wordpress’ default theme.
-- **src**<br>
-   Stores source files that will be compiled by Gulp.
-- **txt**<br>
-   Stores `.txt` files that might help your web development. Now there are `htaccess.txt`, copied from HTML 5 Boilerplate, and `robots.txt`.
-
-## Feature
-
-## CSS (Stylus)
-
-### Preprocessor - Stylus
-The developer of this theme prefers [Stylus](http://stylus-lang.com/) for CSS preprocessor. The gulp configuration is capable to implement Sass or Less. But you have to do so with your own knowledge and responsibility.
-
-### Media Query
-By default, the theme contains three media queries:
-1. **all** for all medias
-2. **"(min-width:768px)"** for tablet or higher
-3. **"(min-width:1024px)"** for PC or higher
-
-**This theme avoids using inline media query**. You can, however, easily write [Bootstrap-based media queries](https://getbootstrap.com/docs/4.0/layout/overview/) as follows.
-
-```stylus
-@media $xs
-or
-@media $sm
-or
-@media $md
-or
-@media $lg
-or
-@media $xl
-  // your style here
-```
-
-The variables of media queries are defined in `src/stylus/config/variable.styl`.
-
-### Grid
-The grid of this theme is mostly based on [Bootstrap](https://getbootstrap.com/docs/4.0/layout/grid/).
-
-- **32px Gutter**<br>
-The biggest difference is gutter width: 32px not 30px, giving 16px padding to each side of column.
-
-- **Wider Padding on Container**<br>
-The developer want the outer margin to be wider than the gutter. Hence, `padding: 0 40px` is set on `.container`, retaining the 1120px of content area at max. (In other words, the max width of `.container` is 1200px.)
-
-### Prewritten CSS
-The developer has written CSS that is commonly used in Wordpress wordpress such as `.menu-list` or `.pagination`, and broadly used in any website such as `.clearfix` or `.flex`.
-
-Many developers might find these CSS unreasonable—strange. If you are one of them who feels that way, please feel free to remove entire `src/stylus` files before get your hands.
-
-```
-$ rm -r src/stylus
+├── assets						# Vendor files like bootstrap, jQuery
+├── config						# Configuration files for theme
+├── (dist) 						# Built files. Created by Gulp, never edit
+├── doc 							# Documentations about theme and website
+├── functions 				# PHP funtions
+│   ├── cron/
+│   ├── media/
+│   ├── nav_menu/
+│   ├── option/
+│   ├── other/
+│   ├── post/
+│   ├── shortcode/
+│   ├── widget/
+│   ├── paths.php
+│   └── setup.php
+├── html/							# HTMLs before saving DB.
+├── img/ 							# Images that are part of you theme
+├── (node_modules) 		# NPM modules
+├── parts/						# Wordpresss template parts
+├── src 							# Source files
+│   ├── js/
+│   └── stylus/
+└── vendor/
 ```
 
 ## Expected Updates in Future
@@ -143,16 +87,18 @@ For now there is no way to switch the feature, except that you modify the code i
 ## Issues
 
 ### Wordpress Version
-The theme is tested only with the latest version of Wordpress. 
-There is no guarantee that the theme works with non-latest versions.
 
-If you want to know other development environment, please check out [Tested Environment](#test-environment)
+The theme is tested only with the latest version of Wordpress. There is no guarantee that the theme works with non-latest version of Wordpress. For the test environment, please refer to [Test Environment](#test-environment) section.
 
-### Javascript Testing
-For now there is no test for JS file. The developer is not a fan of JS testing, and has no attempt to write testing code any time soon.
+### No Liting & JS Testing
+
+For now there is linting for CSS & JS and no test program for JS files. At the time of this writting, the developer has no intention to implement these feature any time soon.
 
 ### Not for Child Theme or Parent theme
-The developer has an only intention to use the theme as a parent theme. It might work as a child theme, but this is no guarantee.
+
+The theme is being developed to be used as your sole custom theme. Therefore, the theme might not work properly if you use it as the parent theme of child or child theme itself.
+
+It is possible to customize the theme in accordance with your preference for those purpose, however, it requires much work.
 
 ## Test Environment
 - Node & NPM: 10.15.0 & 6.4.1
@@ -163,9 +109,8 @@ The developer has an only intention to use the theme as a parent theme. It might
 - Web Server: Apache 2.2.34
 
 ## Other Wordpress Starter Themes
-- Sage
-- Bone
-- Underscore
+- [Sage](https://roots.io/sage/) ([Github](https://github.com/roots/sage))
+- [Underscores a.k.a. \_s](https://underscores.me/) ([Github](https://github.com/automattic/_s))
 
 ## Feedback
-If you have any request or find a bug, please bring it up to [Issues](https://github.com/zacfukuda/minamoto/issues) of this repository.
+If you have any request or find bugs, please bring it up to [Issues](https://github.com/zacfukuda/minamoto/issues) of this repository.
