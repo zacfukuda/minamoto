@@ -24,11 +24,11 @@ After dowloading the theme, install NPM modules:
 $ yarn
 ```
 
-File | Configuration
---- | --- | ---
-`style.css` | Edit the information so that the proper information will appear in the admin page.
-`package.json` | name | Recommended to match to the text domain defined in `style.css`.
- | version | Will be appended after the assets files like CSS and Javacript for cache busting purpose.
+| File | Configuration |
+| --- | --- | --- |
+| `style.css` | Edit the information so that the proper information will appear in the admin page. |
+| `package.json` | name | Recommended to match to the text domain defined in `style.css`. |
+|   | version | Will be appended after the assets files like CSS and Javacript for cache busting purpose.
  | proxy | Will be used as Browsersync option inside `gulpfile.js`. The default target is set to `http://wordpress.localhost`.
 
 > `style.css` exists only to be recognized as a theme by Wordpress system. All styles are written in `src/stylus/*`, and will be compiled to `./dist/css`.
@@ -38,11 +38,11 @@ In addition to the file above, you can configure files under `config` so that th
 ## Scripts
 > This theme is developed using `yarn` over `npm` or `npx`. The `npm` or `npx `might do the intended tasks. however, the developer of this theme, has no plan to make the theme compatible with `npm` or `npx`.
 
-Command | Task
--- | ---
-`yarn start` | Runs Broswersync server.<br>By default, the gulp will not open the browser window. So please navigate yourself to [http://localhost:3000/](http://localhost:3000/).
-`yarn watch` | Keep watching file changes.<br>Contrary to `yarn start`, this command do not run Browsersync server, instead keeps watching file changes and outputs new files.
-`yarn build` | Build optimized asset files along with unminified version. Run this command before you put the site into production.
+| Command | Task |
+| --- | --- |
+| `yarn start` | Runs Broswersync server.<br>By default, the gulp will not open the browser window. So please navigate yourself to [http://localhost:3000/](http://localhost:3000/). |
+| `yarn watch` | Keep watching file changes.<br>Contrary to `yarn start`, this command do not run Browsersync server, instead keeps watching file changes and outputs new files. |
+| `yarn build` | Build optimized asset files along with unminified version. Run this command before you put the site into production. |
 
 > The Broswersync proxies to `proxy.target` defined in `package.json`. Also, if you want to run the dev server other than `port:3000`, please edit `gulpfile.js`.
 
