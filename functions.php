@@ -1,36 +1,21 @@
 <?php // functions
 
-/**
- * Global variables regarding theme path
- * @link https://developer.wordpress.org/reference/functions/get_theme_root/ 
- * @link https://developer.wordpress.org/reference/functions/get_template_directory/
- * @link https://developer.wordpress.org/reference/functions/get_stylesheet_directory/
- * @link https://developer.wordpress.org/reference/functions/get_template_directory_uri/
- * @link https://developer.wordpress.org/reference/functions/get_stylesheet_directory_uri/
- * @link https://developer.wordpress.org/reference/functions/wp_make_link_relative/
- *
- */
-
-// Absolute Path (on server only)
-$theme_root = get_theme_root();
-$template_directory = get_template_directory(); // Returns path to parent theme.
-$stylesheet_directory = get_stylesheet_directory(); // Returns path to child theme.
-
-// URI
-$template_directory_uri = get_template_directory_uri();
-$stylesheet_directory_uri = get_stylesheet_directory_uri();
-
-// Relative paths from web root
-$relative_stylesheet_directory = wp_make_link_relative($stylesheet_directory_uri);
-$relative_template_directory = wp_make_link_relative($template_directory_uri);
-
-// Path to "functions" directory
-$functions_directory = $template_directory.'/functions';
+// Import path values
+require_once 'functions/paths.php';
 
 /**
  * Load theme configuration from package.json
  */
-$package_json = file_get_contents($template_directory.'/package.json');
+$package_json = file_get_contents($paths->template . '/package.json');
+$package_json = json_decode($package_json);
+
+$theme_textdomain = $package_json->name; // Text domain
+$theme_version = $package_json->version; // Theme version
+
+/**
+ * Load theme configuration from package.json
+ */
+$package_json = file_get_contents($paths->template . '/package.json');
 $package_json = json_decode($package_json);
 
 $theme_textdomain = $package_json->name; // Text domain
@@ -40,59 +25,59 @@ $theme_version = $package_json->version; // Theme version
  * Sets up theme defaults and registers
  * support for various WordPress features.
  * -------------------------------------- */
-require_once $functions_directory.'/setup.php';
+require_once $paths->functions . '/setup.php';
 
 /* ----------------------------------------
  * Post & Page,
  * Taxonomies also come in here.
  * -------------------------------------- */
-require_once $functions_directory.'/post/is_first_page.php';
-require_once $functions_directory.'/post/remove_pages_autop.php';
-require_once $functions_directory.'/post/the_html_content.php';
-require_once $functions_directory.'/post/the_posts_pagination_without_screen_reader.php';
-require_once $functions_directory.'/post/wpdocs_excerpt_more.php';
+require_once $paths->functions . '/post/is_first_page.php';
+require_once $paths->functions . '/post/remove_pages_autop.php';
+require_once $paths->functions . '/post/the_html_content.php';
+require_once $paths->functions . '/post/the_posts_pagination_without_screen_reader.php';
+require_once $paths->functions . '/post/wpdocs_excerpt_more.php';
 
 // Custom Post & Taxnomy
-require_once $functions_directory.'/post/register_post_type_book.php';
-require_once $functions_directory.'/post/register_taxonomy_genre.php';
+require_once $paths->functions . '/post/register_post_type_book.php';
+require_once $paths->functions . '/post/register_taxonomy_genre.php';
 
 /* ----------------------------------------
  * Media
  * -------------------------------------- */
-require_once $functions_directory.'/media/filter_medium_large.php';
-require_once $functions_directory.'/media/half_image_resize.php';
-require_once $functions_directory.'/media/the_alternative_thumbnail.php';
+require_once $paths->functions . '/media/filter_medium_large.php';
+require_once $paths->functions . '/media/half_image_resize.php';
+require_once $paths->functions . '/media/the_alternative_thumbnail.php';
 
 /* ----------------------------------------
  * Navigation Menu
  * -------------------------------------- */
-require_once $functions_directory.'/nav_menu/Custom_Walker_Nav_Menu.php';
-require_once $functions_directory.'/nav_menu/register_nav_menu_locations.php';
-require_once $functions_directory.'/nav_menu/the_global_navigation.php';
-require_once $functions_directory.'/nav_menu/the_footer_navigation.php';
+require_once $paths->functions . '/nav_menu/Custom_Walker_Nav_Menu.php';
+require_once $paths->functions . '/nav_menu/register_nav_menu_locations.php';
+require_once $paths->functions . '/nav_menu/the_global_navigation.php';
+require_once $paths->functions . '/nav_menu/the_footer_navigation.php';
 
 /* ----------------------------------------
  * Widget
  * -------------------------------------- */
-require_once $functions_directory.'/widget/widgets_init.php';
-require_once $functions_directory.'/widget/Hello_World_Widget.php';
+require_once $paths->functions . '/widget/widgets_init.php';
+require_once $paths->functions . '/widget/Hello_World_Widget.php';
 
 /* ----------------------------------------
  * Options & Setting API
  * -------------------------------------- */
-require_once $functions_directory.'/option/posts_on_front.php';
+require_once $paths->functions . '/option/posts_on_front.php';
 
 /* ----------------------------------------
  * Shortcode
  * -------------------------------------- */
-require_once $functions_directory.'/shortcode/shortcode_hello.php';
+require_once $paths->functions . '/shortcode/shortcode_hello.php';
 
 /* ----------------------------------------
  * Cron
  * -------------------------------------- */
-require_once $functions_directory.'/cron/add_custom_schedules.php';
+require_once $paths->functions . '/cron/add_custom_schedules.php';
 
 /* ----------------------------------------
  * Other
  * -------------------------------------- */
-require_once $functions_directory.'/other/cf7_email_validation_filter.php';
+require_once $paths->functions . '/other/cf7_email_validation_filter.php';

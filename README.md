@@ -1,6 +1,6 @@
 # **Minamoto** – Wordpress Starter Theme with Gulp + Stylus + Webpack(babel) + Browsersync
 
-![alt Minamoto Logo](./img/common/logo.svg)
+![alt Minamoto Logo](./img/logo/normal.svg)
 
 **Last Update: January 24, 2019.**
 

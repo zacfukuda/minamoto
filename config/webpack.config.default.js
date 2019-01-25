@@ -14,10 +14,12 @@ const config = {
 	output: {
 		filename: 'app.min.js'
 	},
-	// Uncomment the line below if you want to use jQuery from a CDN
-	// externals: {
-	//	jquery: 'jQuery'
-	// },
+	externals: {
+		// Comment out the line below if you don’t need jQuery from a CDN
+		jquery: 'jQuery',
+		// Comment out the line below if you don’t need Pace
+		pace: 'Pace'
+	},
 	devtool: argv.pro ? 'source-map' : 'cheap-module-eval-source-map'
 }
 

@@ -1,7 +1,7 @@
 <?php // footer
 
 global $theme_version;
-global $relative_template_directory; ?>
+global $paths; ?>
 
 	</main>
 	<!-- Footer -->
@@ -19,7 +19,6 @@ global $relative_template_directory; ?>
 <div><!-- root -->
 
 <?php wp_footer(); ?>
-<script src="<?php echo $relative_template_directory; ?>/dist/js/app.min.js?v=<?php echo $theme_version; ?>"></script>
 <?php
 /**
  * Pace - Progress Bar
@@ -33,23 +32,7 @@ global $relative_template_directory; ?>
 		eventLag: false,
 	}
 </script>
-<script src="<?php echo $relative_template_directory ?>/assets/pace/pace.min.js"></script>
-<script>
-	// Event when the loading done.
-	function doneLoading ($) {
-		var $progressUI = $('#progressUI');
-
-		$progressUI.css('opacity', 0);
-		setTimeout( function () {
-			$progressUI.css('display', 'none');
-			$('html').removeClass('overflow-hidden');
-		}, 750);
-	}
-
-	Pace.on('done', function() {
-		appInit(jQuery3);
-		doneLoading(jQuery3);
-	}, false);
-</script>
+<script src="<?php echo $paths->rel_template ?>/assets/pace/pace.min.js"></script>
+<script src="<?php echo $paths->rel_template; ?>/dist/js/app.min.js?v=<?php echo $theme_version; ?>"></script>
 </body>
 </html>

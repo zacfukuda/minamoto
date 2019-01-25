@@ -4,7 +4,7 @@ get_header();
 remove_filter( 'the_content', 'wpautop' ); ?>
 
 <?php
-	while ( have_post() ) {
+	while ( have_posts() ) {
 		the_post();
 		get_template_part( 'parts/page');
 	}

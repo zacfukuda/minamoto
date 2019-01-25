@@ -1,7 +1,7 @@
 <?php // header
 
 global $theme_version;
-global $relative_template_directory; ?>
+global $paths; ?>
 
 <!doctype html>
 <!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
@@ -16,22 +16,22 @@ global $relative_template_directory; ?>
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php /* Favicons (http://realfavicongenerator.net/) */ ?>
-<link rel="shortcut icon" href="<?php echo $relative_template_directory; ?>/img/favicon/favicon.ico">
-<link rel="apple-touch-icon" sizes="180x180" href="<?php echo $relative_template_directory ?>/img/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="<?php echo $relative_template_directory ?>/img/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="<?php echo $relative_template_directory ?>/img/favicon/favicon-16x16.png">
-<link rel="manifest" href="<?php echo $relative_template_directory ?>/img/favicon/manifest.json">
-<link rel="mask-icon" href="<?php echo $relative_template_directory ?>/img/favicon/safari-pinned-tab.svg" color="#000">
+<link rel="shortcut icon" href="<?php echo $paths->rel_template; ?>/img/favicon/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="<?php echo $paths->rel_template ?>/img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="<?php echo $paths->rel_template ?>/img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="<?php echo $paths->rel_template ?>/img/favicon/favicon-16x16.png">
+<link rel="manifest" href="<?php echo $paths->rel_template ?>/img/favicon/manifest.json">
+<link rel="mask-icon" href="<?php echo $paths->rel_template ?>/img/favicon/safari-pinned-tab.svg" color="#000">
 <meta name="msapplication-TileColor" content="#000">
-<meta name="msapplication-TileImage" content="<?php echo $relative_template_directory; ?>/img/favicon/mstile-150x150.png">
+<meta name="msapplication-TileImage" content="<?php echo $paths->rel_template; ?>/img/favicon/mstile-150x150.png">
 <meta name="theme-color" content="#000">
 <?php /* Font (https://fonts.google.com/) */ ?>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 <?php /* Stylesheet */ ?>
-<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/dist/css/style.min.css?v=<?php echo $theme_version; ?>" media="all">
-<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/dist/css/medium.min.css?v=<?php echo $theme_version; ?>" media="(min-width: 768px)">
-<link rel="stylesheet" href="<?php echo $relative_template_directory ?>/dist/css/large.min.css?v=<?php echo $theme_version; ?>" media="(min-width: 1024px)">
+<link rel="stylesheet" href="<?php echo $paths->rel_template ?>/dist/css/style.min.css?v=<?php echo $theme_version; ?>" media="all">
+<link rel="stylesheet" href="<?php echo $paths->rel_template ?>/dist/css/medium.min.css?v=<?php echo $theme_version; ?>" media="(min-width: 768px)">
+<link rel="stylesheet" href="<?php echo $paths->rel_template ?>/dist/css/large.min.css?v=<?php echo $theme_version; ?>" media="(min-width: 1024px)">
 <?php /* Language */ ?>
 <link rel="alternate" href="https://www.example.com/ja/" hreflang="ja-jp" />
 <link rel="alternate" href="https://www.example.com" hreflang="en" />
@@ -54,13 +54,13 @@ global $relative_template_directory; ?>
   integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4="
   crossorigin="anonymous"></script>
 <?php /* jQuery CDN Fallback */ ?>
-<script>window.jQuery || document.write('<script src="<?php echo $relative_template_directory; ?>/assets/jquery/jquery.min.js"><\/script>')</script>
-<script> if (typeof jQuery.migrateWarnings == 'undefined') document.write('<script src="<?php echo $relative_template_directory; ?>/assets/jquery/jquery-migrate.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="<?php echo $paths->rel_template; ?>/assets/jquery/jquery.min.js"><\/script>')</script>
+<script> if (typeof jQuery.migrateWarnings == 'undefined') document.write('<script src="<?php echo $paths->rel_template; ?>/assets/jquery/jquery-migrate.min.js"><\/script>')</script>
 <?php /* Multi jQuery version handling  */ ?>
-<script>var jQuery3 = jQuery.noConflict(true);</script>
+<script>// var jQuery3 = jQuery.noConflict(true);</script>
 <?php /* Modernizr */ ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
-<script>window.Modernizr || document.write('<script src="<?php echo $relative_template_directory; ?>/assets/modernizr/modernizr.min.js"><\/script>')</script>
+<script>window.Modernizr || document.write('<script src="<?php echo $paths->rel_template; ?>/assets/modernizr/modernizr.min.js"><\/script>')</script>
 <?php wp_head(); ?>
 </head>
 <body id="body" <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">

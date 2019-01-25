@@ -7,7 +7,7 @@
 		<!-- Logo -->
 		<h1 class="logo">
 			<a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php bloginfo('name'); ?>">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/header/logo.svg" alt="<?php bloginfo('name'); ?>">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logo/normal.svg" alt="<?php bloginfo('name'); ?>">
 			</a>
 		</h1>
 
