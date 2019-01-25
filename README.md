@@ -41,7 +41,7 @@ In addition to the file above, you can configure files under `config` so that th
 > This theme is developed using `yarn` over `npm` or `npx`. The `npm` or `npx `might do the intended tasks. however, the developer of this theme, has no plan to make the theme compatible with `npm` or `npx`.
 
 | Command | Task | Comment |
-| --- | --- | --- |
+| ------------ | --- | --- |
 | `yarn start` | Runs Broswersync server. | By default, the server will run at [http://localhost:3000/](http://localhost:3000/), and not open the browser. |
 | `yarn watch` | Keep watching file changes. | This doesn’t run Browsersync. |
 | `yarn build` | Build optimized assets. | Also build unminified version. Run this before putting into production. |
