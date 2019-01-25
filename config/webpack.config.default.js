@@ -16,9 +16,9 @@ const config = {
 	},
 	externals: {
 		// Comment out the line below if you don’t need jQuery from a CDN
-		jquery: 'jQuery',
+		// jquery: 'jQuery',
 		// Comment out the line below if you don’t need Pace
-		pace: 'Pace'
+		// pace: 'Pace'
 	},
 	devtool: argv.pro ? 'source-map' : 'cheap-module-eval-source-map'
 }

@@ -4,10 +4,7 @@ global $theme_version;
 global $paths; ?>
 
 <!doctype html>
-<!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!--><html <?php language_attributes(); ?> class="no-js no-svg overflow-hidden" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"><!--<![endif]-->
+<html <?php language_attributes(); ?> class="no-js no-svg" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -32,45 +29,17 @@ global $paths; ?>
 <link rel="stylesheet" href="<?php echo $paths->rel_template ?>/dist/css/style.min.css?v=<?php echo $theme_version; ?>" media="all">
 <link rel="stylesheet" href="<?php echo $paths->rel_template ?>/dist/css/medium.min.css?v=<?php echo $theme_version; ?>" media="(min-width: 768px)">
 <link rel="stylesheet" href="<?php echo $paths->rel_template ?>/dist/css/large.min.css?v=<?php echo $theme_version; ?>" media="(min-width: 1024px)">
-<?php /* Language */ ?>
+<?php /* Internationalization */ ?>
 <link rel="alternate" href="https://www.example.com/ja/" hreflang="ja-jp" />
 <link rel="alternate" href="https://www.example.com" hreflang="en" />
 <?php /* Other */ ?>
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-<?php
-/**
- * jQuery - Get the latest version at…
- * @link CDN: https://code.jquery.com/
- * @link File: https://jquery.com/download/
- * @link All versions: https://code.jquery.com/jquery/
- */
-?>
-<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-<script
-  src="https://code.jquery.com/jquery-migrate-3.0.1.min.js"
-  integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4="
-  crossorigin="anonymous"></script>
-<?php /* jQuery CDN Fallback */ ?>
-<script>window.jQuery || document.write('<script src="<?php echo $paths->rel_template; ?>/assets/jquery/jquery.min.js"><\/script>')</script>
-<script> if (typeof jQuery.migrateWarnings == 'undefined') document.write('<script src="<?php echo $paths->rel_template; ?>/assets/jquery/jquery-migrate.min.js"><\/script>')</script>
-<?php /* Multi jQuery version handling  */ ?>
-<script>// var jQuery3 = jQuery.noConflict(true);</script>
-<?php /* Modernizr */ ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
-<script>window.Modernizr || document.write('<script src="<?php echo $paths->rel_template; ?>/assets/modernizr/modernizr.min.js"><\/script>')</script>
 <?php wp_head(); ?>
 </head>
 <body id="body" <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
-<!--[if lt IE 8]>
-	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<!--[if lte IE 9]>
+  <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->
-<div id="progressUI" class="progressUI flex justify-center align-center">
-	<!-- Put some html here -->
-</div><!-- #progressUI.progressUI -->
-
 <!-- Root -->
 <div id="root" class="root">
 
