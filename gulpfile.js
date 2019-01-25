@@ -21,7 +21,6 @@ const	plumber = require('gulp-plumber')
 const rename = require('gulp-rename')
 const sourcemaps = require('gulp-sourcemaps')
 const	stylus = require('gulp-stylus')
-const uglify = require('gulp-uglify')
 const webpack = require('webpack-stream')
 
 // Argument passed to the NPM command
@@ -29,32 +28,6 @@ const argv = require('minimist')(process.argv.slice(3))
 
 // Set true onlu if the current gulp task is 'server'
 const isBrowsersyncOn = (process.argv[2] === 'server') ? true : false
-
-/*const paths = {
-	src: {
-		stylus: './src/stylus/',
-		js: './src/js/'
-	},
-	dist: {
-		css: './css/',
-		js: './js/'
-	}
-} */
-
-// Compile files
-/*const compileFiles = {
-	stylus: [
-		paths.src.stylus+'*.styl',
-		'!'+paths.src.stylus+'_*.styl'
-	],
-	js: paths.src.js+'*.js'
-}*/
-
-// Watch files
-/*const watchFiles = {
-	stylus: paths.src.stylus + '**\/*.styl',
-	js: paths.src.js + '**\/*.js'
-}*/
 
 // Stylus
 const stylusTask = () => {

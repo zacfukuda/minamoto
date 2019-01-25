@@ -21,7 +21,7 @@ const dist = {
 const compile = {
 	stylus: [
 		path.resolve(src.stylus, '*.styl'),
-		'!' + path.resolve(src.stylusm, '_*.styl')
+		'!' + path.resolve(src.stylus, '_*.styl')
 	],
 	js: path.resolve(src.js, 'index.js')
 }
