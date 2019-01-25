@@ -1,6 +1,8 @@
 # **Minamoto** – Wordpress Starter Theme
 
-<div align="center">![alt Minamoto Logo](./img/logo/normal.svg)</div>
+<div align="center">
+	<img src="./img/logo/normal.svg" alt="Minamoto Logo">
+</div>
 
 Minamoto is a Wordpress starter theme with [Gulp](https://github.com/gulpjs/gulp) + [Stylus](http://stylus-lang.com/) + [Webpack](https://webpack.js.org/) + [Browsersync](https://browsersync.io/docs/gulp).
 
