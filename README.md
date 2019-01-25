@@ -24,36 +24,38 @@ After dowloading the theme, install NPM modules:
 $ yarn
 ```
 
+Edit the files shown below:
+
 | File | Property | Configuration |
 | --- | --- | --- |
-| `style.css` | | Edit the information so that the proper information will appear in the admin page. |
+| `style.css` | - | Edit the information so that the proper information will appear in the admin page. |
 | `package.json` | name | Recommended to match to the text domain defined in `style.css`. |
-| | version | Will be appended after the assets files like CSS and Javacript for cache busting purpose. |
-| | proxy | Will be used as Browsersync option inside `gulpfile.js`. The default target is set to `http://wordpress.localhost`. |
+| - | version | Will be appended after the assets files like CSS and Javacript for cache busting purpose. |
+| - | proxy | Will be used as Browsersync option inside `gulpfile.js`. The default is `http://wordpress.localhost`. |
 
 > `style.css` exists only to be recognized as a theme by Wordpress system. All styles are written in `src/stylus/*`, and will be compiled to `./dist/css`.
 
-In addition to the file above, you can configure files under `config` so that the source files will be built as you want it to.
+In addition to the file above, you can configure files under `config` so that the source files will be compile as you want it to.
 
 ## Scripts
 > This theme is developed using `yarn` over `npm` or `npx`. The `npm` or `npx `might do the intended tasks. however, the developer of this theme, has no plan to make the theme compatible with `npm` or `npx`.
 
-| Command | Task |
-| --- | --- |
-| `yarn start` | Runs Broswersync server.<br>By default, the gulp will not open the browser window. So please navigate yourself to [http://localhost:3000/](http://localhost:3000/). |
-| `yarn watch` | Keep watching file changes.<br>Contrary to `yarn start`, this command do not run Browsersync server, instead keeps watching file changes and outputs new files. |
-| `yarn build` | Build optimized asset files along with unminified version. Run this command before you put the site into production. |
+| Command | Task | Comment |
+| --- | --- | --- |
+| `yarn start` | Runs Broswersync server. | By default, the server will run at [http://localhost:3000/](http://localhost:3000/), and not open the browser. |
+| `yarn watch` | Keep watching file changes. | This doesn’t run Browsersync. |
+| `yarn build` | Build optimized assets. | Also build unminified version. Run this before putting into production. |
 
-> The Broswersync proxies to `proxy.target` defined in `package.json`. Also, if you want to run the dev server other than `port:3000`, please edit `gulpfile.js`.
+> The Broswersync proxies requests to `proxy.target` defined in `package.json`. Also, if you want to run the dev server other than `port:3000`, please edit `gulpfile.js`.
 
 ## File Structure
 ```
 .
-├── assets						# Vendor files like bootstrap, jQuery
-├── config						# Configuration files for theme
-├── (dist) 						# Built files. Created by Gulp, never edit
-├── doc 							# Documentations about theme and website
-├── functions 				# PHP funtions
+├── assets/           # Vendor files like jQuery, Pace
+├── config/           # Configuration files for theme
+├── (dist/)           # Built files. Created by Gulp, never edit
+├── doc/              # Documentations about theme and website
+├── functions/        # PHP funtions
 │   ├── cron/
 │   ├── media/
 │   ├── nav_menu/
@@ -64,11 +66,11 @@ In addition to the file above, you can configure files under `config` so that th
 │   ├── widget/
 │   ├── paths.php
 │   └── setup.php
-├── html/							# HTMLs before saving DB.
-├── img/ 							# Images that are part of you theme
-├── (node_modules) 		# NPM modules
-├── parts/						# Wordpresss template parts
-├── src 							# Source files
+├── html/             # HTMLs before saving DB.
+├── img/              # Images that are part of you theme
+├── (node_modules)    # NPM modules
+├── parts/            # Wordpresss template parts
+├── src               # Source files
 │   ├── js/
 │   └── stylus/
 └── vendor/
