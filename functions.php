@@ -22,6 +22,11 @@ $theme_textdomain = $package_json->name; // Text domain
 $theme_version = $package_json->version; // Theme version
 
 /* ----------------------------------------
+ * Timber setup
+ * -------------------------------------- */
+require_once $paths->functions . '/timber.php';
+
+/* ----------------------------------------
  * Sets up theme defaults and registers
  * support for various WordPress features.
  * -------------------------------------- */

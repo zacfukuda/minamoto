@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html {{ site.language_attributes }}>
+	{% include "component/head.twig" %}
+	<body class="{{body_class}}" data-template="base.twig">
+		<div id="root" class="root">
+			{% include "component/header.twig" %}
+			<main class="main" role="main">
+				{% block content %}
+					Sorry, no content
+				{% endblock %}
+				<aside>Aside content</aside>
+			</main>
+			{% include "component/footer.twig" %}
+		</div><!-- #root.root -->
+		{{ function('wp_footer') }}
+	</body>
+</html>
