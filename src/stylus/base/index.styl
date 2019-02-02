@@ -22,26 +22,26 @@ body
 // Section
 $sect-space = 48px
 section
-	&.withPadding
+	&.has-padding
 		padding $sect-space 0
-	&.withPadding-top
+	&.has-padding-top
 		padding $sect-space 0 0
-	&.withPadding-bottom
+	&.has-padding-bottom
 		padding 0 0 $sect-space
-	&.withMargin
+	&.has-margin
 		margin $sect-space 0
-	&.withMargin-top
+	&.with-margin-top
 		margin $sect-space 0 0
-	&.withMargin-bottom
+	&.with-margin-bottom
 		margin 0 0 $sect-space
-	&.hasRow
-		&.withPadding
+	&.has-row
+		&.has-padding
 			padding ($sect-space - $gutter) 0 $sect-space
-		&.withPadding-top
+		&.has-padding-top
 			padding ($sect-space - $gutter) 0 0
-		&.withMargin
+		&.has-margin
 			margin ($sect-space - $gutter) 0 $sect-space
-		&.withMargin-top
+		&.has-margin-top
 			margin ($sect-space - $gutter) 0 0
 
 // Container
@@ -56,7 +56,6 @@ figure, picture, video
 	display block
 
 img, svg
-	// width auto
 	height auto
 	max-width 100%
 	vertical-align bottom
@@ -71,13 +70,13 @@ a.anchor
 	visibility hidden
 
 // Slection
-::-moz-selection
-	background rgba($main-color, .3)
-	color #fff
+// ::-moz-selection
+// 	background rgba($main-color, .3)
+// 	color #fff
 
-::selection
-	background rgba($main-color, .3)
-	color #fff
+// ::selection
+// 	background rgba($main-color, .3)
+// 	color #fff
 
 // Clearfix
 .clearfix
@@ -114,15 +113,15 @@ a.anchor
 	position fixed
 
 // Before & After
-.hasBefore,
-.hasAfter,
-.hasBeforeAfter
+.has-before,
+.has-after,
+.has-before-after
 	position relative
 
-.hasBefore:before,
-.hasAfter:after,
-.hasBeforeAfter:before,
-.hasBeforeAfter:after
+.has-before:before,
+.has-after:after,
+.has-before-after:before,
+.has-before-after:after
 	content ""
 	display block
 	position absolute
@@ -138,3 +137,31 @@ a.anchor
 	ttransiton all .3s ease-out
 .transition-ease-in-out
 	ttransiton all .3s ease-in-out
+
+// Justify content
+.jc-start
+	justify-content start
+.jc-end
+	justify-content end
+.jc-center
+	justify-content center
+.jc-stretch
+	justify-content stretch
+.jc-between
+	justify-content space-between
+.jc-around
+	justify-content space-around
+.jc-evenly
+	justify-content space-evenly
+
+// Align items
+.ai-start
+	align-items start
+.ai-end
+	align-items end
+.ai-center
+	align-items center
+.ai-stretch
+	align-items stretch
+.ai-baseline
+	align-items baseline

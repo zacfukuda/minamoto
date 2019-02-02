@@ -4,7 +4,7 @@
 
 // Row - wrapper for column element
 .row
-	@extend .flex
+	display flex
 	margin 0 (-($gutter/2))
 	flex-wrap wrap
 
@@ -24,7 +24,7 @@ for $j in (1..6)
 // No margin-top on col
 .no-margin
 	> [class^="col-"]
-		margin-top 0
+		margin 0
 .no-padding
 	> [class^="col-"]
 		padding 0

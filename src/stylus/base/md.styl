@@ -2,30 +2,29 @@
  * base/md
  */
 
-
 // Section
 $sect-space = 80px
 section
-	&.withPadding
+	&.has-padding
 		padding $sect-space 0
-	&.withPadding-top
+	&.has-padding-top
 		padding $sect-space 0 0
-	&.withPadding-bottom
+	&.has-padding-bottom
 		padding 0 0 $sect-space
-	&.withMargin
+	&.has-margin
 		margin $sect-space 0
-	&.withMargin-top
+	&.has-margin-top
 		margin $sect-space 0 0
-	&.withMargin-bottom
+	&.has-margin-bottom
 		margin 0 0 $sect-space
-	&.hasRow
-		&.withPadding
+	&.has-row
+		&.has-padding
 			padding ($sect-space - $gutter) 0 $sect-space
-		&.withPadding-top
+		&.has-padding-top
 			padding ($sect-space - $gutter) 0 0
-		&.withMargin
+		&.has-margin
 			margin ($sect-space - $gutter) 0 $sect-space
-		&.withMargin-top
+		&.has-margin-top
 			margin ($sect-space - $gutter) 0 0
 
 // Container
@@ -49,11 +48,39 @@ a.anchor
 	
 .tablet
 	display block
-	&.ib
-		display inline-block
-	&.inline
-		display inline
-	&.table
-		display table
-	&.table-cell
-		display table-cell
+.ib-md
+	display inline-block
+.inline-md
+	display inline
+.table-md
+	display table
+.table-cell-md
+	display table-cell
+
+// Justify content
+.jc-start-md
+	justify-content start
+.jc-end-md
+	justify-content end
+.jc-center-md
+	justify-content center
+.jc-stretch-md
+	justify-content stretch
+.jc-between-md
+	justify-content space-between
+.jc-around-md
+	justify-content space-around
+.jc-evenly-md
+	justify-content space-evenly
+
+// Align items
+.ai-start-md
+	align-items start
+.ai-end-md
+	align-items end
+.ai-center-md
+	align-items center
+.ai-stretch-md
+	align-items stretch
+.ai-baseline-md
+	align-items baseline
