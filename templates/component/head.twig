@@ -2,7 +2,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="author" content="Your name/company name">
+	<meta name="author" content="Your name or company name">
 	{# Responsive #}
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
@@ -13,15 +13,49 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 	{# Stylesheet #}
-	<link rel="stylesheet" href="" media="all">
-	<link rel="stylesheet" href="" media="(min-width: 768px)">
-	<link rel="stylesheet" href="" media="(min-width: 1024px)">
+	<link rel="stylesheet" href="{{paths.rel_template}}/dist/css/style.min.css?v={{version}}" media="all">
+	<link rel="stylesheet" href="{{paths.rel_template}}/dist/css/medium.min.css?v={{version}}" media="(min-width: 768px)">
+	<link rel="stylesheet" href="{{paths.rel_template}}/dist/css/large.min.css?v={{version}}" media="(min-width: 1024px)">
 	{# Internationalization #}
 	<link rel="alternate" href="https://www.example.com" hreflang="en" />
 	<link rel="alternate" href="https://www.example.com/ja/" hreflang="ja-jp" />
 	{# Other #}
-	<link rel="author" href="{{ paths.rel_template }}/humans.txt" />
-	<link rel="pingback" href="{{ site.pingback_url }}" />
+	<link rel="author" href="{{paths.rel_template}}/humans.txt" />
+	<link rel="pingback" href="{{site.pingback_url}}" />
 	<link rel="profile" href="https://gmpg.org/xfn/11" />
+	{#
+		jQuery
+
+		The below is the one way to manually load jQuery, the version of which differs from the one enqueued by plugins or such.
+		All loadings and extending must be done before wp_head() is called.
+
+		<script
+			src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"></script>
+
+		# Fallback
+		<script>window.jQuery || document.write('<script src="{{paths.rel_template}}/assets/jquery/jquery.min.js"><\/script>')</script>
+
+		# Migration, if you wish
+		<script
+			src="https://code.jquery.com/jquery-migrate-3.0.1.min.js"
+			integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4="
+			crossorigin="anonymous"></script>
+
+		# Migration fallback
+
+		# Other plugins you want to extend to your version of jQuery come here
+		# As an exmaple here is how you load Slick:
+		<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		
+		# Lastly, avoid jQuery version conflict
+		<script>var jQuery3 = jQuery.noConflict(true);</script>
+
+		# From now on, you can access your jQuery by:
+		<script>(function($) {
+			console.log('jQuery version: ' + $.fn.jquery);
+		})(jQuery3)</script>
+	#}
 	{{ function('wp_head') }}
 </head>

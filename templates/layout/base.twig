@@ -5,10 +5,12 @@
 		<div id="root" class="root">
 			{% include "component/header.twig" %}
 			<main class="main" role="main">
-				{% block content %}
-					Sorry, no content
-				{% endblock %}
-				<aside>Aside content</aside>
+				{% block content %} Sorry, no content {% endblock %}
+				{#
+					{% block sidebar %}
+						Uncomment if you wan to use
+					{% endblock %}
+				#}
 			</main>
 			{% include "component/footer.twig" %}
 		</div><!-- #root.root -->

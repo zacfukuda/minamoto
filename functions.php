@@ -12,15 +12,6 @@ $package_json = json_decode($package_json);
 $theme_textdomain = $package_json->name; // Text domain
 $theme_version = $package_json->version; // Theme version
 
-/**
- * Load theme configuration from package.json
- */
-$package_json = file_get_contents($paths->template . '/package.json');
-$package_json = json_decode($package_json);
-
-$theme_textdomain = $package_json->name; // Text domain
-$theme_version = $package_json->version; // Theme version
-
 /* ----------------------------------------
  * Timber setup
  * -------------------------------------- */

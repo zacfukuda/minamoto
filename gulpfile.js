@@ -59,7 +59,7 @@ const jsSync = (cb) => {
 }
 
 // Build unminified version of CSS & JS
-const buildUnminify = (cb) => {
+const buildUncompressed = (cb) => {
 	// CSS
 	src(paths.compile.stylus)
 		.pipe(plumber())
@@ -84,6 +84,7 @@ exports.watch = () => {
 	watch(paths.watch.js, jsTask)
 }
 
+// Run browsersyc server
 exports.server = () => {
 	browserSync.init({
 		open: false,
@@ -103,4 +104,8 @@ exports.server = () => {
 	// })
 }
 
-exports.build = parallel(stylusTask, jsTask, buildUnminify)
+// Build files for production
+exports.build = series(
+	parallel(stylusTask, jsTask),
+	buildUncompressed
+)

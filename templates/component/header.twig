@@ -1,10 +1,12 @@
 <header id="header" class="header">
+	{# Logo #}
 	<h1 role="banner">
 		<a href="{{site.url}}" rel="home"><img src="{{paths.rel_template}}/img/logo/normal.svg" alt="{{site.name}}" width="128" height="128"></a>
 	</h1>
+	{# Global Navigation #}
 	<nav role="navigation">
 		<ul>
-			{% for item in nav.get_items %}
+			{% for item in global_nav.get_items %}
 				<li><a href="{{item.link}}">{{ item.title }}</a></li>
 				{% if item.get_children %}
 					<ul>

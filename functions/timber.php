@@ -23,21 +23,40 @@ Timber::$autoescape = false;
 class MinamotoSite extends Timber\Site {
 
 	public function __construct() {
-		add_filter( 'timber_context', array( $this, 'add_to_context' ) );
+		add_filter('timber_context', array($this, 'add_to_context'));
+		add_filter('timber/twig', array($this, 'add_functions'));
 		parent::__construct();
 	}
 
 	/**
 	 * Add some context
+	 *
 	 * @param string $context
 	 */
 	public function add_to_context( $context ) {
-		global $paths;
+		global $paths, $theme_version;
 
 		$context['paths'] = $paths;
-		$context['nav'] = new Timber\Menu('global');
+		$context['version'] = $theme_version;
+		$context['global_nav'] = new Timber\Menu('global');
+		$context['footer_nav'] = new Timber\Menu('footer');
 		$context['site'] = $this;
 		return $context;
+	}
+
+	/**
+	 * Add custom Twig functionality
+	 * Add functions you want to use inside Twig template.
+	 *
+	 * @link https://timber.github.io/docs/guides/functions/
+	 * @param Twig_Environment $twig
+	 * @return $twig
+	 */
+	public function add_functions( $twig ) {
+		// Wordpress default function to display thumbnail <img>
+		$twig->addFunction(new Timber\Twig_Function('the_post_thumbnail', 'the_post_thumbnail'));
+
+		return $twig;
 	}
 }
 
