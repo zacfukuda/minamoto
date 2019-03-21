@@ -1,0 +1,14 @@
+{% extends "layout/base.twig" %}
+
+{% block content %}
+	<article>
+		<h1>{{ post.title }}</h1>
+		<div>
+			{% if html %}
+				{{ html }}
+			{% else %}
+				{{ post.content }}
+			{% endif %}
+		</div>
+	</article>
+{% endblock %}

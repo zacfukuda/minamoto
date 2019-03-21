@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html {{ site.language_attributes }}>
-	{% include "component/head.twig" %}
+	{% include "partial/head.twig" %}
 	<body class="{{body_class}}" data-template="base.twig">
+		
+		{#
+			Uncomment if you’d like to load SNS SDKs
+			{% include "partial/sdk.twig" %}
+		#}
+
 		<div id="root" class="root">
-			{% include "component/header.twig" %}
+			{% include "partial/header.twig" %}
 			<main class="main" role="main">
 				{% block content %} Sorry, no content {% endblock %}
 				{#
@@ -12,7 +18,7 @@
 					{% endblock %}
 				#}
 			</main>
-			{% include "component/footer.twig" %}
+			{% include "partial/footer.twig" %}
 		</div><!-- #root.root -->
 		{{ function('wp_footer') }}
 	</body>

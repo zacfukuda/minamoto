@@ -4,7 +4,10 @@
 
 'use strict'
 
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
+const TerserPlugin = require('terser-webpack-plugin')
+
+// External modules
+const externals = require('./webpack.config.externals')
 
 // Argument passed to the NPM command
 const argv = require('minimist')(process.argv.slice(3))
@@ -14,12 +17,7 @@ const config = {
 	output: {
 		filename: 'app.min.js'
 	},
-	externals: {
-		// Comment out the line below if you don’t need jQuery from a CDN
-		// jquery: 'jQuery',
-		// Comment out the line below if you don’t need Pace
-		// pace: 'Pace'
-	},
+	externals: externals,
 	devtool: argv.pro ? 'source-map' : 'cheap-module-eval-source-map'
 }
 
@@ -27,7 +25,7 @@ const config = {
 if ( argv.pro ) {
 	config.optimization = {
 		minimizer: [
-			new UglifyJsPlugin({
+			new TerserPlugin({
 				cache: true,
 				parallel: true,
 				sourceMap: false

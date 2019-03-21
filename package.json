@@ -1,6 +1,6 @@
 {
   "name": "minamoto",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": false,
   "author": "Zac Fukuda",
   "url": "https://github.com/zacfukuda/minamoto",
@@ -21,8 +21,10 @@
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-stylus": "^2.7.0",
+    "gulp-touch-fd": "^2.0.0",
     "minimist": "^1.2.0",
-    "uglifyjs-webpack-plugin": "^2.1.1",
+    "terser-webpack-plugin": "^1.2.3",
+    "webpack": "^4.29.6",
     "webpack-stream": "^5.2.1"
   },
   "proxy": {

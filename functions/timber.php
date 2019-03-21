@@ -54,7 +54,7 @@ class MinamotoSite extends Timber\Site {
 	 */
 	public function add_functions( $twig ) {
 		// Wordpress default function to display thumbnail <img>
-		$twig->addFunction(new Timber\Twig_Function('the_post_thumbnail', 'the_post_thumbnail'));
+		// $twig->addFunction(new Timber\Twig_Function('the_post_thumbnail', 'the_post_thumbnail'));
 
 		return $twig;
 	}

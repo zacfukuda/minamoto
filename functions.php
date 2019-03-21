@@ -29,7 +29,7 @@ require_once $paths->functions . '/setup.php';
  * -------------------------------------- */
 require_once $paths->functions . '/post/is_first_page.php';
 require_once $paths->functions . '/post/remove_pages_autop.php';
-require_once $paths->functions . '/post/the_html_content.php';
+require_once $paths->functions . '/post/get_the_html_content.php';
 require_once $paths->functions . '/post/the_posts_pagination_without_screen_reader.php';
 require_once $paths->functions . '/post/wpdocs_excerpt_more.php';
 
