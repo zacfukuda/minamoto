@@ -5,19 +5,20 @@
 // Row - wrapper for column element
 .row
 	display flex
-	margin 0 (-($gutter/2))
 	flex-wrap wrap
+	margin 0 (-($gutter/2))
 
 // column
 [class^="col-"]
 	margin $gutter 0 0
 	padding 0 ($gutter/2)
+	width 100%
 
 for $i in (1..12)
 	.col-{$i} 
 		width (100 * $i / 12)%
 
-for $j in (1..6)
+for $j in (1..11)
 	.offset-{$j}
 		margin-left (100 * $j / 12)%
 

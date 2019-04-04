@@ -2,9 +2,7 @@
  * base/index
  */
 
-/*------------------------*\
-  Basic
-\*------------------------*/
+// Document & body
 html, body
 	width 100%
 	position relative
@@ -61,6 +59,34 @@ img, svg
 	vertical-align bottom
 	&.w100
 		width 100%
+
+// List
+ul
+	&.disc, &.circle, &.square
+		padding 0 0 0 1.5em
+	&.disc
+		list-style disc
+	&.circle
+		list-style circle
+	&.square
+		list-style square
+
+ol
+	list-style decimal
+	padding 0 0 0 1.5em
+	&.lower-roman
+		list-style lower-roman
+	&.upper-roman
+		list-style upper-roman
+	&.lower-alpha
+		list-style lower-alpha
+	&.upper-alpha
+		list-style upper-alpha
+
+// dl
+dt
+	font-wieght bold
+// dd
 
 // Anchor
 a.anchor
@@ -128,7 +154,7 @@ a.anchor
 
 // Transition
 .transition
-	transiton all .3s ease-in-out
+	transiton all .3s
 .transition-linear
 	transiton all .3s linear
 .transition-ease-in

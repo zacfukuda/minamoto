@@ -2,16 +2,18 @@
  * typography/index
  */
 
-// Basic
+// Document & body
 html, body
 	color $black
 	font-family $gothic
 	font-size 13px
 	line-height 22px
 
+// Antialiase
 body, h1, h2, h3, h4, h5, h6, p, li, th, td, dt, dd, a, em, i, small, mark, span, address, figcaption, pre, code
 	-webkit-font-smoothing antialiased
-	font-smoothing antialiased
+	-moz-osx-font-smoothing grayscale
+	font-smoothing antialiased	
 	text-rendering optimizeLegibility
 
 // Font Size & Line Height
@@ -126,51 +128,43 @@ a
 	font-family $maru-gothic
 
 // Line Height
-._1em
+.lh-1
 	line-height 1
-._125em
+.lh-1p25
 	line-height 1.25
-._15em
+.lh-1p5
 	line-height 1.5
-._175em
+.lh-1p75
 	line-height 1.75
-._2em
+.lh-2
 	line-height 2
-._25em
+.lh-2p5
 	line-height 2.5
-._3em
+.lh-3
 	line-height 3
 
-// Case
+// Kerning
+.kerning-normal
+	font-kerning normal
+.kerning-none
+	font-kerning none
+.kerning-auto
+	font-kerning auto
+
+// Type cases
 .uppercase
 	text-transform uppercase
 .lowercase
 	text-transform lowercase
-.small-caps
-	font-variant-caps small-caps
-.all-small-caps
-	font-variant-caps all-small-caps
-.titling-caps
-	font-variant-caps titling-caps
-
-// Numeric Style
-.ordinal-nums
-	font-variant-numeric ordinal
-.lining-nums
-	font-variant-numeric lining-nums
-.oldstyle-nums
-	font-variant-numeric oldstyle-nums
-.proportional-nums
-	font-variant-numeric proportional-nums
 
 // white-space
 .white-space-nowrap
 	white-space nowrap
 
 // word-break
-.break-all
+.word-break-all
 	word-break break-all
-.keep-all
+.word-keep-all
 	word-break keep-all
 
 // word-wrap
@@ -179,5 +173,46 @@ a
 
 // Hyphenation
 .hyphenate
-	@extend .break-all
+	@extend .word-break-all
 	hyphens auto
+
+// Ligatres (https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-ligatures)
+// Coming someday...
+
+// Capitals (https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-caps)
+.caps-small
+	font-variant-caps small-caps
+.caps-all-small
+	font-variant-caps all-small-caps
+.caps-titling
+	font-variant-caps titling-caps
+
+// Numerals (https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric)
+.nums-ordinal
+	font-variant-numeric ordinal
+.nums-lining
+	font-variant-numeric lining-nums
+.nums-oldstyle
+	font-variant-numeric oldstyle-nums
+.nums-proportional
+	font-variant-numeric proportional-nums
+.nums-tabular
+	font-variant-numeric tabular-nums
+
+// East asian (https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-east-asian)
+.ea-proportional
+	font-variant-east-asian proportional-width
+.ea-full
+	font-variant-east-asian full-width
+
+// Japanse kerning
+.ja-palt
+	font-feature-settings "palt" 1
+.ja-pkna
+	font-feature-settings "pkna" 1
+
+// Alternates (https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-alternates)
+// Coming someday...
+
+// Postion (https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-position)
+// Coming someday...

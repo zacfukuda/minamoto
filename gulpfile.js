@@ -23,9 +23,9 @@ const sourcemaps = require('gulp-sourcemaps')
 const	stylus = require('gulp-stylus')
 const webpack = require('webpack-stream')
 
-// As of gulp 4, the default dest() don’t change createdAt/modifiedAt
-// of built files unless its source files are changed
-// gulp-touch-fd fixes this issue.
+// As of gulp 4, the default dest() doesn’t change the createdAt/modifiedAt
+// of output files unless its source files are changed.
+// gulp-touch-fd fixes this problem.
 const touch = require('gulp-touch-fd')
 
 // Argument passed to the NPM command

@@ -54,7 +54,7 @@ There are mainly three tasks that you use based on the progress of your developm
 .
 ├── assets/           # Vendor files like jQuery, Pace
 ├── config/           # Configuration files for theme
-├── (dist/)           # Built files. Created by Gulp, never edit
+├── (dist/)           # Created by Gulp; NEVER edit
 ├── doc/              # Documentations about theme and website
 ├── functions/        # PHP funtions
 │   ├── cron/
@@ -79,9 +79,6 @@ There are mainly three tasks that you use based on the progress of your developm
 
 ## Expected Updates in Future
 
-### Timber Implementation
-[Timber](https://github.com/timber/timber) is a Wordpress plugin to write theme template with Twig Template Engine, and the developer is planning to adapt this plugin for the development of theme template.
-
 ### Custom Field to *Page*
 Assuming that some of *Pages* will be written in HTML format, this themes designed to load a content of HTML file from `html` folder that matches the slug of the current page. The code responsible for functionality is written in `parts/page.php`, and the developer is planning to add a custom field to *page* admin page to turn on/off this feature for per page.
 
@@ -97,9 +94,9 @@ The theme is tested only with the latest version of Wordpress. There is no guara
 
 Now there is no linting for CSS & JS and no test program for JS files, and the developer has no intention to implement these features any time soon.
 
-### Not for Child Theme or Parent theme
+### Not for Child/Parent theme
 
-The theme is developed to be your sole custom theme. Therefore, the theme might not work properly if you use it as the parent theme of child or child theme itself. It is possible to customize the theme in accordance with your preference for parent/child theme purpose, however, doing so requires a lot of work.
+The theme is developed to be your sole custom theme. Therefore, the theme might not work properly if you use it as the parent theme of child theme, or child theme itself. It is possible to customize the theme in accordance with your preference for parent/child theme purpose, however, doing so requires a lot of work.
 
 ## Test Environment
 - Node & NPM: 10.15.0 & 6.4.1
@@ -115,3 +112,6 @@ The theme is developed to be your sole custom theme. Therefore, the theme might 
 
 ## Feedback
 If you have any request or find bugs, please bring it up to [Issues](https://github.com/zacfukuda/minamoto/issues).
+
+## Todos
+- CSS for Contact Form 7
