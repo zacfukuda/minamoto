@@ -1,7 +1,7 @@
 {% extends "layout/base.twig" %}
 
 {% block content %}
-	<article>
+	<article id="post-{{post.ID}}" class="post.post_type">
 		{% if post.thubmanil %}
 			<picture>
 				<img src="{{post.thumbnail.src('medium')}}" srcset="{{post.thumbnail.srcset}}" sizes="{{post.thumbnail.sizes}}" alt="{{post.title}}">
