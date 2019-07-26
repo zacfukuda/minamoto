@@ -4,7 +4,6 @@ Your name or company
 http://yoursite.org
 @you_on_twitter
 
-
 ## Site
 
 Starter Theme: Built upon [Minamoto](https://github.com/zacfukuda/minamoto/tree/master) by Zac Fukud 

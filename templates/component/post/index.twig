@@ -1,9 +1,14 @@
-<article>
+<article class="index {{post.post_type}}">
 	{% if post.get_thumbnail %}
 		<picture>
 			<img src="{{post.thumbnail.src('medium')}}" srcset="{{post.thumbnail.srcset}}" sizes="{{post.thumbnail.sizes}}" alt="{{post.title}}">
 		</picture>
 	{% endif %}
 	<h3><a href="{{post.link}}" title="{{post.title}}">{{ post.title }}</a></h3>
+	<ul>
+		{% for tag in post.tags %}
+			<li class="{{tag.taxonomy}}"><a href="{{tag.link}}">{{tag.name}}</a></li>
+		{% endfor %}
+		</ul>
 	<p>{{post.preview}}</p>
 </article>

@@ -31,7 +31,7 @@ class MinamotoSite extends Timber\Site {
 	/**
 	 * Add some context
 	 *
-	 * @param string $context
+	 * @param {string} $context
 	 */
 	public function add_to_context( $context ) {
 		global $paths, $theme_version;
@@ -53,7 +53,7 @@ class MinamotoSite extends Timber\Site {
 	 * @return $twig
 	 */
 	public function add_functions( $twig ) {
-		// Wordpress default function to display thumbnail <img>
+		// Wordpress default function to display thumbnail
 		// $twig->addFunction(new Timber\Twig_Function('the_post_thumbnail', 'the_post_thumbnail'));
 
 		return $twig;
