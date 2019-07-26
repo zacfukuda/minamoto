@@ -115,3 +115,4 @@ If you have any request or find bugs, please bring it up to [Issues](https://git
 
 ## Todos
 - CSS for Contact Form 7
+- Custom Post Type Gutenberg

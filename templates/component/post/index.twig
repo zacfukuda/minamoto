@@ -1,7 +1,7 @@
 <article>
 	{% if post.get_thumbnail %}
 		<picture>
-			<img src="{{exective.thumbnail.src('medium')}}" srcset="{{post.thumbnail.srcset}}" sizes="{{post.thumbnail.sizes}}" alt="{{post.title}}">
+			<img src="{{post.thumbnail.src('medium')}}" srcset="{{post.thumbnail.srcset}}" sizes="{{post.thumbnail.sizes}}" alt="{{post.title}}">
 		</picture>
 	{% endif %}
 	<h3><a href="{{post.link}}" title="{{post.title}}">{{ post.title }}</a></h3>
