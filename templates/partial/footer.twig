@@ -1,3 +1,20 @@
-<footer id="footer" class="footer">
+<footer id="footer" class="footer" role="contentinfo">
+	{# Logo #}
+	<figure>
+		<a href="{{site.url}}" rel="home" title="{{site.name}}">
+			<img src="{{paths.rel_template}}/img/logo/normal.svg" alt="{{site.name}}" width="128" height="128">
+		</a>
+	</figure>
+	{# Navigation #}
+	<nav>
+		<ul>
+			{% for item in footer_nav.get_items %}
+				<li class="footer-nav">
+					<a href="{{item.link}}" target="{{ item.target }}">{{item.title}}</a>
+				</li>
+			{% endfo %}
+		</ul>
+	</nav>
+	{# Copyright #}
 	<p class="copyright">© {{function('date', 'Y')}} Your Company, Inc. All rights reserved.</p>
 </footer><!-- .footer -->

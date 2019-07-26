@@ -5,7 +5,7 @@
 'use strict'
 
 // Argument passed to the NPM command
-const argv = require('minimist')(process.argv.slice(3))
+// const argv = require('minimist')(process.argv.slice(3))
 
 // External modules
 const externals = require('./webpack.config.externals')

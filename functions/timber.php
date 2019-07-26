@@ -29,7 +29,7 @@ class MinamotoSite extends Timber\Site {
 	}
 
 	/**
-	 * Add some context
+	 * Add contexts
 	 *
 	 * @param {string} $context
 	 */
@@ -45,7 +45,6 @@ class MinamotoSite extends Timber\Site {
 	}
 
 	/**
-	 * Add custom Twig functionality
 	 * Add functions you want to use inside Twig template.
 	 *
 	 * @link https://timber.github.io/docs/guides/functions/

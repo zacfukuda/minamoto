@@ -7,26 +7,26 @@
 // Section
 $sect-space = 80px
 section
-	&.has-padding
+	&.padding
 		padding $sect-space 0
-	&.has-padding-top
+	&.padding-t
 		padding $sect-space 0 0
-	&.has-padding-bottom
+	&.padding-b
 		padding 0 0 $sect-space
-	&.has-margin
+	&.margin
 		margin $sect-space 0
-	&.has-margin-top
+	&.margin-t
 		margin $sect-space 0 0
-	&.has-margin-bottom
+	&.margin-b
 		margin 0 0 $sect-space
 	&.has-row
-		&.has-padding
+		&.padding
 			padding ($sect-space - $gutter) 0 $sect-space
-		&.has-padding-top
+		&.padding-t
 			padding ($sect-space - $gutter) 0 0
-		&.has-margin
+		&.margin
 			margin ($sect-space - $gutter) 0 $sect-space
-		&.has-margin-top
+		&.margin-t
 			margin ($sect-space - $gutter) 0 0
 
 // Container
@@ -88,3 +88,53 @@ a.anchor
 	align-items stretch
 .ai-baseline-md
 	align-items baseline
+
+// Align content
+.ac-stretch-md
+	align-content stretch
+.ac-center-md
+	align-content center
+.ac-between-md
+	align-content space-between
+.ac-around-md
+	align-content space-around
+
+/**
+ * Flex(box)
+ */
+.flex-md
+	display flex
+
+// Wrap
+.wrap-md
+	flex-wrap wrap
+.nowrap-md
+	flex-wrap nowrap
+
+// Direction
+.flex-dir-row-md
+	flex-direction row
+.flex-dir-row-reverse-md
+	flex-direction row-reverse
+.flex-dir-col-md
+	flex-direction column
+.flex-dir-col-reverse-md
+	flex-direction column-reverse
+
+// Horizontal Alignment
+.jc-flex-start-md
+	justify-content flex-start
+.jc-flex-end-md
+	justify-content flex-end
+
+// Vertical Alignment
+.ai-flex-start-md
+	align-items flex-start
+.ai-flex-end-md
+	align-items flex-end
+
+// Align content
+.ac-flex-start-md
+	align-content flex-start
+.ac-flex-end-md
+	align-content flex-end

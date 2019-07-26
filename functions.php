@@ -77,3 +77,4 @@ require_once $paths->functions . '/cron/add_custom_schedules.php';
  * Other
  * -------------------------------------- */
 require_once $paths->functions . '/other/cf7_email_validation_filter.php';
+require_once $paths->functions . '/other/wps_deregister_styles.php';

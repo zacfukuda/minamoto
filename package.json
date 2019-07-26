@@ -1,18 +1,25 @@
 {
   "name": "minamoto",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": false,
   "author": "Zac Fukuda",
   "url": "https://github.com/zacfukuda/minamoto",
   "license": "MIT",
   "scripts": {
-    "start": "gulp server --dev",
+    "start": "gulp start --dev",
     "watch": "gulp watch --dev",
     "build": "gulp build --pro"
   },
-  "dependencies": {},
+  "dependencies": {
+    "body-scroll-lock": "^2.6.1"
+  },
   "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-loader": "^8.0.5",
     "browser-sync": "^2.23.6",
+    "eslint": "^5.16.0",
+    "eslint-loader": "^2.1.2",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-group-css-media-queries": "^1.2.2",

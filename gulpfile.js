@@ -94,7 +94,7 @@ exports.watch = () => {
 }
 
 // Run browsersyc server
-exports.server = () => {
+exports.start = () => {
 	browserSync.init({
 		open: false,
 		proxy: packageJSON.proxy

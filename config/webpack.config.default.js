@@ -17,6 +17,29 @@ const config = {
 	output: {
 		filename: 'app.min.js'
 	},
+	module: {
+		rules: [
+			{
+				enforce: 'pre',
+				test: /\.m?js$/,
+				exclude: /node_modules/,
+				loader: 'eslint-loader',
+				options: {
+					cache: true
+				}
+			},
+			{
+				test: /\.m?js$/,
+				exclude: /(node_modules|bower_components)/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env']
+					}
+				}
+			}
+		]
+	},
 	externals: externals,
 	devtool: argv.pro ? 'source-map' : 'cheap-module-eval-source-map'
 }

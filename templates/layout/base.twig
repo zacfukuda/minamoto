@@ -4,7 +4,7 @@
 	<body class="{{body_class}}" data-template="base.twig">
 		
 		{#
-			Uncomment if you’d like to load SNS SDKs
+			Uncomment if you’d like to load Social SDKs
 			{% include "partial/sdk.twig" %}
 		#}
 
@@ -21,5 +21,6 @@
 			{% include "partial/footer.twig" %}
 		</div><!-- #root.root -->
 		{{ function('wp_footer') }}
+		<script src="{{paths.rel_template}}/dist/js/app.min.js?v={{version}}"></script>
 	</body>
 </html>

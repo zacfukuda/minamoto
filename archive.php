@@ -28,7 +28,7 @@ if ( is_day() ) {
 }
 
 // Get pagination content
-$pagination = get_the_posts_pagination([
+$context['pagination'] = get_the_posts_pagination([
 	'mid_size' => 3,
 	'prev_text' => __( '&larr;', $theme_textdomain ),
 	'next_text' => __( '&rarr;', $theme_textdomain ),

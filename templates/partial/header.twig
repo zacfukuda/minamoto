@@ -1,20 +1,26 @@
 <header id="header" class="header">
 	{# Logo #}
-	<h1 role="banner">
-		<a href="{{site.url}}" rel="home"><img src="{{paths.rel_template}}/img/logo/normal.svg" alt="{{site.name}}" width="128" height="128"></a>
-	</h1>
+	<figure role="banner">
+		<a href="{{site.url}}" rel="home">
+			<img src="{{paths.rel_template}}/img/logo/normal.svg" alt="{{site.name}}" width="128" height="128">
+		</a>
+	</figure>
 	{# Global Navigation #}
-	<nav role="navigation">
+	<nav>
 		<ul>
 			{% for item in global_nav.get_items %}
-				<li><a href="{{item.link}}">{{ item.title }}</a></li>
-				{% if item.get_children %}
-					<ul>
-						{% for child in item.get_children %}
-							<li><a href="{{child.link}}">{{ child.title }}</a></li>
-						{% endfor %}
-					</ul>
-				{% endif %}
+				<li>
+					<a href="{{item.link}}" target="{{ item.target }}">{{ item.title }}</a>
+					{% if item.get_children %}
+						<ul>
+							{% for child in item.get_children %}
+								<li>
+									<a href="{{child.link}}" target="{{ item.target }}">{{ child.title }}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</li>
 			{% endfor %}
 		</ul>
 	</nav>

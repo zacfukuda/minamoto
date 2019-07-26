@@ -39,7 +39,7 @@ function theme_init_setup() {
 	show_admin_bar(false);
 
 	// Add Excerpt to Pages
-	// add_post_type_support( 'page', 'excerpt' );
+	add_post_type_support( 'page', 'excerpt' );
 
 	/*
 	 * This theme styles the visual editor to resemble the theme style,

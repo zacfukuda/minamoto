@@ -2,6 +2,12 @@
  * base/index
  */
 
+// All element
+*
+	box-sizing border-box
+	-webkit-overflow-scrolling touch
+	-webkit-tap-highlight-color transparent
+
 // Document & body
 html, body
 	width 100%
@@ -20,26 +26,26 @@ body
 // Section
 $sect-space = 48px
 section
-	&.has-padding
+	&.padding
 		padding $sect-space 0
-	&.has-padding-top
+	&.padding-t
 		padding $sect-space 0 0
-	&.has-padding-bottom
+	&.padding-b
 		padding 0 0 $sect-space
-	&.has-margin
+	&.margin
 		margin $sect-space 0
-	&.with-margin-top
+	&.margin-t
 		margin $sect-space 0 0
-	&.with-margin-bottom
+	&.margin-b
 		margin 0 0 $sect-space
 	&.has-row
-		&.has-padding
+		&.padding
 			padding ($sect-space - $gutter) 0 $sect-space
-		&.has-padding-top
+		&.padding-t
 			padding ($sect-space - $gutter) 0 0
-		&.has-margin
+		&.margin
 			margin ($sect-space - $gutter) 0 $sect-space
-		&.has-margin-top
+		&.margin-t
 			margin ($sect-space - $gutter) 0 0
 
 // Container
@@ -191,3 +197,54 @@ a.anchor
 	align-items stretch
 .ai-baseline
 	align-items baseline
+
+// Align content
+.ac-stretch
+	align-content stretch
+.ac-center
+	align-content center
+.ac-between
+	align-content space-between
+.ac-around
+	align-content space-around
+
+/**
+ * Flex(box)
+ * @link https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+*/
+.flex
+	display flex
+
+// Wrap
+.wrap
+	flex-wrap wrap
+.nowrap
+	flex-wrap nowrap
+
+// Direction
+.flex-dir-row
+	flex-direction row
+.flex-dir-row-reverse
+	flex-direction row-reverse
+.flex-dir-col
+	flex-direction column
+.flex-dir-col-reverse
+	flex-direction column-reverse
+
+// Horizontal Alignment
+.jc-flex-start
+	justify-content flex-start
+.jc-flex-end
+	justify-content flex-end
+
+// Vertical Alignment
+.ai-flex-start
+	align-items flex-start
+.ai-flex-end
+	align-items flex-end
+
+// Align content
+.ac-flex-start
+	align-content flex-start
+.ac-flex-end
+	align-content flex-end
