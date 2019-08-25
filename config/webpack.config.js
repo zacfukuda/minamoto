@@ -4,25 +4,23 @@
 
 'use strict'
 
+const paths = require('./paths')
+
 const TerserPlugin = require('terser-webpack-plugin')
-
-// External modules
-const externals = require('./webpack.config.externals')
-
-// Argument passed to the NPM command
 const argv = require('minimist')(process.argv.slice(3))
 
-const config = {
+module.exports = {
 	mode: argv.pro ? 'production' : 'development',
+	devtool: argv.pro ? 'source-map' : 'cheap-module-eval-source-map',
 	output: {
-		filename: 'app.min.js'
+		filename: '[name].min.js'
 	},
 	module: {
 		rules: [
 			{
 				enforce: 'pre',
 				test: /\.m?js$/,
-				exclude: /node_modules/,
+				include: /node_modules/,
 				loader: 'eslint-loader',
 				options: {
 					cache: true
@@ -30,7 +28,7 @@ const config = {
 			},
 			{
 				test: /\.m?js$/,
-				exclude: /(node_modules|bower_components)/,
+				include: /(node_modules|bower_components)/,
 				use: {
 					loader: 'babel-loader',
 					options: {
@@ -40,13 +38,13 @@ const config = {
 			}
 		]
 	},
-	externals: externals,
-	devtool: argv.pro ? 'source-map' : 'cheap-module-eval-source-map'
-}
-
-// Production only: Add UglifyjsWebpackPlugin
-if ( argv.pro ) {
-	config.optimization = {
+	externals: {
+		// Refer to https://webpack.js.org/configuration/externals/
+		// jquery: 'jQuery',
+		// pace: 'Pace'
+	},
+	optimization: {
+		minimize: argv.pro,
 		minimizer: [
 			new TerserPlugin({
 				cache: true,
@@ -54,7 +52,5 @@ if ( argv.pro ) {
 				sourceMap: false
 			})
 		]
-	}
+	},
 }
-
-module.exports = config

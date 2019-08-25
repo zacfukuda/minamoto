@@ -31,8 +31,8 @@ const touch = require('gulp-touch-fd')
 // Argument passed to the NPM command
 const argv = require('minimist')(process.argv.slice(3))
 
-// Set true onlu if the current gulp task is 'server'
-const isBrowsersyncOn = (process.argv[2] === 'server') ? true : false
+// Set true onlu if the current gulp task is 'start'
+const isBrowsersyncOn = (process.argv[2] === 'start') ? true : false
 
 // Stylus
 const stylusTask = () => {
@@ -40,7 +40,7 @@ const stylusTask = () => {
 		.pipe(plumber())
 		.pipe(gulpif(argv.pro, sourcemaps.init()))
 		.pipe(stylus({compress: argv.pro}))
-		// .pipe(gulpif(argv.pro, gcmq())) // Won’t be compressed when gcmq used.
+		// .pipe(gulpif(argv.pro, gcmq())) // Compression didn’t work with gcmq.
 		.pipe(autoprefixer())
 		.pipe(rename({suffix: '.min'}))
 		.pipe(gulpif(argv.pro, sourcemaps.write('.')))
@@ -54,7 +54,7 @@ exports.stylus = stylusTask
 const jsTask = () => {
 	return src(paths.compile.js)
 		.pipe(plumber())
-		.pipe(webpack( require('./config/webpack.config.default') ))
+		.pipe(webpack( require('./config/webpack.config') ))
 		.pipe(dest(paths.dist.js))
 		.pipe(touch())
 }
@@ -80,7 +80,7 @@ const buildUncompressed = (cb) => {
 	// JS
 	src(paths.compile.js)
 		.pipe(plumber())
-		.pipe(webpack( require('./config/webpack.config.extra') ))
+		.pipe(webpack( require('./config/webpack.config.uncompressed') ))
 		.pipe(dest(paths.dist.js))
 		.pipe(touch())
 
@@ -105,7 +105,7 @@ exports.start = () => {
 
 	// Ultimately, you can watch all PHP files,
 	// and reload browser if any change happens.
-	// The author has not tested the program below,
+	// The developer has not tested the code below,
 	// but thinks it would work.
 	// watch('**\/*.php', (cb) => {
 	//	browserSync.reload()

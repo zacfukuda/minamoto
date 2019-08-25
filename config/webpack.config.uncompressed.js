@@ -8,13 +8,13 @@
 // const argv = require('minimist')(process.argv.slice(3))
 
 // External modules
-const externals = require('./webpack.config.externals')
+const config = require('./webpack.config')
 
 module.exports = {
+	...config,
 	mode: 'none',
 	output: {
-		filename: 'app.js'
+		filename: '[name].js'
 	},
-	externals: externals,
-	devtool: 'source-map'
+	devtool: 'source-map',
 }
