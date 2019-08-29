@@ -20,7 +20,7 @@ module.exports = {
 			{
 				enforce: 'pre',
 				test: /\.m?js$/,
-				include: /node_modules/,
+				include: paths.src.js,
 				loader: 'eslint-loader',
 				options: {
 					cache: true
@@ -28,7 +28,7 @@ module.exports = {
 			},
 			{
 				test: /\.m?js$/,
-				include: /(node_modules|bower_components)/,
+				include:  paths.src.js,
 				use: {
 					loader: 'babel-loader',
 					options: {
