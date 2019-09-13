@@ -34,14 +34,14 @@ module.exports = {
 					options: {
 						presets: ['@babel/preset-env']
 					}
-				}
+				},
 			}
-		]
+		],
 	},
 	externals: {
 		// Refer to https://webpack.js.org/configuration/externals/
 		// jquery: 'jQuery',
-		// pace: 'Pace'
+		// pace: 'Pace',
 	},
 	optimization: {
 		minimize: argv.pro,
