@@ -5,6 +5,13 @@
  * @link https://webpack.js.org/guides/integrations/#gulp
  */
 
+// Argument passed to the NPM command
+const argv = require('minimist')(process.argv.slice(3))
+
+// Do this as soon as the arguments are loaded 
+process.env.BABEL_ENV = argv.pro ? 'production' : 'development'
+process.env.NODE_ENV = argv.pro ? 'production' : 'development'
+
 // Load package.json
 const packageJSON = require('./package.json')
 
@@ -28,36 +35,31 @@ const webpack = require('webpack-stream')
 // gulp-touch-fd fixes this problem.
 const touch = require('gulp-touch-fd')
 
-// Argument passed to the NPM command
-const argv = require('minimist')(process.argv.slice(3))
-
 // Set true onlu if the current gulp task is 'start'
 const isBrowsersyncOn = (process.argv[2] === 'start') ? true : false
 
 // Stylus
-const stylusTask = () => {
-	return src(paths.compile.stylus)
-		.pipe(plumber())
-		.pipe(gulpif(argv.pro, sourcemaps.init()))
-		.pipe(stylus({compress: argv.pro}))
-		// .pipe(gulpif(argv.pro, gcmq())) // Compression didn’t work with gcmq.
-		.pipe(autoprefixer())
-		.pipe(rename({suffix: '.min'}))
-		.pipe(gulpif(argv.pro, sourcemaps.write('.')))
-		.pipe(dest(paths.dist.css))
-		.pipe(touch())
-		.pipe(gulpif(isBrowsersyncOn, browserSync.stream()))
-}
+const stylusTask = () => src(paths.compile.stylus)
+	.pipe(plumber())
+	.pipe(gulpif(argv.pro, sourcemaps.init()))
+	.pipe(stylus({compress: argv.pro}))
+	// .pipe(gulpif(argv.pro, gcmq())) // Compression didn’t work with gcmq.
+	.pipe(autoprefixer())
+	.pipe(rename({suffix: '.min'}))
+	.pipe(gulpif(argv.pro, sourcemaps.write('.')))
+	.pipe(dest(paths.dist.css))
+	.pipe(touch())
+	.pipe(gulpif(isBrowsersyncOn, browserSync.stream()))
+
 exports.stylus = stylusTask
 
 // JavaScript
-const jsTask = () => {
-	return src(paths.compile.js)
-		.pipe(plumber())
-		.pipe(webpack( require('./config/webpack.config') ))
-		.pipe(dest(paths.dist.js))
-		.pipe(touch())
-}
+const jsTask = () => src(paths.compile.js)
+	.pipe(plumber())
+	.pipe(webpack( require('./config/webpack.config') ))
+	.pipe(dest(paths.dist.js))
+	.pipe(touch())
+
 exports.js = jsTask
 
 const jsSync = (cb) => {
@@ -94,24 +96,29 @@ exports.watch = () => {
 }
 
 // Run browsersyc server
-exports.start = () => {
-	browserSync.init({
-		open: false,
-		proxy: packageJSON.proxy
-	})
+exports.start = series(
+	parallel(stylusTask, jsTask),
+	() => {
+		// Initialize browsersync server
+		browserSync.init({
+			open: false,
+			proxy: packageJSON.proxy
+		})
 
-	watch(paths.watch.stylus, stylusTask)
-	watch(paths.watch.js, series(jsTask, jsSync))
+		// Watch file changes
+		watch(paths.watch.stylus, stylusTask)
+		watch(paths.watch.js, series(jsTask, jsSync))
 
-	// Ultimately, you can watch all PHP files,
-	// and reload browser if any change happens.
-	// The developer has not tested the code below,
-	// but thinks it would work.
-	// watch('**\/*.php', (cb) => {
-	//	browserSync.reload()
-	//	cb()
-	// })
-}
+		// Ultimately, you can watch all PHP files,
+		// and reload browser if any change happens.
+		// The developer has not tested the code below,
+		// but thinks it would work.
+		// watch('**\/*.php', (cb) => {
+		//	browserSync.reload()
+		//	cb()
+		// })
+	},
+)
 
 // Build files for production
 exports.build = series(
