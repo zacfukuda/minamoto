@@ -11,8 +11,17 @@
 			{% for item in footer_nav.get_items %}
 				<li class="footer-nav">
 					<a href="{{item.link}}" target="{{ item.target }}">{{item.title}}</a>
+					{% if item.get_children %}
+						<ul>
+							{% for child in item.get_children %}
+								<li>
+									<a href="{{child.link}}" target="{{ child.target }}">{{ child.title }}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
 				</li>
-			{% endfo %}
+			{% endfor %}
 		</ul>
 	</nav>
 	{# Copyright #}

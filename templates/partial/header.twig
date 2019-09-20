@@ -15,7 +15,7 @@
 						<ul>
 							{% for child in item.get_children %}
 								<li>
-									<a href="{{child.link}}" target="{{ item.target }}">{{ child.title }}</a>
+									<a href="{{child.link}}" target="{{ child.target }}">{{ child.title }}</a>
 								</li>
 							{% endfor %}
 						</ul>
