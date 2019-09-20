@@ -11,7 +11,8 @@
     "build": "gulp build --pro"
   },
   "dependencies": {
-    "body-scroll-lock": "^2.6.1"
+    "body-scroll-lock": "^2.6.1",
+    "smoothscroll-polyfill": "^0.4.4"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
