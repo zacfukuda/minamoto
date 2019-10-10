@@ -2,7 +2,7 @@
 
 {% block content %}
 	<h1>{{ title }}</h1>
-	{% if posts || length %}
+	{% if posts | length %}
 		{% for post in posts %}
 			{% include "component/post/index.twig" %}
 		{% endfor %}

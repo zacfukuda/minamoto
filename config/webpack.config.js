@@ -4,6 +4,7 @@
 
 'use strict'
 
+const path = require('path')
 const paths = require('./paths')
 
 const TerserPlugin = require('terser-webpack-plugin')
@@ -43,9 +44,10 @@ module.exports = {
 		],
 	},
 	externals: {
-		// Refer to https://webpack.js.org/configuration/externals/
-		// jquery: 'jQuery',
-		// pace: 'Pace',
+		// Refererence: https://webpack.js.org/configuration/externals/
+		jquery: 'jQuery',
+		pace: 'Pace',
+		'smooth-scroll': 'SmoothScroll',
 	},
 	optimization: {
 		minimize: argv.pro,

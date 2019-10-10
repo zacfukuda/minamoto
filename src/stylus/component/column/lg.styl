@@ -1,0 +1,13 @@
+/**
+ * Column - large
+ */
+
+// column
+for $i in (1..12)
+	.col-lg-{$i} 
+		width (100 * $i / 12)%
+
+// offset
+for $j in (1..11)
+	.offset-lg-{$j}
+		margin-left (100 * $j / 12)%

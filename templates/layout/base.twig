@@ -2,14 +2,12 @@
 <html {{ site.language_attributes }}>
 	{% include "partial/head.twig" %}
 	<body class="{{body_class}}" data-template="base.twig">
-		
 		{#
 			Uncomment if you’d like to load Social SDKs
 			{% include "partial/sdk.twig" %}
 		#}
-
 		<div id="root" class="root">
-			{% include "partial/header.twig" %}
+			{% include "component/header.twig" %}
 			<main class="main" role="main">
 				{% block content %} Sorry, no content {% endblock %}
 				{#
@@ -18,9 +16,13 @@
 					{% endblock %}
 				#}
 			</main>
-			{% include "partial/footer.twig" %}
+			{% include "component/footer.twig" %}
 		</div><!-- #root.root -->
 		{{ function('wp_footer') }}
+		{# JavaScript plugins #}
+		{% include "partial/javascript-at-foot.twig" %}
+		{# Main JavaScript #}
 		<script src="{{paths.rel_template}}/dist/js/app.min.js?v={{version}}"></script>
+		{# Google Analytics #}
 	</body>
 </html>

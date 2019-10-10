@@ -2,17 +2,17 @@
  * base/index
  */
 
-// All element
+/* All element */
 *
 	box-sizing border-box
 	-webkit-overflow-scrolling touch
 	-webkit-tap-highlight-color transparent
 
-// Document & body
+/* Document & body */
 html, body
 	width 100%
 	position relative
-	
+
 html
 	overflow-x hidden
 	&.overflow-hidden
@@ -23,7 +23,7 @@ html
 body
 	overflow hidden
 
-// Section
+/* Section */
 $sect-space = 48px
 section
 	&.padding
@@ -48,14 +48,14 @@ section
 		&.margin-t
 			margin ($sect-space - $gutter) 0 0
 
-// Container
+/* Container */
 .container
 	width 100%
 	max-width $container-width
 	margin 0 auto
 	padding 0 16px
 
-// Media
+/* Media */
 figure, picture, video
 	display block
 
@@ -66,7 +66,7 @@ img, svg
 	&.w100
 		width 100%
 
-// List
+/* List */
 ul
 	&.disc, &.circle, &.square
 		padding 0 0 0 1.5em
@@ -78,8 +78,6 @@ ul
 		list-style square
 
 ol
-	list-style decimal
-	padding 0 0 0 1.5em
 	&.lower-roman
 		list-style lower-roman
 	&.upper-roman
@@ -94,14 +92,14 @@ dt
 	font-wieght bold
 // dd
 
-// Anchor
+/* Anchor */
 a.anchor
 	display block
 	position relative
 	top -($header-height+16px)
 	visibility hidden
 
-// Slection
+/* Slection */
 // ::-moz-selection
 // 	background rgba($main-color, .3)
 // 	color #fff
@@ -110,18 +108,24 @@ a.anchor
 // 	background rgba($main-color, .3)
 // 	color #fff
 
-// Clearfix
+/* Clearfix* */
 .clearfix
-	clearfix()
+	zoom 1
+	&:before
+	&:after
+		content ""
+		display table
+	&:after
+		clear both
 .clearboth
 	clear both
 
-// Block Alighment
+/* Block Alighment */
 .aligncenter
 	margin-left auto
 	margin-right auto
 
-// Display
+/* Display */
 .block
 	display block
 .ib
@@ -136,7 +140,7 @@ a.anchor
 .desktop
 	display none
 
-// Position
+/* Position */
 .relative
 	position relative
 .absolute
@@ -144,7 +148,7 @@ a.anchor
 .fixed
 	position fixed
 
-// Before & After
+/* Before & After */
 .has-before,
 .has-after,
 .has-before-after
@@ -158,7 +162,7 @@ a.anchor
 	display block
 	position absolute
 
-// Transition
+/* Transition */
 .transition
 	transiton all .3s
 .transition-linear
@@ -170,7 +174,7 @@ a.anchor
 .transition-ease-in-out
 	transiton all .3s ease-in-out
 
-// Justify content
+/* Justify content */
 .jc-start
 	justify-content start
 .jc-end
@@ -186,7 +190,7 @@ a.anchor
 .jc-evenly
 	justify-content space-evenly
 
-// Align items
+/* Align items */
 .ai-start
 	align-items start
 .ai-end
@@ -198,7 +202,7 @@ a.anchor
 .ai-baseline
 	align-items baseline
 
-// Align content
+/* Align content */
 .ac-stretch
 	align-content stretch
 .ac-center

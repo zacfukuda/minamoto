@@ -4,27 +4,25 @@
 
 Minamoto is a Wordpress starter theme with [Gulp](https://github.com/gulpjs/gulp) + [Stylus](http://stylus-lang.com/) + [Webpack](https://webpack.js.org/) + [Browsersync](https://browsersync.io/docs/gulp).
 
-> Theme development of with this starter theme requires advanced knowledge in Wordpress theme development and modern JavaScript like CommonJS and ES6. If you are new to theme development, you might want to check out [Getting Started guide](https://developer.wordpress.org/themes/getting-started/) from Wordpess.org.
+> Theme development of with this starter theme requires advanced knowledge in Wordpress theme development and modern JavaScript such as CommonJS and ES6. If you are new to theme development, you might want to check out [Getting Started guide](https://developer.wordpress.org/themes/getting-started/) from Wordpess.org.
  
 ## Installation & Configuration
 
-Download the theme from Github:
+### Download Themes & Install Dependancies:
 
 ```bash
+# Download theme
 $ cd path/to/your/wp-content/themes
-$ git clone https://github.com/zacfukuda/minamoto.git your-theme
-$ cd your-theme
-```
+$ git clone https://github.com/zacfukuda/minamoto.git themename
+$ cd themename
 
-After dowloading the theme, install NPM modules:
-
-```bash
+# Install NPM packages
 $ yarn
 ```
 
-> This theme is developed using `yarn` over `npm` or `npx`. The `npm` or `npx `might do the intended tasks. however, the developer of this theme, has no plan to make the theme compatible with `npm` or `npx`.
+> The theme is developed using `yarn` not `npm` nor `npx`. The `npm` or `npx `might do the tasks. However, the developer of this theme has no plan to make the theme compatible with `npm` or `npx`.
 
-Edit the files shown below:
+### Edit Config Files
 
 | File | Property | Configuration |
 | --- | --- | --- |
@@ -39,7 +37,7 @@ In addition to the files above, you can configure files under `config` so that t
 
 ## Gulp tasks
 
-There are mainly three tasks that you use based on the progress of your development.
+There are three main tasks that you use based on the progress of your development.
 
 | Command | Task | Comment |
 | ------------ | --- | --- |
@@ -52,29 +50,20 @@ There are mainly three tasks that you use based on the progress of your developm
 ## File Structure
 ```
 .
-├── assets/           # Vendor files like jQuery, Pace
-├── config/           # Configuration files for theme
-├── (dist/)           # Created by Gulp; NEVER edit
-├── doc/              # Documentations about theme and website
-├── functions/        # PHP funtions
-│   ├── cron/
-│   ├── media/
-│   ├── nav_menu/
-│   ├── option/
-│   ├── other/
-│   ├── post/
-│   ├── shortcode/
-│   ├── widget/
-│   ├── paths.php
-│   └── setup.php
-├── html/             # HTMLs before saving DB.
-├── img/              # Images that are part of you theme
+├── assets            # Vendor files like jQuery
+├── classes           # PHP classes
+├── config            # Configuration files for theme
+├── (dist)            # Created by Gulp; NEVER edit
+├── doc               # Documentations about theme and website
+├── html              # HTML drafts before saving in database
+├── img               # Images that are part of you theme
+├── inc               # PHP funtions
 ├── (node_modules)    # NPM modules
-├── parts/            # Wordpresss template parts
-├── src/              # Source files
-│   ├── js/
-│   └── stylus/
-└── vendor/
+├── src               # Source files
+├── templates         # Twig template files
+│   ├── js
+│   └── stylus
+└── (vendor)          # Composer files
 ```
 
 ## Expected Updates in Future
@@ -84,15 +73,11 @@ Assuming that some of *Pages* will be written in HTML format, this themes design
 
 For now there is no way to switch the feature, except that you modify the code in `parts/page.php` manually.
 
-## Issues
+## Notes
 
 ### Wordpress Version
 
 The theme is tested only with the latest version of Wordpress. There is no guarantee that the theme works with non-latest version of Wordpress. For the test environment, please refer to [Test Environment](#test-environment) section.
-
-### No Linting & JS Testing
-
-Now there is no linting for CSS & JS and no test program for JS files, and the developer has no intention to implement these features any time soon.
 
 ### Not for Child/Parent theme
 
@@ -109,10 +94,10 @@ The theme is developed to be your sole custom theme. Therefore, the theme might 
 ## Other Wordpress Starter Themes
 - [Sage](https://roots.io/sage/) ([Github](https://github.com/roots/sage))
 - [Underscores a.k.a. \_s](https://underscores.me/) ([Github](https://github.com/automattic/_s))
+- [Bones](https://themble.com/bones/) ([Github](https://github.com/squibbleFish/theme-bones))
 
 ## Feedback
 If you have any request or find bugs, please bring it up to [Issues](https://github.com/zacfukuda/minamoto/issues).
 
 ## Todos
-- CSS for Contact Form 7
-- Custom Post Type Gutenberg
+- *Pending*
