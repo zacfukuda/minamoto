@@ -252,3 +252,32 @@ a.anchor
 	align-content flex-start
 .ac-flex-end
 	align-content flex-end
+
+/**
+ * Grid
+ * @link https://css-tricks.com/snippets/css/complete-guide-grid/
+ * @link https://learncssgrid.com/
+ */
+.grid
+	display grid
+	&._12-col
+		grid-template-columns repeat(12, 1fr)
+	&.has-gap
+		grid--gap $gutter $gutter
+	&.has-col-gap
+		grid-column-gap $gutter
+	&.has-row-gap
+		grid-row-gap $gutter
+	&.auto-flow-row
+		grid-auto-flow row // default
+	&.auto-flow-col
+		grid-auto-flow col
+
+// Items
+for $i in (1..12)
+	.gcol-{$i}
+		grid-column-end span $i
+
+for $j in (1..11)
+	.goffset-{$j}
+		margin-left (100 * $j / 12)%

@@ -134,3 +134,28 @@ a.anchor
 	align-content flex-start
 .ac-flex-end-md
 	align-content flex-end
+
+/* Grid */
+.grid-md
+	display grid
+	&._12-col-md
+		grid-template-columns repeat(12, 1fr)
+	&.has-gap-md
+		grid--gap $gutter $gutter
+	&.has-col-gap-md
+		grid-column-gap $gutter
+	&.has-row-gap-md
+		grid-row-gap $gutter
+	&.auto-flow-row-md
+		grid-auto-flow row // default
+	&.auto-flow-col-md
+		grid-auto-flow col
+
+// Items
+for $i in (1..12)
+	.gcol-md-{$i}
+		grid-column-end span $i
+
+for $j in (1..11)
+	.goffset-md-{$j}
+		margin-left (100 * $j / 12)%
