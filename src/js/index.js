@@ -2,9 +2,18 @@
 // import Pace from 'pace'
 import SmoothScroll from 'smooth-scroll'
 import helloESNext from './helloESNext'
+// import emailObfuscator from './emailObfuscator'
 
 // Example
 helloESNext()
+
+// Email obfuscator
+// Go to generated a coded email at http://www.jottings.com/obfuscator/
+// emailObfuscator({
+// 	coded: 'foo',
+// 	key: 'bar',
+// 	selector: 'classname',
+// })
 
 /**
  * SmoothScroll
