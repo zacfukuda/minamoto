@@ -10,7 +10,7 @@ function get_the_html_content() {
 	global $post;
 	$failed_paths = [];
 	$base_path = get_template_directory() . '/html';
-	$uri = filter_input(INPUT_SERVER, 'REQUEST_URI');
+	$uri = $_SERVER["REQUEST_URI"]; //filter_input(INPUT_SERVER, 'REQUEST_URI');
 
 	/**
 	 * Function to return formatted html
@@ -40,6 +40,7 @@ function get_the_html_content() {
 	}
 
 	// BEGIN main code
+	if ($uri == '') { $uri = '/'; } // Cover more systems
 	$path = $base_path . $uri . 'index.html';
 
 	if ( file_exists($path) ) { return format_content($path); }
