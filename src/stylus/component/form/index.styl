@@ -1,0 +1,107 @@
+/**
+ * Form - index
+ */
+
+// form
+
+fieldset
+	display block
+
+legend
+	display block
+
+label
+	display inline-block
+	&.radio, &.checkbox
+		margin-right 14px
+
+input,
+select,
+textarea
+	font-family $san-serif
+
+input[type="date"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="url"],
+textarea
+	appearance none
+	border 1px solid $gray
+	border-radius 3px
+	font-size $h6
+	line-height $h6-lh
+	padding 6px 8px 5px
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea
+	display block
+	width 100%
+	&.inline, &.ib
+		width initial
+
+input[type="date"]
+	padding 1px 0 1px
+
+input[type="number"],
+input[type="radio"],
+input[type="checkbox"]
+	margin-right 4px
+
+select
+	background #fafafa
+	border 1px solid #aaa
+
+textarea
+	line-height 1.5
+
+input[type="button"],
+input[type="submit"]
+	appearance none
+	background transparent
+	border-radius 3px
+	cursor pointer
+	display inline-block
+	font-size $h6
+	line-height 1
+	margin 0 12px
+	padding 12px 24px 11px
+	letter-spacing .5em
+	text-align center
+	transition all .3s
+	&:disabled
+		background $gray
+	&:focus
+		outline none
+	&:hover
+		color #fff
+
+input[type="button"]
+	border 1px solid $gray
+	&:hover
+		background $gray
+
+input[type="submit"]
+	border 1px solid $main-color
+	color $main-color
+	&:hover
+		background $main-color
+
+abbr.required
+	color $red
+
+::placeholder
+	color $gray
+
+// Prevent changing the color of input
+// when autofilled
+input:-webkit-autofill,
+select:-webkit-autofill
+	-webkit-box-shadow 0 0 0px 1000px #fff inset
+	&:hover, &:focus
+		-webkit-box-shadow 0 0 0px 1000px #fff inset

@@ -2,17 +2,13 @@
  * base/desktop
  */
 
-// Document & body
-
-// Section
-
-// Container
+/* Container */
 .container
 	max-width $container-width-lg
 	&.is-narrow
 		max-width $container-width-md
 
-// Display
+/* Display */
 .desktop
 	display block
 .ib-lg
@@ -24,7 +20,7 @@
 .table-cell-lg
 	display table-cell
 
-// Justify content
+/* Justify content */
 .jc-start-lg
 	justify-content start
 .jc-end-lg
@@ -40,7 +36,7 @@
 .jc-evenly-lg
 	justify-content space-evenly
 
-// Align items
+/* Align items */
 .ai-start-lg
 	align-items start
 .ai-end-lg
@@ -52,7 +48,7 @@
 .ai-baseline-lg
 	align-items baseline
 
-// Align content
+/* Align content */
 .ac-stretch-lg
 	align-content stretch
 .ac-center-lg
@@ -101,3 +97,28 @@
 	align-content flex-start
 .ac-flex-end-lg
 	align-content flex-end
+
+/* Grid */
+.grid-lg
+	display grid
+	&._12-col-lg
+		grid-template-columns repeat(12, 1fr)
+	&.has-gap-lg
+		grid--gap $gutter $gutter
+	&.has-col-gap-lg
+		grid-column-gap $gutter
+	&.has-row-gap-lg
+		grid-row-gap $gutter
+	&.auto-flow-row-lg
+		grid-auto-flow row // default
+	&.auto-flow-col-lg
+		grid-auto-flow col
+
+// Items
+for $i in (1..12)
+	.gcol-lg-{$i}
+		grid-column-end span $i
+
+for $j in (1..11)
+	.goffset-lg-{$j}
+		margin-left (100 * $j / 12)%

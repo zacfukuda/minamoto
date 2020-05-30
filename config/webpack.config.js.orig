@@ -45,9 +45,15 @@ module.exports = {
 		],
 	},
 	externals: {
+<<<<<<< HEAD
+		jquery: 'jQuery',
+		pace: 'Pace',
+=======
+		// Refererence: https://webpack.js.org/configuration/externals/
 		jquery: 'jQuery',
 		pace: 'Pace',
 		'smooth-scroll': 'SmoothScroll',
+>>>>>>> e3020b8ee986e9acdec1110d0cb4b672dd04d390
 	},
 	optimization: {
 		minimize: argv.pro,

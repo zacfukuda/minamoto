@@ -1,0 +1,31 @@
+/**
+ * Column - index
+ */
+
+// Row - wrapper for column element
+.row
+	display flex
+	flex-wrap wrap
+	margin 0 (-($gutter/2))
+
+// column
+[class^="col-"]
+	margin $gutter 0 0
+	padding 0 ($gutter/2)
+	width 100%
+
+for $i in (1..12)
+	.col-{$i} 
+		width (100 * $i / 12)%
+
+for $j in (1..11)
+	.offset-{$j}
+		margin-left (100 * $j / 12)%
+
+// No margin-top on col
+.no-margin
+	> [class^="col-"]
+		margin 0
+.no-padding
+	> [class^="col-"]
+		padding 0

@@ -2,9 +2,7 @@
  * base/md
  */
 
-// Document & body
-
-// Section
+/* Section */
 $sect-space = 80px
 section
 	&.padding
@@ -29,24 +27,22 @@ section
 		&.margin-t
 			margin ($sect-space - $gutter) 0 0
 
-// Container
+/* Container */
 .container
 	max-width $container-width-md
 	padding 0 ($gutter+8)
 
-// List
-
-// Anchor
+/* Anchor */
 a.anchor
 	top -($header-height-md + 16px)
 
-// Block Alighment
+/* Block Alighment */
 .alignleft
 	float left
 .alignright
 	float right
 
-// Display
+/* Display */
 .mobile
 	display none
 	
@@ -61,7 +57,7 @@ a.anchor
 .table-cell-md
 	display table-cell
 
-// Justify content
+/* Justify content */
 .jc-start-md
 	justify-content start
 .jc-end-md
@@ -77,7 +73,7 @@ a.anchor
 .jc-evenly-md
 	justify-content space-evenly
 
-// Align items
+/* Align items */
 .ai-start-md
 	align-items start
 .ai-end-md
@@ -89,7 +85,7 @@ a.anchor
 .ai-baseline-md
 	align-items baseline
 
-// Align content
+/* Align content */
 .ac-stretch-md
 	align-content stretch
 .ac-center-md
@@ -138,3 +134,28 @@ a.anchor
 	align-content flex-start
 .ac-flex-end-md
 	align-content flex-end
+
+/* Grid */
+.grid-md
+	display grid
+	&._12-col-md
+		grid-template-columns repeat(12, 1fr)
+	&.has-gap-md
+		grid--gap $gutter $gutter
+	&.has-col-gap-md
+		grid-column-gap $gutter
+	&.has-row-gap-md
+		grid-row-gap $gutter
+	&.auto-flow-row-md
+		grid-auto-flow row // default
+	&.auto-flow-col-md
+		grid-auto-flow col
+
+// Items
+for $i in (1..12)
+	.gcol-md-{$i}
+		grid-column-end span $i
+
+for $j in (1..11)
+	.goffset-md-{$j}
+		margin-left (100 * $j / 12)%
