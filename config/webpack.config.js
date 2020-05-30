@@ -6,6 +6,7 @@
 
 const paths = require('./paths')
 
+const path = require('path')
 const TerserPlugin = require('terser-webpack-plugin')
 const argv = require('minimist')(process.argv.slice(3))
 
@@ -43,9 +44,8 @@ module.exports = {
 		],
 	},
 	externals: {
-		// Refer to https://webpack.js.org/configuration/externals/
-		// jquery: 'jQuery',
-		// pace: 'Pace',
+		jquery: 'jQuery',
+		pace: 'Pace',
 	},
 	optimization: {
 		minimize: argv.pro,
