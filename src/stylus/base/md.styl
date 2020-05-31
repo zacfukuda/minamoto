@@ -1,51 +1,24 @@
-/**
- * base/md
- */
-
-/* Section */
-$sect-space = 80px
 section
 	&.padding
-		padding $sect-space 0
+		padding $section-margin-md 0
 	&.padding-t
-		padding $sect-space 0 0
+		padding $section-margin-md 0 0
 	&.padding-b
-		padding 0 0 $sect-space
+		padding 0 0 $section-margin-md
 	&.margin
-		margin $sect-space 0
+		margin $section-margin-md 0
 	&.margin-t
-		margin $sect-space 0 0
+		margin $section-margin-md 0 0
 	&.margin-b
-		margin 0 0 $sect-space
-	&.has-row
-		&.padding
-			padding ($sect-space - $gutter) 0 $sect-space
-		&.padding-t
-			padding ($sect-space - $gutter) 0 0
-		&.margin
-			margin ($sect-space - $gutter) 0 $sect-space
-		&.margin-t
-			margin ($sect-space - $gutter) 0 0
+		margin 0 0 $section-margin-md
 
-/* Container */
 .container
 	max-width $container-width-md
-	padding 0 ($gutter+8)
+	padding-left ($gutter+8)
+	padding-right ($gutter+8)
 
-/* Anchor */
-a.anchor
-	top -($header-height-md + 16px)
-
-/* Block Alighment */
-.alignleft
-	float left
-.alignright
-	float right
-
-/* Display */
 .mobile
 	display none
-	
 .tablet
 	display block
 .ib-md
@@ -57,7 +30,6 @@ a.anchor
 .table-cell-md
 	display table-cell
 
-/* Justify content */
 .jc-start-md
 	justify-content start
 .jc-end-md
@@ -73,7 +45,6 @@ a.anchor
 .jc-evenly-md
 	justify-content space-evenly
 
-/* Align items */
 .ai-start-md
 	align-items start
 .ai-end-md
@@ -85,7 +56,6 @@ a.anchor
 .ai-baseline-md
 	align-items baseline
 
-/* Align content */
 .ac-stretch-md
 	align-content stretch
 .ac-center-md
@@ -95,19 +65,14 @@ a.anchor
 .ac-around-md
 	align-content space-around
 
-/**
- * Flex(box)
- */
 .flex-md
 	display flex
 
-// Wrap
 .wrap-md
 	flex-wrap wrap
 .nowrap-md
 	flex-wrap nowrap
 
-// Direction
 .flex-dir-row-md
 	flex-direction row
 .flex-dir-row-reverse-md
@@ -117,45 +82,17 @@ a.anchor
 .flex-dir-col-reverse-md
 	flex-direction column-reverse
 
-// Horizontal Alignment
 .jc-flex-start-md
 	justify-content flex-start
 .jc-flex-end-md
 	justify-content flex-end
 
-// Vertical Alignment
 .ai-flex-start-md
 	align-items flex-start
 .ai-flex-end-md
 	align-items flex-end
 
-// Align content
 .ac-flex-start-md
 	align-content flex-start
 .ac-flex-end-md
 	align-content flex-end
-
-/* Grid */
-.grid-md
-	display grid
-	&._12-col-md
-		grid-template-columns repeat(12, 1fr)
-	&.has-gap-md
-		grid--gap $gutter $gutter
-	&.has-col-gap-md
-		grid-column-gap $gutter
-	&.has-row-gap-md
-		grid-row-gap $gutter
-	&.auto-flow-row-md
-		grid-auto-flow row // default
-	&.auto-flow-col-md
-		grid-auto-flow col
-
-// Items
-for $i in (1..12)
-	.gcol-md-{$i}
-		grid-column-end span $i
-
-for $j in (1..11)
-	.goffset-md-{$j}
-		margin-left (100 * $j / 12)%

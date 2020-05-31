@@ -1,14 +1,8 @@
-/**
- * base/index
- */
-
-/* All element */
 *
 	box-sizing border-box
 	-webkit-overflow-scrolling touch
 	-webkit-tap-highlight-color transparent
 
-/* Document & body */
 html, body
 	width 100%
 	position relative
@@ -23,39 +17,28 @@ html
 body
 	overflow hidden
 
-/* Section */
-$sect-space = 48px
-section
+section, .section
 	&.padding
-		padding $sect-space 0
+		padding $section-margin 0
 	&.padding-t
-		padding $sect-space 0 0
+		padding $section-margin 0 0
 	&.padding-b
-		padding 0 0 $sect-space
+		padding 0 0 $section-margin
 	&.margin
-		margin $sect-space 0
+		margin $section-margin 0
 	&.margin-t
-		margin $sect-space 0 0
+		margin $section-margin 0 0
 	&.margin-b
-		margin 0 0 $sect-space
-	&.has-row
-		&.padding
-			padding ($sect-space - $gutter) 0 $sect-space
-		&.padding-t
-			padding ($sect-space - $gutter) 0 0
-		&.margin
-			margin ($sect-space - $gutter) 0 $sect-space
-		&.margin-t
-			margin ($sect-space - $gutter) 0 0
+		margin 0 0 $section-margin
 
-/* Container */
 .container
 	width 100%
 	max-width $container-width
-	margin 0 auto
-	padding 0 16px
+	margin-left auto
+	margin-right auto
+	padding-left ($gutter/2)
+	padding-right ($gutter/2)
 
-/* Media */
 figure, picture, video
 	display block
 
@@ -66,7 +49,6 @@ img, svg
 	&.w100
 		width 100%
 
-/* List */
 ul
 	&.disc, &.circle, &.square
 		padding 0 0 0 1.5em
@@ -87,19 +69,11 @@ ol
 	&.upper-alpha
 		list-style upper-alpha
 
-// dl
-dt
-	font-wieght bold
-// dd
-
-/* Anchor */
 a.anchor
 	display block
 	position relative
-	top -($header-height+16px)
 	visibility hidden
 
-/* Slection */
 // ::-moz-selection
 // 	background rgba($main-color, .3)
 // 	color #fff
@@ -108,7 +82,6 @@ a.anchor
 // 	background rgba($main-color, .3)
 // 	color #fff
 
-/* Clearfix* */
 .clearfix
 	zoom 1
 	&:before
@@ -120,12 +93,6 @@ a.anchor
 .clearboth
 	clear both
 
-/* Block Alighment */
-.aligncenter
-	margin-left auto
-	margin-right auto
-
-/* Display */
 .block
 	display block
 .ib
@@ -140,7 +107,6 @@ a.anchor
 .desktop
 	display none
 
-/* Position */
 .relative
 	position relative
 .absolute
@@ -148,7 +114,6 @@ a.anchor
 .fixed
 	position fixed
 
-/* Before & After */
 .has-before,
 .has-after,
 .has-before-after
@@ -162,19 +127,6 @@ a.anchor
 	display block
 	position absolute
 
-/* Transition */
-.transition
-	transiton all .3s
-.transition-linear
-	transiton all .3s linear
-.transition-ease-in
-	transiton all .3s ease-in
-.transition-ease-out
-	transiton all .3s ease-out
-.transition-ease-in-out
-	transiton all .3s ease-in-out
-
-/* Justify content */
 .jc-start
 	justify-content start
 .jc-end
@@ -190,7 +142,6 @@ a.anchor
 .jc-evenly
 	justify-content space-evenly
 
-/* Align items */
 .ai-start
 	align-items start
 .ai-end
@@ -202,7 +153,6 @@ a.anchor
 .ai-baseline
 	align-items baseline
 
-/* Align content */
 .ac-stretch
 	align-content stretch
 .ac-center
@@ -212,20 +162,14 @@ a.anchor
 .ac-around
 	align-content space-around
 
-/**
- * Flex(box)
- * @link https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-*/
 .flex
 	display flex
 
-// Wrap
 .wrap
 	flex-wrap wrap
 .nowrap
 	flex-wrap nowrap
 
-// Direction
 .flex-dir-row
 	flex-direction row
 .flex-dir-row-reverse
@@ -235,49 +179,17 @@ a.anchor
 .flex-dir-col-reverse
 	flex-direction column-reverse
 
-// Horizontal Alignment
 .jc-flex-start
 	justify-content flex-start
 .jc-flex-end
 	justify-content flex-end
 
-// Vertical Alignment
 .ai-flex-start
 	align-items flex-start
 .ai-flex-end
 	align-items flex-end
 
-// Align content
 .ac-flex-start
 	align-content flex-start
 .ac-flex-end
 	align-content flex-end
-
-/**
- * Grid
- * @link https://css-tricks.com/snippets/css/complete-guide-grid/
- * @link https://learncssgrid.com/
- */
-.grid
-	display grid
-	&._12-col
-		grid-template-columns repeat(12, 1fr)
-	&.has-gap
-		grid--gap $gutter $gutter
-	&.has-col-gap
-		grid-column-gap $gutter
-	&.has-row-gap
-		grid-row-gap $gutter
-	&.auto-flow-row
-		grid-auto-flow row // default
-	&.auto-flow-col
-		grid-auto-flow col
-
-// Items
-for $i in (1..12)
-	.gcol-{$i}
-		grid-column-end span $i
-
-for $j in (1..11)
-	.goffset-{$j}
-		margin-left (100 * $j / 12)%

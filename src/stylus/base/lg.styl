@@ -1,14 +1,8 @@
-/**
- * base/desktop
- */
-
-/* Container */
 .container
 	max-width $container-width-lg
 	&.is-narrow
 		max-width $container-width-md
 
-/* Display */
 .desktop
 	display block
 .ib-lg
@@ -20,7 +14,6 @@
 .table-cell-lg
 	display table-cell
 
-/* Justify content */
 .jc-start-lg
 	justify-content start
 .jc-end-lg
@@ -36,7 +29,6 @@
 .jc-evenly-lg
 	justify-content space-evenly
 
-/* Align items */
 .ai-start-lg
 	align-items start
 .ai-end-lg
@@ -48,7 +40,6 @@
 .ai-baseline-lg
 	align-items baseline
 
-/* Align content */
 .ac-stretch-lg
 	align-content stretch
 .ac-center-lg
@@ -58,19 +49,14 @@
 .ac-around-lg
 	align-content space-around
 
-/**
- * Flex(box)
- */
 .flex-lg
 	display flex
 
-// Wrap
 .wrap-lg
 	flex-wrap wrap
 .nowrap-lg
 	flex-wrap nowrap
 
-// Direction
 .flex-dir-row-lg
 	flex-direction row
 .flex-dir-row-reverse-lg
@@ -80,45 +66,17 @@
 .flex-dir-col-reverse-lg
 	flex-direction column-reverse
 
-// Horizontal Alignment
 .jc-flex-start-lg
 	justify-content flex-start
 .jc-flex-end-lg
 	justify-content flex-end
 
-// Vertical Alignment
 .ai-flex-start-lg
 	align-items flex-start
 .ai-flex-end-lg
 	align-items flex-end
 
-// Align content
 .ac-flex-start-lg
 	align-content flex-start
 .ac-flex-end-lg
 	align-content flex-end
-
-/* Grid */
-.grid-lg
-	display grid
-	&._12-col-lg
-		grid-template-columns repeat(12, 1fr)
-	&.has-gap-lg
-		grid--gap $gutter $gutter
-	&.has-col-gap-lg
-		grid-column-gap $gutter
-	&.has-row-gap-lg
-		grid-row-gap $gutter
-	&.auto-flow-row-lg
-		grid-auto-flow row // default
-	&.auto-flow-col-lg
-		grid-auto-flow col
-
-// Items
-for $i in (1..12)
-	.gcol-lg-{$i}
-		grid-column-end span $i
-
-for $j in (1..11)
-	.goffset-lg-{$j}
-		margin-left (100 * $j / 12)%
