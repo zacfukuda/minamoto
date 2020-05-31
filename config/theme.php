@@ -1,22 +1,9 @@
 <?php
-/**
- * Configuration for this theme
- *
- * Tables of configuration:
- * 1. Post Type
- * 2. Taxonomy
- * 3. Navigation Menu
- * 4. Widget
- */
 
 /**
- * Post Type
- * @link https://codex.wordpress.org/Post_Types
  * @link https://developer.wordpress.org/reference/functions/register_post_type/
- * 
  */
 $post_types = [
-	// Book
 	'book' => [
 		'labels' => [
 			'name' => __( 'Books' ),
@@ -38,7 +25,6 @@ $post_types = [
 ];
 
 /**
- * Taxonomy
  * @link https://developer.wordpress.org/reference/functions/register_taxonomy/
  */
 $taxonomies = [
@@ -61,7 +47,6 @@ $taxonomies = [
 ];
 
 /**
- * Navigation Menu
  * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
  */
 $nav_menus = [
@@ -70,7 +55,6 @@ $nav_menus = [
 ];
 
 /**
- * Widget
  * @link https://developer.wordpress.org/reference/functions/register_sidebar/
  */
 $widgets = [
@@ -85,8 +69,6 @@ $widgets = [
 	],
 ];
 
-
-// Combine configurations
 $theme_config = [
 	'post_types' => $post_types,
 	'taxonomies' => $taxonomies,
@@ -94,5 +76,4 @@ $theme_config = [
 	'widgets' => $widgets
 ];
 
-// Destroy variables no longer needed
 unset($post_types, $taxonomies, $nav_menus, $widgets);
