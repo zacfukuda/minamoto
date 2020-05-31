@@ -5,10 +5,8 @@ global $theme_textdomain;
 $context = Timber::get_context();
 $context['posts'] = new Timber\PostQuery();
 
-// Templates
-$templates = array( 'archive.twig', 'index.twig' );
+$templates = array('archive.twig', 'index.twig');
 
-// Archive title
 $context['title'] = 'Archive';
 
 if ( is_day() ) {
@@ -27,7 +25,6 @@ if ( is_day() ) {
 	array_unshift( $templates, 'archive-' . get_post_type() . '.twig' );
 }
 
-// Get pagination content
 $context['pagination'] = get_the_posts_pagination([
 	'mid_size' => 3,
 	'prev_text' => __( '&larr;', $theme_textdomain ),

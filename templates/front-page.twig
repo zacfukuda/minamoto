@@ -7,7 +7,6 @@
 	{% else %}
 		{{ post.content }}
 	{% endif %}
-	{# Show posts #}
 	{% for post in posts %}
 		{% include "component/post/index.twig" %}
 	{% endfor %}

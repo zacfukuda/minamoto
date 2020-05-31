@@ -1,5 +1,7 @@
 <?php
 
+remove_filter( 'the_content', 'wpautop' );
+
 $context = Timber::get_context();
 $post = new TimberPost();
 $context['post'] = $post;

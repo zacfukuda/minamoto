@@ -2,32 +2,18 @@
 <html {{ site.language_attributes }}>
 {% include "partial/head.twig" %}
 <body class="{{body_class}}" data-template="base.twig">
-	{#
-		Uncomment if you’d like to load Social SDKs
-		{% include "partial/sdk.twig" %}
-	#}
+	{# include "partial/sdk.twig" #}
 	{# include "component/loading-page.twig" #}
 	<div id="root" class="root">
 		{% include "component/header.twig" %}
 		<main class="main" role="main">
 			{% block content %} Sorry, no content {% endblock %}
-			{#
-				{% block sidebar %}
-					Uncomment if you wan to use
-				{% endblock %}
-			#}
+			{% block sidebar %}{% endblock %}
 		</main>
 		{% include "component/footer.twig" %}
-	</div><!-- #root.root -->
+	</div><!-- #root -->
 	{{ function('wp_footer') }}
-	{#
-		JavaScript plugins
-	#}
-	{# Loading-Page UI #}
-	{# <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script> #}
-	{# Smooth scrolling #}
 	<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@16.1.0/dist/smooth-scroll.polyfills.min.js"></script>
-	{# Main JavaScript #}
 	<script src="{{paths.rel_template}}/dist/js/app.min.js?v={{version}}"></script>
 </body>
 </html>

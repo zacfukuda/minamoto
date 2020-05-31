@@ -1,13 +1,11 @@
 /**
  * Insert href="mailto:" preventing from spam bots
- * @param object param
  * @link http://www.jottings.com/obfuscator/
  */
 function emailObfuscator({coded, key, selector}) {
 
-	// Parameter check
 	if (!coded || !key) {
-		console.error('Both "coded" and "key" valuses must be given to invoke emailObfuscator.')
+		console.error('Both "coded" and "key" must be given.')
 		return
 	}
 
@@ -18,10 +16,8 @@ function emailObfuscator({coded, key, selector}) {
 	selector = selector || 'email'
 	anchors = document.querySelectorAll('a.' + targetClass)
 
-	// Do nothing if no anchor to insert
 	if (anchors.length < 1) return
 
-	// Decrypt email from "coded"
 	for (var i = 0; i < coded.length; i++) {
 		if (key.indexOf(coded.charAt(i)) == -1) {
 			ltr = coded.charAt(i)
@@ -32,15 +28,14 @@ function emailObfuscator({coded, key, selector}) {
 		}
 	}
 
-	// Insert href
-	anchors.forEach(a => {
+	anchors.forEach(InsertHref)
+
+	function InsertHref(a) {
 		a.setAttribute('href', 'mailto:' + link)
-		
-		// Stop inserting email text
-		if (a.getAttribute('data-text') === '0') return
-		
-		a.innerHTML = link
-	})
+		if (!a.innerHTML) {
+			a.innerHTML = link
+		}
+	}
 }
 
 export default emailObfuscator
