@@ -1,73 +1,54 @@
 <?php
-/**
- * Display content of HTML file loaded from theme.
- * @param boolean $echo
- * @return string
- * @link http://blog2.k05.biz/2013/06/allow_url_fopen-curl.html
- */
+
 function get_the_html_content() {
 
-	global $post;
-	$failed_paths = [];
-	$base_path = get_template_directory() . '/html';
-	$uri = $_SERVER["REQUEST_URI"]; //filter_input(INPUT_SERVER, 'REQUEST_URI');
+	function get_possible_paths() {
+		$paths = [];
+		$base_path = get_template_directory() . '/html';
+		$uri = ($_SERVER["REQUEST_URI"] == '') ? '/' : $_SERVER["REQUEST_URI"];
 
-	/**
-	 * Function to return formatted html
-	 */
-	function format_content($path) {
-		global $post;
+		array_push($paths, $base_path . $uri . 'index.html');
 
-		// Get the content of HTML file
-		$content = file_get_contents($path);
+		$uri = preg_replace('/\/$/', '', $uri);
+		$terms = explode('/', $uri);
+		
+		$filename = end($terms) . '.html';
+		array_pop($terms);
 
-		// Gutenberg compatibiligy: wrap content with HTML block
-		if ( has_blocks( $post->post_content ) ) {
-			$blocks = parse_blocks( $post->post_content );
-			if ( $blocks[0]['blockName'] === 'core/html' ) {
-				$content = sprintf('<!-- wp:html -->%s<!-- /wp:html -->', $content);
-			}
+		while ( !empty($terms) ) {
+			$path = $base_path . implode('/', $terms) . '/' . $filename;
+			array_pop($terms);
+			array_push($paths, $path);
 		}
 
-		/**
-		 * Apply filter (Execute shorcodes)
-		 * @link https://developer.wordpress.org/reference/functions/the_content/
-		 */
-		$content = apply_filters( 'the_content', $content );
-		$content = str_replace( ']]>', ']]&gt;', $content );
+		return $paths;
+	}
 
+	function get_path_file_exists($paths) {
+		foreach ($paths as $path) {
+			if ( file_exists($path) ) { return $path; }
+		}
+		return '';
+	}
+
+	function get_error_message($paths) {
+		return 'No HTML file found at:<br>' . implode('<br>', $paths);
+	}
+
+	function get_contents($path) {
+		$content = file_get_contents($path);
+		$content = sprintf('<!-- wp:html -->%s<!-- /wp:html -->', $content);
+		$content = apply_filters('the_content', $content);
+		$content = str_replace(']]>', ']]&gt;', $content);
 		return $content;
 	}
 
-	// BEGIN main code
-	if ($uri == '') { $uri = '/'; } // Cover more systems
-	$path = $base_path . $uri . 'index.html';
+	$paths = get_possible_paths();
+	$path = get_path_file_exists($paths);
 
-	if ( file_exists($path) ) { return format_content($path); }
-
-	// Add not-found-path
-	array_push($failed_paths, $path);
-
-	// Remove '/' at the end of URI
-	$uri = preg_replace('/\/$/', '', $uri);
-
-	// Set URI terms and file name to look for
-	$uriTerms = explode('/', $uri);
-	$filename = end($uriTerms) . '.html';
-	array_pop($uriTerms);
-
-	// Try Combination
-	for ($i = 0, $terms = $uriTerms; $i < count($uriTerms); $i++) {
-		$path = $base_path . implode('/', $terms) . '/' . $filename;
-
-		// Return content with the path
-		if ( file_exists($path) ) { return format_content($path); }
-
-		// Add not-found-path and go to the next
-		array_push($failed_paths, $path);
-		array_pop($terms);
+	if ( empty($path) ) {
+		return get_error_message($paths);
+	} else {
+		return get_contents($path);
 	}
-
-	// Couldn’t find a file
-	return "No HTML file found at:<br>" . implode('<br>', $failed_paths);
 }
