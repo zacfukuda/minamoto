@@ -18,5 +18,4 @@ $functions_paths = [
 	'functions' => $paths['template'] . '/inc'
 ];
 
-$paths = (object) array_merge($paths, $rel_paths, $functions_paths);
-unset($rel_paths, $functions_paths);
+return (object) array_merge($paths, $rel_paths, $functions_paths);

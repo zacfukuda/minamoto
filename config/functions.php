@@ -1,13 +1,6 @@
 <?php
 
-$classes = [
-	'HelloWorldWidget' => true,
-	'MinamotoFactory' => true,
-	'MinamotoSetup'	=> true,
-	'MinamotoTimber' => true,
-];
-
-$functions = [
+return [
 	'add_custom_schedules' => true,
 	'cf7_email_validation_filter' => true,
 	'filter_medium_large' => true,

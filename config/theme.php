@@ -69,11 +69,9 @@ $widgets = [
 	],
 ];
 
-$theme_config = [
+return [
 	'post_types' => $post_types,
 	'taxonomies' => $taxonomies,
 	'nav_menus' => $nav_menus,
 	'widgets' => $widgets
 ];
-
-unset($post_types, $taxonomies, $nav_menus, $widgets);
