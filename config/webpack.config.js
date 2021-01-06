@@ -7,7 +7,6 @@
 const path = require('path')
 const paths = require('./paths')
 
-const path = require('path')
 const TerserPlugin = require('terser-webpack-plugin')
 const argv = require('minimist')(process.argv.slice(3))
 
