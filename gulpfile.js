@@ -85,13 +85,12 @@ exports.watch = () => {
 exports.start = series(
 	parallel(stylusTask, jsTask),
 	() => {
+		watch(paths.watch.stylus, stylusTask)
+		watch(paths.watch.js, series(jsTask, jsSync))
+
 		browserSync.init({
 			open: false,
 			proxy: packageJSON.proxy
 		})
-
-		watch(paths.watch.stylus, stylusTask)
-		watch(paths.watch.js, series(jsTask, jsSync))
-
 	},
 )
