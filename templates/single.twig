@@ -1,20 +1,14 @@
 {% extends "layout/base.twig" %}
-
 {% block content %}
-	<article id="post-{{post.ID}}" class="{{post.post_type}}">
+	<article class="{{ post.post_type }}">
 		{% if post.thubmanil %}
-			<picture>
-				<img src="{{post.thumbnail.src('medium')}}" srcset="{{post.thumbnail.srcset}}" sizes="{{post.thumbnail.sizes}}" alt="{{post.title}}">
-			</picture>
+			{% include "component/thubmanil.twig" with {'thumb': post.thumbnail, 'size': 'medium'} %}
 		{% endif %}
 		<h1>{{ post.title }}</h1>
-		<p>Author: <a href="{{post.author.path}}"> {{ post.author.name }} </a></p>
+		<p>Author: <a href="{{ post.author.path }}"> {{ post.author.name }} </a></p>
 		<p>Date: {{ post.date }}</p>
-		<ul>
-			{% for tag in post.tags %}
-				<li class="{{tag.taxonomy}}"><a href="{{tag.link}}">{{tag.name}}</a></li>
-			{% endfor %}
-		</ul>
+		{% include "component/post-category-list.twig" with {'items': post.categories} %}
+		{% include "component/post-tag-list.twig" with {'items': post.tags} %}
 		<div>{{ post.content }}</div>
 	</article>
 {% endblock %}

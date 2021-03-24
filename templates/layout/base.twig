@@ -15,5 +15,6 @@
 	{{ function('wp_footer') }}
 	<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@16.1.0/dist/smooth-scroll.polyfills.min.js"></script>
 	<script src="{{paths.rel_template}}/dist/js/app.min.js?v={{version}}"></script>
+	{% block script %}{% endblock %}
 </body>
 </html>

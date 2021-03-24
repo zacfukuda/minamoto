@@ -1,0 +1,10 @@
+{% if posts | length %}
+	<div class="">
+		{% for post in posts %}
+			{% include "component/post-list-item.twig" %}
+		{% endfor %}
+	</div>
+	{% include "component/pagination.twig" %}
+{% else %}
+	<p>No posts found.</p>
+{% endif %}

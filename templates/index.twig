@@ -1,13 +1,5 @@
 {% extends "layout/base.twig" %}
-
 {% block content %}
 	<h1>{{ title ? title: 'Posts' }}</h1>
-	{% if posts | length %}
-		{% for post in posts %}
-			{% include "component/post/index.twig" %}
-		{% endfor %}
-		{% include "component/pagination.twig" %}
-	{% else %}
-		<p>No posts found.</p>
-	{% endif %}
+	{% include "component/post-list" %}
 {% endblock %}

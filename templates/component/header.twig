@@ -6,12 +6,12 @@
 		<ul>
 			{% for item in global_nav.get_items %}
 				<li class="{{ item.classes | join(' ') }}">
-					<a href="{{item.link}}" target="{{ item.target }}">{{ item.title }}</a>
+					<a href="{{ item.link }}" target="{{ item.target }}">{{ item.title }}</a>
 					{% if item.get_children %}
 						<ul>
 							{% for child in item.get_children %}
-								<li>
-									<a href="{{child.link}}" target="{{ child.target }}">{{ child.title }}</a>
+								<li class="{ child.classes | join(' ') }}">
+									<a href="{{ child.link }}" target="{{ child.target }}">{{ child.title }}</a>
 								</li>
 							{% endfor %}
 						</ul>

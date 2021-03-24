@@ -1,13 +1,15 @@
 {% extends "layout/base.twig" %}
-
 {% block content %}
 	<h1>{{ page.title }}</h1>
-	{% if html %}
-		{{ html }}
+	{{ html ? html : post.content }}
+	<h2>Latest Posts</h2>
+	{% if posts | length %}
+		<div class="">
+			{% for post in posts %}
+				{% include "component/post-list-item.twig" %}
+			{% endfor %}
+		</div>
 	{% else %}
-		{{ post.content }}
+		<p>No posts found.</p>
 	{% endif %}
-	{% for post in posts %}
-		{% include "component/post/index.twig" %}
-	{% endfor %}
 {% endblock %}

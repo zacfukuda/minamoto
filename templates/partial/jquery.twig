@@ -1,0 +1,16 @@
+{# https://jquery.com/download/, https://code.jquery.com/ #}
+<script
+	src="https://code.jquery.com/jquery-3.6.0.js"
+	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+	crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="{{ paths.rel_template }}/assets/jquery/jquery.min.js"><\/script>');</script>
+{# Migraration #}
+<script
+	src="https://code.jquery.com/jquery-migrate-3.3.2.js"
+	integrity="sha256-BDmtN+79VRrkfamzD16UnAoJP8zMitAz093tvZATdiE="
+	crossorigin="anonymous"></script>
+{# Resolve conflict #}
+<script>var jQuery3 = jQuery.noConflict(true);</script>
+<script>(function($) {
+	console.log('jQuery version: ' + $.fn.jquery);
+})(jQuery3);</script>
