@@ -2,22 +2,11 @@
 	<a href="{{ site.url }}" role="banner" rel="home" title="{{ site.name }}">
 		<img src="{{ paths.rel_template }}/img/logo/normal.svg" alt="{{ site.name }}" width="128" height="128">
 	</a>
-	<nav>
-		<ul>
-			{% for item in global_nav.get_items %}
-				<li class="{{ item.classes | join(' ') }}">
-					<a href="{{ item.link }}" target="{{ item.target }}">{{ item.title }}</a>
-					{% if item.get_children %}
-						<ul>
-							{% for child in item.get_children %}
-								<li class="{ child.classes | join(' ') }}">
-									<a href="{{ child.link }}" target="{{ child.target }}">{{ child.title }}</a>
-								</li>
-							{% endfor %}
-						</ul>
-					{% endif %}
-				</li>
-			{% endfor %}
-		</ul>
+	<nav role="navigation">
+		{% include "component/menu.twig" with {
+			'items': global_nav.get_items,
+			'class_name': ''
+		} %}
 	</nav>
+	<button class="toggle">Toggle</button>
 </header>

@@ -1,8 +1,11 @@
 import SmoothScroll from 'smooth-scroll'
-import helloESNext from './helloESNext'
-// import emailObfuscator from './emailObfuscator'
 
-helloESNext()
+import hello from './lib/hello'
+// import emailObfuscator from './lib/emailObfuscator'
+import Header from './component/Header'
+import Tabs from './component/Tabs'
+
+hello()
 
 // https://github.com/cferdinandi/smooth-scroll
 new SmoothScroll('a[href*="#"]', {
@@ -10,3 +13,5 @@ new SmoothScroll('a[href*="#"]', {
 	// speedAsDuration: true,
 	updateURL: false,
 })
+new Header()
+document.querySelectorAll('.tabs').forEach(t => new Tabs(t))

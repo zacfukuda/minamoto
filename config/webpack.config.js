@@ -1,12 +1,11 @@
 /**
  * Webpack config file for building the production file.
  */
-
 'use strict'
 
 const path = require('path')
 const paths = require('./paths')
-
+const ESLintPlugin = require('eslint-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const argv = require('minimist')(process.argv.slice(3))
 
@@ -23,15 +22,6 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				enforce: 'pre',
-				test: /\.m?js$/,
-				include: paths.src.js,
-				loader: 'eslint-loader',
-				options: {
-					cache: true
-				}
-			},
-			{
 				test: /\.m?js$/,
 				include:  paths.src.js,
 				use: {
@@ -44,18 +34,18 @@ module.exports = {
 		],
 	},
 	externals: {
-		jquery: 'jQuery',
-		pace: 'Pace',
+		'body-scroll-lock': 'bodyScrollLock',
+		'jquery': 'jQuery',
+		'pace': 'Pace',
 		'smooth-scroll': 'SmoothScroll',
 	},
 	optimization: {
 		minimize: argv.pro,
 		minimizer: [
-			new TerserPlugin({
-				cache: true,
-				parallel: true,
-				sourceMap: false
-			})
-		]
+			new TerserPlugin({parallel: true})
+		],
 	},
+	plugins: [
+		new ESLintPlugin({cache: true}),
+	],
 }

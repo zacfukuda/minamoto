@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html {{ site.language_attributes }}>
 {% include "partial/head.twig" %}
-<body class="{{body_class}}" data-template="base.twig">
+<body class="{{ body_class }}">
 	{# include "partial/sdk.twig" #}
-	{# include "component/loading-page.twig" #}
+	{# include "component/pace.twig" #}
 	<div id="root" class="root">
 		{% include "component/header.twig" %}
-		<main class="main" role="main">
-			{% block content %} Sorry, no content {% endblock %}
+		<main class="{{ main_class }}" role="main">
+			{% block content %}{% endblock %}
 			{% block sidebar %}{% endblock %}
 		</main>
 		{% include "component/footer.twig" %}
 	</div><!-- #root -->
 	{{ function('wp_footer') }}
-	<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@16.1.0/dist/smooth-scroll.polyfills.min.js"></script>
-	<script src="{{paths.rel_template}}/dist/js/app.min.js?v={{version}}"></script>
-	{% block script %}{% endblock %}
+	{% include "partial/script.twig" %}
 </body>
 </html>
