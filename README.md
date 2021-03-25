@@ -97,21 +97,18 @@ The theme is tested only with the latest version of Wordpress. There is no guara
 
 The theme is developed to be your sole custom theme. Therefore, the theme might not work properly if you use it as the parent theme of child theme, or child theme itself. It is possible to customize the theme in accordance with your preference for parent/child theme purpose, however, doing so requires a lot of work.
 
-## Test Environment
-- Node & NPM: 10.15.0 & 6.4.1
-- Yarn: 1.13.0
-- Wordpress: 5.0.3
-- PHP: 7.2.10
-- MySQL: 5.7.23
-- Web Server: Apache 2.2.34
-
 ## Other Wordpress Starter Themes
+
 - [Sage](https://roots.io/sage/) ([Github](https://github.com/roots/sage))
 - [Underscores a.k.a. \_s](https://underscores.me/) ([Github](https://github.com/automattic/_s))
 - [Bones](https://themble.com/bones/) ([Github](https://github.com/squibbleFish/theme-bones))
 
 ## Feedback
+
 If you have any request or find bugs, please bring it up to [Issues](https://github.com/zacfukuda/minamoto/issues).
 
 ## Todos
+
 - stylus variable for text, border, background color
+- Tab: show the panel based on the hash
+- dialog over dialog (multi-dialog hadling)

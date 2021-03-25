@@ -21,11 +21,11 @@ export default class Header {
 
 	open() {
 		disableBodyScroll(this.e)
-		document.documentElement.style.overflow = 'hidden'
+		//document.documentElement.style.overflow = 'hidden'
 	}
 
 	close() {
 		enableBodyScroll(this.e)
-		document.documentElement.style.overflow = null
+		//document.documentElement.style.overflow = null
 	}
 }

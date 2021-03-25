@@ -4,6 +4,7 @@ import hello from './lib/hello'
 // import emailObfuscator from './lib/emailObfuscator'
 import Header from './component/Header'
 import Tabs from './component/Tabs'
+import './component/Dialog'
 
 hello()
 

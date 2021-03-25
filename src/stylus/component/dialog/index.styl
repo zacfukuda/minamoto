@@ -1,0 +1,26 @@
+.dialog-backdrop
+	position fixed
+	top 0
+	right 0
+	bottom 0
+	left 0
+	background rgba(0,0,0,.3)
+	// backdrop-filter
+	display none
+	align-items center
+	justify-content center
+	overflow-y auto
+	padding 20px 40px
+	z-index 1500
+	&.active
+		display flex
+
+[role=dialog]
+	background #fff
+	padding 15px
+	&.hidden
+		display none
+
+/* Added to <body> when a dialog is open */
+.has-dialog
+	overflow hidden
