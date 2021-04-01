@@ -42,7 +42,8 @@ module.exports = {
 	optimization: {
 		minimize: argv.pro,
 		minimizer: [
-			new TerserPlugin({parallel: true})
+			new TerserPlugin()
+			// new TerserPlugin({parallel: true})
 		],
 	},
 	plugins: [
