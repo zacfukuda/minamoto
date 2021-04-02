@@ -1,31 +1,27 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 
 export default class Header {
-	constructor(element) {
-		element = element || document.querySelector('#header')
-		if (!element) return
+	constructor(el) {
+		el = el || document.querySelector('#header')
+		if (!el) return
 
-		this.e = element
-		this.b = {
-			t: this.e.querySelector('.toggle')
-		}
+		this.e = el
+		this.t = el.querySelector('.toggle')
 
-		if (this.b.t) this.b.t.onclick = this.toggle.bind(this)
+		if (this.t) this.t.onclick = this.toggle.bind(this)
 	}
 
 	toggle() {
-		this.e.classList.toggle('opened')
-		if (this.e.classList.contains('opened')) this.open()
+		this.e.classList.toggle('open')
+		if (this.e.classList.contains('open')) this.open()
 		else this.close()
 	}
 
 	open() {
 		disableBodyScroll(this.e)
-		//document.documentElement.style.overflow = 'hidden'
 	}
 
 	close() {
 		enableBodyScroll(this.e)
-		//document.documentElement.style.overflow = null
 	}
 }

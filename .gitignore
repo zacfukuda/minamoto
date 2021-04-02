@@ -1,4 +1,4 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
+# See https://help.github.com/ignore-files/
 
 # dependencies
 /node_modules
@@ -8,6 +8,7 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
@@ -15,20 +16,8 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.eslintcache
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# built files
-/dist
-/css/style.css
-/css/style.min.css
-/css/medium.css
-/css/medium.min.css
-/css/large.css
-/css/large.min.css
-/css/*.map
-/js/app.js
-/js/app.min.js
-/js/*.map

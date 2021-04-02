@@ -23,7 +23,7 @@ const sourcemaps = require('gulp-sourcemaps')
 const	stylus = require('gulp-stylus')
 const touch = require('gulp-touch-fd')
 const webpack = require('webpack')
-const gulpWebpack = require('webpack-stream')
+const webpackStream = require('webpack-stream')
 
 const isBrowsersyncOn = (process.argv[2] === 'start') ? true : false
 
@@ -42,7 +42,7 @@ exports.stylus = stylusTask
 
 const jsTask = () => src(paths.compile.js)
 	.pipe(plumber())
-	.pipe(gulpWebpack(require('./config/webpack.config'), webpack))
+	.pipe(webpackStream(require('./config/webpack.config'), (argv.pro ? webpack : null)))
 	.pipe(dest(paths.dist.js))
 	.pipe(touch())
 
@@ -66,7 +66,7 @@ const buildUncompressed = (cb) => {
 
 	src(paths.compile.js)
 		.pipe(plumber())
-		.pipe(gulpWebpack(require('./config/webpack.config.uncompressed'), webpack))
+		.pipe(webpackStream(require('./config/webpack.config.uncompressed'), webpack))
 		.pipe(dest(paths.dist.js))
 		.pipe(touch())
 
