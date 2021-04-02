@@ -5,6 +5,13 @@
  * @link https://webpack.js.org/guides/integrations/#gulp
  */
 
+// Argument passed to the NPM command
+const argv = require('minimist')(process.argv.slice(3))
+
+// Do this as soon as the arguments are loaded 
+process.env.BABEL_ENV = argv.pro ? 'production' : 'development'
+process.env.NODE_ENV = argv.pro ? 'production' : 'development'
+
 // Load package.json
 const packageJSON = require('./package.json')
 
@@ -13,9 +20,8 @@ const paths = require('./config/paths')
 
 // Import modules
 const browserSync = require('browser-sync').create()
-const { src, dest, watch, parallel, series } = require('gulp');
+const { src, dest, watch, parallel, series } = require('gulp')
 const	autoprefixer = require('gulp-autoprefixer')
-const gcmq = require('gulp-group-css-media-queries')
 const gulpif = require('gulp-if')
 const	plumber = require('gulp-plumber')
 const rename = require('gulp-rename')
@@ -23,34 +29,36 @@ const sourcemaps = require('gulp-sourcemaps')
 const	stylus = require('gulp-stylus')
 const webpack = require('webpack-stream')
 
-// Argument passed to the NPM command
-const argv = require('minimist')(process.argv.slice(3))
+// As of gulp 4, the default dest() doesn’t change the createdAt/modifiedAt
+// of output files unless its source files are changed.
+// gulp-touch-fd fixes this problem.
+const touch = require('gulp-touch-fd')
 
-// Set true onlu if the current gulp task is 'server'
-const isBrowsersyncOn = (process.argv[2] === 'server') ? true : false
+// Set true onlu if the current gulp task is 'start'
+const isBrowsersyncOn = (process.argv[2] === 'start') ? true : false
 
 // Stylus
-const stylusTask = () => {
-	return src(paths.compile.stylus)
-		.pipe(plumber())
-		.pipe(gulpif(argv.pro, sourcemaps.init()))
-		.pipe(stylus({compress: argv.pro}))
-		.pipe(gulpif(argv.pro, gcmq()))
-		.pipe(autoprefixer())
-		.pipe(rename({suffix: '.min'}))
-		.pipe(gulpif(argv.pro, sourcemaps.write('.')))
-		.pipe(dest(paths.dist.css))
-		.pipe(gulpif(isBrowsersyncOn, browserSync.stream()))
-}
+const stylusTask = () => src(paths.compile.stylus)
+	.pipe(plumber())
+	.pipe(gulpif(argv.pro, sourcemaps.init()))
+	.pipe(stylus({compress: argv.pro}))
+	// .pipe(gulpif(argv.pro, gcmq())) // Compression didn’t work with gcmq.
+	.pipe(autoprefixer())
+	.pipe(rename({suffix: '.min'}))
+	.pipe(gulpif(argv.pro, sourcemaps.write('.')))
+	.pipe(dest(paths.dist.css))
+	.pipe(touch())
+	.pipe(gulpif(isBrowsersyncOn, browserSync.stream()))
+
 exports.stylus = stylusTask
 
-// Javascript
-const jsTask = () => {
-	return src(paths.compile.js)
-		.pipe(plumber())
-		.pipe(webpack( require('./config/webpack.config.default') ))
-		.pipe(dest(paths.dist.js))
-}
+// JavaScript
+const jsTask = () => src(paths.compile.js)
+	.pipe(plumber())
+	.pipe(webpack( require('./config/webpack.config') ))
+	.pipe(dest(paths.dist.js))
+	.pipe(touch())
+
 exports.js = jsTask
 
 const jsSync = (cb) => {
@@ -59,7 +67,7 @@ const jsSync = (cb) => {
 }
 
 // Build unminified version of CSS & JS
-const buildUnminify = (cb) => {
+const buildUncompressed = (cb) => {
 	// CSS
 	src(paths.compile.stylus)
 		.pipe(plumber())
@@ -68,12 +76,14 @@ const buildUnminify = (cb) => {
 		.pipe(autoprefixer())
 		.pipe(sourcemaps.write('.'))
 		.pipe(dest(paths.dist.css))
+		.pipe(touch())
 
 	// JS
 	src(paths.compile.js)
 		.pipe(plumber())
-		.pipe(webpack( require('./config/webpack.config.extra') ))
+		.pipe(webpack( require('./config/webpack.config.uncompressed') ))
 		.pipe(dest(paths.dist.js))
+		.pipe(touch())
 
 	cb()
 }
@@ -84,23 +94,33 @@ exports.watch = () => {
 	watch(paths.watch.js, jsTask)
 }
 
-exports.server = () => {
-	browserSync.init({
-		open: false,
-		proxy: packageJSON.proxy
-	})
+// Run browsersyc server
+exports.start = series(
+	parallel(stylusTask, jsTask),
+	() => {
+		// Initialize browsersync server
+		browserSync.init({
+			open: false,
+			proxy: packageJSON.proxy
+		})
 
-	watch(paths.watch.stylus, stylusTask)
-	watch(paths.watch.js, series(jsTask, jsSync))
+		// Watch file changes
+		watch(paths.watch.stylus, stylusTask)
+		watch(paths.watch.js, series(jsTask, jsSync))
 
-	// Ultimately, you can watch all PHP files,
-	// and reload browser if any change happens.
-	// The author has not tested the program below,
-	// but thinks it would work.
-	// watch('**\/*.php', (cb) => {
-	//	browserSync.reload()
-	//	cb()
-	// })
-}
+		// Ultimately, you can watch all PHP files,
+		// and reload browser if any change happens.
+		// The developer has not tested the code below,
+		// but thinks it would work.
+		// watch('**\/*.php', (cb) => {
+		//	browserSync.reload()
+		//	cb()
+		// })
+	},
+)
 
-exports.build = parallel(stylusTask, jsTask, buildUnminify)
+// Build files for production
+exports.build = series(
+	parallel(stylusTask, jsTask),
+	buildUncompressed
+)
