@@ -1,23 +1,8 @@
-<?php // search
+<?php
 
-get_header(); ?>
+$context = Timber::get_context();
+$context['posts'] = new Timber\PostQuery();
+$context['found_posts'] = $context['posts']->found_posts;
+$context['s'] = get_search_query();
 
-<section>
-	<div class="container">
-		<p><?php _e( 'Search Results for: ', 'minamoto' ); ?> <?php echo esc_html(get_search_query()); ?></p>
-		
-		<div class="archive row">
-			<?php
-				if ( have_posts() ) {
-					while ( have_posts() ) {
-						the_post();
-						get_template_part( 'parts/index' );
-					}
-				} else {
-					get_template_part( 'parts/none');
-				}
-			?>
-		</div><!-- .row -->
-		<?php get_template_part('parts/pagination'); ?>
-	</div><!-- .container -->
-</section>
+Timber::render('search.twig', $context);

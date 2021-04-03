@@ -1,16 +1,20 @@
-// import $ from 'jquery'
-// import Pace from 'pace'
+import SmoothScroll from 'smooth-scroll'
 
-// console.log('jQuery version: ' + $.fn.jquery)
-console.log('Hello, webpack & ES6!')
+import hello from './lib/hello'
+// import emailObfuscator from './lib/emailObfuscator'
+import Header from './component/Header'
+import Accordion from './component/Accordion'
+import Tabs from './component/Tabs'
+import './component/Dialog'
 
-// Pace
-/* Pace.on('done', () => {
-	let $progressUI = $('#progressUI')
+hello()
 
-	$progressUI.css('opacity', 0);
-	setTimeout( () => {
-		$progressUI.css('display', 'none');
-		$('html').removeClass('overflow-hidden');
-	}, 750)
-}, false) */
+// https://github.com/cferdinandi/smooth-scroll
+new SmoothScroll('a[href*="#"]', {
+	// speed: 1000,
+	// speedAsDuration: true,
+	updateURL: false,
+})
+new Header()
+document.querySelectorAll('.accordion').forEach(a => new Accordion(a))
+document.querySelectorAll('.tabs').forEach(t => new Tabs(t))

@@ -1,11 +1,11 @@
-<?php // page
+<?php
 
-get_header();
+remove_filter( 'the_content', 'wpautop' );
+$context = Timber::get_context();
+$context['post'] = new TimberPost();
+// $context['html'] = get_the_html_content();
 
-while( have_posts() ) {
-	the_post();
-	get_template_part( 'parts/page');
-}
-
-// get_sidebar();
-get_footer();
+Timber::render([
+	'page-' . $post->post_name . '.twig',
+	'page.twig'
+],$context);

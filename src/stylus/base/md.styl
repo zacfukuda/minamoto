@@ -1,59 +1,98 @@
-/**
- * base/md
- */
-
-
-// Section
-$sect-space = 80px
 section
-	&.withPadding
-		padding $sect-space 0
-	&.withPadding-top
-		padding $sect-space 0 0
-	&.withPadding-bottom
-		padding 0 0 $sect-space
-	&.withMargin
-		margin $sect-space 0
-	&.withMargin-top
-		margin $sect-space 0 0
-	&.withMargin-bottom
-		margin 0 0 $sect-space
-	&.hasRow
-		&.withPadding
-			padding ($sect-space - $gutter) 0 $sect-space
-		&.withPadding-top
-			padding ($sect-space - $gutter) 0 0
-		&.withMargin
-			margin ($sect-space - $gutter) 0 $sect-space
-		&.withMargin-top
-			margin ($sect-space - $gutter) 0 0
+	&.padding
+		padding $section-margin-md 0
+	&.padding-t
+		padding $section-margin-md 0 0
+	&.padding-b
+		padding 0 0 $section-margin-md
+	&.margin
+		margin $section-margin-md 0
+	&.margin-t
+		margin $section-margin-md 0 0
+	&.margin-b
+		margin 0 0 $section-margin-md
 
-// Container
 .container
 	max-width $container-width-md
-	padding 0 ($gutter+8)
+	padding-left ($gutter+8)
+	padding-right ($gutter+8)
 
-// Anchor
-a.anchor
-	top -($header-height-md + 16px)
-
-// Block Alighment
-.alignleft
-	float left
-.alignright
-	float right
-
-// Display
 .mobile
 	display none
-	
 .tablet
 	display block
-	&.ib
-		display inline-block
-	&.inline
-		display inline
-	&.table
-		display table
-	&.table-cell
-		display table-cell
+.ib-md
+	display inline-block
+.inline-md
+	display inline
+.table-md
+	display table
+.table-cell-md
+	display table-cell
+
+.jc-start-md
+	justify-content start
+.jc-end-md
+	justify-content end
+.jc-center-md
+	justify-content center
+.jc-stretch-md
+	justify-content stretch
+.jc-between-md
+	justify-content space-between
+.jc-around-md
+	justify-content space-around
+.jc-evenly-md
+	justify-content space-evenly
+
+.ai-start-md
+	align-items start
+.ai-end-md
+	align-items end
+.ai-center-md
+	align-items center
+.ai-stretch-md
+	align-items stretch
+.ai-baseline-md
+	align-items baseline
+
+.ac-stretch-md
+	align-content stretch
+.ac-center-md
+	align-content center
+.ac-between-md
+	align-content space-between
+.ac-around-md
+	align-content space-around
+
+.flex-md
+	display flex
+
+.wrap-md
+	flex-wrap wrap
+.nowrap-md
+	flex-wrap nowrap
+
+.flex-dir-row-md
+	flex-direction row
+.flex-dir-row-reverse-md
+	flex-direction row-reverse
+.flex-dir-col-md
+	flex-direction column
+.flex-dir-col-reverse-md
+	flex-direction column-reverse
+
+.jc-flex-start-md
+	justify-content flex-start
+.jc-flex-end-md
+	justify-content flex-end
+
+.ai-flex-start-md
+	align-items flex-start
+.ai-flex-end-md
+	align-items flex-end
+
+.ac-flex-start-md
+	align-content flex-start
+.ac-flex-end-md
+	align-content flex-end

@@ -1,0 +1,16 @@
+.grid-md
+	display grid
+	grid-template-columns repeat(12, 1fr)
+	grid-gap $gutter $gutter
+
+for $i in (1..12)
+	.col-md-{$i} 
+		width (100 * $i / 12)%
+	.gcol-md-{$i}
+		grid-column-end span $i
+
+for $j in (1..11)
+	.offset-md-{$j}
+		margin-left (100 * $j / 12)%
+	.goffset-md-{$j}
+		margin-left (100 * $j / 12)%

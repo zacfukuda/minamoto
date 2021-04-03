@@ -1,0 +1,27 @@
+.grid
+	display grid
+	grid-template-columns repeat(12, 1fr)
+	grid-gap $gutter $gutter		
+
+.row
+	display flex
+	flex-wrap wrap
+	margin-left -($gutter/2)
+	margin-right -($gutter/2)
+
+[class^="col-"]
+	padding-left ($gutter/2)
+	padding-right ($gutter/2)
+	width 100%
+
+for $i in (1..12)
+	.col-{$i} 
+		width (100 * $i / 12)%
+	.gcol-{$i}
+		grid-column-end span $i
+
+for $j in (1..11)
+	.offset-{$j}
+		margin-left (100 * $j / 12)%
+	.goffset-{$j}
+		margin-left (100 * $j / 12)%

@@ -1,0 +1,25 @@
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="Your Name">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	{# Favicons: https://realfavicongenerator.net/ #}
+	<link rel="shortcut icon" href="{{ paths.rel_template }}/img/favicon/favicon.ico">
+	{# CSS #}
+	<link rel="stylesheet" href="{{ paths.rel_template }}/assets/normalize/normalize.min.css">
+	<link rel="stylesheet" href="{{ paths.rel_template }}/dist/css/style.min.css?v={{ version }}" media="all">
+	<link rel="stylesheet" href="{{ paths.rel_template }}/dist/css/medium.min.css?v={{ version }}" media="(min-width: 768px)">
+	<link rel="stylesheet" href="{{ paths.rel_template }}/dist/css/large.min.css?v={{ version }}" media="(min-width: 1024px)">
+	{% block stylesheet %}{% endblock %}
+	{# Other #}
+	<link rel="alternate" href="https://www.example.com/en/" hreflang="en" />
+	<link rel="alternate" href="https://www.example.com/ja/" hreflang="ja-jp" />
+	<link rel="author" href="/humans.txt" />
+	<link rel="pingback" href="{{ site.pingback_url }}" />
+	<link rel="profile" href="https://gmpg.org/xfn/11" />
+	{# include "partial/jquery" #}
+	{{ function('wp_head') }}
+</head>

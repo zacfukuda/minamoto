@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html {{ site.language_attributes }}>
+{% include "partial/head.twig" %}
+<body class="{{ body_class }}">
+	{# include "partial/sdk.twig" #}
+	{# include "component/pace.twig" #}
+	<div id="root" class="root">
+		{% include "component/header.twig" %}
+		<main class="{{ main_class }}" role="main">
+			{% block content %}{% endblock %}
+			{% block sidebar %}{% endblock %}
+		</main>
+		{% include "component/footer.twig" %}
+	</div><!-- #root -->
+	{{ function('wp_footer') }}
+	{% include "partial/script.twig" %}
+</body>
+</html>

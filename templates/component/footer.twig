@@ -1,0 +1,12 @@
+<footer id="footer" class="footer" role="contentinfo">
+	<a href="{{ site.url }}" role="banner" rel="home" title="{{ site.name }}">
+		<img src="{{ paths.rel_template }}/img/logo/normal.svg" alt="{{ site.name }}" width="128" height="128">
+	</a>
+	<nav role="navigation">
+		{% include "component/menu.twig" with {
+			'items': footer_nav.get_items,
+			'class_name': ''
+		} %}
+	</nav>
+	<p class="copyright">© {{ function('date', 'Y') }} Your Company, Inc. All rights reserved.</p>
+</footer>

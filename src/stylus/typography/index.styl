@@ -1,20 +1,19 @@
-/**
- * typography/index
- */
+:root, html, body
+	color $text-black
+	font-family $sans-serif
 
-// Basic
-html, body
-	color $black
-	font-family $gothic
-	font-size 13px
-	line-height 22px
+body
+	-webkit-text-size-adjust none
 
 body, h1, h2, h3, h4, h5, h6, p, li, th, td, dt, dd, a, em, i, small, mark, span, address, figcaption, pre, code
 	-webkit-font-smoothing antialiased
+	-moz-osx-font-smoothing grayscale
 	font-smoothing antialiased
 	text-rendering optimizeLegibility
 
-// Font Size & Line Height
+html, body, p, .p
+	font-size 13px
+	line-height 22px
 h1, .h1
 	font-size 28px
 	line-height 38px
@@ -33,9 +32,6 @@ h5, .h5
 h6, .h6
 	font-size 14px
 	line-height 20px
-.p
-	font-size 13px
-	line-height 22px
 small, .small
 	font-size 12px
 	line-height 16px
@@ -43,45 +39,41 @@ small, .small
 	font-size 11px
 	line-height 15px
 
-// Color
-.key
+.txt-key
 	color $black
-.gray
+.txt-gray
 	color $gray
-.red
+.txt-red
 	color $red
-.blue
+.txt-green
 	color $green
-.blue
+.txt-blue
 	color $blue
-.white
+.txt-white
 	color #fff
 
-// Weight
-.ultrathin
+.txt-hairline
 	font-weight 100
-.thin
+.txt-thin
 	font-weight 200
-.light
+.txt-light
 	font-weight 300
-.regular
+.txt-regular
 	font-weight 400
-.medium
+.txt-medium
 	font-weight 500
-.demi
+.txt-demi
 	font-weight 600
-b, strong, .bold
+b, strong, .txt-bold
 	font-weight 700
-.heavy
+.txt-heavy
 	font-weight 800
-.black
+.txt-black
 	font-weight 900
 
-// Style
-em, .em
+em, .txt-italic
 	font-style italic
 
-// Anchor Link
 a
 	color $blue
 	text-decoration none
@@ -94,21 +86,18 @@ a
 	&.hover-underline:hover
 		text-decoration underline
 
-// Text Alignment
-.left
+.txt-left
 	text-align left
-.center
+.txt-center
 	text-align center
-.right
+.txt-right
 	text-align right
-.justify
+.txt-justify
 	text-align justify
-.justify-last-line
+.txt-justify-last-line
 	-moz-text-align-last justify
 	text-align-last justify
 
-// Font Family
-// English
 .sans-serif
 	font-family $sans-serif
 .serif
@@ -117,7 +106,6 @@ a
 	font-family $opensans
 .monospace
 	font-family $monospace
-// Japanese
 .gothic
 	font-family $gothic
 .mincho
@@ -125,62 +113,57 @@ a
 .maru-gothic
 	font-family $maru-gothic
 
-// Line Height
-._1em
-	line-height 1
-._125em
-	line-height 1.25
-._15em
-	line-height 1.5
-._175em
-	line-height 1.75
-._2em
-	line-height 2
-._25em
-	line-height 2.5
-._3em
-	line-height 3
+.kerning-normal
+	font-kerning normal
+.kerning-none
+	font-kerning none
+.kerning-auto
+	font-kerning auto
 
-// Case
 .uppercase
 	text-transform uppercase
 .lowercase
 	text-transform lowercase
-.small-caps
-	font-variant-caps small-caps
-.all-small-caps
-	font-variant-caps all-small-caps
-.titling-caps
-	font-variant-caps titling-caps
 
-// Numeric Style
-.ordinal-nums
-	font-variant-numeric ordinal
-.lining-nums
-	font-variant-numeric lining-nums
-.oldstyle-nums
-	font-variant-numeric oldstyle-nums
-.proportional-nums
-	font-variant-numeric proportional-nums
-
-/*------------------------*\
-  Other
-\*------------------------*/
-// white-space
 .white-space-nowrap
 	white-space nowrap
 
-// word-break
-.break-all
+.word-break-all
 	word-break break-all
-.keep-all
+.word-keep-all
 	word-break keep-all
 
-// word-wrap
 .break-word
 	word-wrap break-word
 
-// Hyphenation
 .hyphenate
-	@extend .break-all
+	@extend .word-break-all
 	hyphens auto
+
+.smallcaps
+	font-variant-caps small-caps
+.allsmallcaps
+	font-variant-caps all-small-caps
+.titling
+	font-variant-caps titling-caps
+
+.num-ordinal
+	font-variant-numeric ordinal
+.num-lining
+	font-variant-numeric lining-nums
+.num-oldstyle
+	font-variant-numeric oldstyle-nums
+.num-proportional
+	font-variant-numeric proportional-nums
+.num-tabular
+	font-variant-numeric tabular-nums
+
+.ea-proportional
+	font-variant-east-asian proportional-width
+.ea-full
+	font-variant-east-asian full-width
+
+.ja-palt
+	font-feature-settings "palt" 1
+.ja-pkna
+	font-feature-settings "pkna" 1

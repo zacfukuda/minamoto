@@ -1,26 +1,14 @@
-<?php // index.php
-
-get_header(); ?>
-
-<section class="">
-	<div class="container">
-		
-		<div class="archive row">
-			<?php 
-				if ( have_posts() ) {
-					while ( have_posts() ) {
-						the_post();
-						get_template_part( 'parts/index');
-					}
-				} else {
-					get_template_part( 'parts/none');
-				}
-			?>
-		</div><!-- .row -->
-		<?php get_template_part('parts/pagination'); ?>
-	</div><!-- .container -->
-</section>
-
 <?php
-get_sidebar();
-get_footer();
+
+global $theme_textdomain;
+
+$context = Timber::get_context();
+$context['posts'] = new Timber\PostQuery();
+$context['pagination'] = get_the_posts_pagination([
+	'mid_size' => 3,
+	'prev_text' => __( '&larr;', $theme_textdomain ),
+	'next_text' => __( '&rarr;', $theme_textdomain ),
+	'screen_reader_text' => ' ',
+]);
+
+Timber::render( 'index.twig', $context );

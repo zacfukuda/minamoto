@@ -1,39 +1,11 @@
-<?php // front-page
-
-get_header();
-remove_filter( 'the_content', 'wpautop' ); ?>
-
 <?php
-	while ( have_posts() ) {
-		the_post();
-		get_template_part( 'parts/page');
-	}
-?>
 
-<!-- Latest News -->
-<section>
-	<div class="container">
-		<div class="archive row">
-			<?php
-				$args = array(
-					'post_type' => 'post',
-					'posts_per_page' => get_option('num_posts_on_front')
-				);
+remove_filter( 'the_content', 'wpautop' );
+$context = Timber::get_context();
+$context['page'] = new TimberPost();
+// $context['html'] = get_the_html_content();
+$context['posts'] = Timber::get_posts([
+	'post_type' => 'post'
+]);
 
-				$the_query = new WP_Query($args);
-				if ( $the_query->have_posts() ) {
-					while ( $the_query->have_posts() ) {
-						$the_query->the_post();
-						get_template_part( 'parts/index');
-					}
-					wp_reset_postdata();
-				} // END if 
-			?>
-		</div><!-- .row -->
-		<a class="btn" href="/news/" title="News">View All</a>
-	</div><!-- .container -->
-</section>
-
-<?php
-// get_sidebar();
-get_footer();
+Timber::render('front-page.twig', $context);
