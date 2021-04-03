@@ -13,7 +13,7 @@ const paths = require('./config/paths')
 
 // Import modules
 const browserSync = require('browser-sync').create()
-const { src, dest, watch, parallel, series } = require('gulp');
+const { src, dest, watch, parallel, series } = require('gulp')
 const	autoprefixer = require('gulp-autoprefixer')
 const gcmq = require('gulp-group-css-media-queries')
 const gulpif = require('gulp-if')
