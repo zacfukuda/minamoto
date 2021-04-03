@@ -4,7 +4,7 @@
 
 Minamoto is a Wordpress starter theme with [Gulp](https://github.com/gulpjs/gulp) + [Stylus](http://stylus-lang.com/) + [Webpack](https://webpack.js.org/) + [Browsersync](https://browsersync.io/docs/gulp).
 
-> Theme development of with this starter theme requires advanced knowledge in Wordpress theme development and modern JavaScript such as CommonJS and ES6. If you are new to theme development, you might want to check out [Getting Started guide](https://developer.wordpress.org/themes/getting-started/) from Wordpess.org.
+> To use this theme requires advanced knowledge in Wordpress theme development and JavaScript(CommonJS, ES6). If you are new to theme development, you might want to check out [Getting Started guide](https://developer.wordpress.org/themes/getting-started/) from Wordpess.org.
  
 ## Installation & Configuration
 
@@ -20,7 +20,7 @@ $ cd themename
 $ yarn
 ```
 
-> The theme is developed using `yarn` not `npm` nor `npx`. The `npm` or `npx `might do the tasks. However, the developer of this theme has no plan to make the theme compatible with `npm` or `npx`.
+> The theme uses `yarn` over `npm`. The `npm` might do the tasks, but the developer has no plan to make the theme compatible with `npm` for the moment.
 
 ### Edit Config Files
 
@@ -91,11 +91,11 @@ Disallow: /xmlrpc.php
 
 ### Wordpress Version
 
-The theme is tested only with the latest version of Wordpress. There is no guarantee that the theme works with non-latest version of Wordpress. For the test environment, please refer to [Test Environment](#test-environment) section.
+Only tested with the latest version of Wordpress. There is no guarantee that the theme works with non-latest version of Wordpress. For the test environment, please refer to [Test Environment](#test-environment) section.
 
 ### Not for Child/Parent theme
 
-The theme is developed to be your sole custom theme. Therefore, the theme might not work properly if you use it as the parent theme of child theme, or child theme itself. It is possible to customize the theme in accordance with your preference for parent/child theme purpose, however, doing so requires a lot of work.
+The theme is to be a custom theme. The theme might not work properly if you use it as a parent or child theme. It is possible to customize the theme for parent/child theme purpose—although doing so requires a lot of work.
 
 ## Other Wordpress Starter Themes
 
@@ -109,6 +109,6 @@ If you have any request or find bugs, please bring it up to [Issues](https://git
 
 ## Todos
 
-- stylus variable for text, border, background color
+- Stylus variable for text, border, background color
 - Tab: show the panel based on the hash
-- dialog over dialog (multi-dialog hadling)
+- Dialog over dialog (multi-dialog hadling)
