@@ -50,8 +50,8 @@ $taxonomies = [
  * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
  */
 $nav_menus = [
-	'global' => __( 'Global Navigation', $theme_textdomain ),
-	'footer'  => __( 'Footer Navigation', $theme_textdomain ),
+	'gnav' => __( 'Global Navigation', $theme_textdomain ),
+	'fnav'  => __( 'Footer Navigation', $theme_textdomain ),
 ];
 
 /**

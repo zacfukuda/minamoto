@@ -1,11 +1,9 @@
 <ul class="{{ class_name ? class_name : '' }}">
 	{% for item in items %}
-		<li class="{{ item.classes | join(' ') }}">
+		<li class="{{ item.classes|join(' ') }}">
 			<a href="{{ item.link }}" target="{{ item.target }}">{{ item.title }}</a>
 			{% if item.get_children %}
-				{% include "component/menu.twig" with {
-					'items': item.children
-				} %}
+				{% include 'component/menu.twig' with {'items': item.children} %}
 			{% endif %}
 		</li>
 	{% endfor %}

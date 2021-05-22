@@ -1,5 +1,5 @@
 :root, html, body
-	color $text-black
+	color $txt-black
 	font-family $sans-serif
 
 body
@@ -11,7 +11,7 @@ body, h1, h2, h3, h4, h5, h6, p, li, th, td, dt, dd, a, em, i, small, mark, span
 	font-smoothing antialiased
 	text-rendering optimizeLegibility
 
-html, body, p, .p
+html, body, .p
 	font-size 13px
 	line-height 22px
 h1, .h1
@@ -75,16 +75,10 @@ em, .txt-italic
 	font-style italic
 
 a
-	color $blue
-	text-decoration none
-	&:hover
+	&.nounderline
 		text-decoration none
-	&.underline
-		text-decoration underline
 		&:hover
-			text-decoration none
-	&.hover-underline:hover
-		text-decoration underline
+			text-decoration underline
 
 .txt-left
 	text-align left
@@ -125,24 +119,18 @@ a
 .lowercase
 	text-transform lowercase
 
-.white-space-nowrap
+.txt-nowrap
 	white-space nowrap
-
-.word-break-all
-	word-break break-all
-.word-keep-all
-	word-break keep-all
-
-.break-word
+.txt-wrap
 	word-wrap break-word
 
 .hyphenate
-	@extend .word-break-all
+	word-break break-all
 	hyphens auto
 
-.smallcaps
+.scaps
 	font-variant-caps small-caps
-.allsmallcaps
+.allscaps
 	font-variant-caps all-small-caps
 .titling
 	font-variant-caps titling-caps
@@ -158,12 +146,12 @@ a
 .num-tabular
 	font-variant-numeric tabular-nums
 
-.ea-proportional
+.txt-ea-prop
 	font-variant-east-asian proportional-width
-.ea-full
+.txt-ea-full
 	font-variant-east-asian full-width
 
-.ja-palt
+.txt-palt
 	font-feature-settings "palt" 1
-.ja-pkna
+.txt-pkna
 	font-feature-settings "pkna" 1

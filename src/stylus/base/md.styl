@@ -14,8 +14,10 @@ section
 
 .container
 	max-width $container-width-md
-	padding-left ($gutter+8)
-	padding-right ($gutter+8)
+	padding-left ($gutter-md+8)
+	padding-right ($gutter-md+8)
+	&.narrow
+		max-width $container-width
 
 .mobile
 	display none
@@ -65,34 +67,34 @@ section
 .ac-around-md
 	align-content space-around
 
-.flex-md
+.flx-md
 	display flex
 
-.wrap-md
+.flx-wrap-md
 	flex-wrap wrap
-.nowrap-md
+.flx-nowrap-md
 	flex-wrap nowrap
 
-.flex-dir-row-md
+.flx-dir-row-md
 	flex-direction row
-.flex-dir-row-reverse-md
+.flx-dir-row-reverse-md
 	flex-direction row-reverse
-.flex-dir-col-md
+.flx-dir-col-md
 	flex-direction column
-.flex-dir-col-reverse-md
+.flx-dir-col-reverse-md
 	flex-direction column-reverse
 
-.jc-flex-start-md
+.jc-flx-start-md
 	justify-content flex-start
-.jc-flex-end-md
+.jc-flx-end-md
 	justify-content flex-end
 
-.ai-flex-start-md
+.ai-flx-start-md
 	align-items flex-start
-.ai-flex-end-md
+.ai-flx-end-md
 	align-items flex-end
 
-.ac-flex-start-md
+.ac-flx-start-md
 	align-content flex-start
-.ac-flex-end-md
+.ac-flx-end-md
 	align-content flex-end

@@ -1,7 +1,7 @@
-{% extends "layout/base.twig" %}
+{% extends 'layout/base.twig' %}
 {% block content %}
 	<h1>Search</h1>
-	{% include "component/search-form.twig" %}
+	{% include 'cmponent/search-form.twig' %}
 	<p>{{ found_posts }} result{{ found_posts > 1 ? 's' : '' }} for &lsquo;<span>{{ s }}</span>&rsquo;</p>
-	{% include "component/post-list.twig" %}
+	{% include 'post-list-widget.twig' %}
 {% endblock %}

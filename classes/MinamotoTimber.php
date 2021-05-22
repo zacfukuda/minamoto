@@ -38,8 +38,8 @@ class MinamotoTimber extends Timber\Site {
 
 		$context['paths'] = $paths;
 		$context['version'] = $theme_version;
-		$context['global_nav'] = new Timber\Menu('global');
-		$context['footer_nav'] = new Timber\Menu('footer');
+		$context['gnav'] = new Timber\Menu('gnav');
+		$context['fnav'] = new Timber\Menu('fnav');
 		$context['site'] = $this;
 		return $context;
 	}

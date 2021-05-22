@@ -1,0 +1,11 @@
+<article class="{{ post.post_type }}">
+	{% if post.thubmanil %}
+		{% include "component/thubmanil.twig" with {'thumb': post.thumbnail, 'size': 'medium'} %}
+	{% endif %}
+	<h1>{{ post.title }}</h1>
+	<p>Author: <a href="{{ post.author.path }}"> {{ post.author.name }} </a></p>
+	<p>Date: {{ post.date }}</p>
+	{% include "component/post-category-list.twig" with {'items': post.categories} %}
+	{% include "component/post-tag-list.twig" with {'items': post.tags} %}
+	<div>{{ post.content }}</div>
+</article>

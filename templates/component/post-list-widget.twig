@@ -1,0 +1,6 @@
+{% if posts | length %}
+	{% include 'component/post-list.twig' %}
+	{% include 'component/pagination.twig' %}
+{% else %}
+	{% include 'component/no-post-found.twig' %}
+{% endif %}

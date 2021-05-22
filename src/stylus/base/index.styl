@@ -26,8 +26,8 @@ section, .section
 	max-width $container-width
 	margin-left auto
 	margin-right auto
-	padding-left ($gutter/2)
-	padding-right ($gutter/2)
+	padding-left $gutter
+	padding-right $gutter
 
 figure, picture, video
 	display block
@@ -48,7 +48,10 @@ ul
 		list-style circle
 	&.square
 		list-style square
-
+	&.nostyle
+		list-style none
+		margin-left 0
+		padding-left 0
 ol
 	&.lower-roman
 		list-style lower-roman
@@ -69,6 +72,12 @@ button
 	cursor pointer
 	&:focus
 		outline none
+	&.plain
+		appearance none
+		border none
+		background transparent
+		outline none
+		padding 0
 
 // ::-moz-selection
 // 	background rgba($main-color, .3)
@@ -158,33 +167,33 @@ button
 .ac-around
 	align-content space-around
 
-.flex
+.flx
 	display flex
-.wrap
+.flx-wrap
 	flex-wrap wrap
-.nowrap
+.flx-nowrap
 	flex-wrap nowrap
 
-.flex-dir-row
+.flx-dir-row
 	flex-direction row
-.flex-dir-row-reverse
+.flx-dir-row-reverse
 	flex-direction row-reverse
-.flex-dir-col
+.flx-dir-col
 	flex-direction column
-.flex-dir-col-reverse
+.flx-dir-col-reverse
 	flex-direction column-reverse
 
-.jc-flex-start
+.jc-flx-start
 	justify-content flex-start
-.jc-flex-end
+.jc-flx-end
 	justify-content flex-end
 
-.ai-flex-start
+.ai-flx-start
 	align-items flex-start
-.ai-flex-end
+.ai-flx-end
 	align-items flex-end
 
-.ac-flex-start
+.ac-flx-start
 	align-content flex-start
-.ac-flex-end
+.ac-flx-end
 	align-content flex-end

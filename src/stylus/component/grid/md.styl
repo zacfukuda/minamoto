@@ -1,7 +1,17 @@
 .grid-md
 	display grid
 	grid-template-columns repeat(12, 1fr)
-	grid-gap $gutter $gutter
+	
+.grid, .grid-md
+	grid-gap $gutter-md
+
+.row
+	margin-left -($gutter-md/2)
+	margin-right -($gutter-md/2)
+
+[class^="col-"]
+	padding-left ($gutter-md/2)
+	padding-right ($gutter-md/2)
 
 for $i in (1..12)
 	.col-md-{$i} 
@@ -11,6 +21,4 @@ for $i in (1..12)
 
 for $j in (1..11)
 	.offset-md-{$j}
-		margin-left (100 * $j / 12)%
-	.goffset-md-{$j}
 		margin-left (100 * $j / 12)%

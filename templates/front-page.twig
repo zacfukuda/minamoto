@@ -1,21 +1,17 @@
-{% extends "layout/base.twig" %}
+{% extends 'layout/base.twig' %}
 {% block content %}
 	<h1>{{ page.title }}</h1>
-	{{ html ? html : post.content }}
+	{{ html ? html : page.content }}
 	<h2>Latest Posts</h2>
-	{% if posts | length %}
-		<div class="">
-			{% for post in posts %}
-				{% include "component/post-list-item.twig" %}
-			{% endfor %}
-		</div>
+	{% if posts|length %}
+		{% include 'component/post-list.twig' %}
 	{% else %}
-		<p>No posts found.</p>
+		{% include 'component/no-post-found.twig' %}
 	{% endif %}
 	<h2>Accordion</h2>
-	{% include "component/accordion.twig" %}
+	{% include 'component/accordion.twig' %}
 	<h2>Modal Dialog</h2>
-	{% include "component/dialog.twig" %}
+	{% include 'component/dialog.twig' %}
 	<h2>Tab</h2>
-	{% include "component/tabs.twig" %}
+	{% include 'component/tabs.twig' %}
 {% endblock %}

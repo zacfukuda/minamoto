@@ -1,6 +1,8 @@
 .container
 	max-width $container-width-lg
-	&.is-narrow
+	padding-left ($gutter-lg+8)
+	padding-right ($gutter-lg+8)
+	&.narrow
 		max-width $container-width-md
 
 .desktop
@@ -49,34 +51,33 @@
 .ac-around-lg
 	align-content space-around
 
-.flex-lg
+.flx-lg
 	display flex
-
-.wrap-lg
+.flx-wrap-lg
 	flex-wrap wrap
-.nowrap-lg
+.flx-nowrap-lg
 	flex-wrap nowrap
 
-.flex-dir-row-lg
+.flx-dir-row-lg
 	flex-direction row
-.flex-dir-row-reverse-lg
+.flx-dir-row-reverse-lg
 	flex-direction row-reverse
-.flex-dir-col-lg
+.flx-dir-col-lg
 	flex-direction column
-.flex-dir-col-reverse-lg
+.flx-dir-col-reverse-lg
 	flex-direction column-reverse
 
-.jc-flex-start-lg
+.jc-flx-start-lg
 	justify-content flex-start
-.jc-flex-end-lg
+.jc-flx-end-lg
 	justify-content flex-end
 
-.ai-flex-start-lg
+.ai-flx-start-lg
 	align-items flex-start
-.ai-flex-end-lg
+.ai-flx-end-lg
 	align-items flex-end
 
-.ac-flex-start-lg
+.ac-flx-start-lg
 	align-content flex-start
-.ac-flex-end-lg
+.ac-flx-end-lg
 	align-content flex-end

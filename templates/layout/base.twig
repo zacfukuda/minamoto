@@ -5,12 +5,12 @@
 	{# include "partial/sdk.twig" #}
 	{# include "component/pace.twig" #}
 	<div id="root" class="root">
-		{% include "component/header.twig" %}
+		{% include "component/gheader.twig" %}
 		<main class="{{ main_class }}" role="main">
 			{% block content %}{% endblock %}
 			{% block sidebar %}{% endblock %}
 		</main>
-		{% include "component/footer.twig" %}
+		{% include "component/gfooter.twig" %}
 	</div><!-- #root -->
 	{{ function('wp_footer') }}
 	{% include "partial/script.twig" %}

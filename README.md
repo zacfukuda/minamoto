@@ -109,6 +109,5 @@ If you have any request or find bugs, please bring it up to [Issues](https://git
 
 ## Todos
 
-- Stylus variable for text, border, background color
 - Tab: show the panel based on the hash
 - Dialog over dialog (multi-dialog hadling)
