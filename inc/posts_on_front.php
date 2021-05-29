@@ -23,12 +23,11 @@ function posts_on_front() {
 		'posts_on_front_callback', // $callback
 		'reading', // $page
 		'custom_setting_section', // $section, or use 'default'
-		array() //$args
+		[] //$args
 	);
 
 	// Register fields
 	register_setting('reading', 'posts_on_front');
-
 }
 
 // Callback for Custom section

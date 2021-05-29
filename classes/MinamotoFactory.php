@@ -27,36 +27,23 @@ class MinamotoFactory {
 	 * @link https://developer.wordpress.org/reference/functions/register_post_type/
 	 */
 	public function make_post_types($post_types) {
-		if ( empty($post_types) || count($post_types) < 1) {
-			$post_types = $this->post_types;
-		}
-
-		foreach ($post_types as $slug => $args) {
-			register_post_type($slug, $args);
-		}
+		if (empty($post_types) || count($post_types) < 1) $post_types = $this->post_types;
+		foreach ($post_types as $slug => $args) register_post_type($slug, $args);
 	}
 
 	/**
 	 * @link https://developer.wordpress.org/reference/functions/register_taxonomy/
 	 */
 	public function make_taxonomies($taxonomies) {
-		if ( empty($taxonomies) || count($taxonomies) < 1) {
-			$taxonomies = $this->taxonomies;
-		}
-
-		foreach ($taxonomies as $slug => $tax) {
-			register_taxonomy($slug, $tax['object_type'], $tax['args']);
-		}
+		if (empty($taxonomies) || count($taxonomies) < 1) $taxonomies = $this->taxonomies;
+		foreach ($taxonomies as $slug => $tax) register_taxonomy($slug, $tax['object_type'], $tax['args']);
 	}
 
 	/**
 	 * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
 	 */
 	public function make_nav_menus($nav_menus) {
-		if ( empty($nav_menus) || count($nav_menus) < 1) {
-			$nav_menus = $this->nav_menus;
-		}
-
+		if (empty($nav_menus) || count($nav_menus) < 1) $nav_menus = $this->nav_menus;
 		register_nav_menus($nav_menus);
 	}
 
@@ -64,12 +51,7 @@ class MinamotoFactory {
 	 * @link https://developer.wordpress.org/reference/functions/register_sidebar/
 	 */
 	public function make_widgets($widgets) {
-		if ( empty($widgets) || count($widgets) < 1) {
-			$widgets = $this->widgets;
-		}
-
-		foreach ($widgets as $widget) {
-			register_sidebar($widget);
-		}
+		if (empty($widgets) || count($widgets) < 1) $widgets = $this->widgets;
+		foreach ($widgets as $widget) register_sidebar($widget);
 	}
 }

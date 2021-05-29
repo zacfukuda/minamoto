@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Get the HTML content from files under the theme,
+ * based on the request URI.
+ */
 function get_the_html_content() {
 
 	function get_possible_paths() {
@@ -46,9 +49,6 @@ function get_the_html_content() {
 	$paths = get_possible_paths();
 	$path = get_path_file_exists($paths);
 
-	if ( empty($path) ) {
-		return get_error_message($paths);
-	} else {
-		return get_contents($path);
-	}
+	if (empty($path)) return get_error_message($paths);
+	else return get_contents($path);
 }

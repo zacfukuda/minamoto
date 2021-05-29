@@ -1,9 +1,22 @@
-.grid-md
+.grid-md, .grid2-md, grid3-md, grid4-md, .grid5-md, .grid6-md
 	display grid
-	grid-template-columns repeat(12, 1fr)
 	
-.grid, .grid-md
+.grid, .grid2, .grid3, grid4, .grid5, .grid6,
+.grid-md, .grid2-md, .grid3-md, grid4-md, .grid5-md, .grid6-md
 	grid-gap $gutter-md
+
+.grid-md
+	grid-template-columns repeat(12, 1fr)
+.grid2-md
+	grid-template-columns repeat(2, 1fr)
+.grid3-md
+	grid-template-columns repeat(3, 1fr)
+.grid4-md
+	grid-template-columns repeat(4, 1fr)
+.grid5-md
+	grid-template-columns repeat(5, 1fr)
+.grid6-md
+	grid-template-columns repeat(6, 1fr)
 
 .row
 	margin-left -($gutter-md/2)

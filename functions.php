@@ -9,12 +9,9 @@ $theme_textdomain = $package_json->name;
 $theme_version = $package_json->version;
 
 $theme_config = require_once 'config/theme.php';
-
 $classes = require_once 'config/classes.php';
 foreach ($classes as $key => $boolean) {
-	if ($boolean) {
-		require_once $paths->classes . '/' . $key . '.php';
-	}
+	if ($boolean) require_once $paths->classes . '/' . $key . '.php';
 }
 
 new MinamotoTimber();
@@ -23,7 +20,5 @@ new MinamotoFactory($theme_config);
 
 $functions = require_once 'config/functions.php';
 foreach ($functions as $key => $boolean) {
-	if ($boolean) {
-		require_once $paths->functions . '/' . $key . '.php';
-	}
+	if ($boolean) require_once $paths->functions . '/' . $key . '.php';
 }

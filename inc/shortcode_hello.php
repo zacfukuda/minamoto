@@ -5,11 +5,10 @@
  * @link https://codex.wordpress.org/Shortcode_API
  */
 
-function shortcode_hello($atts) {
-	$a = shortcode_atts(array(
+add_shortcode('hello', function($atts) {
+	$a = shortcode_atts([
 		'name' => 'world'
-	), $atts);
+	], $atts);
 
 	return 'Hello, ' . $a . '!';
-}
-add_shortcode('hello', 'shortcode_hello');
+});

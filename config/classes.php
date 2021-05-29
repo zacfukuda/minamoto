@@ -1,7 +1,7 @@
 <?php
 
 return [
-	'HelloWorldWidget' => true,
+	// 'HelloWorldWidget' => true,
 	'MinamotoFactory' => true,
 	'MinamotoSetup'	=> true,
 	'MinamotoTimber' => true,

@@ -1,5 +1,5 @@
 /**
- * Webpack config file for building the unminified file.
+ * Webpack config file for building the uncompressed file.
  */
 'use strict'
 

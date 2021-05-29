@@ -3,16 +3,16 @@
 const path = require('path')
 const themeRoot = process.cwd()
 
-const srcRoot = path.resolve(themeRoot, 'src')
+const srcRoot = path.resolve(themeRoot, 'src'),
+			distRoot = path.resolve(themeRoot, 'dist')
+
 const src = {
 	stylus: path.resolve(srcRoot, 'stylus'),
 	js: path.resolve(srcRoot, 'js')
 }
-
-const distRoot = path.resolve(themeRoot, 'dist')
 const dist = {
 	css: path.resolve(distRoot, 'css'),
-	js: path.resolve(distRoot, 'js'),
+	js: path.resolve(distRoot, 'js')
 }
 
 const compile = {
@@ -22,15 +22,9 @@ const compile = {
 	],
 	js: path.resolve(src.js, 'index.js')
 }
-
 const watch = {
 	stylus: path.resolve(src.stylus, '**\/*.styl'),
 	js: path.resolve(src.js, '**\/*.js')
 }
 
-module.exports = {
-	src: src,
-	dist: dist,
-	compile: compile,
-	watch: watch
-}
+module.exports = {src, dist, compile, watch}
