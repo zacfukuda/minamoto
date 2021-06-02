@@ -2,7 +2,7 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 
 export default class Header {
 	constructor(el) {
-		el = el || document.querySelector('#header')
+		el = el || document.querySelector('#gheader')
 		if (!el) return
 
 		this.e = el

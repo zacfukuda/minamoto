@@ -14,9 +14,9 @@ foreach ($classes as $key => $boolean) {
 	if ($boolean) require_once $paths->classes . '/' . $key . '.php';
 }
 
-new MinamotoTimber();
-new MinamotoSetup();
-new MinamotoFactory($theme_config);
+if (class_exists('MinamotoTimber')) new MinamotoTimber();
+if (class_exists('MinamotoSetup')) new MinamotoSetup();
+if (class_exists('MinamotoFactory')) new MinamotoFactory($theme_config);
 
 $functions = require_once 'config/functions.php';
 foreach ($functions as $key => $boolean) {

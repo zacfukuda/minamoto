@@ -2,7 +2,7 @@ import SmoothScroll from 'smooth-scroll'
 
 import hello from './lib/hello'
 // import emailObfuscator from './lib/emailObfuscator'
-import Header from './component/Header'
+import Header from './component/GHeader'
 import Accordion from './component/Accordion'
 import Tabs from './component/Tabs'
 import './component/Dialog'

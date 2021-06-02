@@ -1,6 +1,6 @@
 <article class="{{ post.post_type }}">
-	{% if post.thubmanil %}
-		{% include 'component/thubmanil.twig' with {'thumb': post.thumbnail, 'size': 'medium'} %}
+	{% if post.thumbnail %}
+		{% include 'component/thumbnail.twig' with {'thumb': post.thumbnail, 'size': 'medium'} %}
 	{% endif %}
 	<h3><a href="{{ post.link }}" title="{{ post.title }}">{{ post.title }}</a></h3>
 	<div><time>{{ post.date('Y.m.d') }}</time></div>
