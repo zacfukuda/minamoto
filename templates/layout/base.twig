@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html {{ site.language_attributes }}>
-{% include "partial/head.twig" %}
+{% include 'partial/head.twig' %}
+{% block stylesheet %}{% endblock %}
 <body class="{{ body_class }}">
-	{# include "partial/sdk.twig" #}
-	{# include "component/pace.twig" #}
+	{# include 'partial/sdk.twig' #}
+	{# include 'component/pace.twig' #}
 	<div id="root" class="root">
-		{% include "component/gheader.twig" %}
+		{% include 'component/gheader.twig' %}
 		<main class="{{ main_class }}" role="main">
 			{% block content %}{% endblock %}
 			{% block sidebar %}{% endblock %}
 		</main>
-		{% include "component/gfooter.twig" %}
+		{% include 'component/gfooter.twig' %}
 	</div><!-- #root -->
 	{{ function('wp_footer') }}
-	{% include "partial/script.twig" %}
+	{% include 'partial/script.twig' %}
+	{% block script %}{% endblock %}
 </body>
 </html>
