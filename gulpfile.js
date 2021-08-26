@@ -5,15 +5,16 @@
  * @link https://webpack.js.org/guides/integrations/#gulp
  */
 
+const bsFlag = (process.argv[2] === 'start') ? true : false
 const argv = require('minimist')(process.argv.slice(3))
 
 process.env.BABEL_ENV = argv.pro ? 'production' : 'development'
 process.env.NODE_ENV = argv.pro ? 'production' : 'development'
 
-const packageJSON = require('./package.json')
+const config = require('./package.json')
 const paths = require('./config/paths')
 
-const browserSync = require('browser-sync').create()
+const bs = require('browser-sync').create()
 const { src, dest, watch, parallel, series } = require('gulp')
 const	autoprefixer = require('gulp-autoprefixer')
 const gulpif = require('gulp-if')
@@ -25,7 +26,10 @@ const touch = require('gulp-touch-fd')
 const webpack = require('webpack')
 const webpackStream = require('webpack-stream')
 
-const isBrowsersyncOn = (process.argv[2] === 'start') ? true : false
+const bsReload = (cb) => {
+	bs.reload()
+	cb()
+}
 
 const stylusTask = () => src(paths.compile.stylus)
 	.pipe(plumber())
@@ -36,9 +40,16 @@ const stylusTask = () => src(paths.compile.stylus)
 	.pipe(gulpif(argv.pro, sourcemaps.write('.')))
 	.pipe(dest(paths.dist.css))
 	.pipe(touch())
-	.pipe(gulpif(isBrowsersyncOn, browserSync.stream()))
+	.pipe(gulpif(bsFlag, bs.stream()))
 
-exports.stylus = stylusTask
+const stylusTaskUncompressed = () => src(paths.compile.stylus)
+	.pipe(plumber())
+	.pipe(sourcemaps.init())
+	.pipe(stylus())
+	.pipe(autoprefixer())
+	.pipe(sourcemaps.write('.'))
+	.pipe(dest(paths.dist.css))
+	.pipe(touch())
 
 const jsTask = () => src(paths.compile.js)
 	.pipe(plumber())
@@ -46,52 +57,33 @@ const jsTask = () => src(paths.compile.js)
 	.pipe(dest(paths.dist.js))
 	.pipe(touch())
 
-exports.js = jsTask
+const jsTaskUncompressed = () => src(paths.compile.js)
+	.pipe(plumber())
+	.pipe(webpackStream(require('./config/webpack.config.uncompressed'), webpack))
+	.pipe(dest(paths.dist.js))
+	.pipe(touch())
 
-const jsSync = (cb) => {
-	browserSync.reload()
-	cb()
-}
-
-const buildUncompressed = (cb) => {
-
-	src(paths.compile.stylus)
-		.pipe(plumber())
-		.pipe(sourcemaps.init())
-		.pipe(stylus())
-		.pipe(autoprefixer())
-		.pipe(sourcemaps.write('.'))
-		.pipe(dest(paths.dist.css))
-		.pipe(touch())
-
-	src(paths.compile.js)
-		.pipe(plumber())
-		.pipe(webpackStream(require('./config/webpack.config.uncompressed'), webpack))
-		.pipe(dest(paths.dist.js))
-		.pipe(touch())
-
-	cb()
-}
-
-exports.build = series(
-	parallel(stylusTask, jsTask),
-	buildUncompressed
-)
-
-exports.watch = () => {
+const watchTask = () => {
 	watch(paths.watch.stylus, stylusTask)
 	watch(paths.watch.js, jsTask)
 }
 
-exports.start = series(
+const buildTask = series(
+	parallel(stylusTask, jsTask),
+	parallel(stylusTaskUncompressed, jsTaskUncompressed)
+)
+
+const startTask = series(
 	parallel(stylusTask, jsTask),
 	() => {
 		watch(paths.watch.stylus, stylusTask)
-		watch(paths.watch.js, series(jsTask, jsSync))
-
-		browserSync.init({
-			open: false,
-			proxy: packageJSON.proxy
-		})
-	},
+		watch(paths.watch.js, series(jsTask, bsReload))
+		bs.init({open: false, proxy: config.proxy})
+	}
 )
+
+exports.stylus = stylusTask
+exports.js = jsTask
+exports.watch = watchTask
+exports.build = buildTask
+exports.start = startTask
