@@ -10,25 +10,24 @@ html, body
 
 section, .section
 	&.mar
-		margin $sect-mar 0
+		margin var(--sect-mar) 0
 	&.mar-t
-		margin-top $sect-mar
+		margin-top var(--sect-mar)
 	&.mar-b
-		margin-bottom $sect-mar
+		margin-bottom var(--sect-mar)
 	&.pad
-		padding $sect-pad 0
+		padding var(--sect-mar) 0
 	&.pad-t
-		padding-top $sect-pad
+		padding-top var(--sect-mar)
 	&.pad-b
-		padding-bottom $sect-pad
+		padding-bottom var(--sect-mar)
 
 .container
-	width 100%
-	max-width $container-width
+	max-width var(--container-width)
 	margin-left auto
 	margin-right auto
-	padding-left $gutter
-	padding-right $gutter
+	padding-left var(--container-pad)
+	padding-right var(--container-pad)
 
 figure, picture, video
 	display block

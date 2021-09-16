@@ -4,51 +4,55 @@
 	font-smoothing antialiased
 	text-rendering optimizeLegibility
 
-:root, html, body
-	color $txt-black
-	font-family $sserif
+html, body
+	color var(--txt-black)
+	font-family var(--sserif)
 
 body
 	-webkit-text-size-adjust none
 
 html, body, .p
-	font-size 13px
-	line-height 22px
+	font-size var(--body)
+	line-height var(--body-l)
 h1, .h1
-	font-size 28px
-	line-height 38px
+	font-size var(--h1)
+	line-height var(--h1-l)
 h2, .h2
-	font-size 24px
-	line-height 34px
+	font-size var(--h2)
+	line-height var(--h2-l)
 h3, .h3
-	font-size 21px
-	line-height 28px
+	font-size var(--h3)
+	line-height var(--h3-l)
 h4, .h4
-	font-size 18px
-	line-height 24px
+	font-size var(--h4)
+	line-height var(--h4-l)
 h5, .h5
-	font-size 16px
-	line-height 24px
+	font-size var(--h5)
+	line-height var(--h5-l)
 h6, .h6
-	font-size 14px
-	line-height 20px
+	font-size var(--h6)
+	line-height var(--h6-l)
 small, .small
-	font-size 12px
-	line-height 16px
+	font-size var(--small)
+	line-height var(--small-l)
 .smaller
-	font-size 11px
-	line-height 15px
+	font-size var(--smaller)
+	line-height var(--smaller-l)
 
 .txt-key
-	color $black
+	color var(--txt-black)
+.txt-dark
+	color var(--txt-dark)
 .txt-gray
-	color $gray
+	color var(--txt-gray)
+.txt-light
+	color var(--txt-light)
 .txt-red
-	color $red
+	color var(--red)
 .txt-green
-	color $green
+	color var(--green)
 .txt-blue
-	color $blue
+	color var(--blue)
 .txt-white
 	color #fff
 
@@ -92,20 +96,13 @@ a
 	-moz-text-align-last justify
 	text-align-last justify
 
-.sserif
-	font-family $sserif
 .serif
-	font-family $serif
-.opensans
-	font-family $opensans
+	font-family var(--serif)
+.sserif
+	font-family var(--sserif)
 .monospace
-	font-family $monospace
-.gothic
-	font-family $gothic
-.mincho
-	font-family $mincho
-.maru-gothic
-	font-family $maru-gothic
+	font-family var(--monospace)
+// @import './ja'
 
 .kerning-normal
 	font-kerning normal

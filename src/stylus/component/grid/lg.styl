@@ -1,10 +1,6 @@
 .grid-lg, .grid2-lg, .grid3-lg, .grid4-lg, .grid5-lg, .grid6-lg
 	display grid
-
-.grid, .grid2, .grid3, .grid4, .grid5, .grid6,
-.grid-md, .grid2-md, .grid3-md, .grid4-md, .grid5-md, .grid6-md,
-.grid-lg, .grid2-lg, .grid3-lg, .grid4-lg, .grid5-lg, .grid6-lg
-	grid-gap $gutter-lg
+	grid-gap var(--gutter)	
 
 .grid-lg
 	grid-template-columns repeat(12, 1fr)
@@ -18,14 +14,6 @@
 	grid-template-columns repeat(5, 1fr)
 .grid6-lg
 	grid-template-columns repeat(6, 1fr)
-
-.row
-	margin-left -($gutter-lg/2)
-	margin-right -($gutter-lg/2)
-
-[class^="col-"]
-	padding-left ($gutter-lg/2)
-	padding-right ($gutter-lg/2)
 
 for $i in (1..12)
 	.col-lg-{$i} 
