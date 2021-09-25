@@ -39,7 +39,7 @@ small, .small
 	font-size var(--smaller)
 	line-height var(--smaller-l)
 
-.txt-key
+.txt-black
 	color var(--txt-black)
 .txt-dark
 	color var(--txt-dark)
@@ -47,42 +47,56 @@ small, .small
 	color var(--txt-gray)
 .txt-light
 	color var(--txt-light)
+
 .txt-red
 	color var(--red)
+.txt-orange
+	color var(--orange)
+.txt-yellow
+	color var(--yellow)
 .txt-green
 	color var(--green)
+.txt-teal
+	color var(--teal)
+.txt-cyan
+	color var(--cyan)
 .txt-blue
 	color var(--blue)
+.txt-purple
+	color var(--purple)
+.txt-magenta
+	color var(--magenta)
 .txt-white
-	color #fff
+	color var(--white)
 
-.txt-hairline
+.txt-w1
 	font-weight 100
-.txt-thin
+.txt-w2
 	font-weight 200
-.txt-light
+.txt-w3
 	font-weight 300
-.txt-regular
+.txt-w4
 	font-weight 400
-.txt-medium
+.txt-w5
 	font-weight 500
-.txt-demi
+.txt-w6
 	font-weight 600
-b, strong, .txt-bold
+b, strong, .txt-w7
 	font-weight 700
-.txt-heavy
+.txt-w8
 	font-weight 800
-.txt-black
+.txt-w9
 	font-weight 900
 
 em, .txt-italic
 	font-style italic
 
 a
-	&.nounderline
+	color inherit
+	&.nodeco
 		text-decoration none
-		&:hover
-			text-decoration underline
+	&.hvr-nodeco:hover
+		text-decoration none
 
 .txt-left
 	text-align left
@@ -100,8 +114,8 @@ a
 	font-family var(--serif)
 .sserif
 	font-family var(--sserif)
-.monospace
-	font-family var(--monospace)
+.mono
+	font-family var(--mono)
 // @import './ja'
 
 .kerning-normal
