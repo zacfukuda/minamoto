@@ -1,41 +1,19 @@
 /**
- * Insert href="mailto:" preventing from spam bots
- * @link http://www.jottings.com/obfuscator/
+ * https://developer.mozilla.org/en-US/docs/Glossary/Base64
  */
-function emailObfuscator({coded, key, selector}) {
+function emailObfuscator({b64, selector}) {
 
-	if (!coded || !key) {
-		console.error('Both "coded" and "key" must be given.')
-		return
-	}
+	if (!b64) return
 
-	let link = ltr = ''
-	let shift = coded.length
-	let anchors = null
-
-	selector = selector || 'email'
-	anchors = document.querySelectorAll('a.' + targetClass)
-
-	if (anchors.length < 1) return
-
-	for (var i = 0; i < coded.length; i++) {
-		if (key.indexOf(coded.charAt(i)) == -1) {
-			ltr = coded.charAt(i)
-			link += (ltr)
-		} else {
-			ltr = (key.indexOf(coded.charAt(i)) - shift + key.length) % key.length
-			link += (key.charAt(ltr))
-		}
-	}
-
-	anchors.forEach(InsertHref)
-
-	function InsertHref(a) {
-		a.setAttribute('href', 'mailto:' + link)
-		if (!a.innerHTML) {
-			a.innerHTML = link
-		}
-	}
+	var link = decodeURIComponent(escape(atob(b64))),
+			anchors = document.querySelectorAll(selector || '.email')
+	
+	anchors.forEach(a => {
+		let el = a.querySelector('.email-str')
+		a.setAttribute('href', `mailto:${link}`)
+		if (!a.innerHTML) a.innerHTML = link
+		if (el) el.innerHTML = link
+	})
 }
 
 export default emailObfuscator
