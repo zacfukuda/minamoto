@@ -1,4 +1,4 @@
 @font-face {
-	font-family: $icon;
-	src: url("./Icon-Regular.otf");
+	font-family: Icon;
+	src: url(./Icon-Regular.otf);
 }

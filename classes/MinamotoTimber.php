@@ -17,7 +17,7 @@ class MinamotoTimber extends Timber\Site {
 
 	public function __construct() {
 		add_filter('timber_context', [$this, 'add_to_context']);
-		add_filter('timber/twig', [$this, 'add_functions']);
+		// add_filter('timber/twig', [$this, 'add_functions']);
 		parent::__construct();
 	}
 

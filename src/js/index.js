@@ -2,7 +2,7 @@ import SmoothScroll from 'smooth-scroll'
 
 import hello from './lib/hello'
 import emailObfuscator from './lib/emailObfuscator'
-import Header from './component/GHeader'
+import GHeader from './component/GHeader'
 import Accordion from './component/Accordion'
 import Tabs from './component/Tabs'
 import './component/Dialog'
@@ -21,6 +21,6 @@ new SmoothScroll('a[href*="#"]', {
 	// speedAsDuration: true,
 	updateURL: false,
 })
-new Header()
+new GHeader()
 document.querySelectorAll('.accordion').forEach(a => new Accordion(a))
 document.querySelectorAll('.tabs').forEach(t => new Tabs(t))
