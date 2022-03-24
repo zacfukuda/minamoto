@@ -31,7 +31,7 @@
     "gulp-stylus": "^2.7.1",
     "gulp-touch-fd": "^2.0.0",
     "inquirer": "^8.2.0",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.6",
     "postcss": "^8.4.5",
     "terser-webpack-plugin": "^5.3.0",
     "webpack": "^5.66.0",
