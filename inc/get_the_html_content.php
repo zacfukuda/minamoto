@@ -14,6 +14,8 @@ function get_the_html_content() {
 
 		$uri = preg_replace('/\/$/', '', $uri);
 		$terms = explode('/', $uri);
+
+		if (preg_match('/^\?/', end($terms))) array_pop($terms);
 		
 		$filename = end($terms) . '.html';
 		array_pop($terms);

@@ -41,6 +41,11 @@ img, svg
 	&.w100
 		width 100%
 
+ul, ol
+	&.nostyle
+		list-style none
+		margin-left 0
+		padding-left 0
 ul
 	&.disc, &.circle, &.square
 		padding 0 0 0 1.5em
@@ -50,10 +55,6 @@ ul
 		list-style circle
 	&.square
 		list-style square
-	&.nostyle
-		list-style none
-		margin-left 0
-		padding-left 0
 ol
 	&.lower-roman
 		list-style lower-roman
@@ -80,6 +81,10 @@ button
 		background transparent
 		outline none
 		padding 0
+
+br
+	&.from-md, &.from-lg
+		display none
 
 // ::-moz-selection
 // 	background rgba($main-color, .3)
