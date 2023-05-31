@@ -30,7 +30,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-stylus": "^3.0.0",
     "gulp-touch-fd": "^2.0.0",
-    "inquirer": "^9.2.5",
+    "inquirer": "^8.0.0",
     "minimist": "^1.2.8",
     "postcss": "^8.4.23",
     "terser-webpack-plugin": "^5.3.9",

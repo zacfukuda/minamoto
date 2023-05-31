@@ -2,16 +2,14 @@
 	-webkit-font-smoothing antialiased
 	-moz-osx-font-smoothing grayscale
 	font-smoothing antialiased
-	text-rendering optimizeLegibility
-
-html, body
-	color var(--txt-black)
-	font-family var(--sserif)
+	text-rendering optimizeLegibility	
 
 body
 	-webkit-text-size-adjust none
+	color var(--txt-black)
+	font-family var(--sans)
 
-html, body, .p
+body, .p
 	font-size var(--body)
 	line-height var(--body-l)
 h1, .h1
@@ -88,17 +86,32 @@ b, strong, .txt-w7
 .txt-w9
 	font-weight 900
 
+.lead-1
+	line-height 1
+
+.kern-100
+	letter-spacing .1em
+.kern-250
+	letter-spacing .25em
+.kern-500
+	letter-spacing .5em
+.kern-1000
+	letter-spacing 1em
+
 em, .txt-italic
 	font-style italic
 
 a
 	color inherit
-	&.nodeco
-		text-decoration none
-	&.hvr-nodeco:hover
-		text-decoration none
-	&.hvr-underline:hover
-		text-decoration underline
+
+.txt-nodeco
+	text-decoration none
+.txt-nodeco-hvr:hover
+	text-decoration none
+.txt-underline
+	text-decoration underline
+.txt-underline-hvr:hover
+	text-decoration underline
 
 .txt-left
 	text-align left
@@ -114,11 +127,10 @@ a
 
 .serif
 	font-family var(--serif)
-.sserif
-	font-family var(--sserif)
+.sans
+	font-family var(--sans)
 .mono
 	font-family var(--mono)
-// @import './ja'
 
 .kerning-normal
 	font-kerning normal
@@ -168,3 +180,5 @@ a
 	font-feature-settings "palt" 1
 .txt-pkna
 	font-feature-settings "pkna" 1
+
+// @import './ja'

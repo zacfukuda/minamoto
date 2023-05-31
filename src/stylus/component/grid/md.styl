@@ -1,9 +1,6 @@
-.grid-md, .grid2-md, .grid3-md, .grid4-md, .grid5-md, .grid6-md
+.grid-md, .grid2-md, .grid3-md, .grid4-md, .grid5-md, .grid6-md, .gri12-md
 	display grid
-	grid-gap var(--gutter)
-
-.grid-md
-	grid-template-columns repeat(12, 1fr)
+	
 .grid2-md
 	grid-template-columns repeat(2, 1fr)
 .grid3-md
@@ -14,6 +11,11 @@
 	grid-template-columns repeat(5, 1fr)
 .grid6-md
 	grid-template-columns repeat(6, 1fr)
+.grid12-md
+	grid-template-columns repeat(12, 1fr)
+
+.grid-gap-md
+	grid-gap var(--gutter)
 
 for $i in (1..12)
 	.col-md-{$i} 
