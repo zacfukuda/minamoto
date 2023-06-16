@@ -17,33 +17,31 @@ module.exports = {
 		app: path.resolve(paths.src.js, 'index.js'),
 	},
 	output: {
-		filename: '[name].min.js'
+		filename: '[name].min.js',
 	},
 	module: {
 		rules: [
 			{
 				test: /\.m?js$/,
-				include:  paths.src.js,
+				include: paths.src.js,
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['@babel/preset-env']
-					}
+						presets: ['@babel/preset-env'],
+					},
 				},
-			}
+			},
 		],
 	},
 	externals: {
 		'body-scroll-lock': 'bodyScrollLock',
-		'jquery': 'jQuery',
-		'pace': 'Pace',
+		jquery: 'jQuery',
+		pace: 'Pace',
 		'smooth-scroll': 'SmoothScroll',
 	},
 	optimization: {
 		minimize: argv.pro,
 		minimizer: [new TerserPlugin()],
 	},
-	plugins: [
-		new ESLintPlugin({cache: true}),
-	],
+	plugins: [new ESLintPlugin({ cache: true })],
 }

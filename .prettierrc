@@ -1,0 +1,35 @@
+{
+	"printWidth": 80,
+	"tabWidth": 2,
+	"semi": false,
+	"useTabs": true,
+	"singleQuote": true,
+	"jsxSingleQuote": false,
+	"trailingComma": "es5",
+	"bracketSpacing": true,
+	"bracketSameLine": false,
+	"arrowParens": "always",
+	"proseWrap": "preserve",
+	"htmlWhitespaceSensitivity": "css",
+	"vueIndentScriptAndStyle": false,
+	"endOfLine": "lf",
+	"embeddedLanguageFormatting": "auto",
+	"singleAttributePerLine": false,
+	"trailingCommaPHP": true,
+	"overrides": [
+		{
+			"files": ["./.prettierrc", "*.json"],
+			"options": {
+				"tabWidth": 4
+			}
+		},
+		{
+			"files": "*.php",
+			"options": {
+				"braceStyle": "1tbs"
+			}
+		}
+	],
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true
+}

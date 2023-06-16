@@ -1,6 +1,6 @@
-.grid-md, .grid2-md, .grid3-md, .grid4-md, .grid5-md, .grid6-md, .gri12-md
+.grid-md, .grid2-md, .grid3-md, .grid4-md, .grid5-md, .grid6-md, .grid12-md
 	display grid
-	
+
 .grid2-md
 	grid-template-columns repeat(2, 1fr)
 .grid3-md
@@ -18,11 +18,5 @@
 	grid-gap var(--gutter)
 
 for $i in (1..12)
-	.col-md-{$i} 
-		width (100 * $i / 12)%
-	.gcol-md-{$i}
+	.gcol-{$i}-md
 		grid-column-end span $i
-
-for $j in (1..11)
-	.offset-md-{$j}
-		margin-left (100 * $j / 12)%

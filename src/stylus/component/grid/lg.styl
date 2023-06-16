@@ -1,4 +1,4 @@
-.grid-lg, .grid2-lg, .grid3-lg, .grid4-lg, .grid5-lg, .grid6-lg, .gri12-lg
+.grid-lg, .grid2-lg, .grid3-lg, .grid4-lg, .grid5-lg, .grid6-lg, .grid12-lg
 	display grid
 
 .grid2-lg
@@ -18,11 +18,5 @@
 	grid-gap var(--gutter)
 
 for $i in (1..12)
-	.col-lg-{$i} 
-		width (100 * $i / 12)%
-	.gcol-lg-{$i}
+	.gcol-{$i}-lg
 		grid-column-end span $i
-
-for $j in (1..11)
-	.offset-lg-{$j}
-		margin-left (100 * $j / 12)%

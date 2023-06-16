@@ -9,7 +9,7 @@ module.exports = {
 	...config,
 	mode: 'none',
 	output: {
-		filename: '[name].js'
+		filename: '[name].js',
 	},
 	devtool: 'source-map',
 }

@@ -38,9 +38,10 @@ function addStylus(inputs) {
 		src/${type}/${name}/md.stylus
 		src/${type}/${name}/lg.stylus
 		Done.`)
+	
 	console.log(msg.replace(/\t+/g, ''))
 }
 
 if (isStylus()) inquirer.prompt(inquiries.addStylus).then(inputs => addStylus(inputs))
-else if (isJS()) return
+else if (isJS()) console.log('Sorry, JS is not supported yet.')
 else console.log('Please provide a type of source you want to add:\n\t--style\n\t--js')

@@ -1,6 +1,6 @@
-.grid, .grid2, .grid3, .grid4, .grid5, .grid6, .gri12
+.grid, .grid2, .grid3, .grid4, .grid5, .grid6, .grid12
 	display grid
-	
+
 .grid2
 	grid-template-columns repeat(2, 1fr)
 .grid3
@@ -17,23 +17,6 @@
 .grid-gap
 	grid-gap var(--gutter)
 
-.row
-	display flex
-	flex-wrap wrap
-	margin-left calc(var(--gutter) / 2 * -1)
-	margin-right calc(var(--gutter) / 2 * -1)
-
-[class^="col-"]
-	padding-left calc(var(--gutter) / 2)
-	padding-right calc(var(--gutter) / 2)
-	width 100%
-
 for $i in (1..12)
-	.col-{$i} 
-		width (100 * $i / 12)%
 	.gcol-{$i}
 		grid-column-end span $i
-
-for $j in (1..11)
-	.offset-{$j}
-		margin-left (100 * $j / 12)%
