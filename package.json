@@ -6,9 +6,9 @@
   "url": "https://github.com/zacfukuda/minamoto",
   "license": "MIT",
   "scripts": {
-    "start": "gulp start --dev",
-    "watch": "gulp watch --dev",
-    "build": "gulp build --pro",
+    "start": "gulp start",
+    "watch": "gulp watch",
+    "build": "gulp build",
     "lint": "eslint src/js/**/*.js",
     "lint:fix": "eslint --fix src/js/**/*.js"
   },
@@ -17,18 +17,14 @@
     "smoothscroll-polyfill": "^0.4.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.8",
-    "@babel/preset-env": "^7.21.5",
     "@prettier/plugin-php": "^0.19.6",
     "autoprefixer": "^10.4.14",
-    "babel-loader": "^9.1.2",
     "browser-sync": "^2.29.3",
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-webpack-plugin": "^4.0.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
-    "gulp-if": "^3.0.0",
     "gulp-plumber": "^1.2.0",
     "gulp-rename": "^2.0.0",
     "gulp-sourcemaps": "^3.0.0",
@@ -38,9 +34,7 @@
     "minimist": "^1.2.8",
     "postcss": "^8.4.23",
     "prettier": "^2.8.8",
-    "terser-webpack-plugin": "^5.3.9",
     "webpack": "^5.83.1",
-    "webpack-cli": "^5.1.1",
     "webpack-stream": "^7.0.0"
   },
   "proxy": {

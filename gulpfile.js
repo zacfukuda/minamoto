@@ -1,3 +1,4 @@
+/* eslint-env node */
 /**
  * @file Gulp configuration
  * @link https://github.com/gulpjs/gulp
@@ -5,19 +6,15 @@
  * @link https://webpack.js.org/guides/integrations/#gulp
  */
 
-const bsFlag = process.argv[2] === 'start' ? true : false
-const argv = require('minimist')(process.argv.slice(3))
+const minimist = require('minimist')
+const argv = minimist(process.argv.slice(3))
 
 process.env.BABEL_ENV = argv.pro ? 'production' : 'development'
 process.env.NODE_ENV = argv.pro ? 'production' : 'development'
 
-const config = require('./package.json')
-const paths = require('./config/paths')
-
-const bs = require('browser-sync').create()
+const browserSync = require('browser-sync').create()
 const { src, dest, watch, parallel, series } = require('gulp')
 const autoprefixer = require('gulp-autoprefixer')
-const gulpif = require('gulp-if')
 const plumber = require('gulp-plumber')
 const rename = require('gulp-rename')
 const sourcemaps = require('gulp-sourcemaps')
@@ -26,73 +23,76 @@ const touch = require('gulp-touch-fd')
 const webpack = require('webpack')
 const webpackStream = require('webpack-stream')
 
-function bsReload(cb) {
-	bs.reload()
-	cb()
+const config = require('./package.json')
+const paths = require('./config/paths')
+const command = process.argv[2]
+const isBrowserSyncOn = command === 'start' ? true : false
+const isProductionBuild = command === 'build' ? true : false
+
+function reload(callback) {
+	browserSync.reload()
+	callback()
 }
 
-function stylusTask() {
-	return src(paths.compile.stylus)
-		.pipe(plumber())
-		.pipe(gulpif(argv.pro, sourcemaps.init()))
-		.pipe(stylus({ compress: argv.pro }))
-		.pipe(autoprefixer())
-		.pipe(rename({ suffix: '.min' }))
-		.pipe(gulpif(argv.pro, sourcemaps.write('.')))
-		.pipe(dest(paths.dist.css))
-		.pipe(touch())
-		.pipe(gulpif(bsFlag, bs.stream()))
+function cssStream(shouldCompress) {
+	const compress = shouldCompress ? true : false
+	let stream = src(paths.compile.stylus).pipe(plumber())
+
+	if (isProductionBuild) stream = stream.pipe(sourcemaps.init())
+
+	stream = stream.pipe(stylus({ compress })).pipe(autoprefixer())
+
+	if (compress || !isProductionBuild) {
+		stream = stream.pipe(rename({ suffix: '.min' }))
+	}
+	if (isProductionBuild) stream = stream.pipe(sourcemaps.write('.'))
+
+	stream = stream.pipe(dest(paths.dist.css)).pipe(touch())
+
+	if (isBrowserSyncOn) stream = stream.pipe(browserSync.stream())
+
+	return stream
 }
 
-function stylusTaskUncompressed() {
-	return src(paths.compile.stylus)
-		.pipe(plumber())
-		.pipe(sourcemaps.init())
-		.pipe(stylus())
-		.pipe(autoprefixer())
-		.pipe(sourcemaps.write('.'))
-		.pipe(dest(paths.dist.css))
-		.pipe(touch())
+function css() {
+	return cssStream(isProductionBuild)
 }
 
-function jsTask() {
-	const config = require('./config/webpack.config')
+function cssUncompressed() {
+	return cssStream(false)
+}
 
+function jsStream(webpackConfig) {
 	return src(paths.compile.js)
 		.pipe(plumber())
-		.pipe(webpackStream(config, argv.pro ? webpack : null))
+		.pipe(webpackStream(webpackConfig, webpack))
 		.pipe(dest(paths.dist.js))
 		.pipe(touch())
 }
 
-function jsTaskUncompressed() {
-	const config = require('./config/webpack.config.uncompressed')
-
-	return src(paths.compile.js)
-		.pipe(plumber())
-		.pipe(webpackStream(config, webpack))
-		.pipe(dest(paths.dist.js))
-		.pipe(touch())
+function js() {
+	return jsStream(require('./config/webpack.config'))
 }
 
-function watchTask() {
-	watch(paths.watch.stylus, stylusTask)
-	watch(paths.watch.js, jsTask)
+function jsUncompressed() {
+	return jsStream(require('./config/webpack.config.uncompressed'))
 }
 
-const buildTask = series(
-	parallel(stylusTask, jsTask),
-	parallel(stylusTaskUncompressed, jsTaskUncompressed)
+exports.css = css
+exports.js = js
+
+exports.watch = function () {
+	watch(paths.watch.stylus, css)
+	watch(paths.watch.js, js)
+}
+
+exports.build = series(
+	parallel(css, js),
+	parallel(cssUncompressed, jsUncompressed)
 )
 
-const startTask = series(parallel(stylusTask, jsTask), () => {
-	watch(paths.watch.stylus, stylusTask)
-	watch(paths.watch.js, series(jsTask, bsReload))
-	bs.init({ open: false, proxy: config.proxy })
+exports.start = series(css, js, () => {
+	watch(paths.watch.stylus, css)
+	watch(paths.watch.js, series(js, reload))
+	browserSync.init({ open: false, proxy: config.proxy })
 })
-
-exports.stylus = stylusTask
-exports.js = jsTask
-exports.watch = watchTask
-exports.build = buildTask
-exports.start = startTask
