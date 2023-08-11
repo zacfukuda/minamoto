@@ -26,13 +26,13 @@ const touch = require('gulp-touch-fd')
 const webpack = require('webpack')
 const webpackStream = require('webpack-stream')
 
-const bsReload = (cb) => {
+function bsReload(cb) {
 	bs.reload()
 	cb()
 }
 
-const stylusTask = () =>
-	src(paths.compile.stylus)
+function stylusTask() {
+	return src(paths.compile.stylus)
 		.pipe(plumber())
 		.pipe(gulpif(argv.pro, sourcemaps.init()))
 		.pipe(stylus({ compress: argv.pro }))
@@ -42,9 +42,10 @@ const stylusTask = () =>
 		.pipe(dest(paths.dist.css))
 		.pipe(touch())
 		.pipe(gulpif(bsFlag, bs.stream()))
+}
 
-const stylusTaskUncompressed = () =>
-	src(paths.compile.stylus)
+function stylusTaskUncompressed() {
+	return src(paths.compile.stylus)
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(stylus())
@@ -52,29 +53,29 @@ const stylusTaskUncompressed = () =>
 		.pipe(sourcemaps.write('.'))
 		.pipe(dest(paths.dist.css))
 		.pipe(touch())
+}
 
-const jsTask = () =>
-	src(paths.compile.js)
+function jsTask() {
+	const config = require('./config/webpack.config')
+
+	return src(paths.compile.js)
 		.pipe(plumber())
-		.pipe(
-			webpackStream(
-				require('./config/webpack.config'),
-				argv.pro ? webpack : null
-			)
-		)
+		.pipe(webpackStream(config, argv.pro ? webpack : null))
 		.pipe(dest(paths.dist.js))
 		.pipe(touch())
+}
 
-const jsTaskUncompressed = () =>
-	src(paths.compile.js)
+function jsTaskUncompressed() {
+	const config = require('./config/webpack.config.uncompressed')
+
+	return src(paths.compile.js)
 		.pipe(plumber())
-		.pipe(
-			webpackStream(require('./config/webpack.config.uncompressed'), webpack)
-		)
+		.pipe(webpackStream(config, webpack))
 		.pipe(dest(paths.dist.js))
 		.pipe(touch())
+}
 
-const watchTask = () => {
+function watchTask() {
 	watch(paths.watch.stylus, stylusTask)
 	watch(paths.watch.js, jsTask)
 }

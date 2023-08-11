@@ -8,7 +8,9 @@
   "scripts": {
     "start": "gulp start --dev",
     "watch": "gulp watch --dev",
-    "build": "gulp build --pro"
+    "build": "gulp build --pro",
+    "lint": "eslint src/js/**/*.js",
+    "lint:fix": "eslint --fix src/js/**/*.js"
   },
   "dependencies": {
     "body-scroll-lock": "^4.0.0-beta.0",

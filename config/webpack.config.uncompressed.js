@@ -1,7 +1,6 @@
 /**
- * Webpack config file for building the uncompressed file.
+ * @file Webpack config file for building the uncompressed file.
  */
-'use strict'
 
 const config = require('./webpack.config')
 

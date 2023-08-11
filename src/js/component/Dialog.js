@@ -1,8 +1,8 @@
 /**
- * @link  https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html
- * @link https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/js/dialog.js
+ * @see {@link https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html}
+ * @see {@link https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/js/dialog.js}
  */
-var OpenDialogList = []
+let OpenDialogList = []
 
 function getCurrentDialog() {
 	if (OpenDialogList.length) return OpenDialogList[OpenDialogList.length - 1]
@@ -11,6 +11,7 @@ function getCurrentDialog() {
 class Dialog {
 	constructor(id) {
 		let element = document.getElementById(id)
+
 		if (element === null) return
 		else if (element.getAttribute('role') !== 'dialog') return
 
@@ -29,7 +30,10 @@ class Dialog {
 
 	getBackdrop() {
 		let parent = this.d.parentNode
-		return parent.classList.contains('dialog-backdrop') ? parent : this.createBackdrop()
+
+		return parent.classList.contains('dialog-backdrop')
+			? parent
+			: this.createBackdrop()
 	}
 
 	createBackdrop() {
@@ -37,6 +41,7 @@ class Dialog {
 		backdrop.className = 'dialog-backdrop'
 		this.d.parentNode.insertBefore(backdrop, this.d)
 		backdrop.appendChild(this.d)
+
 		return backdrop
 	}
 
@@ -59,12 +64,13 @@ class Dialog {
 	}
 }
 
-window.openDialog = function(id) {
+window.openDialog = function (id) {
 	new Dialog(id)
 }
 
 window.closeDialog = function (button) {
 	let dialog = getCurrentDialog()
+
 	if (dialog && dialog.d.contains(button)) dialog.close()
 }
 

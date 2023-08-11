@@ -1,7 +1,6 @@
 /**
- * Webpack config file for building the production file.
+ * @file Webpack config file for building the production file.
  */
-'use strict'
 
 const path = require('path')
 const paths = require('./paths')

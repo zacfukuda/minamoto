@@ -1,7 +1,10 @@
-/* https://w3c.github.io/aria-practices/#accordion */
+/**
+ * @see {@link https://w3c.github.io/aria-practices/#accordion}
+ */
 export default class Accordion {
 	constructor(element) {
 		element = element || document.querySelector('.accordion')
+
 		if (!element) return
 
 		let t = element.getAttribute('aria-controls')
@@ -15,7 +18,7 @@ export default class Accordion {
 
 	toggle() {
 		if (this.e.getAttribute('aria-disabled') === 'true') return
-		
+
 		if (this.t.style.maxHeight) this.close()
 		else this.open()
 	}
