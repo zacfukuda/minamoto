@@ -1,14 +1,8 @@
 {% extends 'layout/base.twig' %}
 {% block content %}
 	<hr>
-	<h1>{{ page.title }}</h1>
-	{{ html ? html : page.content }}
-	<h2>Latest Posts</h2>
-	{% if posts|length %}
-		{% include 'component/post-list.twig' %}
-	{% else %}
-		{% include 'component/no-post-found.twig' %}
-	{% endif %}
+	<h1>{{ post.title }}</h1>
+	{{ html ? html : post.content }}
 	<h2>Accordion</h2>
 	{% include 'component/accordion.twig' %}
 	<h2>Modal Dialog</h2>

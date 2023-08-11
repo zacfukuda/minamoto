@@ -2,7 +2,7 @@
 	-webkit-font-smoothing antialiased
 	-moz-osx-font-smoothing grayscale
 	font-smoothing antialiased
-	text-rendering optimizeLegibility	
+	text-rendering optimizeLegibility
 
 body
 	-webkit-text-size-adjust none
@@ -36,6 +36,9 @@ small, .small
 .smaller
 	font-size var(--smaller)
 	line-height var(--smaller-l)
+.smallest
+	font-size var(--smallest)
+	line-height var(--smallest-l)
 
 .txt-black
 	color var(--txt-black)
@@ -86,16 +89,16 @@ b, strong, .txt-w7
 .txt-w9
 	font-weight 900
 
-.lead-1
+.leading-1
 	line-height 1
 
-.kern-100
+.tracking-100
 	letter-spacing .1em
-.kern-250
+.tracking-250
 	letter-spacing .25em
-.kern-500
+.tracking-500
 	letter-spacing .5em
-.kern-1000
+.tracking-1000
 	letter-spacing 1em
 
 em, .txt-italic
@@ -106,11 +109,11 @@ a
 
 .txt-nodeco
 	text-decoration none
-.txt-nodeco-hvr:hover
-	text-decoration none
 .txt-underline
 	text-decoration underline
-.txt-underline-hvr:hover
+.hvr-txt-nodeco:hover
+	text-decoration none
+.hvr-txt-underline:hover
 	text-decoration underline
 
 .txt-left
