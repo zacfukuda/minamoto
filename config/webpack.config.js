@@ -2,26 +2,21 @@
 /**
  * @file Webpack config file for building the production file.
  */
-
-const path = require('path')
-const paths = require('./paths')
 const ESLintPlugin = require('eslint-webpack-plugin')
-const minimist = require('minimist')
-const argv = minimist(process.argv.slice(3))
+const paths = require('./paths')
 
 module.exports = {
 	target: 'web',
-	mode: argv.pro ? 'production' : 'development',
-	devtool: argv.pro ? 'source-map' : 'eval',
-	entry: {
-		app: path.resolve(paths.src.js, 'index.js'),
-	},
+	mode: process.env.BABEL_ENV,
+	devtool: process.env.BABEL_ENV === 'production' ? 'source-map' : 'eval',
+	entry: { app: paths.compile.js },
 	output: { filename: '[name].min.js' },
-	externals: {
-		'body-scroll-lock': 'bodyScrollLock',
-		jquery: 'jQuery',
-		pace: 'Pace',
-		'smooth-scroll': 'SmoothScroll',
+	module: {
+		rules: [{ test: /\.ts?$/, use: 'ts-loader', exclude: /node_modules/ }],
 	},
+	resolve: {
+		extensions: ['.ts'],
+	},
+	externals: { jquery: 'jQuery', pace: 'Pace' },
 	plugins: [new ESLintPlugin({ cache: true })],
 }

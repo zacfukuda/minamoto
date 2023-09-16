@@ -18,7 +18,13 @@
 	"trailingCommaPHP": true,
 	"overrides": [
 		{
-			"files": ["./.prettierrc", "*.json"],
+			"files": "*.html",
+			"options": {
+				"printWidth": 999
+			}
+		},
+		{
+			"files": ["*.json"],
 			"options": {
 				"tabWidth": 4,
 				"useTabs": false
@@ -30,7 +36,5 @@
 				"braceStyle": "1tbs"
 			}
 		}
-	],
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"editor.formatOnSave": true
+	]
 }

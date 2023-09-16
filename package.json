@@ -1,6 +1,6 @@
 {
   "name": "minamoto",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": false,
   "author": "Zac Fukuda",
   "url": "https://github.com/zacfukuda/minamoto",
@@ -9,19 +9,21 @@
     "start": "gulp start",
     "watch": "gulp watch",
     "build": "gulp build",
-    "lint": "eslint src/js/**/*.js",
-    "lint:fix": "eslint --fix src/js/**/*.js"
+    "lint": "eslint src/ts/**/*.ts",
+    "lint:fix": "eslint --fix src/ts/**/*.ts"
   },
   "dependencies": {
-    "body-scroll-lock": "^4.0.0-beta.0",
-    "smoothscroll-polyfill": "^0.4.4"
+    "body-scroll-lock": "^4.0.0-beta.0"
   },
   "devDependencies": {
     "@prettier/plugin-php": "^0.19.6",
+    "@types/body-scroll-lock": "^3.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
     "autoprefixer": "^10.4.14",
     "browser-sync": "^2.29.3",
-    "eslint": "^8.41.0",
-    "eslint-config-prettier": "^8.8.0",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-webpack-plugin": "^4.0.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
@@ -31,10 +33,12 @@
     "gulp-stylus": "^3.0.0",
     "gulp-touch-fd": "^2.0.0",
     "inquirer": "^8.0.0",
-    "minimist": "^1.2.8",
     "postcss": "^8.4.23",
     "prettier": "^2.8.8",
-    "webpack": "^5.83.1",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.2.2",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
     "webpack-stream": "^7.0.0"
   },
   "proxy": {

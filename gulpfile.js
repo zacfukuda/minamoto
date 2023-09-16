@@ -5,12 +5,12 @@
  * @link https://browsersync.io/docs/gulp
  * @link https://webpack.js.org/guides/integrations/#gulp
  */
+const command = process.argv[2]
+const isBrowserSyncOn = command === 'start' ? true : false
+const isProductionBuild = command === 'build' ? true : false
 
-const minimist = require('minimist')
-const argv = minimist(process.argv.slice(3))
-
-process.env.BABEL_ENV = argv.pro ? 'production' : 'development'
-process.env.NODE_ENV = argv.pro ? 'production' : 'development'
+process.env.BABEL_ENV = isProductionBuild ? 'production' : 'development'
+process.env.NODE_ENV = isProductionBuild ? 'production' : 'development'
 
 const browserSync = require('browser-sync').create()
 const { src, dest, watch, parallel, series } = require('gulp')
@@ -25,9 +25,6 @@ const webpackStream = require('webpack-stream')
 
 const config = require('./package.json')
 const paths = require('./config/paths')
-const command = process.argv[2]
-const isBrowserSyncOn = command === 'start' ? true : false
-const isProductionBuild = command === 'build' ? true : false
 
 function reload(callback) {
 	browserSync.reload()

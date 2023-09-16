@@ -1,7 +1,8 @@
+/build
+/dist
+/font
+/img
 /node_modules
 /vendor
-/dist
-/img
-/font
+.env
 package.json
-*.html
