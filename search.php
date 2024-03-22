@@ -1,10 +1,10 @@
 <?php
 
-$posts = new Timber\PostQuery();
+$posts = Timber::get_posts();
 $n = $posts->found_posts;
-$result = $n > 1 ? "$n results" : "$n result";
+$result = "$n result" . ($n > 1 ? 's' : '');
 
-$context = Timber::get_context();
+$context = Timber::context();
 $context['posts'] = $posts;
 $context['result'] = $result;
 $context['s'] = get_search_query();

@@ -1,7 +1,7 @@
 <?php
 
-$post = Timber::query_post();
-$context = Timber::get_context();
+$post = Timber::get_post();
+$context = Timber::context();
 $context['post'] = $post;
 
 Timber::render([

@@ -2,7 +2,7 @@
 	{% for item in items %}
 		<li class="{{ item.classes|join(' ') }}">
 			<a href="{{ item.link }}" target="{{ item.target }}">{{ item.title }}</a>
-			{% if item.get_children %}
+			{% if item.children %}
 				{% include 'component/menu.twig' with {'items': item.children} %}
 			{% endif %}
 		</li>

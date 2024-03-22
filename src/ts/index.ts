@@ -10,3 +10,5 @@ document
 	.forEach((i) => new Accordion(i))
 document.querySelectorAll<HTMLElement>('.tabs').forEach((i) => new Tabs(i))
 insertBase64Mailto('bWluYW1vdG9Ad29yZHByZXNzLmxvY2FsaG9zdA==', '.mailto')
+
+const test = ''

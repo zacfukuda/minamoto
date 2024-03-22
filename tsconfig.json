@@ -7,14 +7,14 @@
         "isolatedModules": false,
         "jsx": "react",
         "lib": ["DOM", "ES2018"],
-        "module": "ESNext",
+        "module": "es6",
         "moduleResolution": "Node",
         "noEmit": false,
         "outDir": "./dist/",
         "resolveJsonModule": false,
         "skipLibCheck": true,
         "strict": true,
-        "target": "ESNext",
+        "target": "es6",
         "useDefineForClassFields": true
     },
     "include": ["src/ts/**/*"]

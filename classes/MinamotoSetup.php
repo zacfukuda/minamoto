@@ -1,6 +1,7 @@
 <?php
 /**
  * Setup class
+ *
  * @link https://codex.wordpress.org/Post_Formats
  */
 class MinamotoSetup {
@@ -23,7 +24,7 @@ class MinamotoSetup {
 		show_admin_bar(false);
 		add_post_type_support('page', 'excerpt');
 		// set_post_thumbnail_size(1200, 9999);
-		// add_image_size('mini_featured-image', 1200, 630, true);	
+		// add_image_size('mini_featured-image', 1200, 630, true);
 		// add_editor_style('css/editor-style.css');
-	} 
+	}
 }

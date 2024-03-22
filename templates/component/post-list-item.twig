@@ -4,7 +4,7 @@
 	{% endif %}
 	<h3><a href="{{ post.link }}" title="{{ post.title }}">{{ post.title }}</a></h3>
 	<div><time>{{ post.date('Y.m.d') }}</time></div>
-	<p>{{ post.preview.length(20).read_more(false) }}</p>
+	<p>{{ post.excerpt.length(20).read_more(false) }}</p>
 	{% include 'component/post-category-list.twig' with {'items': post.categories} %}
 	{% include 'component/post-tag-list.twig' with {'items': post.tags} %}
 </article>

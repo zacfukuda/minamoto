@@ -3,8 +3,8 @@
 global $theme_textdomain;
 $templates = ['archive.twig', 'index.twig'];
 
-$context = Timber::get_context();
-$context['posts'] = new Timber\PostQuery();
+$context = Timber::context();
+$context['posts'] = Timber::get_posts();
 $context['title'] = 'Archive';
 
 if (is_day()) {

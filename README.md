@@ -5,7 +5,7 @@
 Minamoto is a Wordpress starter theme with [Gulp](https://github.com/gulpjs/gulp) + [Stylus](http://stylus-lang.com/) + [Webpack](https://webpack.js.org/) + [Browsersync](https://browsersync.io/docs/gulp).
 
 > To use this theme requires advanced knowledge in Wordpress theme development and JavaScript(CommonJS, ES6). If you are new to theme development, you might want to check out [Getting Started guide](https://developer.wordpress.org/themes/getting-started/) from Wordpess.org.
- 
+
 ## Installation & Configuration
 
 ### Download Themes & Install Dependancies:
@@ -18,9 +18,10 @@ $ cd themename
 
 # Install NPM packages
 $ yarn
-```
 
-> The theme uses `yarn` over `npm`. The `npm` might do the tasks, but the developer has no plan to make the theme compatible with `npm` for the moment.
+# Install Composer packages
+$ composer install
+```
 
 ### Edit Config Files
 
@@ -31,7 +32,7 @@ $ yarn
 | - | version | Will be appended after the assets files like CSS and Javacript for cache busting purpose. |
 | - | proxy | Will be used as Browsersync option inside `gulpfile.js`. The default is `http://wordpress.localhost`. |
 
-> `style.css` exists only to be recognized as a theme by Wordpress system. All styles are written in `src/stylus/*`, and will be compiled to `./dist/css`.
+> `style.css` exists only to be recognized as a theme by WordPress core. All styles are written in `src/stylus/*`, and will be compiled to `./dist/css`.
 
 In addition to the files above, you can configure files under `config` so that the source files will be compiled as you want it to.
 
@@ -40,7 +41,7 @@ In addition to the files above, you can configure files under `config` so that t
 There are three main tasks that you use based on the progress of your development.
 
 | Command | Task | Comment |
-| ------------ | --- | --- |
+| --- | --- | --- |
 | `yarn start` | Runs Broswersync server. | By default, the server will run at [http://localhost:3000/](http://localhost:3000/), <br>and not open the browser. |
 | `yarn watch` | Keeps watching file changes. | Not run Browsersync. |
 | `yarn build` | Builds optimized assets. | Also build unminified version. <br>Run this before putting into production. |
@@ -48,6 +49,7 @@ There are three main tasks that you use based on the progress of your developmen
 > The Broswersync proxies requests to `proxy.target` defined in `package.json`. Also, if you want to run the dev server other than `port:3000`, please edit `gulpfile.js`.
 
 ## File Structure
+
 ```
 .
 ├── assets            # Vendor files like jQuery
@@ -68,8 +70,9 @@ There are three main tasks that you use based on the progress of your developmen
 
 ## Expected Updates in Future
 
-### Custom Field to *Page*
-Assuming that some of *Pages* will be written in HTML format, this themes designed to load a content of HTML file from `html` folder that matches the slug of the current page. The code responsible for functionality is written in `parts/page.php`, and the developer is planning to add a custom field to *page* admin page to turn on/off this feature for per page.
+### Custom Field to _Page_
+
+Assuming that some of _Pages_ will be written in HTML format, this themes designed to load a content of HTML file from `html` folder that matches the slug of the current page. The code responsible for functionality is written in `parts/page.php`, and the developer is planning to add a custom field to _page_ admin page to turn on/off this feature for per page.
 
 For now there is no way to switch the feature, except that you modify the code in `parts/page.php` manually.
 
