@@ -12,15 +12,15 @@ class MinamotoTimber extends Site {
 	}
 
 	/**
-	 * @param string $context
+	 * @param array $context
 	 */
 	public function add_to_context($context) {
-		global $paths, $theme_version;
+		global $__paths, $theme_version;
 
-		$context['paths'] = $paths;
+		$context['paths'] = $__paths;
 		$context['version'] = $theme_version;
-		$context['gnav'] = Timber::get_menu('gnav');
-		$context['fnav'] = Timber::get_menu('fnav');
+		$context['global_header_navigation_menu'] = Timber::get_menu('global-header-navigation-menu');
+		$context['global_footer_navigation_menu'] = Timber::get_menu('global-footer-navigation-menu');
 		$context['site'] = $this;
 
 		return $context;

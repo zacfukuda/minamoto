@@ -10,12 +10,9 @@ class MinamotoSetup {
 	}
 
 	public function setup() {
-		global $theme_textdomain;
-
 		$html5 = ['search-form', 'comment-form', 'comment-list', 'gallery', 'caption'];
 		$formats = ['aside', 'image', 'video', 'quote', 'link', 'gallery', 'audio'];
-
-		load_theme_textdomain($theme_textdomain);
+		
 		add_theme_support('automatic-feed-links');
 		add_theme_support('title-tag');
 		add_theme_support('post-thumbnails');

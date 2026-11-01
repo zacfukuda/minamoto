@@ -1,20 +1,19 @@
 {
     "compilerOptions": {
         "allowJs": false,
-        "allowSyntheticDefaultImports": false,
-        "esModuleInterop": false,
         "forceConsistentCasingInFileNames": true,
         "isolatedModules": false,
         "jsx": "react",
         "lib": ["DOM", "ES2018"],
-        "module": "es6",
-        "moduleResolution": "Node",
+        "module": "esnext",
+        "moduleResolution": "bundler",
         "noEmit": false,
-        "outDir": "./dist/",
+        "outDir": "./dist",
         "resolveJsonModule": false,
+        "rootDir": "./src",
         "skipLibCheck": true,
         "strict": true,
-        "target": "es6",
+        "target": "esnext",
         "useDefineForClassFields": true
     },
     "include": ["src/ts/**/*"]

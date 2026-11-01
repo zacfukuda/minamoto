@@ -32,7 +32,7 @@ function reload(callback) {
 }
 
 function cssStream(shouldCompress) {
-	const compress = shouldCompress ? true : false
+	const compress = isProductionBuild ? true : false
 	let stream = src(paths.compile.stylus).pipe(plumber())
 
 	if (isProductionBuild) stream = stream.pipe(sourcemaps.init())
@@ -77,17 +77,14 @@ function jsUncompressed() {
 
 exports.css = css
 exports.js = js
-
 exports.watch = function () {
 	watch(paths.watch.stylus, css)
 	watch(paths.watch.js, js)
 }
-
 exports.build = series(
 	parallel(css, js),
 	parallel(cssUncompressed, jsUncompressed)
 )
-
 exports.start = series(css, js, () => {
 	watch(paths.watch.stylus, css)
 	watch(paths.watch.js, series(js, reload))

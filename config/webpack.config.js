@@ -17,6 +17,6 @@ module.exports = {
 	resolve: {
 		extensions: ['.ts'],
 	},
-	externals: { jquery: 'jQuery', pace: 'Pace' },
+	externals: { pace: 'Pace' },
 	plugins: [new ESLintPlugin({ cache: true })],
 }

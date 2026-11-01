@@ -1,6 +1,6 @@
 <footer id="gfooter" class="gfooter" role="contentinfo">
 	<a href="{{ site.url }}" role="banner" rel="home" title="{{ site.name }}">
-		<img src="{{ paths.rel_template }}/img/logo/normal.svg" alt="{{ site.name }}" width="128" height="128">
+		<img src="{{ paths.relative_template_directory_uri }}/img/logo/normal.svg" alt="{{ site.name }}" width="128" height="128">
 	</a>
 	{% include 'component/fnav.twig' %}
 	<p class="copyright">© {{ function('date', 'Y') }} Your Company, Inc. All rights reserved.</p>
