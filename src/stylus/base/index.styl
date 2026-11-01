@@ -3,90 +3,41 @@
 	-webkit-overflow-scrolling touch
 	-webkit-tap-highlight-color transparent
 
-html, body
-	position relative
-	width 100%
-	overflow-x hidden
-
 section, .section
-	&.mar
-		margin-top var(--sect-mar)
-		margin-bottom var(--sect-mar)
-	&.mar-t
-		margin-top var(--sect-mar)
-	&.mar-b
-		margin-bottom var(--sect-mar)
-	&.pad
-		padding-top var(--sect-mar)
-		padding-bottom var(--sect-mar)
-	&.pad-t
-		padding-top var(--sect-mar)
-	&.pad-b
-		padding-bottom var(--sect-mar)
+	&.has-my
+		margin-top var(--sect-margin)
+		margin-bottom var(--sect-margin)
+	&.has-mt
+		margin-top var(--sect-margin)
+	&.has-mb
+		margin-bottom var(--sect-margin)
+	&.has-py
+		padding-top var(--sect-margin)
+		padding-bottom var(--sect-margin)
+	&.has-pt
+		padding-top var(--sect-margin)
+	&.has-pb
+		padding-bottom var(--sect-margin)
 
 .container
 	max-width var(--container-width)
 	margin-left auto
 	margin-right auto
-	padding-left var(--container-pad)
-	padding-right var(--container-pad)
-
-figure, picture, video
-	display block
+	padding-left var(--container-padding)
+	padding-right var(--container-padding)
 
 img, svg
-	height auto
 	max-width 100%
 	vertical-align bottom
-	&.w100
-		width 100%
-
-ul, ol
-	&.nostyle
-		list-style none
-		margin-left 0
-		padding-left 0
-ul
-	&.disc, &.circle, &.square
-		padding 0 0 0 1.5em
-	&.disc
-		list-style disc
-	&.circle
-		list-style circle
-	&.square
-		list-style square
-ol
-	&.lower-roman
-		list-style lower-roman
-	&.upper-roman
-		list-style upper-roman
-	&.lower-alpha
-		list-style lower-alpha
-	&.upper-alpha
-		list-style upper-alpha
-
-a.anchor
-	display block
-	position relative
-	visibility hidden
 
 button
 	-webkit-tap-highlight-color transparent
 	cursor pointer
-	&:focus
-		outline none
-	&.plain
-		appearance none
-		border none
-		background transparent
-		outline none
-		padding 0
-
-// ::-moz-selection
-// 	background rgba($main-color, .3)
-// 	color #fff
 
 // ::selection
+// 	background rgba($main-color, .3)
+// 	color #fff
+// ::-moz-selection
 // 	background rgba($main-color, .3)
 // 	color #fff
 
@@ -105,7 +56,7 @@ button
 	display none
 .block
 	display block
-.ib
+.inline-block
 	display inline-block
 .inline
 	display inline
@@ -114,9 +65,9 @@ button
 .table-cell
 	display table-cell
 
-.rel
+.relative
 	position relative
-.abs
+.absolute
 	position absolute
 .fixed
 	position fixed
@@ -134,68 +85,53 @@ button
 	display block
 	position absolute
 
-.jc-start
+.justify-start
 	justify-content start
-.jc-end
+.justify-end
 	justify-content end
-.jc-center
+.justify-center
 	justify-content center
-.jc-stretch
+.justify-stretch
 	justify-content stretch
-.jc-between
+.justify-between
 	justify-content space-between
-.jc-around
+.justify-around
 	justify-content space-around
-.jc-evenly
+.justify-evenly
 	justify-content space-evenly
 
-.ai-start
+.items-start
 	align-items start
-.ai-end
+.items-end
 	align-items end
-.ai-center
+.items-center
 	align-items center
-.ai-stretch
+.items-stretch
 	align-items stretch
-.ai-baseline
+.items-baseline
 	align-items baseline
 
-.ac-stretch
+.content-stretch
 	align-content stretch
-.ac-center
+.content-center
 	align-content center
-.ac-between
+.content-between
 	align-content space-between
-.ac-around
+.content-around
 	align-content space-around
 
-.flx
+.flex
 	display flex
-.flx-wrap
+.flex-wrap
 	flex-wrap wrap
-.flx-nowrap
+.flex-nowrap
 	flex-wrap nowrap
 
-.flx-dir-row
+.flex-row
 	flex-direction row
-.flx-dir-row-reverse
+.flex-row-reverse
 	flex-direction row-reverse
-.flx-dir-col
+.flex-col
 	flex-direction column
-.flx-dir-col-reverse
+.flex-col-reverse
 	flex-direction column-reverse
-
-.jc-flx-start
-	justify-content flex-start
-.jc-flx-end
-	justify-content flex-end
-
-.ai-flx-start
-	align-items flex-start
-.ai-flx-end
-	align-items flex-end
-
-.ac-flx-start
-	align-content flex-start
-.ac-flx-end
-	align-content flex-end

@@ -6,7 +6,7 @@
 
 body
 	-webkit-text-size-adjust none
-	color var(--txt-black)
+	color var(--text-black)
 	font-family var(--sans)
 
 body, .p
@@ -30,7 +30,7 @@ h5, .h5
 h6, .h6
 	font-size var(--h6)
 	line-height var(--h6-l)
-small, .small
+.small
 	font-size var(--small)
 	line-height var(--small-l)
 .smaller
@@ -40,53 +40,53 @@ small, .small
 	font-size var(--smallest)
 	line-height var(--smallest-l)
 
-.txt-black
-	color var(--txt-black)
-.txt-dark
-	color var(--txt-dark)
-.txt-gray
-	color var(--txt-gray)
-.txt-light
-	color var(--txt-light)
+.text-black
+	color var(--text-black)
+.text-dark
+	color var(--text-dark)
+.text-gray
+	color var(--text-gray)
+.text-light
+	color var(--text-light)
 
-.txt-red
+.text-red
 	color var(--red)
-.txt-orange
+.text-orange
 	color var(--orange)
-.txt-yellow
+.text-yellow
 	color var(--yellow)
-.txt-green
+.text-green
 	color var(--green)
-.txt-teal
+.text-teal
 	color var(--teal)
-.txt-cyan
+.text-cyan
 	color var(--cyan)
-.txt-blue
+.text-blue
 	color var(--blue)
-.txt-purple
+.text-purple
 	color var(--purple)
-.txt-magenta
+.text-magenta
 	color var(--magenta)
-.txt-white
+.text-white
 	color var(--white)
 
-.txt-w1
+.font-100
 	font-weight 100
-.txt-w2
+.font-200
 	font-weight 200
-.txt-w3
+.font-300
 	font-weight 300
-.txt-w4
+.font-400
 	font-weight 400
-.txt-w5
+.font-500
 	font-weight 500
-.txt-w6
+.font-600
 	font-weight 600
-b, strong, .txt-w7
+.font-700
 	font-weight 700
-.txt-w8
+.font-800
 	font-weight 800
-.txt-w9
+.font-900
 	font-weight 900
 
 .leading-1
@@ -101,30 +101,27 @@ b, strong, .txt-w7
 .tracking-1000
 	letter-spacing 1em
 
-em, .txt-italic
+.text-italic
 	font-style italic
 
-a
-	color inherit
-
-.txt-nodeco
+.text-decoration-none
 	text-decoration none
-.txt-underline
+.text-decoration-underline
 	text-decoration underline
-.hvr-txt-nodeco:hover
+.hover\:text-decoration-none:hover
 	text-decoration none
-.hvr-txt-underline:hover
+.hover\:text-decoration-underline:hover
 	text-decoration underline
 
-.txt-left
+.text-left
 	text-align left
-.txt-center
+.text-center
 	text-align center
-.txt-right
+.text-right
 	text-align right
-.txt-justify
+.text-justify
 	text-align justify
-.txt-justify-last-line
+.text-justify-last-line
 	-moz-text-align-last justify
 	text-align-last justify
 
@@ -147,9 +144,9 @@ a
 .lowercase
 	text-transform lowercase
 
-.txt-nowrap
+.text-nowrap
 	white-space nowrap
-.txt-wrap
+.text-wrap
 	word-wrap break-word
 
 .hyphenate
@@ -174,14 +171,14 @@ a
 .num-tabular
 	font-variant-numeric tabular-nums
 
-.txt-ea-prop
+.text-ea-prop
 	font-variant-east-asian proportional-width
-.txt-ea-full
+.text-ea-full
 	font-variant-east-asian full-width
 
-.txt-palt
+.text-palt
 	font-feature-settings "palt" 1
-.txt-pkna
+.text-pkna
 	font-feature-settings "pkna" 1
 
 // @import './ja'
