@@ -1,5 +1,5 @@
-{% extends 'layout/base.twig' %}
+{% extends 'layouts/main.twig' %}
 {% block content %}
 	<h1>{{ title ? title: 'Posts' }}</h1>
-	{% include 'component/post-list-stack.twig' %}
+	{% include 'components/post/post-index.twig' %}
 {% endblock %}

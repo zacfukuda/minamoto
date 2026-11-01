@@ -1,0 +1,9 @@
+<li class="{{ menu_class_name }}-item-{{ depth }} {{ item.classes|join(' ') }}">
+	<a href="{{ item.link }}" target="{{ item.target }}">{{ item.title }}</a>
+	{% if item.children %}
+		{% include 'components/navigation-menu.twig' with { 
+			'items': item.children,
+			'depth': depth + 1
+		} %}
+	{% endif %}
+</li>

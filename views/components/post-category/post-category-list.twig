@@ -1,0 +1,5 @@
+<ul class="post-category-list">
+	{% for item in items %}
+		<li class="post-category-list-item is-{{ item.taxonomy }}"><a href="{{ item.link }}">{{ item.name }}</a></li>
+	{% endfor %}
+</ul>

@@ -1,0 +1,8 @@
+<div class="post-index">
+	{% if posts|length %}
+		{% include 'components/post/post-list.twig' %}
+		{% include 'components/pagination/pagination.twig' %}
+	{% else %}
+		{% include 'components/post/post-not-found.twig' %}
+	{% endif %}
+</div>	

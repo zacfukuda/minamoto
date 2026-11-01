@@ -1,7 +1,7 @@
-{% extends 'layout/base.twig' %}
+{% extends 'layouts/main.twig' %}
 {% block content %}
 	<h1>Search</h1>
-	{% include 'component/search-form.twig' %}
+	{% include 'components/search-form.twig' %}
 	<p>{{ result }} for &lsquo;<span>{{ s }}</span>&rsquo;</p>
-	{% include 'component/post-list-stack.twig' %}
+	{% include 'components/post/post-index.twig' %}
 {% endblock %}

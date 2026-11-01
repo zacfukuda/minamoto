@@ -1,0 +1,7 @@
+<nav class="global-header-navigation">
+	{% include "components/navigation-menu/navigation-menu.twig" with {
+		'items': global_header_navigation_menu.get_items,
+		'menu_class_name': 'global-header-navigation-menu',
+		'depth': 1,
+	} %}
+</nav>

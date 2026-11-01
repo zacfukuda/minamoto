@@ -1,0 +1,7 @@
+<nav class="fnav" role="navigation">
+	{% include 'components/navigation-menu/navigation-menu.twig' with {
+		'items': global_footer_navigation_menu.get_items,
+		'class_name': 'global-footer-navigation-menu',
+		'depth': 1
+	} %}
+</nav>

@@ -1,14 +1,14 @@
-{% extends 'layout/base.twig' %}
+{% extends 'layouts/main.twig' %}
 {% block content %}
 	<hr>
 	<h1>{{ post.title }}</h1>
 	{{ html ? html : post.content }}
 	<h2>Accordion</h2>
-	{% include 'component/accordion.twig' %}
+	{% include 'examples/accordion.twig' %}
 	<h2>Modal Dialog</h2>
-	{% include 'component/dialog.twig' %}
+	{% include 'examples/dialog.twig' %}
 	<h2>Tab</h2>
-	{% include 'component/tabs.twig' %}
+	{% include 'examples/tabs.twig' %}
 	<p>Email: <a class="mailto"></a></p>
 	<p>Please contact us at <a class="mailto"><span class="email-str"></span></a>.</p>
 	<hr>
