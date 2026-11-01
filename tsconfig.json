@@ -7,13 +7,12 @@
         "lib": ["DOM", "ES2018"],
         "module": "esnext",
         "moduleResolution": "bundler",
-        "noEmit": false,
-        "outDir": "./dist",
+        "noEmit": true,
         "resolveJsonModule": false,
-        "rootDir": "./src",
         "skipLibCheck": true,
         "strict": true,
         "target": "esnext",
+        "types": ["vite/client"],
         "useDefineForClassFields": true
     },
     "include": ["src/ts/**/*"]

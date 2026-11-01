@@ -9,17 +9,15 @@
 	{# Favicons: https://realfavicongenerator.net/ #}
 	{# CSS #}
 	<link rel="stylesheet" href="{{ paths.relative_template_directory_uri }}/assets/normalize/normalize.min.css">
-	<link rel="stylesheet" href="{{ paths.relative_template_directory_uri }}/dist/css/style.min.css?v={{ version }}" media="all">
-	<link rel="stylesheet" href="{{ paths.relative_template_directory_uri }}/dist/css/medium.min.css?v={{ version }}" media="(min-width: 768px)">
-	<link rel="stylesheet" href="{{ paths.relative_template_directory_uri }}/dist/css/large.min.css?v={{ version }}" media="(min-width: 1024px)">
+	{% for style in vite.styles %}
+		<link rel="stylesheet" href="{{ style.href }}" media="{{ style.media }}">
+	{% endfor %}
 	{# <link rel="stylesheet" href="{{ paths.relative_template_directory_uri }}/font/Icon.css"> #}
-	{# Other #}
 	<link rel="alternate" href="https://www.example.com/en/" hreflang="en" />
 	<link rel="alternate" href="https://www.example.com/ja/" hreflang="ja-jp" />
 	<link rel="author" href="/humans.txt" />
 	<link rel="pingback" href="{{ site.pingback_url }}" />
 	<link rel="profile" href="https://gmpg.org/xfn/11" />
-	{# include 'partial/jquery.twig' #}
 	{{ function('wp_head') }}
 	{% block stylesheet %}{% endblock %}
 </head>

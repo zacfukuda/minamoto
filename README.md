@@ -2,7 +2,7 @@
 
 ![alt Minamoto Logo](./img/logo/normal.svg)
 
-Minamoto is a Wordpress starter theme with [Gulp](https://github.com/gulpjs/gulp) + [Stylus](http://stylus-lang.com/) + [Webpack](https://webpack.js.org/) + [Browsersync](https://browsersync.io/docs/gulp).
+Minamoto is a Wordpress starter theme with [Vite](https://vite.dev/) + [Stylus](http://stylus-lang.com/) + [TypeScript](https://www.typescriptlang.org/).
 
 > To use this theme requires advanced knowledge in Wordpress theme development and JavaScript(CommonJS, ES6). If you are new to theme development, you might want to check out [Getting Started guide](https://developer.wordpress.org/themes/getting-started/) from Wordpess.org.
 
@@ -30,23 +30,23 @@ $ composer install
 | `style.css` | - | Edit the information so that the proper information will appear in the admin page. |
 | `package.json` | name | Recommended to match to the text domain defined in `style.css`. |
 | - | version | Will be appended after the assets files like CSS and Javacript for cache busting purpose. |
-| - | proxy | Will be used as Browsersync option inside `gulpfile.js`. The default is `http://wordpress.localhost`. |
 
 > `style.css` exists only to be recognized as a theme by WordPress core. All styles are written in `src/stylus/*`, and will be compiled to `./dist/css`.
 
-In addition to the files above, you can configure files under `config` so that the source files will be compiled as you want it to.
+In addition to the files above, you can edit `vite.config.mts` so that the source files will be compiled as you want it to.
 
-## Gulp tasks
-
-There are three main tasks that you use based on the progress of your development.
+## Vite tasks
 
 | Command | Task | Comment |
 | --- | --- | --- |
-| `yarn start` | Runs Broswersync server. | By default, the server will run at [http://localhost:3000/](http://localhost:3000/), <br>and not open the browser. |
-| `yarn watch` | Keeps watching file changes. | Not run Browsersync. |
-| `yarn build` | Builds optimized assets. | Also build unminified version. <br>Run this before putting into production. |
+| `yarn dev` | Runs the Vite dev server. | Serves at [http://localhost:5173/](http://localhost:5173/). <br>Keep browsing your WordPress site as usual; the theme loads assets from the dev server while it is running. |
+| `yarn watch` | Rebuilds `dist` on file changes. | Does not run the dev server. |
+| `yarn build` | Builds optimized assets to `dist`. | Run this before putting into production. |
+| `yarn typecheck` | Type-checks TypeScript. | Vite does not type-check. |
 
-> The Broswersync proxies requests to `proxy.target` defined in `package.json`. Also, if you want to run the dev server other than `port:3000`, please edit `gulpfile.js`.
+> While `yarn dev` is running, the dev server writes its origin to `.vite-hot`, and `inc/vite.php` reads it to switch asset URLs. If the server is killed abnormally, delete `.vite-hot` by hand. To change the port, edit `origin` and `server.port` in `vite.config.mts`.
+>
+> Stylesheets are loaded with `<link>` so that the `media` attribute applies; changes to `.styl` files reload the page instead of hot-swapping.
 
 ## File Structure
 
@@ -55,7 +55,7 @@ There are three main tasks that you use based on the progress of your developmen
 ├── assets            # Vendor files like jQuery
 ├── classes           # PHP classes
 ├── config            # Configuration files for theme
-├── (dist)            # Created by Gulp; NEVER edit
+├── (dist)            # Created by Vite; NEVER edit
 ├── doc               # Documentations about theme and website
 ├── html              # HTML drafts before saving in database
 ├── img               # Images that are part of you theme

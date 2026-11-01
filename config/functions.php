@@ -11,6 +11,7 @@ return [
 	// 'remove_pages_autop',
 	// 'shortcode_hello',
 	'shortcode_post_list',
+	'vite',
 	// 'wpdocs_excerpt_more',
 	// 'wps_deregister_styles',
 ];
