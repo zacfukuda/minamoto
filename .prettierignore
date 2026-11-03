@@ -1,7 +1,0 @@
-/build
-/font
-/img
-/node_modules
-/vendor
-.env
-package.json
