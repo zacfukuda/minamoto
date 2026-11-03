@@ -16,28 +16,20 @@ function minamoto_vite_assets() {
 		'medium' => '(min-width: 768px)',
 		'large' => '(min-width: 1024px)',
 	];
-	$styles = [];
 
 	if ($is_dev) {
 		$origin = rtrim(trim(file_get_contents($hot_file)), '/');
 
-		// `?direct` makes the dev server respond with plain CSS so that
-		// the `media` attribute of <link> still applies.
-		foreach ($media as $name => $query) {
-			$styles[] = [
-				'href' => "$origin/src/stylus/$name.styl?direct",
-				'media' => $query,
-			];
-		}
-
 		return [
 			'client' => "$origin/@vite/client",
 			'script' => "$origin/src/ts/index.ts",
-			'styles' => $styles,
+			// Stylesheets are imported from JS in dev to get HMR.
+			'styles' => [],
 		];
 	}
 
 	$base = wp_make_link_relative(get_template_directory_uri()) . '/build';
+	$styles = [];
 
 	foreach ($media as $name => $query) {
 		$styles[] = [

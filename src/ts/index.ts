@@ -4,6 +4,8 @@ import GlobalHeader from './class/GlobalHeader'
 import Tabs from './class/Tabs'
 import insertBase64Mailto from './function/insert-base64-mailto'
 
+if (import.meta.env.DEV) import('./dev')
+
 new GlobalHeader()
 document
 	.querySelectorAll<HTMLElement>('.accordion')

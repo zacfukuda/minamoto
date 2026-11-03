@@ -63,9 +63,7 @@ export default defineConfig({
 	},
 	plugins: [
 		hotFilePlugin(),
-		// Stylesheets are loaded with <link>, so they have no HMR.
 		fullReload([
-			'src/stylus/**/*.styl',
 			'*.php',
 			'classes/**/*.php',
 			'config/**/*.php',

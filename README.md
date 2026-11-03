@@ -46,7 +46,7 @@ In addition to the files above, you can edit `vite.config.mts` so that the sourc
 
 > While `yarn dev` is running, the dev server writes its origin to `.vite-hot`, and `inc/vite.php` reads it to switch asset URLs. If the server is killed abnormally, delete `.vite-hot` by hand. To change the port, edit `origin` and `server.port` in `vite.config.mts`.
 >
-> Stylesheets are loaded with `<link>` so that the `media` attribute applies; changes to `.styl` files reload the page instead of hot-swapping.
+> In dev, stylesheets are imported from `src/ts/dev.ts` so that Vite hot-updates them without reloading the page. Production serves `style`, `medium` and `large` as separate files with `<link media>`. Because dev has no `<link media>`, the breakpoints are also written as `@media` inside `medium.styl` and `large.styl`.
 
 ## File Structure
 
