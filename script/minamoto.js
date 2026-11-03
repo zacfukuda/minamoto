@@ -60,7 +60,7 @@ function add() {
 
 function addStylesheet(args) {
 	let {type, name} = args
-	let group = type === 'component' ? 'components' : type
+	let group = type === 'component' ? 'globals/components' : 'pages'
 	let dir = path.resolve(src.style, group, name)
 
 	if (fs.existsSync(dir)) {
@@ -92,9 +92,11 @@ function InsertToRoot(args) {
 		return
 	}
 
-	fs.appendFileSync(path.resolve(src.style, 'style.css'), `@import "./${group}/${name}/index.css";${os.EOL}`)
-	fs.appendFileSync(path.resolve(src.style, 'medium.css'), `@import "./${group}/${name}/md.css" (min-width: 768px);${os.EOL}`)
-	fs.appendFileSync(path.resolve(src.style, 'large.css'), `@import "./${group}/${name}/lg.css" (min-width: 1024px);${os.EOL}`)
+	let globals = path.resolve(src.style, 'globals')
+
+	fs.appendFileSync(path.resolve(globals, 'globals.css'), `@import "./components/${name}/index.css";${os.EOL}`)
+	fs.appendFileSync(path.resolve(globals, 'globals@md.css'), `@import "./components/${name}/md.css" (min-width: 768px);${os.EOL}`)
+	fs.appendFileSync(path.resolve(globals, 'globals@lg.css'), `@import "./components/${name}/lg.css" (min-width: 1024px);${os.EOL}`)
 }
 
 function remove () {}

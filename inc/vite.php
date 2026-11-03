@@ -43,9 +43,9 @@ function minamoto_vite_manifest() {
 function minamoto_vite_assets() {
 	$origin = minamoto_vite_origin();
 	$media = [
-		'style' => 'all',
-		'medium' => '(min-width: 768px)',
-		'large' => '(min-width: 1024px)',
+		'globals' => 'all',
+		'globals@md' => '(min-width: 768px)',
+		'globals@lg' => '(min-width: 1024px)',
 	];
 
 	if ($origin) {
@@ -61,7 +61,7 @@ function minamoto_vite_assets() {
 	$styles = [];
 
 	foreach ($media as $name => $query) {
-		$entry = $manifest["src/css/$name.css"] ?? null;
+		$entry = $manifest["src/css/globals/$name.css"] ?? null;
 
 		if ($entry) {
 			$styles[] = ['href' => "$base/{$entry['file']}", 'media' => $query];
@@ -79,7 +79,7 @@ function minamoto_vite_assets() {
 
 /**
  * Get the tag that loads the stylesheet of a single entry, such as a page.
- * Used in Twig as `vite_css('page/home')` for `src/css/page/home.css`.
+ * Used in Twig as `vite_css('pages/home')` for `src/css/pages/home.css`.
  * @param string $entry Path under `src/css`, without the extension.
  * @return string
  */

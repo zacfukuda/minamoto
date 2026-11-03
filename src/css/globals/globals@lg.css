@@ -14,5 +14,3 @@
 @import "./components/post-article/lg.css" (min-width: 1024px);
 @import "./components/post-list/lg.css" (min-width: 1024px);
 @import "./components/tab/lg.css" (min-width: 1024px);
-
-@import "./page/common/lg.css" (min-width: 1024px);

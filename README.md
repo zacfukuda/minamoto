@@ -46,19 +46,19 @@ In addition to the files above, you can edit `vite.config.mts` so that the sourc
 
 > While `yarn dev` is running, the dev server writes its origin to `.vite-hot`, and `inc/vite.php` reads it to switch asset URLs. If the server is killed abnormally, delete `.vite-hot` by hand. To change the port, edit `origin` and `server.port` in `vite.config.mts`.
 >
-> In dev, stylesheets are imported from `src/ts/dev.ts` so that Vite hot-updates them without reloading the page. Production serves `style`, `medium` and `large` as separate files with `<link media>`. Because dev has no `<link media>`, `medium.css` and `large.css` import their partials with a media query, e.g. `@import "./base/md.css" (min-width: 768px);`, which Vite turns into an `@media` block.
+> In dev, stylesheets are imported from `src/ts/dev.ts` so that Vite hot-updates them without reloading the page. Production serves `globals`, `globals@md` and `globals@lg` as separate files with `<link media>`. Because dev has no `<link media>`, `globals@md.css` and `globals@lg.css` import their partials with a media query, e.g. `@import "./base/md.css" (min-width: 768px);`, which Vite turns into an `@media` block.
 >
 > CSS is plain CSS processed by PostCSS: `@import` is resolved by Vite, nesting is flattened by `postcss-nesting`, and vendor prefixes are added by Autoprefixer (see `vite.config.mts`).
 
 ## Global and Per-page CSS
 
-- **Global CSS** (`src/css/style.css`, `medium.css`, `large.css`) is loaded on every page. Put tokens, base, typography and anything shared by several pages there, including `page/common`.
-- **Page CSS** is one entry per file in `src/css/page/*.css`, e.g. `src/css/page/home.css`. It imports its own partials (`page/home/index.css`, `md.css`, `lg.css`) and is built to a single file, with the breakpoints as `@media` blocks inside it. Vite picks up new files in that folder automatically.
+- **Global CSS** (`src/css/globals/globals.css`, `globals@md.css`, `globals@lg.css`) is loaded on every page. Put tokens, base, typography, components and anything shared by several pages under `src/css/globals/`.
+- **Page CSS** is one entry per file in `src/css/pages/*.css`, e.g. `src/css/pages/home.css`. It imports its own partials (`pages/home/index.css`, `md.css`, `lg.css`) and is built to a single file, with the breakpoints as `@media` blocks inside it. Vite picks up new files in that folder automatically.
 - To load a page's CSS, set `page_styles` in the page template, outside any block:
 
   ```twig
   {% extends 'layouts/main.twig' %}
-  {% set page_styles = ['page/home'] %}
+  {% set page_styles = ['pages/home'] %}
   ```
 
   `head.twig` prints the tags with `vite_css()`, after the global CSS. In dev the same call loads the stylesheet through the dev server, so it hot-updates, and only that page's CSS is loaded.

@@ -12,14 +12,14 @@ import fullReload from 'vite-plugin-full-reload'
 const origin = 'http://localhost:5173'
 const hotFile = '.vite-hot'
 
-/** One entry per file in `src/css/page`, named `page-<file>`. */
+/** One entry per file in `src/css/pages`, named `page-<file>`. */
 const pageEntries = Object.fromEntries(
 	fs
-		.readdirSync('src/css/page', { withFileTypes: true })
+		.readdirSync('src/css/pages', { withFileTypes: true })
 		.filter((f) => f.isFile() && f.name.endsWith('.css'))
 		.map((f) => [
 			`page-${path.basename(f.name, '.css')}`,
-			`src/css/page/${f.name}`,
+			`src/css/pages/${f.name}`,
 		])
 )
 
@@ -55,9 +55,9 @@ export default defineConfig({
 		rollupOptions: {
 			input: {
 				app: 'src/ts/index.ts',
-				style: 'src/css/style.css',
-				medium: 'src/css/medium.css',
-				large: 'src/css/large.css',
+				globals: 'src/css/globals/globals.css',
+				'globals@md': 'src/css/globals/globals@md.css',
+				'globals@lg': 'src/css/globals/globals@lg.css',
 				...pageEntries,
 			},
 		},

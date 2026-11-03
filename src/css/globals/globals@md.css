@@ -14,5 +14,3 @@
 @import "./components/post-article/md.css" (min-width: 768px);
 @import "./components/post-list/md.css" (min-width: 768px);
 @import "./components/tab/md.css" (min-width: 768px);
-
-@import "./page/common/md.css" (min-width: 768px);

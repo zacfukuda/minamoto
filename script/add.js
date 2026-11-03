@@ -18,8 +18,8 @@ function isJS() { return jsArgs.some(a => args.includes(a)) }
 function addCSS(inputs) {
 	let { type, name } = inputs
 	let src = paths.src.css
-	// "component" lives in "components"; "page" in "page"
-	let group = type === 'component' ? 'components' : type
+	// Components belong to the global CSS; pages have their own entry.
+	let group = type === 'component' ? 'globals/components' : 'pages'
 	let dir = path.resolve(src, group, name)
 	let eol = os.EOL
 	let files = ['index', 'md', 'lg']
@@ -43,15 +43,16 @@ function addCSS(inputs) {
 		].join(eol))
 		created.unshift(`src/css/${group}/${name}.css`)
 	} else {
-		fs.appendFileSync(path.resolve(src, 'style.css'), `@import "./${group}/${name}/index.css";${eol}`)
-		fs.appendFileSync(path.resolve(src, 'medium.css'), `@import "./${group}/${name}/md.css" (min-width: 768px);${eol}`)
-		fs.appendFileSync(path.resolve(src, 'large.css'), `@import "./${group}/${name}/lg.css" (min-width: 1024px);${eol}`)
+		let globals = path.resolve(src, 'globals')
+		fs.appendFileSync(path.resolve(globals, 'globals.css'), `@import "./components/${name}/index.css";${eol}`)
+		fs.appendFileSync(path.resolve(globals, 'globals@md.css'), `@import "./components/${name}/md.css" (min-width: 768px);${eol}`)
+		fs.appendFileSync(path.resolve(globals, 'globals@lg.css'), `@import "./components/${name}/lg.css" (min-width: 1024px);${eol}`)
 	}
 
 	let msg = `The following files have been created:\n\t${created.join('\n\t')}\nDone.`
 
 	if (type === 'page') {
-		msg += `\nLoad it from the page template with {% set page_styles = ['page/${name}'] %}.`
+		msg += `\nLoad it from the page template with {% set page_styles = ['pages/${name}'] %}.`
 	}
 
 	console.log(msg)
