@@ -1,5 +1,5 @@
 module.exports = {
-	addStylus: [{
+	addCSS: [{
 		type: 'list',
 		name: 'type',
 		message: 'Type of style:',

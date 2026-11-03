@@ -10,7 +10,7 @@ const inquirer = require('inquirer')
 const paths = require('../config/paths')
 
 const src = {
-	style: paths.src.stylus,
+	style: paths.src.css,
 	javascript: paths.src.js,
 }
 
@@ -71,7 +71,7 @@ function addStylesheet(args) {
 
 	let files = ['index', 'md', 'lg']
 	files.forEach(val => {
-		fs.writeFileSync(path.resolve(dir, `${val}.styl`), '')
+		fs.writeFileSync(path.resolve(dir, `${val}.css`), '')
 	})
 
 	InsertToRoot(args)
@@ -80,9 +80,9 @@ function addStylesheet(args) {
 function InsertToRoot(args) {
 	let {type, name} = args
 
-	fs.appendFileSync(path.resolve(src.style, 'style.styl'), `@import "${type}/${name}"${os.EOL}`)
-	fs.appendFileSync(path.resolve(src.style, 'medium.styl'), `@import "${type}/${name}/md"${os.EOL}`)
-	fs.appendFileSync(path.resolve(src.style, 'large.styl'), `@import "${type}/${name}/lg"${os.EOL}`)
+	fs.appendFileSync(path.resolve(src.style, 'style.css'), `@import "./${type}/${name}/index.css";${os.EOL}`)
+	fs.appendFileSync(path.resolve(src.style, 'medium.css'), `@import "./${type}/${name}/md.css" (min-width: 768px);${os.EOL}`)
+	fs.appendFileSync(path.resolve(src.style, 'large.css'), `@import "./${type}/${name}/lg.css" (min-width: 1024px);${os.EOL}`)
 }
 
 function remove () {}

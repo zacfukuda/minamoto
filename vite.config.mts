@@ -4,6 +4,7 @@
  */
 import fs from 'node:fs'
 import autoprefixer from 'autoprefixer'
+import postcssNesting from 'postcss-nesting'
 import { defineConfig, type Plugin } from 'vite'
 import fullReload from 'vite-plugin-full-reload'
 
@@ -42,14 +43,14 @@ export default defineConfig({
 		rollupOptions: {
 			input: {
 				app: 'src/ts/index.ts',
-				style: 'src/stylus/style.styl',
-				medium: 'src/stylus/medium.styl',
-				large: 'src/stylus/large.styl',
+				style: 'src/css/style.css',
+				medium: 'src/css/medium.css',
+				large: 'src/css/large.css',
 			},
 		},
 	},
 	css: {
-		postcss: { plugins: [autoprefixer()] },
+		postcss: { plugins: [postcssNesting(), autoprefixer()] },
 	},
 	server: {
 		port: 5173,

@@ -1,0 +1,15 @@
+/* .tabs */
+
+/* [role=tablist] */
+
+/* [role=tab]
+	&[aria-selected=true] */
+
+[role=tabpanel] {
+	&:focus {
+		outline: none;
+	}
+	&[hidden] {
+		display: none;
+	}
+}

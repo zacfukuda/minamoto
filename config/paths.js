@@ -5,7 +5,7 @@ const themeRoot = process.cwd()
 const srcRoot = path.resolve(themeRoot, 'src')
 
 const src = {
-	stylus: path.resolve(srcRoot, 'stylus'),
+	css: path.resolve(srcRoot, 'css'),
 	js: path.resolve(srcRoot, 'ts'),
 }
 

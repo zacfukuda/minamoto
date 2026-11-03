@@ -1,0 +1,21 @@
+@import "./root/lg.css" (min-width: 1024px);
+@import "./base/lg.css" (min-width: 1024px);
+@import "./typography/lg.css" (min-width: 1024px);
+
+@import "./components/global-header/lg.css" (min-width: 1024px);
+@import "./components/global-footer/lg.css" (min-width: 1024px);
+@import "./components/accordion/lg.css" (min-width: 1024px);
+@import "./components/button/lg.css" (min-width: 1024px);
+@import "./components/dialog/lg.css" (min-width: 1024px);
+@import "./components/form-control/lg.css" (min-width: 1024px);
+@import "./components/grid/lg.css" (min-width: 1024px);
+@import "./components/icon/lg.css" (min-width: 1024px);
+@import "./components/pagination/lg.css" (min-width: 1024px);
+@import "./components/post-article/lg.css" (min-width: 1024px);
+@import "./components/post-list/lg.css" (min-width: 1024px);
+@import "./components/tab/lg.css" (min-width: 1024px);
+
+@import "./page/common/lg.css" (min-width: 1024px);
+@import "./page/home/lg.css" (min-width: 1024px);
+@import "./page/news/lg.css" (min-width: 1024px);
+@import "./page/contact/lg.css" (min-width: 1024px);

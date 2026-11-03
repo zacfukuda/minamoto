@@ -1,0 +1,21 @@
+@import "./root/index.css";
+@import "./base/index.css";
+@import "./typography/index.css";
+
+@import "./components/global-header/index.css";
+@import "./components/global-footer/index.css";
+@import "./components/accordion/index.css";
+@import "./components/button/index.css";
+@import "./components/dialog/index.css";
+@import "./components/form-control/index.css";
+@import "./components/grid/index.css";
+@import "./components/icon/index.css";
+@import "./components/pagination/index.css";
+@import "./components/post-article/index.css";
+@import "./components/post-list/index.css";
+@import "./components/tab/index.css";
+
+@import "./page/common/index.css";
+@import "./page/home/index.css";
+@import "./page/news/index.css";
+@import "./page/contact/index.css";

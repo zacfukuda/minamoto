@@ -22,8 +22,7 @@ function minamoto_vite_assets() {
 		return [
 			'client' => "$origin/@vite/client",
 			'script' => "$origin/src/ts/index.ts",
-			// Stylesheets are imported from JS in dev to get HMR.
-			'styles' => [],
+			'styles' => [], // Stylesheets are imported from JS in dev to get HMR.
 		];
 	}
 
@@ -35,7 +34,7 @@ function minamoto_vite_assets() {
 	$styles = [];
 
 	foreach ($media as $name => $query) {
-		$entry = $manifest["src/stylus/$name.styl"] ?? null;
+		$entry = $manifest["src/css/$name.css"] ?? null;
 
 		if ($entry) {
 			$styles[] = ['href' => "$base/{$entry['file']}", 'media' => $query];

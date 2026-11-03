@@ -2,7 +2,7 @@
 
 ![alt Minamoto Logo](./img/logo/normal.svg)
 
-Minamoto is a Wordpress starter theme with [Vite](https://vite.dev/) + [Stylus](http://stylus-lang.com/) + [TypeScript](https://www.typescriptlang.org/).
+Minamoto is a Wordpress starter theme with [Vite](https://vite.dev/) + [PostCSS](https://postcss.org/) (plain CSS with nesting) + [TypeScript](https://www.typescriptlang.org/).
 
 > To use this theme requires advanced knowledge in Wordpress theme development and JavaScript(CommonJS, ES6). If you are new to theme development, you might want to check out [Getting Started guide](https://developer.wordpress.org/themes/getting-started/) from Wordpess.org.
 
@@ -31,7 +31,7 @@ $ composer install
 | `package.json` | name | Recommended to match to the text domain defined in `style.css`. |
 | - | version | The theme version. |
 
-> `style.css` exists only to be recognized as a theme by WordPress core. All styles are written in `src/stylus/*`, and will be compiled to `./build/assets`.
+> `style.css` exists only to be recognized as a theme by WordPress core. All styles are written in `src/css/*`, and will be compiled to `./build/assets`.
 
 In addition to the files above, you can edit `vite.config.mts` so that the source files will be compiled as you want it to.
 
@@ -46,7 +46,9 @@ In addition to the files above, you can edit `vite.config.mts` so that the sourc
 
 > While `yarn dev` is running, the dev server writes its origin to `.vite-hot`, and `inc/vite.php` reads it to switch asset URLs. If the server is killed abnormally, delete `.vite-hot` by hand. To change the port, edit `origin` and `server.port` in `vite.config.mts`.
 >
-> In dev, stylesheets are imported from `src/ts/dev.ts` so that Vite hot-updates them without reloading the page. Production serves `style`, `medium` and `large` as separate files with `<link media>`. Because dev has no `<link media>`, the breakpoints are also written as `@media` inside `medium.styl` and `large.styl`.
+> In dev, stylesheets are imported from `src/ts/dev.ts` so that Vite hot-updates them without reloading the page. Production serves `style`, `medium` and `large` as separate files with `<link media>`. Because dev has no `<link media>`, `medium.css` and `large.css` import their partials with a media query, e.g. `@import "./base/md.css" (min-width: 768px);`, which Vite turns into an `@media` block.
+>
+> CSS is plain CSS processed by PostCSS: `@import` is resolved by Vite, nesting is flattened by `postcss-nesting`, and vendor prefixes are added by Autoprefixer (see `vite.config.mts`).
 
 ## File Structure
 
@@ -64,7 +66,7 @@ In addition to the files above, you can edit `vite.config.mts` so that the sourc
 ├── src               # Source files
 ├── templates         # Twig template files
 │   ├── js
-│   └── stylus
+│   └── css
 └── (vendor)          # Composer files
 ```
 

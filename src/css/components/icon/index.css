@@ -1,0 +1,9 @@
+.icon {
+	display: inline-block;
+	font-style: normal;
+	font-weight: 400;
+	font-family: var(--icon);
+	font-variant-ligatures: discretionary-ligatures;
+	letter-spacing: 0;
+	text-transform: none;
+}

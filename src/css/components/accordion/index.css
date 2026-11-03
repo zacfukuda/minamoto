@@ -1,0 +1,9 @@
+.accordion {
+	cursor: pointer;
+}
+
+.accordionpanel {
+	max-height: 0;
+	overflow: hidden;
+	transition: .4s;
+}

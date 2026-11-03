@@ -1,0 +1,72 @@
+:root {
+	/* Color */
+	--color-primary: #f30;
+	--color-main: var(--color-primary);
+	--color-secondary: #870909;
+	--color-sub: var(--color-secondary);
+
+	--black: #111;
+	--dark: #444;
+	--gray: #aaa;
+	--light: #ccc;
+	--smoke: #fafbfc;
+	--white: #fff;
+
+	--background-black: var(--black);
+	--background-dark: var(--dark);
+	--background-gray: var(--gray);
+	--background-light: var(--light);
+	--background-smoke: var(--smoke);
+
+	--border-black: var(--black);
+	--border-dark: var(--dark);
+	--border-gray: var(--gray);
+	--border-light: var(--light);
+	--border-smoke: var(--smoke);
+
+	--text-black: var(--black);
+	--text-dark: var(--dark);
+	--text-gray: var(--gray);
+	--text-light: var(--gray);
+
+	--red: #f00;
+	--orange: #f90;
+	--yellow: #ff0;
+	--green: #390;
+	--teal: #0c9;
+	--cyan: #0cf;
+	--blue: #03f;
+	--purple: #90c;
+	--magenta: #f09;
+
+	/* Font */
+	--serif: "Times New Roman", Times, Georgia, serif;
+	--sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Lucida Sans Unicode", "Lucida Grande", Arial, Verdana, sans-serif;
+	--mono: "Courier New", Courier, "Lucida Console", Monaco, monospace;
+	--icon: Icon;
+
+	--body: 13px; --body-l: 22px;
+	--h1: 28px; --h1-l: 38px;
+	--h2: 24px; --h2-l: 34px;
+	--h3: 21px; --h3-l: 28px;
+	--h4: 18px; --h4-l: 24px;
+	--h5: 16px; --h5-l: 24px;
+	--h6: 14px; --h6-l: 20px;
+	--small: 12px; --small-l: 16px;
+	--smaller: 11px; --smaller-l: 15px;
+
+	/* Grid */
+	--container-width: 480px;
+	--container-width-md: 960px;
+	--container-width-lg: 1200px;
+	--container-padding: 16px;
+	--container-padding-md: 28px;
+	--container-padding-lg: 48px;
+	--gutter: 12px;
+	--gutter-md: 20px;
+	--gutter-lg: 32px;
+
+	--sect-margin: 64px;
+	--sect-margin-md: 80px;
+	--sect-margin-lg: 96px;
+}

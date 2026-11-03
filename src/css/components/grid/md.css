@@ -1,0 +1,66 @@
+.grid-md {
+	display: grid;
+}
+
+.grid-cols-1-md {
+	grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.grid-cols-2-md {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid-cols-3-md {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.grid-cols-4-md {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.grid-cols-5-md {
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.grid-cols-6-md {
+	grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.grid-cols-12-md {
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.grid-gap-md {
+	grid-gap: var(--gutter);
+}
+
+.grid-col-1-md {
+	grid-column-end: span 1;
+}
+.grid-col-2-md {
+	grid-column-end: span 2;
+}
+.grid-col-3-md {
+	grid-column-end: span 3;
+}
+.grid-col-4-md {
+	grid-column-end: span 4;
+}
+.grid-col-5-md {
+	grid-column-end: span 5;
+}
+.grid-col-6-md {
+	grid-column-end: span 6;
+}
+.grid-col-7-md {
+	grid-column-end: span 7;
+}
+.grid-col-8-md {
+	grid-column-end: span 8;
+}
+.grid-col-9-md {
+	grid-column-end: span 9;
+}
+.grid-col-10-md {
+	grid-column-end: span 10;
+}
+.grid-col-11-md {
+	grid-column-end: span 11;
+}
+.grid-col-12-md {
+	grid-column-end: span 12;
+}
