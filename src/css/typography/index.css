@@ -11,47 +11,6 @@ body {
 	font-family: var(--sans);
 }
 
-body, .p {
-	font-size: var(--body);
-	line-height: var(--body-l);
-}
-h1, .h1 {
-	font-size: var(--h1);
-	line-height: var(--h1-l);
-}
-h2, .h2 {
-	font-size: var(--h2);
-	line-height: var(--h2-l);
-}
-h3, .h3 {
-	font-size: var(--h3);
-	line-height: var(--h3-l);
-}
-h4, .h4 {
-	font-size: var(--h4);
-	line-height: var(--h4-l);
-}
-h5, .h5 {
-	font-size: var(--h5);
-	line-height: var(--h5-l);
-}
-h6, .h6 {
-	font-size: var(--h6);
-	line-height: var(--h6-l);
-}
-.small {
-	font-size: var(--small);
-	line-height: var(--small-l);
-}
-.smaller {
-	font-size: var(--smaller);
-	line-height: var(--smaller-l);
-}
-.smallest {
-	font-size: var(--smallest);
-	line-height: var(--smallest-l);
-}
-
 .text-black {
 	color: var(--text-black);
 }
@@ -214,10 +173,10 @@ h6, .h6 {
 	hyphens: auto;
 }
 
-.scaps {
+.small-caps {
 	font-variant-caps: small-caps;
 }
-.allscaps {
+.all-small-caps {
 	font-variant-caps: all-small-caps;
 }
 .titling {
