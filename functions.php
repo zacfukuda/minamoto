@@ -9,7 +9,6 @@ $__paths = require_once 'config/paths.php';
 $package_json = file_get_contents($__paths->template_directory . '/package.json');
 $package_json = json_decode($package_json);
 $theme_textdomain = $package_json->name;
-$theme_version = $package_json->version;
 
 $theme_config = require_once 'config/theme.php';
 $classes = require_once 'config/classes.php';

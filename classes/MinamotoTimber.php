@@ -15,10 +15,9 @@ class MinamotoTimber extends Site {
 	 * @param array $context
 	 */
 	public function add_to_context($context) {
-		global $__paths, $theme_version;
+		global $__paths;
 
 		$context['paths'] = $__paths;
-		$context['version'] = $theme_version;
 		$context['vite'] = minamoto_vite_assets();
 		$context['global_header_navigation_menu'] = Timber::get_menu('global-header-navigation-menu');
 		$context['global_footer_navigation_menu'] = Timber::get_menu('global-footer-navigation-menu');

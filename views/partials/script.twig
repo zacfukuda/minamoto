@@ -1,4 +1,6 @@
 {% if vite.client %}
 <script type="module" src="{{ vite.client }}"></script>
 {% endif %}
+{% if vite.script %}
 <script type="module" src="{{ vite.script }}"></script>
+{% endif %}

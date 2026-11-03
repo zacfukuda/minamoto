@@ -37,6 +37,7 @@ export default defineConfig({
 	build: {
 		outDir: 'build',
 		emptyOutDir: true,
+		manifest: true,
 		sourcemap: true,
 		rollupOptions: {
 			input: {
@@ -44,11 +45,6 @@ export default defineConfig({
 				style: 'src/stylus/style.styl',
 				medium: 'src/stylus/medium.styl',
 				large: 'src/stylus/large.styl',
-			},
-			output: {
-				entryFileNames: 'js/[name].min.js',
-				chunkFileNames: 'js/[name].min.js',
-				assetFileNames: 'css/[name].min[extname]',
 			},
 		},
 	},

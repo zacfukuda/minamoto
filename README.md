@@ -29,9 +29,9 @@ $ composer install
 | --- | --- | --- |
 | `style.css` | - | Edit the information so that the proper information will appear in the admin page. |
 | `package.json` | name | Recommended to match to the text domain defined in `style.css`. |
-| - | version | Will be appended after the assets files like CSS and Javacript for cache busting purpose. |
+| - | version | The theme version. |
 
-> `style.css` exists only to be recognized as a theme by WordPress core. All styles are written in `src/stylus/*`, and will be compiled to `./build/css`.
+> `style.css` exists only to be recognized as a theme by WordPress core. All styles are written in `src/stylus/*`, and will be compiled to `./build/assets`.
 
 In addition to the files above, you can edit `vite.config.mts` so that the source files will be compiled as you want it to.
 
@@ -41,7 +41,7 @@ In addition to the files above, you can edit `vite.config.mts` so that the sourc
 | --- | --- | --- |
 | `yarn dev` | Runs the Vite dev server. | Serves at [http://localhost:5173/](http://localhost:5173/). <br>Keep browsing your WordPress site as usual; the theme loads assets from the dev server while it is running. |
 | `yarn watch` | Rebuilds `build` on file changes. | Does not run the dev server. |
-| `yarn build` | Builds optimized assets to `build`. | Run this before putting into production. |
+| `yarn build` | Builds optimized assets to `build`. | Run this before putting into production. <br>File names carry a content hash for cache busting; `inc/vite.php` looks them up in `build/.vite/manifest.json`. |
 | `yarn typecheck` | Type-checks TypeScript. | Vite does not type-check. |
 
 > While `yarn dev` is running, the dev server writes its origin to `.vite-hot`, and `inc/vite.php` reads it to switch asset URLs. If the server is killed abnormally, delete `.vite-hot` by hand. To change the port, edit `origin` and `server.port` in `vite.config.mts`.
