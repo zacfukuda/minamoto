@@ -30,6 +30,12 @@ class MinamotoTimber extends Site {
 	 * @param Twig\Environment $twig
 	 */
 	public function add_to_twig($twig) {
+		$twig->addFunction(
+			new \Twig\TwigFunction('vite_css', 'minamoto_vite_css', [
+				'is_safe' => ['html'],
+			])
+		);
+
 		return $twig;
 	}
 }

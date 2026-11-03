@@ -60,29 +60,41 @@ function add() {
 
 function addStylesheet(args) {
 	let {type, name} = args
-	let dir = path.resolve(src.style, type, name)
+	let group = type === 'component' ? 'components' : type
+	let dir = path.resolve(src.style, group, name)
 
 	if (fs.existsSync(dir)) {
 		console.error(`The ${type} "${name}" already exists.`)
 		return
 	}
 
-	fs.mkdirSync(dir)
+	fs.mkdirSync(dir, {recursive: true})
 
 	let files = ['index', 'md', 'lg']
 	files.forEach(val => {
 		fs.writeFileSync(path.resolve(dir, `${val}.css`), '')
 	})
 
-	InsertToRoot(args)
+	InsertToRoot({type, group, name})
 }
 
 function InsertToRoot(args) {
-	let {type, name} = args
+	let {type, group, name} = args
 
-	fs.appendFileSync(path.resolve(src.style, 'style.css'), `@import "./${type}/${name}/index.css";${os.EOL}`)
-	fs.appendFileSync(path.resolve(src.style, 'medium.css'), `@import "./${type}/${name}/md.css" (min-width: 768px);${os.EOL}`)
-	fs.appendFileSync(path.resolve(src.style, 'large.css'), `@import "./${type}/${name}/lg.css" (min-width: 1024px);${os.EOL}`)
+	if (type === 'page') {
+		// A page has its own entry that is loaded only on that page.
+		fs.writeFileSync(path.resolve(src.style, group, `${name}.css`), [
+			`@import "./${name}/index.css";`,
+			`@import "./${name}/md.css" (min-width: 768px);`,
+			`@import "./${name}/lg.css" (min-width: 1024px);`,
+			''
+		].join(os.EOL))
+		return
+	}
+
+	fs.appendFileSync(path.resolve(src.style, 'style.css'), `@import "./${group}/${name}/index.css";${os.EOL}`)
+	fs.appendFileSync(path.resolve(src.style, 'medium.css'), `@import "./${group}/${name}/md.css" (min-width: 768px);${os.EOL}`)
+	fs.appendFileSync(path.resolve(src.style, 'large.css'), `@import "./${group}/${name}/lg.css" (min-width: 1024px);${os.EOL}`)
 }
 
 function remove () {}

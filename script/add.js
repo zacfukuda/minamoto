@@ -18,28 +18,43 @@ function isJS() { return jsArgs.some(a => args.includes(a)) }
 function addCSS(inputs) {
 	let { type, name } = inputs
 	let src = paths.src.css
-	let dir = path.resolve(src, type, name)
+	// "component" lives in "components"; "page" in "page"
+	let group = type === 'component' ? 'components' : type
+	let dir = path.resolve(src, group, name)
 	let eol = os.EOL
 	let files = ['index', 'md', 'lg']
+	let created = files.map(f => `src/css/${group}/${name}/${f}.css`)
 
 	if (fs.existsSync(dir)) {
-		console.error(`The file "${type}\/${name}" already exists.`)
+		console.error(`The ${type} "${name}" already exists.`)
 		return
 	}
 
-	fs.mkdirSync(dir)
+	fs.mkdirSync(dir, { recursive: true })
 	files.forEach(f => fs.writeFileSync(path.resolve(dir, `${f}.css`), ''))
-	fs.appendFileSync(path.resolve(src, 'style.css'), `@import "./${type}/${name}/index.css";${eol}`)
-	fs.appendFileSync(path.resolve(src, 'medium.css'), `@import "./${type}/${name}/md.css" (min-width: 768px);${eol}`)
-	fs.appendFileSync(path.resolve(src, 'large.css'), `@import "./${type}/${name}/lg.css" (min-width: 1024px);${eol}`)
 
-	let msg = (`The following files have been created:
-		src/${type}/${name}/index.css
-		src/${type}/${name}/md.css
-		src/${type}/${name}/lg.css
-		Done.`)
-	
-	console.log(msg.replace(/\t+/g, ''))
+	if (type === 'page') {
+		// A page has its own entry that is loaded only on that page.
+		fs.writeFileSync(path.resolve(src, group, `${name}.css`), [
+			`@import "./${name}/index.css";`,
+			`@import "./${name}/md.css" (min-width: 768px);`,
+			`@import "./${name}/lg.css" (min-width: 1024px);`,
+			''
+		].join(eol))
+		created.unshift(`src/css/${group}/${name}.css`)
+	} else {
+		fs.appendFileSync(path.resolve(src, 'style.css'), `@import "./${group}/${name}/index.css";${eol}`)
+		fs.appendFileSync(path.resolve(src, 'medium.css'), `@import "./${group}/${name}/md.css" (min-width: 768px);${eol}`)
+		fs.appendFileSync(path.resolve(src, 'large.css'), `@import "./${group}/${name}/lg.css" (min-width: 1024px);${eol}`)
+	}
+
+	let msg = `The following files have been created:\n\t${created.join('\n\t')}\nDone.`
+
+	if (type === 'page') {
+		msg += `\nLoad it from the page template with {% set page_styles = ['page/${name}'] %}.`
+	}
+
+	console.log(msg)
 }
 
 if (isCSS()) inquirer.prompt(inquiries.addCSS).then(inputs => addCSS(inputs))

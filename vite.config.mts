@@ -3,6 +3,7 @@
  * @link https://vite.dev/config/
  */
 import fs from 'node:fs'
+import path from 'node:path'
 import autoprefixer from 'autoprefixer'
 import postcssNesting from 'postcss-nesting'
 import { defineConfig, type Plugin } from 'vite'
@@ -10,6 +11,17 @@ import fullReload from 'vite-plugin-full-reload'
 
 const origin = 'http://localhost:5173'
 const hotFile = '.vite-hot'
+
+/** One entry per file in `src/css/page`, named `page-<file>`. */
+const pageEntries = Object.fromEntries(
+	fs
+		.readdirSync('src/css/page', { withFileTypes: true })
+		.filter((f) => f.isFile() && f.name.endsWith('.css'))
+		.map((f) => [
+			`page-${path.basename(f.name, '.css')}`,
+			`src/css/page/${f.name}`,
+		])
+)
 
 /**
  * Writes the dev server origin to `.vite-hot` while the server is running.
@@ -46,6 +58,7 @@ export default defineConfig({
 				style: 'src/css/style.css',
 				medium: 'src/css/medium.css',
 				large: 'src/css/large.css',
+				...pageEntries,
 			},
 		},
 	},

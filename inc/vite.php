@@ -1,24 +1,54 @@
 <?php
 /**
- * Get the URLs of the assets that are built by Vite.
+ * Helpers for the assets that are built by Vite.
  * While the dev server is running, `.vite-hot` holds its origin and
  * the assets are served from there. Otherwise they come from `build`,
  * whose file names (with content hashes) are listed in Vite's manifest.
+ */
+
+/**
+ * @return string|null Origin of the dev server, or null if it is not running.
+ */
+function minamoto_vite_origin() {
+	$hot_file = get_template_directory() . '/.vite-hot';
+
+	if (!file_exists($hot_file) || wp_get_environment_type() === 'production') {
+		return null;
+	}
+
+	return rtrim(trim(file_get_contents($hot_file)), '/');
+}
+
+/**
+ * @return array Entries of `build/.vite/manifest.json`, keyed by source path.
+ */
+function minamoto_vite_manifest() {
+	static $manifest;
+
+	if ($manifest === null) {
+		$file = get_template_directory() . '/build/.vite/manifest.json';
+		$manifest = file_exists($file)
+			? json_decode(file_get_contents($file), true)
+			: [];
+	}
+
+	return $manifest;
+}
+
+/**
+ * Get the URLs of the global assets: the script and the stylesheets
+ * that are loaded on every page.
  * @return array
  */
 function minamoto_vite_assets() {
-	$hot_file = get_template_directory() . '/.vite-hot';
-	$is_dev =
-		file_exists($hot_file) && wp_get_environment_type() !== 'production';
+	$origin = minamoto_vite_origin();
 	$media = [
 		'style' => 'all',
 		'medium' => '(min-width: 768px)',
 		'large' => '(min-width: 1024px)',
 	];
 
-	if ($is_dev) {
-		$origin = rtrim(trim(file_get_contents($hot_file)), '/');
-
+	if ($origin) {
 		return [
 			'client' => "$origin/@vite/client",
 			'script' => "$origin/src/ts/index.ts",
@@ -27,10 +57,7 @@ function minamoto_vite_assets() {
 	}
 
 	$base = wp_make_link_relative(get_template_directory_uri()) . '/build';
-	$manifest_file = get_template_directory() . '/build/.vite/manifest.json';
-	$manifest = file_exists($manifest_file)
-		? json_decode(file_get_contents($manifest_file), true)
-		: [];
+	$manifest = minamoto_vite_manifest();
 	$styles = [];
 
 	foreach ($media as $name => $query) {
@@ -48,4 +75,31 @@ function minamoto_vite_assets() {
 		'script' => $script ? "$base/$script" : null,
 		'styles' => $styles,
 	];
+}
+
+/**
+ * Get the tag that loads the stylesheet of a single entry, such as a page.
+ * Used in Twig as `vite_css('page/home')` for `src/css/page/home.css`.
+ * @param string $entry Path under `src/css`, without the extension.
+ * @return string
+ */
+function minamoto_vite_css($entry) {
+	$origin = minamoto_vite_origin();
+	$source = "src/css/$entry.css";
+
+	// In dev the stylesheet is imported as a module to get HMR.
+	if ($origin) {
+		return '<script type="module" src="' . esc_url("$origin/$source") . '"></script>';
+	}
+
+	$file = minamoto_vite_manifest()[$source]['file'] ?? null;
+
+	// An empty stylesheet is not emitted by the build.
+	if (!$file) {
+		return '';
+	}
+
+	$base = wp_make_link_relative(get_template_directory_uri()) . '/build';
+
+	return '<link rel="stylesheet" href="' . esc_url("$base/$file") . '">';
 }

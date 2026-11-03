@@ -1,0 +1,3 @@
+@import "./home/index.css";
+@import "./home/md.css" (min-width: 768px);
+@import "./home/lg.css" (min-width: 1024px);

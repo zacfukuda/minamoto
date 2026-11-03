@@ -12,12 +12,14 @@
 	{% for style in vite.styles %}
 		<link rel="stylesheet" href="{{ style.href }}" media="{{ style.media }}">
 	{% endfor %}
-	{# <link rel="stylesheet" href="{{ paths.relative_template_directory_uri }}/font/Icon.css"> #}
+	<link rel="stylesheet" href="{{ paths.relative_template_directory_uri }}/font/Icon.css">
 	<link rel="alternate" href="https://www.example.com/en/" hreflang="en" />
 	<link rel="alternate" href="https://www.example.com/ja/" hreflang="ja-jp" />
 	<link rel="author" href="/humans.txt" />
 	<link rel="pingback" href="{{ site.pingback_url }}" />
 	<link rel="profile" href="https://gmpg.org/xfn/11" />
 	{{ function('wp_head') }}
-	{% block stylesheet %}{% endblock %}
+	{% for entry in page_styles|default([]) %}
+		{{ vite_css(entry) }}
+	{% endfor %}
 </head>

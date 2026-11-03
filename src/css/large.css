@@ -16,6 +16,3 @@
 @import "./components/tab/lg.css" (min-width: 1024px);
 
 @import "./page/common/lg.css" (min-width: 1024px);
-@import "./page/home/lg.css" (min-width: 1024px);
-@import "./page/news/lg.css" (min-width: 1024px);
-@import "./page/contact/lg.css" (min-width: 1024px);

@@ -16,6 +16,3 @@
 @import "./components/tab/md.css" (min-width: 768px);
 
 @import "./page/common/md.css" (min-width: 768px);
-@import "./page/home/md.css" (min-width: 768px);
-@import "./page/news/md.css" (min-width: 768px);
-@import "./page/contact/md.css" (min-width: 768px);
