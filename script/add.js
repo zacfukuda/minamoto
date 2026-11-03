@@ -22,7 +22,7 @@ function addCSS(inputs) {
 	let group = type === 'component' ? 'globals/components' : 'pages'
 	let dir = path.resolve(src, group, name)
 	let eol = os.EOL
-	let files = ['index', 'md', 'lg']
+	let files = type === 'page' ? ['index', 'all', 'md', 'lg'] : ['index', 'md', 'lg']
 	let created = files.map(f => `src/css/${group}/${name}/${f}.css`)
 
 	if (fs.existsSync(dir)) {
@@ -34,14 +34,13 @@ function addCSS(inputs) {
 	files.forEach(f => fs.writeFileSync(path.resolve(dir, `${f}.css`), ''))
 
 	if (type === 'page') {
-		// A page has its own entry that is loaded only on that page.
-		fs.writeFileSync(path.resolve(src, group, `${name}.css`), [
-			`@import "./${name}/index.css";`,
-			`@import "./${name}/md.css" (min-width: 768px);`,
-			`@import "./${name}/lg.css" (min-width: 1024px);`,
+		// `index.css` is the entry that is loaded only on that page.
+		fs.writeFileSync(path.resolve(dir, 'index.css'), [
+			'@import "./all.css";',
+			'@import "./md.css" (min-width: 768px);',
+			'@import "./lg.css" (min-width: 1024px);',
 			''
 		].join(eol))
-		created.unshift(`src/css/${group}/${name}.css`)
 	} else {
 		let globals = path.resolve(src, 'globals')
 		fs.appendFileSync(path.resolve(globals, 'globals.css'), `@import "./components/${name}/index.css";${eol}`)
@@ -52,7 +51,7 @@ function addCSS(inputs) {
 	let msg = `The following files have been created:\n\t${created.join('\n\t')}\nDone.`
 
 	if (type === 'page') {
-		msg += `\nLoad it from the page template with {% set page_styles = ['pages/${name}'] %}.`
+		msg += `\nLoad it from the page template with {% set page_styles = ['${name}'] %}.`
 	}
 
 	console.log(msg)

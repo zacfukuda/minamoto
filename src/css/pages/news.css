@@ -1,3 +1,0 @@
-@import "./news/index.css";
-@import "./news/md.css" (min-width: 768px);
-@import "./news/lg.css" (min-width: 1024px);

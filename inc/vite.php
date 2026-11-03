@@ -78,14 +78,14 @@ function minamoto_vite_assets() {
 }
 
 /**
- * Get the tag that loads the stylesheet of a single entry, such as a page.
- * Used in Twig as `vite_css('pages/home')` for `src/css/pages/home.css`.
- * @param string $entry Path under `src/css`, without the extension.
+ * Get the tag that loads the stylesheet of a page.
+ * Used in Twig as `vite_page_css('home')` for `src/css/pages/home/index.css`.
+ * @param string $name Name of the directory under `src/css/pages`.
  * @return string
  */
-function minamoto_vite_css($entry) {
+function minamoto_vite_page_css($name) {
 	$origin = minamoto_vite_origin();
-	$source = "src/css/$entry.css";
+	$source = "src/css/pages/$name/index.css";
 
 	// In dev the stylesheet is imported as a module to get HMR.
 	if ($origin) {

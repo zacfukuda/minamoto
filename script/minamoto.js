@@ -70,7 +70,7 @@ function addStylesheet(args) {
 
 	fs.mkdirSync(dir, {recursive: true})
 
-	let files = ['index', 'md', 'lg']
+	let files = type === 'page' ? ['index', 'all', 'md', 'lg'] : ['index', 'md', 'lg']
 	files.forEach(val => {
 		fs.writeFileSync(path.resolve(dir, `${val}.css`), '')
 	})
@@ -82,11 +82,11 @@ function InsertToRoot(args) {
 	let {type, group, name} = args
 
 	if (type === 'page') {
-		// A page has its own entry that is loaded only on that page.
-		fs.writeFileSync(path.resolve(src.style, group, `${name}.css`), [
-			`@import "./${name}/index.css";`,
-			`@import "./${name}/md.css" (min-width: 768px);`,
-			`@import "./${name}/lg.css" (min-width: 1024px);`,
+		// `index.css` is the entry that is loaded only on that page.
+		fs.writeFileSync(path.resolve(src.style, group, name, 'index.css'), [
+			'@import "./all.css";',
+			'@import "./md.css" (min-width: 768px);',
+			'@import "./lg.css" (min-width: 1024px);',
 			''
 		].join(os.EOL))
 		return

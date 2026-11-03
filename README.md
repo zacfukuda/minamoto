@@ -31,7 +31,7 @@ $ composer install
 | `package.json` | name | Recommended to match to the text domain defined in `style.css`. |
 | - | version | The theme version. |
 
-> `style.css` exists only to be recognized as a theme by WordPress core. All styles are written in `src/css/*`, and will be compiled to `./build/assets`.
+> `style.css` exists only to be recognized as a theme by WordPress core. All styles are written in `src/css/*`, and will be compiled to `./build`.
 
 In addition to the files above, you can edit `vite.config.mts` so that the source files will be compiled as you want it to.
 
@@ -46,23 +46,33 @@ In addition to the files above, you can edit `vite.config.mts` so that the sourc
 
 > While `yarn dev` is running, the dev server writes its origin to `.vite-hot`, and `inc/vite.php` reads it to switch asset URLs. If the server is killed abnormally, delete `.vite-hot` by hand. To change the port, edit `origin` and `server.port` in `vite.config.mts`.
 >
-> In dev, stylesheets are imported from `src/ts/dev.ts` so that Vite hot-updates them without reloading the page. Production serves `globals`, `globals@md` and `globals@lg` as separate files with `<link media>`. Because dev has no `<link media>`, `globals@md.css` and `globals@lg.css` import their partials with a media query, e.g. `@import "./base/md.css" (min-width: 768px);`, which Vite turns into an `@media` block.
+> In dev, stylesheets are imported from `src/ts/dev.ts` so that Vite hot-updates them without reloading the page. Production serves `globals`, `globals@md` and `globals@lg` (built to `build/css/globals/`) as separate files with `<link media>`. Because dev has no `<link media>`, `globals@md.css` and `globals@lg.css` import their partials with a media query, e.g. `@import "./base/md.css" (min-width: 768px);`, which Vite turns into an `@media` block.
 >
 > CSS is plain CSS processed by PostCSS: `@import` is resolved by Vite, nesting is flattened by `postcss-nesting`, and vendor prefixes are added by Autoprefixer (see `vite.config.mts`).
 
 ## Global and Per-page CSS
 
 - **Global CSS** (`src/css/globals/globals.css`, `globals@md.css`, `globals@lg.css`) is loaded on every page. Put tokens, base, typography, components and anything shared by several pages under `src/css/globals/`.
-- **Page CSS** is one entry per file in `src/css/pages/*.css`, e.g. `src/css/pages/home.css`. It imports its own partials (`pages/home/index.css`, `md.css`, `lg.css`) and is built to a single file, with the breakpoints as `@media` blocks inside it. Vite picks up new files in that folder automatically.
-- To load a page's CSS, set `page_styles` in the page template, outside any block:
+- **Page CSS** is one directory per page in `src/css/pages/`, e.g. `src/css/pages/home/`:
+
+  ```
+  pages/home/
+  ├── index.css   # entry point; imports the others
+  ├── all.css
+  ├── md.css      # (min-width: 768px)
+  └── lg.css      # (min-width: 1024px)
+  ```
+
+  `index.css` imports `all.css`, `md.css` and `lg.css` (the latter two with a media query), and is built to a single file, `build/css/pages/home-<hash>.css`, with the breakpoints as `@media` blocks inside it. `vite.config.mts` globs `src/css/pages/*/index.css`, so a new page needs no change in `vite.config.mts` or `inc/vite.php`; restart `yarn dev` or `yarn watch` to pick up a new directory.
+- To load a page's CSS, set `page_styles` to the directory names in the page template, outside any block:
 
   ```twig
   {% extends 'layouts/main.twig' %}
-  {% set page_styles = ['pages/home'] %}
+  {% set page_styles = ['home'] %}
   ```
 
-  `head.twig` prints the tags with `vite_css()`, after the global CSS. In dev the same call loads the stylesheet through the dev server, so it hot-updates, and only that page's CSS is loaded.
-- A page entry with no CSS in it still builds an empty file, so remove the entry (and its `page_styles` line) if a page does not need one.
+  `head.twig` prints the tags with `vite_page_css()`, after the global CSS. In dev the same call loads the stylesheet through the dev server, so it hot-updates, and only that page's CSS is loaded.
+- Pages whose CSS files are all empty build to one shared empty file, so delete the directory (and its `page_styles` line) if a page does not need CSS.
 
 ## File Structure
 

@@ -3,7 +3,6 @@
  * @link https://vite.dev/config/
  */
 import fs from 'node:fs'
-import path from 'node:path'
 import autoprefixer from 'autoprefixer'
 import postcssNesting from 'postcss-nesting'
 import { defineConfig, type Plugin } from 'vite'
@@ -12,15 +11,15 @@ import fullReload from 'vite-plugin-full-reload'
 const origin = 'http://localhost:5173'
 const hotFile = '.vite-hot'
 
-/** One entry per file in `src/css/pages`, named `page-<file>`. */
+/**
+ * One entry per directory in `src/css/pages` that has an `index.css`,
+ * named `pages/<dir>` so that it is built to `build/css/pages/<dir>-<hash>.css`.
+ */
 const pageEntries = Object.fromEntries(
 	fs
 		.readdirSync('src/css/pages', { withFileTypes: true })
-		.filter((f) => f.isFile() && f.name.endsWith('.css'))
-		.map((f) => [
-			`page-${path.basename(f.name, '.css')}`,
-			`src/css/pages/${f.name}`,
-		])
+		.filter((d) => d.isDirectory() && fs.existsSync(`src/css/pages/${d.name}/index.css`))
+		.map((d) => [`pages/${d.name}`, `src/css/pages/${d.name}/index.css`])
 )
 
 /**
@@ -55,10 +54,19 @@ export default defineConfig({
 		rollupOptions: {
 			input: {
 				app: 'src/ts/index.ts',
-				globals: 'src/css/globals/globals.css',
-				'globals@md': 'src/css/globals/globals@md.css',
-				'globals@lg': 'src/css/globals/globals@lg.css',
+				'globals/globals': 'src/css/globals/globals.css',
+				'globals/globals@md': 'src/css/globals/globals@md.css',
+				'globals/globals@lg': 'src/css/globals/globals@lg.css',
 				...pageEntries,
+			},
+			output: {
+				entryFileNames: 'js/[name]-[hash].js',
+				chunkFileNames: 'js/[name]-[hash].js',
+				// Global and page CSS go to `css/globals` and `css/pages`; everything else to `assets`.
+				assetFileNames: (asset) =>
+					asset.names.some((n) => /^(globals|pages)\//.test(n))
+						? 'css/[name]-[hash][extname]'
+						: 'assets/[name]-[hash][extname]',
 			},
 		},
 	},

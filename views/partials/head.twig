@@ -20,6 +20,6 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11" />
 	{{ function('wp_head') }}
 	{% for entry in page_styles|default([]) %}
-		{{ vite_css(entry) }}
+		{{ vite_page_css(entry) }}
 	{% endfor %}
 </head>
