@@ -78,28 +78,50 @@ function minamoto_vite_assets() {
 }
 
 /**
+ * Get the URL of the stylesheet of a page.
+ * @param string $name Name of the directory under `src/css/pages`.
+ * @return string Empty if the page has no built stylesheet.
+ */
+function minamoto_vite_page_css_url($name) {
+	$name = preg_replace('/[^A-Za-z0-9_-]/', '', $name);
+	$source = "src/css/pages/$name/index.css";
+	$origin = minamoto_vite_origin();
+
+	if (!$name) {
+		return '';
+	}
+
+	// In dev the dev server serves the source file.
+	if ($origin) {
+		return esc_url_raw("$origin/$source");
+	}
+
+	$file = minamoto_vite_manifest()[$source]['file'] ?? null;
+
+	if (!$file) {
+		return '';
+	}
+
+	return esc_url_raw(wp_make_link_relative(get_template_directory_uri()) . "/build/$file");
+}
+
+/**
  * Get the tag that loads the stylesheet of a page.
  * Used in Twig as `vite_page_css('home')` for `src/css/pages/home/index.css`.
  * @param string $name Name of the directory under `src/css/pages`.
  * @return string
  */
 function minamoto_vite_page_css($name) {
-	$origin = minamoto_vite_origin();
-	$source = "src/css/pages/$name/index.css";
+	$url = minamoto_vite_page_css_url($name);
 
-	// In dev the stylesheet is imported as a module to get HMR.
-	if ($origin) {
-		return '<script type="module" src="' . esc_url("$origin/$source") . '"></script>';
-	}
-
-	$file = minamoto_vite_manifest()[$source]['file'] ?? null;
-
-	// An empty stylesheet is not emitted by the build.
-	if (!$file) {
+	if (!$url) {
 		return '';
 	}
 
-	$base = wp_make_link_relative(get_template_directory_uri()) . '/build';
+	// In dev the stylesheet is imported as a module to get HMR.
+	if (minamoto_vite_origin()) {
+		return '<script type="module" src="' . esc_url($url) . '"></script>';
+	}
 
-	return '<link rel="stylesheet" href="' . esc_url("$base/$file") . '">';
+	return '<link rel="stylesheet" href="' . esc_url($url) . '">';
 }

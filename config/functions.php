@@ -10,6 +10,7 @@ return [
 	// 'posts_on_front',
 	// 'remove_pages_autop',
 	// 'shortcode_hello',
+	'shortcode_page_css',
 	'shortcode_post_list',
 	'vite',
 	// 'wpdocs_excerpt_more',

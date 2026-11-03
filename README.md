@@ -72,6 +72,13 @@ In addition to the files above, you can edit `vite.config.mts` so that the sourc
   ```
 
   `head.twig` prints the tags with `vite_page_css()`, after the global CSS. In dev the same call loads the stylesheet through the dev server, so it hot-updates, and only that page's CSS is loaded.
+- To load a page's CSS from the content of a WordPress page (for example, in an HTML block), use the `[page_css]` shortcode. It returns only the URL, so write the tag yourself:
+
+  ```html
+  <link rel="stylesheet" href="[page_css name=about]">
+  ```
+
+  `[page_css 'about']` works as well. It prints nothing if the page has no built CSS. The shortcode is in `inc/shortcode_page_css.php`. In dev it returns the dev server URL.
 - Pages whose CSS files are all empty build to one shared empty file, so delete the directory (and its `page_styles` line) if a page does not need CSS.
 
 ## File Structure
