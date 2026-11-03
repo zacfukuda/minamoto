@@ -10,6 +10,6 @@ License: MIT License
 License URI: http://opensource.org/licenses/MIT
 
 This "style.css" is just for being recognized by WordPress as a theme.
-The real CSS files will be compiled from "src/stylus" to "dist/css" by Vite.
+The real CSS files will be compiled from "src/stylus" to "build/css" by Vite.
 
 */

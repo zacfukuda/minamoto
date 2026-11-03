@@ -12,7 +12,7 @@ const hotFile = '.vite-hot'
 
 /**
  * Writes the dev server origin to `.vite-hot` while the server is running.
- * The theme reads it to load assets from the dev server instead of `dist`.
+ * The theme reads it to load assets from the dev server instead of `build`.
  */
 function hotFilePlugin(): Plugin {
 	const remove = () => fs.rmSync(hotFile, { force: true })
@@ -35,7 +35,7 @@ function hotFilePlugin(): Plugin {
 
 export default defineConfig({
 	build: {
-		outDir: 'dist',
+		outDir: 'build',
 		emptyOutDir: true,
 		sourcemap: true,
 		rollupOptions: {

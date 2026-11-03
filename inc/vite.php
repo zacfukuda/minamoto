@@ -2,7 +2,7 @@
 /**
  * Get the URLs of the assets that are built by Vite.
  * While the dev server is running, `.vite-hot` holds its origin and
- * the assets are served from there. Otherwise they come from `dist`.
+ * the assets are served from there. Otherwise they come from `build`.
  * @return array
  */
 function minamoto_vite_assets() {
@@ -37,7 +37,7 @@ function minamoto_vite_assets() {
 		];
 	}
 
-	$base = wp_make_link_relative(get_template_directory_uri()) . '/dist';
+	$base = wp_make_link_relative(get_template_directory_uri()) . '/build';
 
 	foreach ($media as $name => $query) {
 		$styles[] = [

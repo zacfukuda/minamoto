@@ -31,7 +31,7 @@ $ composer install
 | `package.json` | name | Recommended to match to the text domain defined in `style.css`. |
 | - | version | Will be appended after the assets files like CSS and Javacript for cache busting purpose. |
 
-> `style.css` exists only to be recognized as a theme by WordPress core. All styles are written in `src/stylus/*`, and will be compiled to `./dist/css`.
+> `style.css` exists only to be recognized as a theme by WordPress core. All styles are written in `src/stylus/*`, and will be compiled to `./build/css`.
 
 In addition to the files above, you can edit `vite.config.mts` so that the source files will be compiled as you want it to.
 
@@ -40,8 +40,8 @@ In addition to the files above, you can edit `vite.config.mts` so that the sourc
 | Command | Task | Comment |
 | --- | --- | --- |
 | `yarn dev` | Runs the Vite dev server. | Serves at [http://localhost:5173/](http://localhost:5173/). <br>Keep browsing your WordPress site as usual; the theme loads assets from the dev server while it is running. |
-| `yarn watch` | Rebuilds `dist` on file changes. | Does not run the dev server. |
-| `yarn build` | Builds optimized assets to `dist`. | Run this before putting into production. |
+| `yarn watch` | Rebuilds `build` on file changes. | Does not run the dev server. |
+| `yarn build` | Builds optimized assets to `build`. | Run this before putting into production. |
 | `yarn typecheck` | Type-checks TypeScript. | Vite does not type-check. |
 
 > While `yarn dev` is running, the dev server writes its origin to `.vite-hot`, and `inc/vite.php` reads it to switch asset URLs. If the server is killed abnormally, delete `.vite-hot` by hand. To change the port, edit `origin` and `server.port` in `vite.config.mts`.
@@ -55,7 +55,7 @@ In addition to the files above, you can edit `vite.config.mts` so that the sourc
 ├── assets            # Vendor files like jQuery
 ├── classes           # PHP classes
 ├── config            # Configuration files for theme
-├── (dist)            # Created by Vite; NEVER edit
+├── (build)           # Created by Vite; NEVER edit
 ├── doc               # Documentations about theme and website
 ├── html              # HTML drafts before saving in database
 ├── img               # Images that are part of you theme
